@@ -1,0 +1,55 @@
+---
+layout: post
+title: SSL Is Broken, Time to Fix It
+date: 2016-07-22 09:46:38.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- security
+- technology
+tags:
+- cloud
+- infrastructure
+- security
+- ssl
+- tls
+author: Avi Deitcher
+---
+<p>For a long time, I have felt that SSL/TLS - the protocol that secures your communications with Web sites, mail servers and most everything across the Internet -  is broken. It is broken to the point that it is fundamentally insecure, except for the most technically-aware and security-alert individuals, who also have the time to check the certificate for each and every Web site.</p>
+<p>SSL is supposed to provide three guarantees:</p>
+<ol>
+<li>Confidentiality</li>
+<li>Integrity</li>
+<li>Authenticity</li>
+</ol>
+<h3>Confidentiality</h3>
+<p>Confidentiality answers, "how do I, as the sender of a message, know that no one but the intended recipient can read it?"</p>
+<p>SSL uses cryptography quite well to do this job. It was a core part of the design, and ensures that when you send your password to the your bank - or your update to Facebook - that no one on the way can read it. That includes not only the owner of the coffee shop WiFi, but also their ISP, the core networks it runs through, your bank's ISP, malicious actors spying on the way, and hopefully even government entities like NSA and GCHQ.</p>
+<h3>Integrity</h3>
+<p>Integrity answers, "how do I, as the recipient of the message, know that this is the exact, unmodified message the recipient sent?"</p>
+<p>SSL uses cryptography quite well to do this job. It, too, was a core part of the design, and ensures that when you send your bank a transfer request of $500 - or that super-important Facebook update - that is <em>precisely</em> what you sent them, and no one on the way could have changed it without Facebook knowing. That includes all of the same innocent and not-so-innocent actors as before.</p>
+<h3>Authenticity</h3>
+<p>Authenticity answers, "how do I, as the person sending a message, know that the recipient <em>really</em> is the one I intended?"</p>
+<p>Put in other terms, "how do I know that the Website to which I am connecting is my bank, and <span style="text-decoration: underline;">not</span> someone who just copied their Web site, will steal my credentials, and log into the real one to steal my money?"</p>
+<p>In security circles, this is known as a "man-in-the-middle" , or MITM, attack.</p>
+<p>Here lies the problem.</p>
+<p>Apparently, when SSL was first being created, the focus was on Confidentiality and Integrity. Authenticity was added at the last second, very much an afterthought. We might think this strange, but we are living with 20 years of public Internet. At the time of SSL creation, all of this was very new indeed.</p>
+<p>How did they solve the authenticity problem?</p>
+<p>They created "<strong>Certificate Authorities</strong>", or <strong>CA</strong>s.</p>
+<p>CAs basically are entities we trust implicitly. Their signature is embedded in every browser we use: Safari, Chrome, Brave, IE, Firefox, you name it. When someone, say Barclays Bank, wants to have a Web site others will trust <span style="text-decoration: underline;">really</span> is Barclays, they go to a CA and say, "please sign a certificate saying this certificate comes from Barclays."</p>
+<p>When we connect securely to www.barclays.com, they present the certificate, signed by their CA, for Verisign (hence the name, "Verisign"). And, yes, I checked; they really do use Verisign. Since Verisign's certificate is installed on our browsers - it ships with just about every operating system and browser out there - we say, "I trust Verisign, Verisign trusts that this certificate came from Barclays, therefore, I trust that this is Barclays."</p>
+<p>In theory, that works great.</p>
+<p>The problem? There are a <span style="text-decoration: underline;">lot</span> of CAs.</p>
+<p>In principle, this is a very good thing. After all, we want competition. When Verisign started, the cost of a certificate was prohibitive. Nowadays, you can get one for free at <a href="http://letsencrypt.org">letsencrypt.org</a>.</p>
+<p>However, since there are many, if someone from a different CA also signs a certificate claiming to represent barclays.com, then if that site presents the certificate to us, <strong>we will believe it is them and never know it!</strong></p>
+<p>Think it doesn't happen?</p>
+<p>Repressive countries like China and Iran and Russia have CAs, many of which are in your browsers. All one of them would have to do, especially when in their borders, is intercept your connection to barclays.com and present a certificate signed by their CA. Unless you know how to read certificates <span style="text-decoration: underline;">and</span> remember to do so, you will be none the wiser.</p>
+<p><strong>CAs as authenticity are broken... fundamentally.</strong></p>
+<p>Why haven't people fixed it? I am hardly the only one to notice it.</p>
+<p>The problem isn't a technology problem. There are many proposed solutions, some better than others.</p>
+<p>The problem is a <em>market</em> problem. There are, literally, billions of devices out there, all with the SSL CA-based trust algorithm baked right in. Any new solution requires replacing billions of legacy devices.</p>
+<p>Will it ever be fixed? Definitely. Eventually someone big enough, with enough heft to hit the massive legacy problem, will do it. It will be difficult, but it will happen.</p>
+<p>Until then, "Houston, we have a (security) problem."</p>

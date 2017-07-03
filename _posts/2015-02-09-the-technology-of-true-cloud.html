@@ -1,0 +1,98 @@
+---
+layout: post
+title: The Technology of True Cloud
+date: 2015-02-09 08:33:14.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- cloud
+- culture
+- sales
+- trust
+author: Avi Deitcher
+---
+<p>Continuing <a href="{{ site.url }}/topics/cloud/" target="_blank">our series on cloud services</a>, especially our most recent one, "<a title="How to do True Cloud" href="{{ site.url }}/2015/02/04/how-to-do-true-cloud-2280/" target="_blank">How to Do True Cloud</a>", we now turn to the technology that enables true cloud services.</p>
+<p>This article will go more in depth than the previous ones; after all, we are discussing <em>technology</em> services. However, it will not go so deep as to lose the business-side executives. Indeed, any great executive in technology needs to hold to two principles simultaneously:</p>
+<ol>
+<li>Always trust your people;</li>
+<li>Never believe you cannot understand what they do.</li>
+</ol>
+<p>Everyone <em>can</em> and <em>should</em> understand the basics of building and operating the services she or he is selling. If you cannot understand what your technology teams are doing, you need to learn it, quickly.</p>
+<p>While there are many technology principles and methodologies for deploying and managing true  cloud services, we will focus on a few important ones.</p>
+<h3>Identity</h3>
+<p>Identity is perhaps the most important principle. <span style="text-decoration: underline;">Every instance</span> of the platform on which you deploy your services <strong>must be identical</strong>. This has several important ramifications:</p>
+<ul>
+<li><span style="text-decoration: underline;">Ephemeral</span>: If you lose an instance of your server, software, or any other piece that you deploy, the most you should lose is a limited amount of time, and perhaps transactions currently in flight. You can launch another instance, and customer services should automatically run on it automatically. <em>There is zero customer-specific effort tied to an instance</em>.</li>
+<li><span style="text-decoration: underline;">Scalable</span>: You can scale your platform easily by adding new instances. Since every instance is identical, and every customer can and does run on nearly every instance, you scale by adding more instances. <em>There is zero customer-specific effort tied to adding capacity</em>.</li>
+<li><span style="text-decoration: underline;">Backup</span>: You never perform backups of an individual instance. Since every instance is identical, and every customer can and does run on nearly every instance, all you need is one golden copy. Sure, you need to back up customer data, but that is a different beast.</li>
+<li><span style="text-decoration: underline;">Access</span>: You (nearly) never log into the server (physical or virtual) where a customer runs. Since every instance is identical, and every customer can and does run on nearly every instance, there is no need for anyone to log onto the instance. We say "nearly", because an instance may misbehave, and you may need to log on to gather information, but even then, in a real cloud environment, it should be unnecessary, as we will see later.</li>
+</ul>
+<p>In many ways, <em>Identity</em> is the sine qua non of cloud services. If you have unique per-customer instances, you do not have cloud; if you have cloud, you do not have unique per-customer instances.</p>
+<h3>Automation</h3>
+<p>Nearly every step of your process - provisioning customers, adding accounts, deploying software, scaling - should be automated. Indeed, it is nearly impossible to scale up in a true cloud environment without it.</p>
+<p>However, it is important to distinguish between <em>configuration</em> and <em>deployment</em>.</p>
+<ul>
+<li><span style="text-decoration: underline;">Configuration</span>: Since each customer does not have his or her own instances, we do not <em>deploy</em> customers, rather we <em>configure</em> them. When a customer signs up for your service, either the customer via a self-service system or your account manager via an internal system configures the customer account, which creates all of the logins, access, security, URLs and configuration necessary to use the system. <span style="text-decoration: underline;">There is no deployment</span>!</li>
+<li><span style="text-decoration: underline;">Deployment</span>: Deployment is how you deploy new services or scaling instances. These are driven by your own internal needs as well as platform-wide capacity. These are driven by your engineering and operations teams, and are also performed in an automated manner to the extent possible.</li>
+</ul>
+<p>The ideal version of automation is <em>self-service</em>. Amazon Web Services takes this to the extreme. There is no one to call, no one to create your account or add an instance. <span style="text-decoration: underline;">Everything</span> happens via the API or the dashboard (which is just a wrapper to the API).</p>
+<p>Of course, not everything can be automated. The customer needs to sign the contract and actually log in, and someone still needs to rack and stack your new firewall. But short of activities that by their very nature must be performed by hand, everything else is automated.</p>
+<h3>Instrumentation</h3>
+<p>In the bad old days, when we ran one instance per service, or perhaps per customer, we could know when something went wrong, and how it went wrong. Often companies without sufficient funds (or incentives) to invest in stronger alerting would use the "POU Alert System." ("Pissed-Off User")</p>
+<p>In a cloud environment, where the customer <em>is paying you to operate</em>, and one issue affects many customers, <strong>instrumentation is not an option; it is a requirement</strong>.</p>
+<p>Unlike in the old days, where IT was important to your business, but as long as the DVDs made it to the customer, you could survive, loss of service means loss of your business. Your very <em>raison d'être</em> is to operate on behalf of customers.</p>
+<ul>
+<li>You must know the state of your environment at every single moment.</li>
+<li>You must have "leading indicators" as to what will be in your environment in short order; "head problems off at the pass."</li>
+<li>You must have early analytics to know when you will need to scale up (or down) capacity across everything you use - network, telco, storage, servers, memory, licenses, etc.</li>
+<li>You must have service-level rollups, to know the current and historical status of your service(s).</li>
+<li>You must be transparent - the rollups, at the very least, must be visible to your entire company and your customers.</li>
+</ul>
+<p>When you sell software or hardware to a customer, you are asking them to trust you that it operates reasonable well, and that you have not put any nasty code in there that might steal their data.</p>
+<p>When you sell <em>cloud services</em>, you are asking them to trust you with all of the above, <span style="text-decoration: underline;">plus</span> that you will continually operate it at the highest level.</p>
+<p><strong>If you want the added trust, show them everything you've got. </strong></p>
+<p>Open kimono leads to trust.</p>
+<h3>Usage Analytics</h3>
+<p>In addition to instrumenting the technology in order to manage it successfully, as well as prove you are doing so, you need deep analytics into customer usage.</p>
+<p>When you shipped security appliances to your customer, you knew it cost you $2,000 fully loaded to build and sell the appliance. As long as you get your 50% margin and sold it for at least $4,000, life was good.</p>
+<p>When you operate that same service on behalf of your customer, they will use it as much as possible. Each usage costs you money in electricity, support, network, etc.</p>
+<p>At the same time, the customer using it the most should (in theory, at least) be getting the highest value out of it. The cloud provides a double-edged sword.</p>
+<ol>
+<li>On the one hand, you can and will have different costs with each customer based on their usage, leading to different profit margins. You <strong>must</strong> properly deploy analytics to know what each customer is doing, and therefore what to charge them.</li>
+<li>On the other hand, you will have insight into customer usage and behaviour of the kind you never had before. With usage-directed analytics, you can find out what customers use and want and continually improve your offering to meet their needs.</li>
+</ol>
+<p>You need analytics to manage your profit and provide what your customer wants.</p>
+<h3>Speed</h3>
+<p>This section might as well be titled, "appetite for risk". If you wish to operate in the cloud, you need to be willing to move extremely quickly and take lots of small risks. While a software firm might ship as infrequently as once a quarter or even less, a cloud firm should be updating as often as weekly, possibly more.</p>
+<p>The key to understanding this is that the risk of deploying 3 changes at once is not the sum of all 3 risks, nor is it the multiple of the 3 risks, but it is exponential.</p>
+<p>Since stability of your offering is paramount, you need to be able to minimize the risks of each and every change. If you wait to do monthly or quarterly releases, the number of changes will be so high, and thus the risk exponentially high, along with the cost and number of staff required to manage it, that you will be unable to manage that risk.</p>
+<p>Ironically, when that monthly change goes bad - as it inevitably will - your natural reaction will be to <em>tighten</em> controls, reduce releases... and things will get even worse. As a colleague of mine coined it, that is the "spiral of death."</p>
+<p>To operate in the cloud and gain cloud-speed, cloud-margins and cloud-valuations, you need to be able to move quickly with lots of small risks.</p>
+<p>The idealized version of this type of change process, and one that several firms have successfully deployed, includes DevOps with Continuous Deployment.</p>
+<ul>
+<li>Each product or subset is owned by a small team that includes product, engineering and infrastructure.</li>
+<li>Each team is able to commit deployment of its own products to production whenever it feels it is ready.</li>
+<li>Each team owns its product and is responsible for any issues with it, anytime of day or night. Amazing how much the quality of your product improves when the engineer who is building it is the one who will be awoken at 03:00am when it doesn't work!</li>
+</ul>
+<p>Of course, for this to work, you need the next element, which ties into automation:</p>
+<h3>Testing</h3>
+<p>Or more correctly, automated testing. Every element of your product needs to have a full set of unit and integration tests, and preferably capacity tests as well, that grow over time. The tests are run every time one of your small product teams commits changes. <strong>The tests involve exactly zero human beings. </strong>The feedback cycle is rapid, and your engineers fix the product before their coffee has cooled.</p>
+<p>Without extensive, preferably complete, automated testing, it is impossible to be confident about changes - small or large - and deploy them safely.</p>
+<h2>Summary</h2>
+<p>One of the best technology architects I know said, "<em>if your architecture hasn't changed, you aren't doing cloud</em>."</p>
+<p>All of these elements - and many more we have not covered - combine to provide a different operating model than existing technology providers are used to. These are different than when you shipped software over the Internet for download or hardware via FedEx, different even than how you ran your internal IT, even at mission-critical places like financial services firms.</p>
+<ul>
+<li>Are you comfortable losing an instance <em>right now</em>? Adding another? Never having backups of those instances?</li>
+<li>Do you do "big bang" stressful deployments, or do you have stress-free, frequent, daily deployments?</li>
+<li>Do you have complete testing coverage? Do you have any manual testing?</li>
+<li>Do you <em>ever</em> log onto your production instances?</li>
+<li>Do you know <em>exactly</em> what every part of your service is doing <span style="text-decoration: underline;">right now</span>? Do you know what it will be doing in 30 minutes, 60 minutes, a week, 3 months?</li>
+</ul>
+<p>Small, low-risk, rapid changes combined with automation, identity, instrumentation, and analytics together give you the ability to operate a true cloud service.</p>
+<p>There is a method to the madness, and a way to get there. <a title="Contact" href="{{ site.url }}/contact/">Ask us</a>.</p>

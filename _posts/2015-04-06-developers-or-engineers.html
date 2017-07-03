@@ -1,0 +1,55 @@
+---
+layout: post
+title: Developers or Engineers?
+date: 2015-04-06 12:21:42.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- policy
+- technology
+tags:
+- developers
+- engineers
+- javascript
+- people
+author: Avi Deitcher
+---
+<p>Which do you hire, developers or engineers?</p>
+<p>Nowadays, the most popular programming language is JavaScript, or, by its correct name, ECMAScript. Since "Eck-Ma-Script" is not a great marketing name except, perhaps, for a language for <a href="http://www.imdb.com/title/tt0087332/" target="_blank">Ghostbusters</a> <a href="http://en.wikipedia.org/wiki/Ectoplasm_(paranormal)" target="_blank">EctoPlasm</a>, it is not surprising that everyone still calls it JavaScript or just "JS".</p>
+<p>Whether this is a good thing or not, and whether JavaScript is the worst or best language invented, is not a topic I am too interested in. Its popularity is a fact, and it is used to program everything from the browser to the server (<a href="http://nodejs.org" target="_blank">Node</a> / <a href="https://iojs.org/" target="_blank">IO</a>) to mobile apps (<a href="http://www.appcelerator.com/product/" target="_blank">Appcelerator</a> / <a href="http://phonegap.com" target="_blank">PhoneGap</a>) to devices (<a href="https://www.spark.io" target="_blank">spark</a>).</p>
+<p>There even is a series of unmatched conferences on JS, <a href="http://jsconf.com" target="_blank">JSConf</a>, run by <a href="http://twitter.com/voodootikigod" target="_blank">Chris Williams</a>; if you have anything to do with JavaScript or robotics, you <span style="text-decoration: underline;">must</span> attend his conferences.</p>
+<p>All of this froth means that there is a huge amount of development in libraries and frameworks to assist in making JavaScript development easier. Some of these have become very popular and greatly eased development work - <a href="http://jquery.com" target="_blank">jQuery</a> in the browser, <a href="http://expressjs.com" target="_blank">express</a> in the server - while others are providing better application development at the price of very steep learning curves, notably the very popular Google-driven <a href="http://angularjs.org" target="_blank">Angular</a>.</p>
+<p>Unfortunately, one of the downsides of frameworks - in any language - is that they can become a crutch, leading developers to learn the <em>framework</em> rather than the underlying <em>language</em> and <em>structure</em>.</p>
+<p>Many years ago, when I was a young kid first learning how to ice skate and play hockey, my instructors would not let me start with a stick. "Sure, you need a stick to play, but until you learn how to skate well, the stick can become a crutch you lean on and <em>never</em> learn proper skating." While I am sure they were exaggerating - I doubt I would have spent decades using a hockey stick as a crutch - undoubtedly they spoke from experience.  People who start without a crutch learn the basics much better.</p>
+<p>Earlier this week, Alex Rboots posted an article, "<a href="http://kukuruku.co/hub/programming/do-not-learn-frameworks-learn-the-architecture" target="_blank">Do Not Learn Frameworks, Learn the Architecture</a>." While he appeared to be arguing against all frameworks, I find it more likely that he was advocating against people learning the framework as if it is a language, rather than the underlying JavaScript language properly, the architecture.</p>
+<ol>
+<li>A framework <span style="text-decoration: underline;">can</span> be a crutch; someone who <em>only</em> learned the framework will be lost when the next one comes along.</li>
+<li>A framework is <span style="text-decoration: underline;">just</span> a tool to be used when it fits. When you need something lighter, or different, if all you know is <em>this</em> framework, you will use the wrong tool, leaving a mess for others to clean up, and the business to pay the price.</li>
+</ol>
+<p>The article reminded me of one of my hiring mantras in technology: <strong>never hire developers, always hire engineers.</strong></p>
+<p>I refer not to job titles; companies use them interchangeably. I refer instead to the <span style="text-decoration: underline;">mindset</span> of the employee.</p>
+<ul>
+<li><strong>Developer</strong> (or administrator or operator) is a <span style="text-decoration: underline;">job title</span>. It describes what the job is, often the technology to be used. It might be "hardware developer" or "software developer", or even more narrowly-defined, like "angular developer" or "C# developer".</li>
+<li><strong>Engineer</strong> is a <span style="text-decoration: underline;">character description</span>. An <em>engineer</em> is a person who has learned the mathematical and scientific principles for understanding how things work, has learned to put them into practice, and <em>truly enjoys</em> figuring these things out.</li>
+</ul>
+<p>Developers build software; engineers play with Lego. Developers read about their framework; engineers dream of building new frameworks. Developers shut down and go home; engineers go home and cannot shut it down completely.</p>
+<p>If you need someone to build, say, a microservice, it is fairly easy to put together a job requirement full of the skills you need. For example, you are developing it in Java, with a MySQL replicated MySQL database, and a REST API provided by Jersey, running on CentOS Linux instances in Amazon Web Services EC2. You can hand a list to a recruiter and tell them, "if they match 3 of 5 or more with 2 years experience or more in each, I want to interview them."</p>
+<p>This is easy, low-cost, and works great... until you discover that you need Cassandra instead of MySQL, or Ubuntu instead of CentOS, or to write in Go rather than Java. Oops. You now have a person who not only does not know many of the underlying technologies, but <span style="text-decoration: underline;">cannot even think about them when the problems arise</span>. You look to your people to alert you when your choices are mismatched, but your formerly-great hire sees everything through a particular lens.</p>
+<p>A few years back, I worked with a database team with several Oracle experts. They managed and tuned their databases well, and stayed on top of issues. Unfortunately, by the time I came in, Oracle was <em>not</em> the right solution for many of their problems. They needed to move away from 2 monolithic large Oracle databases to several smaller and more diverse data stores. The team, however, only could see through the Oracle lens. Every solution to their problems was another patched Oracle solution.</p>
+<p>Engineers, by contrast, understand the underlying problems. They may know Java really well, but it is <strong>just a tool</strong>. The moment that Java creates issues, they will examine if there is a Java solution, and if the problem is more fundamental to Java and requires an alternate solution. Chances are good that an engineer already has been mulling alternatives and how they could fit in well before hitting this particular problem.</p>
+<p>By the time you realize there is a problem, an engineer will have:</p>
+<ol>
+<li>Determined it is a problem;</li>
+<li>Found alternatives;</li>
+<li>Discovered what it would take to replace your current technology;</li>
+<li>Learned the basics of how the alternate works;</li>
+<li>Put together a proof-of-concept.</li>
+</ol>
+<p>Before you know it is a problem, they have found it, proposed it, tried it, and trained your staff (i.e. themselves).</p>
+<p>Of course, hiring engineers is <span style="text-decoration: underline;">much harder</span>. Very few recruiters even know how to find and sift engineers - types of people - rather than developers - lists of particular job skills. This means much more work for you, both finding recruiters who understand what you are looking for, and recruiting them.</p>
+<p>The payoff, however, is well worth it. Engineers have a far longer lifespan in your company, solve many more problems, even those you haven't thought of, and lead you ahead. Developers do what they are told.</p>
+<h2>Summary</h2>
+<p>As in every company issue, the problem starts and ends with the people. When you have technology issues that last longer than they should, if your technology solutions are dated, as a whole or their underlying components, fix the technology, but do not leave the underlying <em>people</em> problems alone.</p>
+<p><a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us</a> to help solve your problems, and determine if you really have engineers... or just developers.</p>

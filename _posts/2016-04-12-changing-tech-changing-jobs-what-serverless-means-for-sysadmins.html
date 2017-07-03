@@ -1,0 +1,61 @@
+---
+layout: post
+title: 'Changing Tech, Changing Jobs: What Serverless Means for SysAdmins'
+date: 2016-04-12 12:36:23.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- containers
+- economy
+- policy
+- technology
+tags:
+- containers
+- economics
+- jobs
+- serverless
+author: Avi Deitcher
+---
+<p>The New York City Subway used to have ads above the seats for some trade school. The general thrust was, technicians always will be in need, because things always will break.</p>
+<p>What happens when employers no longer need to manage things that break?</p>
+<p>Ever since we have had IT, we have had servers. Ever since we have had servers, we have had systems administrators, or SysAdmins. I actually started my career as a sysadmin, recruited out of engineering school to run systems for CS First Boston.</p>
+<p>Of course, servers are meaningless. They really are just platforms to do one of two things:</p>
+<ul>
+<li>Run applications: compute</li>
+<li>Keep data: storage</li>
+</ul>
+<p>Of course, those servers need to run somewhere, so we have data centres, which are run by data centre administrators.</p>
+<p>As much of computing moved to the Infrastructure-as-a-Service (IaaS) cloud, many companies have been able to get out of the business of running data centres, which means they no longer needed the staff who specialize in running physical data centres - power, cooling, racking, cabling, layout, cages, physical security.</p>
+<p>Each shift in technology that reduces costs for companies, mostly reduces <em>labour</em> costs, since labour costs are the bulk of many companies' costs. I just finished rereading the excellent "<a href="http://www.amazon.com/Accidental-Empires-Silicon-Millions-Competition/dp/0887308554/" target="_blank">Accidental Empires</a>". A key point in the book is how each new technology needed a "killer app" to make it take off. For example, the spreadsheet was the key enabler for the Apple II (VisiCalc) and the IBM PC (Lotus 1-2-3). The spreadsheet replaced lots of <em>people</em> in a room with blackboards that extended across many rooms, and took hours of labour to recalculate each cell.</p>
+<p>This is equally correct in the move from physical servers to virtual instances, from virtual instances to containers, and then from containers to serverless.</p>
+<p>For example, the primary benefit of serverless is the fact that I no longer have to worry about or maintain servers, neither physical nor virtual, nor even containers. I don't <em>need</em> serverless; I <em>can</em> get the same level of abstraction and management even with containers, virtual servers, or physical servers. It just requires a <span style="text-decoration: underline;">lot</span> more investment in staff to build and maintain them.</p>
+<p>Thus, the real benefit is <strong>not</strong> reduced headache or faster time to market. It is reduced headache and faster time to market <strong>for the same cost</strong>. Or, if you prefer, it is the same result for significantly reduced cost.</p>
+<p>When discussing this with <a href="https://twitter.com/pauldjohnston" target="_blank">Paul Johnston</a>, he had an interesting comment:</p>
+<blockquote><p>... in Serverless... the Sys Admin virtually disappears from the resourcing.</p></blockquote>
+<p>Does serverless, indeed, mean the loss of many sysadmin jobs?</p>
+<p>I believe that they will, indeed, but also the creation of many such jobs, in in 2 stages:</p>
+<ol>
+<li>The net number of jobs will reduce. The total reductions will be greater than the net, although many will be replaced by those with higher level and pay.</li>
+<li> More jobs will be created as more consumers enter the market.</li>
+</ol>
+<h3>First, Reductions</h3>
+<p>Let's be brutally clear: <strong>many low-to-mid-level sysadmins and operators will disappear from companies.</strong> Startups, tech companies, retailers, manufacturers, all rely on software, all have some concentration or another of sysadmins, and many of those jobs will, indeed, disappear.</p>
+<p>On the other hand, in order to provide the serverless "abstraction", to make it appear that all we need to worry about are these serverless functions, <em>someone</em> has to build, scale, automate and run a significant number of real servers, virtual servers, containers and applications to support these "serverless" functions.</p>
+<p>That means there will be a significant <span style="text-decoration: underline;">increase</span> in sysadmin and, especially, systems engineering jobs at companies like Amazon (AWS), Google (GCE), Microsoft (Azure), Rackspace, Joyent.</p>
+<p>However, these jobs at cloud <em>providers</em> will be unlike the ones they replaced at <em>consumers</em>. Since a key benefit of serverless providers is that they reduce cost for the same activities, the providers cannot simply take on the workload that the consumers shed. They have to be far more efficient, scaled and automated.</p>
+<p>In other words, they <span style="text-decoration: underline;">require a much higher degree of engineering</span> than the consumers used to do themselves. Each such job will cost the employer 50-100% more than one lost at a consumer, but there will be far fewer of them.</p>
+<h3>Growth</h3>
+<p>Once serverless does take off, the cost and time to market benefits mean potential consumers who may have sat on the sidelines due to those costs can be enticed into the market.</p>
+<p>Let's look at a (very simplified) example.</p>
+<p>Chair, Inc. manufactures chairs, and have been doing so for many years (very innovative name!). They want to implement an online ordering system for their retailers, as they believe the benefit could be worth up to $500k/year to the bottom line.</p>
+<p>Yet, building an app and running it on servers, even virtual one on AWS, was estimated to cost them $500k up front and $250k/year, primarily in application maintenance and server management. We all know the accuracy of technology estimates, and so does the CEO of Chair, Inc. They pass.</p>
+<p>Along comes serverless, offering the ability to write the online ordering app without thinking about servers or maintaining them, i.e. without hiring another part-time sysadmin, worrying about 24x7x365 availability, server monitoring and all of the attendant costs. Now the cost is $300k up front and $150k/year. On a 3-year basis, this looks a lot more attractive.</p>
+<p>Chair, Inc. enters the market, and a serverless provider has a new customer.</p>
+<p>Enough companies like Chair, Inc., and the provider hires more higher-end engineers.</p>
+<p>Reducing the cost of performing an activity leads to more customers entering the market, which in turn provides more jobs at the provider.</p>
+<p>Eventually, the economic benefits of new entrants outweigh the economic losses in jobs of at existing employers-turned-consumers.</p>
+<h3>The Future of the SysAdmin</h3>
+<p>The future of the sysadmin in a serverless world is identical to that of every profession when technology automated it: learn to engineer the technologies that replaced your job, or find a different one.</p>
+<p>&nbsp;</p>

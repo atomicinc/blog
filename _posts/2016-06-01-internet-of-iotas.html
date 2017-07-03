@@ -1,0 +1,48 @@
+---
+layout: post
+title: Internet of Iotas
+date: 2016-06-01 07:24:17.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- outsource
+- product
+- security
+- technology
+tags:
+- containers
+- IoT
+- PaaS
+- stack
+- technology
+author: Avi Deitcher
+---
+<p>From the <a href="http://dictionary.cambridge.org/dictionary/english/iota">Cambridge Dictionary of English</a>:</p>
+<blockquote><p>iota (n.) - an extremely small amount</p></blockquote>
+<p>From the Wikipedia:</p>
+<blockquote><p>Internet of Things (IoT) - the network of physical objects—devices, vehicles, buildings and other items—embedded with electronics, software, sensors, and network connectivity that enables these objects to collect and exchange data.</p></blockquote>
+<p>As electronics get smaller and smaller, not just wearables like an Apple Watch, but even tiny full computers like the Raspberry Pi, the "things" in "IoT" become more like "iota."</p>
+<p>The benefits of IoT seem quite large, which is why they are one of the hottest current sectors in technology. Yet the exponential growth in the numbers of connected devices, all of which require their own software stack - both operating system and application - creates a new order of management complexity.</p>
+<p>Yesterday, <a href="https://twitter.com/toddbeets">Todd Beets</a> pointed out a company that tries to solve that management headache, <a href="http://resin.io">resin.io</a>.</p>
+<p>https://twitter.com/toddbeets/status/737706863970525185</p>
+<p>This is the challenge for IoT owners:</p>
+<ol>
+<li>There are two primary parts I care about when managing IoT devices: building the software, and having the software run on my devices</li>
+<li>If it were up to me, I would have the software, when ready, deploy magically to the many devices. Deployment and management are necessary headaches, like taxes, but I would much rather they do not exist.</li>
+<li>These devices are deployed all over my office, my campus, a city or the world, and thus need to be well secured.</li>
+</ol>
+<p>The smart people at Resin realized that this chain is <em>identical</em> to the one that has been solved over the last decade on the cloud software side, by companies such as Engine Yard, Heroku, dotCloud in its day (which became Docker) and AWS Beanstalk.</p>
+<p>This is the Platform-as-a-Service (PaaS) model.</p>
+<p>Once the servers to which you deploy your software are no longer under your <em>physical</em> management - i.e. in the cloud - it becomes relatively simple to argue that they need not be under your <em>virtual</em> management either, since what you really care about is your <em>application</em>, not the underlying server, virtual or physical.</p>
+<p>This abstraction created the opportunity for PaaS models to be acceptable, by removing everything after the "application ready, push to deploy" stage. Let the PaaS provider manage all of it for you.</p>
+<p>As the number of servers (physical and virtual) has grown significantly, leading to much larger management and orchestration challenges, the appeal of PaaS grew, as it lets companies worry about their software, not their servers... eventually leading to so-called "serverless" models like AWS Lambda that focus entirely on <em>software functions</em> rather than <em>software stacks</em>.</p>
+<p>IoT physical devices partially reverse this trend; they have come <span style="text-decoration: underline;">back</span> under management of the owner. They no longer are in well-defined (but hidden from software owners' view) data centres; <strong>they are everywhere!</strong> At the same time, the small size and low cost of devices and connectivity which make IoT possible, in turn, create a scale management headache on par with containers, yet not as easily amenable to "well-defined networks and data centre locations" solutions.</p>
+<p>Resin (and I am sure there are competitors) take the simplicity of PaaS, add in the management of cloud, and provide them wrapped in a single service.</p>
+<p><em>I love the model</em>. Why <span style="text-decoration: underline;">should</span> IoT recreate the management headaches of years past?</p>
+<p><span style="text-decoration: underline;">Technical side note</span>: Resin's operating system stack for running your software on IoT devices is designed quite well. It is very similar to <a href="http://rancher.com/rancher-os/">Rancher Labs' RancherOS</a>, which takes the container paradigm to its logical conclusion. This stack works particularly well in IoT environments, where one cannot assume easy physical access or reliable and high-speed network connections. Further, I respect Resin for being open about the design; they even appear to have <a href="https://github.com/resin-io">open-sourced</a> much of their stack.</p>
+<p>What does one get when combining IoT with PaaS? Internet of Things as a Service? IoTaaS? Or since they often are tiny devices, just IoTas?</p>
+<p>Every now and then I come across companies that take the more efficient models the industry has evolved for managing technology and applying them to newer areas. Last year, I discovered <a href="http://www.packet.net">Packet</a>, who not only have a great offering, but are run by good people with whom I have had the pleasure of interacting. This year it is Resin.</p>

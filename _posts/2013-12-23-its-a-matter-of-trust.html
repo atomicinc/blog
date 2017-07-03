@@ -1,0 +1,39 @@
+---
+layout: post
+title: It's a Matter of Trust
+date: 2013-12-23 07:15:45.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>With due respect to Billy Joel, this article is not about music, but about <em>buying</em> music - or anything else - without getting your credit card information stolen.</p>
+<p>Over a period of more than two weeks, <a href="http://pressroom.target.com/news/target-confirms-unauthorized-access-to-payment-card-data-in-u-s-stores" target="_blank">data thieves stole more than <strong>40 million credit and debit cards</strong></a> from Target stores. Unlike most well-publicized cyberthefts of cards, the thieves apparently did not break into the back-end IT systems and databases of the company and take a big dump of the cards. Rather, they managed to infect tens of thousands of point of sale systems - those red card-swipe machines at every Target store - so that as you swiped your card or entered your PIN, it transmitted the information simultaneously <span style="text-decoration: underline;">both</span> to Target's own systems (and on to the payment processors for validation) <span style="text-decoration: underline;">and</span> to the thieves. Kudos to Brian Krebs's <a href="http://krebsonsecurity.com/2013/12/cards-stolen-in-target-breach-flood-underground-markets/" target="_blank">Krebs on Security for breaking the story</a> and following up. In many ways, this is very similar to the infamous TJ Maxx breach a few years back, where they hacked in using improperly secured store WiFi.</p>
+<p>This incident highlights, yet again, the fundamental weaknesses of the credit card system, and what we need to do to repair it.</p>
+<p>Since the early years of credit cards, your card number has been <em>the</em> approval to draw from your account. Since cards were physical items, the most one had to worry about was the card itself being stolen. Sure, thieves stole carbon copies of the card imprint machine slips, but as a matter of scale, it was quite small, and all you really had to do was shred those. These were losses both people and the industry could absorb.</p>
+<p><strong>The real question became, "how do I verify that the person giving me the card is the real owner?"</strong></p>
+<p>The idea that the merchant was fraudulent or irresponsible was simply a non-issue. You trust the merchant, the merchant verifies you.</p>
+<p>Over time, as the credit card industry enabled catalog sales and then Internet sales, the scale of card usage has grown. But so have the opportunities for fraud. The card industry's answer has been:</p>
+<ol>
+<li>Magnetic strip encoding</li>
+<li>Risk evaluation - if you purchase an item with a physical card present, the risk is lower, and so are the fees charged the merchant</li>
+<li>IT - use algorithms to identify suspicious purchases and block them</li>
+<li>Security code - the code on the front (AmEx) or back (others) of cards that is neither encoded on a magnetic strip nor raised in the imprinted number of the card.</li>
+<li>Processes - lay down rules for merchants as to what data they can store and how. Your name can be kept, the card number must be encrypted, the security code must never be kept</li>
+</ol>
+<p>All of these, however, follow the same fundamental assumption: the merchant's job is to collect enough information to allow the credit card industry to validate the user of the card, while the cardholder's job is to hand <span style="text-decoration: underline;">all of that information</span> over to the merchant. We must trust the <em>merchant</em>, but we must question the <em>cardholder</em>.</p>
+<p>To their credit, these actions have reduced the valid lifetime of a stolen card before it is blocked, which reduces each card's value; according to the latest information on the Target thefts, the card numbers were being sold for ~$40/card. However, with the massive growth of the number of merchants, and hence points of sale, network transits and storage databases, the volume of theft will more than compensate for the drop in value of a stolen card.</p>
+<p>This game of cat and mouse will go on... until the industry realizes - and merchants and cardholders insist - that the best way to prevent credit card fraud is <strong>not</strong> to prevent fraudulent card usage, but to prevent credit card <strong>theft in the first place!</strong></p>
+<p><strong>We must challenge our assumptions about merchants.</strong> We need to begin to trust the merchants about as much as we trust the cardholders: <strong>very little</strong>. Lest anyone become offended on behalf of the merchants, they themselves would <span style="text-decoration: underline;">far prefer</span> not to have to worry about card storage. I have evaluated and managed a goodly number of PCI implementations; they would far prefer to get out of the business entirely.</p>
+<p>What does this mean practically?</p>
+<p>What I as a cardholder really need is a system that gives me the ability to give my merchant enough information for them to verify <span style="text-decoration: underline;">this one sale</span> at <span style="text-decoration: underline;">this one moment</span>, but <strong>not enough information</strong> for them to make <em>even a single additional sale</em><em>!</em></p>
+<p>There are two ways to do this. It is much to my surprise that no provider has done this yet.</p>
+<ol>
+<li><span style="text-decoration: underline;">Push instead of pull</span>: Giving Target my card number is nothing more or less than an authorization to post a charge, i.e. pull funds from, my account. It is this very "pull" nature that allows thieves to reuse that number and pull more from the same account. Instead of pull, I should be able to push. Target should <em>give me</em> a unique transaction number on checkout. I then go into my account, to which only I have access, and push funds (perhaps via smartphone) to that transaction. Target neither needs to know nor care if I am a legitimate cardholder, just as they neither know nor care when I pay them in cash. They have gotten paid; move on.</li>
+<li><span style="text-decoration: underline;">One-Time Numbers</span>: If we continue to insist on pulling funds rather than pushing them, then we create one-time credit card numbers. Similar to those RSA keychain fobs, or the now-popular Google Auth iPhone/Android App, credit card numbers would have a base of 16 numbers that is unchanging, and 4 digits that change every thirty seconds. You need the <span style="text-decoration: underline;">entire</span> 20 digits to make a transaction, can only use it within a short window, say 5 minutes, after it appears, and each one can only be used once. The 20 digits are more than enough for Hertz to identify me, far more reliably than in the current manner, but even if a thief broke into Hertz and stole that number, it would be useless, as it had already been used.</li>
+</ol>
+<p>Most of us may not care, since the card companies and banks cover fraud on our behalf, as they should. Nonetheless, there is a large inconvenience factor, and the card issues must cover their expenses by charging more to merchants, who must cover their costs by increased prices. It may only total 1% of the total card usage in a year, but with <a href="http://www.nilsonreport.com/publication_chart_and_graphs_archive.php" target="_blank">almost $3TN in credit card purchases in 2012 in the US alone</a>, 1% is $30BN out of the hands of thieves and into the economy.</p>
+<p>What could the economy do with $30BN...</p>

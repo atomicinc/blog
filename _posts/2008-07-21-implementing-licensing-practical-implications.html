@@ -1,0 +1,34 @@
+---
+layout: post
+title: Implementing Licensing - Practical Implications
+date: 2008-07-21 22:51:35.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- pricing
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>So having gone through the above (see previous posts), there are basically two choices when it comes to implementing licensing schemes.</p>
+<ol>
+<li>Sell the upgrade. Many sales systems, even fairly primitive ones, support this. You create a separate SKU for each major release, and possibly for each minor, and a separate license key scheme for each major release (but not minor). The licensing ensures that different minor releases within the major release will allow cross-upgrades (or downgrades). For the sales, you create a coupon that says, "if a return purchaser bought one of the following SKUs (all those in the previous major release), give them x% off for this SKU (all those in the latest major release). Note that some systems do have limitations with this. For example, esellerate can apply the coupon for everyone, one time, or one time by email. But what if a previous purchaser bought 3 copies? Well, then, you are out of luck.</li>
+<li>Sell the plan. You need to manage your customer data set on your own. You then need to manage the customer interaction with the sales system, so that only appropriate users see the appropriate pages, either the regular SKU with an appropriate applied discount, or special discount SKUs. </li>
+</ol>
+<p>Inevitably, one will ask, can any sales system handle being so controlled from your Web store, such that it will only display appropriate pages to appropriate people? One does not want to have a new buyer get to the supposedly hidden pages and get the product for free! As the old saying goes, "security by obscurity is insecurity." Here is a short summary of what I have found.</p>
+<ol>
+<li>No open-source cart system manages this. Period. Zen-Cart, osCommerce, CubeCart, even the new Magento all fall short. Nor I have seen a commercial system that manages it.</li>
+<li>The sales channel providers, like FastSpring, which combine sales management, reporting, up-sells/cross-sells and the like, but have the actual catalog per se on your page, are focused on letting you sell anything you want, provided the URL is correct. Needless to say, this is not something they offer. FastSpring is pretty impressive, but is not built for this. </li>
+<li>Surprisingly, the best solutions come from the least-featured providers. PayPal Website Payments Pro, Google Checkout XML API and Amazon FPS all are strong in this area because they allow your site to talk to their service, server-to-server, and will reject any transaction that your server has not approved. The downside to all of these is that accepting credit-card information means you must become PCI-DSS compliant, a not-insignificant effort. It is not very difficult, especially if you never store credit-card information, and almost all of the recommendations are good security practice, but a small ISV may simply not have the time to deal with it. I recently worked with a client on converting to PCI-DSS compliance. We did the analysis very quickly, but the conversion is taking time. </li>
+<li>The lower-end services of these Internet giants are less functional in this area, with one shining exception. Google Payments HTML API and Amazon Buy Now buttons both depend on data stored in the user's browser to submit payment information. A user could easily change the information and get the cheaper or free prices, and even set up a Website to make it easier for others. The shining exception is PayPal, which is strong because of its weakness. Like the others, PayPal's Payments Standard system is built around buttons that are configured and submitted from the user's browser page. Because users can modify these and submit, thus cheating the ecommerce seller, there is an option to encrypt the buttons, thus allowing PayPal to authenticate that the values are valid. Put in other terms, PayPal's need to resolve its weakness provides a strength in dealing with this issue. </li>
+</ol>
+<p>A number of providers also provide post-processing notification. FastSpring has Notification by POST to a Web site, PayPal has IPN. These can provide backstops, but they are <strong>not</strong> recommended for this purpose. Why? Because they only allow you to confirm or deny a sale <em>after</em> it is done, meaning the user thinks s/he is done and then gets told, sorry, no deal. This may even run afoul of consumer protection laws.</p>
+<p>Conclusions:</p>
+<ol>
+<li>For the short-run, if you need to boost sales by selling upgrades, sell upgrades to major versions, free updates to minor versions, and use whatever your sales channel will support.</li>
+<li>For the long-run, get control of your customer data within your own databases, and provide authenticated Web API access. Wrap the data with a business logic layer, and then provide interfaces to your sales channel, so you can control how customer specials are managed.</li>
+<li>If you need more complex structures, use PayPal or similar services until the mid-channels are mature enough to provide them.</li>
+<li>Hopefully, at some point, the mid-channels like FastSpring will expand to provide these services.</li>
+</ol>

@@ -1,0 +1,79 @@
+---
+layout: post
+title: Deodorant for Software
+date: 2015-06-26 10:27:00.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- product
+- technology
+tags:
+- balance
+- code
+- culture
+- investment
+- product management
+- quality
+- smell
+- software
+author: Avi Deitcher
+---
+<p>Although the title for this article might imply suggestions for Proctor &amp; Gamble's IT department, instead we will address how badly code can "smell" and how and <em>when</em> to prevent it.</p>
+<p>In business as in software, the concept of a "smell test" is a base instinct for if something is a bad idea or implementation: if something smells bad, it probably is.</p>
+<p>One of my favourite technology bloggers, <a href="http://twitter.com/adriancolyer" target="_blank">Adrian Colyer</a>, wrote a <a href="http://blog.acolyer.org/2015/06/24/when-and-why-your-code-starts-to-smell-bad/" target="_blank">recent article</a> about a fascinating analysis of open-source projects, primarily Apache, Eclipse and Android. They reviewed over half a million software commits, looking for specific categories of poor code quality, i.e. "smells", and analyzed three elements about those commits to try and shed some light on how and when poor code was introduced:</p>
+<ol>
+<li>The content of the messages or comments related to the commits.</li>
+<li>The timing of the commits.</li>
+<li>The contributor of the commits.</li>
+</ol>
+<p>The original paper as well as Adrian's review are well worth a full read. However, a critical set of insights is that most bad code is introduced:</p>
+<ul>
+<li>When a new concept is first added, rather than in later enhancements;</li>
+<li>By the original owner of the software;</li>
+<li>As "enhancements" far more frequently than "bug fixes";</li>
+<li>In the timeframe leading up to a release.</li>
+</ul>
+<p>In other words, contrary to popular belief, code mostly is not messed up by later inexperienced hands, nor over time, nor fixing bugs, but usually by the original owner doing enhancements leading up to release.</p>
+<p>As anyone who has worked in a real-world technology firm, especially a startup, will attest, market pressures to release product before the competition or to close that crucial deal for the quarter create incessant pressure from executive management to do the bare minimum necessary to "just get it to work."</p>
+<p>When working with a European client last year, the product team declined to make a decision about investing in A or B, instead constantly returning to the refrain, "just do it all." While I successfully managed them <em>and</em> the delivery team, the balance between product quality and product feature delivery was a difficult one.</p>
+<p>The challenge is that <span style="text-decoration: underline;">both sides are correct</span>. The perfectly designed, architected and built product that is 6 months too late is as useful to the startup as a brick. On the other hand, a product that just works but creates too much technical debt will cause significant problems very quickly. The brittleness makes it hard to maintain, will cause stability issues, and the next major feature will take twice as long.</p>
+<p>The really important question, then, is how do you balance them? How do you get as close as possible to the point of just enough software quality to support and enhance it in the future (and keep your engineers engaged), with enough speed to deliver?</p>
+<p>In my experience, the answer is to <strong>treat software development like every other investment</strong>. If you are choosing to buy a machine for the factory, a car for the company, or a server for the data centre, you evaluate the various options on the basis of long-term ROI vs. short-term resource constraints.</p>
+<p>Let us assume you need a car for your business. You could buy a car for $20,000, or one for $30,000. The $30,000 is 25% more fuel-efficient than the $20,000 one, and so over time, it <em>may</em> save you enough money to make it a better investment.</p>
+<p>You, however, need to consider the savings on fuel over the next five years, versus the cost of acquiring an extra $10,000 of asset <em>right now</em>. Sometimes it is worth it, sometimes it is not. It depends less on the amount of fuel saved, and more on your cost of capital at the moment. GE will view the same $10,000 difference in a very different light than a 12-month-old venture-backed startup.</p>
+<p>Let's apply the same principles to software quality. There are two rules of thumb:</p>
+<ol>
+<li>Your engineers <em>always</em> will want the perfect design.</li>
+<li>Your product and market people <em>always</em> will want the fastest delivery.</li>
+</ol>
+<p>Your conversation usually will go as follows:</p>
+<blockquote><p>Product: How quickly can we get feature Y?</p>
+<p>Engineering: 4 months</p>
+<p>Product: 4?!? I did engineering before product, I know we can do it in 2 if we do this and that.</p>
+<p>Engineering: Sure, but the quality will suffer, we will miss some tests, and we will not be able to enhance it with the next feature on your roadmap.</p>
+<p>Product: OK, but none of that matters if we do not hit <span style="text-decoration: underline;">this</span> deliverable!</p></blockquote>
+<p>To change the conversation, we need to ask <span style="text-decoration: underline;">both sides</span> to put real values on their requirements.</p>
+<ul>
+<li><span style="text-decoration: underline;">Product</span>:  What is the value of each part of the feature? No, every part is <strong>not</strong> make-or-break, so determine which ones truly are and which ones are not, and put hard values on each part - market share, revenue, any metric that the company uses to measure its position. Then put costs, using the same metrics, on each week of delay in delivery.</li>
+<li><span style="text-decoration: underline;">Engineering</span>: What is the cost of each corner cut, each shortening? Again, it is crucial to use the same metrics as the company, i.e. the same metrics as the product team.</li>
+</ul>
+<p>Putting the two together, it should be possible for the CEO to balance the cost of cutting corners with the cost of longer delivery times using the same methodology as any investment. Indeed, product development <strong>is</strong> an investment, and an expensive one at that.</p>
+<p>For this to work two rules <span style="text-decoration: underline;">must</span> be followed:</p>
+<ol>
+<li>The decision between engineering and product is <strong>the CEO's alone</strong>. She or he is the only one who can truly decide what is the right balance of costs and benefits, <em>once they are described in business terms</em>.</li>
+<li>The CEO must take <strong>direct responsibility</strong> for communicating to both teams why the decisions were made. Only then will each side accept the compromises that were made.</li>
+</ol>
+<p>But the greatest benefit of this methodology is that it gets each side to see and understand the concerns of the other, and thus <strong>changes the company culture</strong>. Engineers are <em>not</em> "geek-heads" who care for nothing but their code; they really do want the company to succeed and see their hard work used, and will understand tough decisions if given reason to do so. Product and marketing are <em>not</em> short-term-focused luddites who view engineers as expendable; they are aware that happier and more productive engineers mean faster and better products and will understand business-driven decisions if given reason to do so.</p>
+<h2>Summary</h2>
+<p>Balancing the quality requirements of engineering with the speed requirements of product is a critical role for success, both as productive employees and in the market. Analyzing the requirements as any other investment while involving both sides in the decision process will lead to:</p>
+<ul>
+<li>Happier employees</li>
+<li>Faster time to delivery</li>
+<li>A better culture</li>
+</ul>
+<p>How do you balance the needs? Is your technology <em>too</em> perfect? Or are you cutting <em>too </em>many corners? Do your teams work with each other, or are they at each other's throats?</p>
+<p><a href="{{ site.url }}/contact/" target="_blank">Ask us</a> to get your products higher quality, delivered faster, and with better teams.</p>

@@ -1,0 +1,48 @@
+---
+layout: post
+title: Lies, Damned Lies and Performance Tests
+date: 2015-10-01 07:01:51.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- lies
+- performance
+- statistics
+- testing
+author: Avi Deitcher
+---
+<p>Mark Twain attributed the phrase "<a href="https://en.wikipedia.org/wiki/Lies,_damned_lies,_and_statistics" target="_blank">Lies, Damned Lies and Statistics</a>" to British Prime Minister Benjamin Disraeli, which suits the Prime Minister's known wit, although its provenance has been questioned. If Twain or Disraeli had lived in the days of computers and software, he probably would have coined the phrase as "Lies, Damned Lies and Performance Tests." Perhaps Twain's great novel of Americans touring the desolate Holy Land of the late 19th century might have been called, "The Innocents Online."</p>
+<p>As of last week, I have a new favourite example of abused performance tests. A <a href="https://www.youtube.com/watch?v=vm1GJMp0QN4&amp;t=1039&amp;authuser=1" target="_blank">video</a> from Surge 2013's Lightning Talks, kindly shared with me by the head of a New York based financial IT firm, is amazing. I encourage anyone who has ever performed any kind of numerical calculation, ever, to watch the clip. The link points directly to the 5-minute presentation beginning at 17:19.</p>
+<ul>
+<li><span style="text-decoration: underline;">Question</span>: What happens when a platform which absolutely could not perform worse than another did?</li>
+<li><span style="text-decoration: underline;">Answer</span>: If your results smell bad, if they absolutely stink, something <span style="text-decoration: underline;">must</span> be wrong.</li>
+</ul>
+<p>What went wrong here? Good input to a good analysis engine was passed through an awful pre-processor to "clean the data up."</p>
+<p>The engineer writing the tests realized, <span style="text-decoration: underline;">correctly</span>, that the engine could only handle numbers. Obviously, "123,000" written is "123K" would not be acceptable, so the pre-processor chopped off the "K". Now, if I am comparing 123K and 100K, it is fair to eliminate the troublesome "K", since everything is on the same scale. 123000:100000, or (1.23) is the same as 123:100 (also 1.23). But if not <span style="text-decoration: underline;">every</span> number is of the same scale, you might start with 123K:1000 (123), chop off the "K", and end up with 123:1000 which is <strong>not the same thing! </strong>(0.123)</p>
+<p>The engineer also realized that the analysis engine could handle only natural numbers, i.e. no fractions or decimals. No problem, he thought, we will filter out the period. Once again, if I am comparing 110.1 and 100.2, it is OK (if asking for trouble) to chop them off, since 110.1:100.2 is the same as 1101:1002. But if not <span style="text-decoration: underline;">every</span> number has a decimal with the exact same number of digits to the right of the decimal, it is very easy to think that 110.1:100.234 is the same as 1101:100234!</p>
+<p>Needless to say, garbage in led to garbage out.</p>
+<p>Although that was the proximate cause of the error, the root cause is the lack of human involvement: it takes intuition and knowledge to review the results, and human review to ensure that the inputs make sense.</p>
+<p>I have seen numerous similar cases with performance tests comparing two processes where one performed better than another in a case where it is nearly impossible, e.g. a process running directly on bare metal performing <em>worse</em> than on a VM! Fortunately, most of the time we are able to find significant enough discrepancies to enable wise heads to prevail and realize that:</p>
+<ol>
+<li>Different generations of hardware, different CPU speeds, different disk will give different results.</li>
+<li>Different operating system installations and optimizations will give different results.</li>
+<li>The application itself often is a very poor measure of its own performance; external monitors are the only reliable way to test (if you can get <a href="https://en.wikipedia.org/wiki/DTrace" target="_blank">DTrace</a>, do).</li>
+</ol>
+<p>Performance tests are crucial for applications. They let you:</p>
+<ul>
+<li>Compare to competitors' products</li>
+<li>Benchmark your own speed against requirements</li>
+<li>Compare revisions of your own product</li>
+<li>Save infrastructure costs</li>
+<li>Increase revenues as you deliver more for your customers</li>
+</ul>
+<p>However, performance tests are only as useful as the intelligence of the people who create them and analyze them. <strong>Never analyze performance in isolation; context is everything.</strong></p>
+<h2>Summary</h2>
+<p>Performance tests are an invaluable tool for improving your reliability, iteration speed, revenue and profits, but they are <em>hard</em> to do correctly. Without smart people analyzing in context, you can make poor decisions that hurt your business.</p>
+<p>Do you have performance numbers? Do they make sense? Are you using them blindly or leveraging them wisely? <a href="{{ site.url }}/contact/" target="_blank">Ask us</a> to help set up your performance testing regimen.</p>

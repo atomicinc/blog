@@ -1,0 +1,54 @@
+---
+layout: post
+title: Decoupling Microsoft, or Free Your App
+date: 2016-02-09 10:38:33.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- product
+- technology
+tags:
+- ".net"
+- cloud
+- docker
+- microsoft
+- windows
+author: Avi Deitcher
+---
+<p>A few weeks ago, a colleague&nbsp;showed me a technology that was fascinating in and of itself, but the strategic ramifications are even greater.</p>
+<p>For those of you who are technically inclined, look at&nbsp;these links:</p>
+<ul>
+<li><a href="https://hub.docker.com/r/microsoft/dotnet/">https://hub.docker.com/r/microsoft/dotnet/</a></li>
+<li><a href="https://hub.docker.com/r/microsoft/aspnet/">https://hub.docker.com/r/microsoft/aspnet/</a></li>
+<li><a href="https://github.com/aspnet/home">https://github.com/aspnet/home</a></li>
+</ul>
+<p>These are, respectively, the <em>Linux</em> docker images for running Microsoft .Net and ASP.Net apps, and the open-source repository.</p>
+<p>This is quite cool technically. After all, apps compiled for platform A, especially tightly closed platforms like Microsoft, usually aren't meant to run on platform B!</p>
+<p>(To be fair, for those who understand how software actually&nbsp;works, it isn't that surprising, as they all deal with the same underlying processor. Further, many compiled modern server languages like Java and .Net aren't actually compiled into native CPU code, but rather some intermediary like "byte-code". But I digress.)</p>
+<p>It is&nbsp;the strategic ramifications, however, that are the truly exciting part.</p>
+<p>Microsoft&nbsp;earns its&nbsp;money primarily from a few&nbsp;places:</p>
+<ol>
+<li>Operating system licenses - Windows</li>
+<li>Productivity software licenses - Office</li>
+<li>Server software licenses - Exchange, SharePoint, etc.</li>
+</ol>
+<p>While much of server software licensing&nbsp;is shifting to Microsoft's cloud offerings, it still is part of the same "IT software to run your business".</p>
+<p>A key part of the Microsoft business model&nbsp;<span style="text-decoration: underline;">always</span> has been vertical lock-in. Exchange works on Windows, therefore, if you want to run Exchange, buy a Window server. Office runs on Windows 10, so if you want Excel, buy a Windows desktop.</p>
+<p>The&nbsp;development environments and languages&nbsp;are a simple extension of that philosophy. .Net apps run on Windows. Therefore, if you like or have a history (or legacy) of .Net apps, invest in Windows servers.</p>
+<p>The first step in breaking this linkage was Microsoft open-sourcing much of .Net, especially the CoreCLR, or software&nbsp;that runs .Net programs, like the Java Runtime Engine (JRE). We discussed this almost a year and a half ago <a href="{{ site.url }}/2014/11/13/open-source-microsoft-will-it-help-1839/" target="_blank">here</a> and <a href="{{ site.url }}/2014/11/17/open-source-microsoft-part-ii-seeds-for-the-future-1844/" target="_blank">here</a>.</p>
+<p>However,&nbsp;the above only made it&nbsp;<em>possible</em>, that someone would find a way to run .Net (i.e. Windows) applications on non-Windows operating systems.</p>
+<p>For Microsoft itself to release and support elements&nbsp;the CoreCLR and tools to run .Net apps on non-Windows platforms is&nbsp;a whole other level.</p>
+<p>Essentially, Microsoft is saying, "if you want to write/run/support Windows apps but not pay us to license servers because you are running the apps on some other platform, that is fine with us."</p>
+<p>Put in other terms, Microsoft just freed thousands of companies from the shackles of paying Microsoft licensing fees!&nbsp;What could induce them to take this step?</p>
+<p>One possibility is that Microsoft sees a downward trend&nbsp;in .Net&nbsp;adoption. Many startups will not touch .Net, and many VCs will not fund companies whose software is written in .Net.&nbsp;Decoupling the software and the platform reduces deadweight on .Net and may give it a new lease on life. After all, investors refuse .Net not because the technology is terrible - they simply do not care - but because they don't want their money going for&nbsp;Windows&nbsp;licenses&nbsp;when Linux (or SmartOS or FreeBSD) is a free alternative;&nbsp;there are better uses for scarce investor capital. Someone shared this <a href="http://w3techs.com/technologies/overview/programming_language/all" target="_blank">link</a> with me indicating that .Net still is the second most-used language. I do not know the date&nbsp;on this (in itself, suspicious), but I suspect that different methodologies will show a decline. Either way, the future, indicated by younger developers and companies, clearly points away from .Net.</p>
+<p>A second possibility is funneling. If you have an operating system platform that is clearly superiour in terms of performance or manageability, then customers who care about it will buy it&nbsp;<em>anyways</em>. Decoupling the app platform (.Net) from the operating system platform lets independents and young&nbsp;companies with limited cash&nbsp;get used to .Net, only to come back to Microsoft and pay for the operating system platform when they need the manageability.</p>
+<p>The problem with this second scenario is that, in scale, Microsoft platforms are&nbsp;<em>harder</em> to manage. Ask any seasoned large-scale IT or cloud&nbsp;systems manager what he or she would rather run, 1,000 Windows servers or 5,000 Linux instances. Uniformly, the answer is the latter. With the right tooling, Linux is far easier to manage at scale. Of course, Microsoft may not, or likely does not, see it that way.</p>
+<p>Does all of this mean you should adopt .Net, or, if you were planning on&nbsp;replacing .Net with something open-source (or more natively open-source), stick with it?</p>
+<p>The answer, as always, is "it depends."&nbsp;.Net on non-Windows platforms&nbsp;still is a very young technology with a way to go. It is unclear how long Microsoft will continue to support it, and how well it will be able to do so.</p>
+<p>As an aside,&nbsp;the people at Joyent used their SmartOS-based platform with Dtrace to do some <a href="https://www.joyent.com/blog/running-and-debugging-coreclr-on-triton" target="_blank">debugging and performance analysis of .Net apps</a> that never could have happened on native Windows.</p>
+<p>If your reasons for going .Net are significantly greater than an alternate platform,&nbsp;but the Windows-only was holding you back, then you&nbsp;<em>may</em> want to stay with it. If&nbsp;it is closer, then true open-source cross-platform languages are likely to serve you better.</p>
+<p>&nbsp;</p>

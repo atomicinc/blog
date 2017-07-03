@@ -1,0 +1,112 @@
+---
+layout: post
+title: Why Deployment Matters to Your Bottom Line
+date: 2015-02-11 11:09:17.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- technology
+tags:
+- cloud
+- consolidation
+- docker
+- SaaS
+- servers
+author: Avi Deitcher
+---
+<p>How you do deployment is very important, and the technologies you use can have a <em>direct</em> and <em>immediate</em> impact on your bottom line. It also can make your employees happier, which leads to better productivity and lower turnover. But how does deployment technology <span style="text-decoration: underline;">directly</span> affect your bottom line?</p>
+<p>Let's look at one.</p>
+<p><a href="https://www.docker.com" target="_blank">Docker</a> is a "hot new" technology for software deployment. If you are running a cloud or IT business, you might be wondering, "why does Docker matter", or more precisely, "why does Docker matter to my bottom line?"</p>
+<p>Docker - and similar "containerizing" solutions - are the next evolution in flexibility of deployment. Each of these evolutions saves you time and cost. Let's look at a brief history.</p>
+<p>Note that the numbers here are figurative only. Each company will have its own financials.</p>
+<h3>Dedicated Servers</h3>
+<p>Originally, each process had its own server. You ran this server until it could not handle the demands any more, then scheduled a weekend or longer to move to a new, more powerful server. To do this, you had to:</p>
+<ol>
+<li>Order the new server months before you actually needed it so it was ready.</li>
+<li>Deploy it to your data centre</li>
+<li>Install the operating system</li>
+<li>Connect it to your systems</li>
+<li>Install the process software</li>
+<li>Schedule weekend or other downtime when multiple employees would shut down the old one, migrate all of the processes and data to the new one</li>
+<li>Deal with all of the errors in migration.</li>
+</ol>
+<p>So if the server costs you $15,000 upfront with a 3-year depreciation, and another $5,000 per year to manage and maintain (if only it were so cheap), the annual fully-loaded cost per server is $10,000.</p>
+<p>If you do upgrades or migrations once a year, you will spend about half the time either with a new server in process of being deployed or an old one being decommissioned. Thus, your cost for this service alone actually will be 50% more, or <strong>$15,000 per annum</strong>.</p>
+<h3>Shared Servers</h3>
+<p>As discussed in an <a title="The Technology of True Cloud" href="{{ site.url }}/2015/02/09/the-technology-of-true-cloud-2290/" target="_blank">earlier article</a> on cloud technology, over time the cost benefits of consolidating multiple processes onto a single shared server began to exceed the risks and management costs of doing so, even with higher levels of redundancy.</p>
+<p>The process of migrating shared services from one server to another is fundamentally the same as for dedicated servers, with two key changes:</p>
+<ul>
+<li>The migration process is harder to schedule and more complicated, as each service requires its own migration window. This makes the process <em>more</em> labour-intensive and <em>more </em>expensive.</li>
+<li>The increased ratio of process to server, from 1:1 to 10:2 or 10:3, provides many more processes to amortize the costs of migration equipment. This makes the process <em>less</em> expensive.</li>
+</ul>
+<p>Now you have 3 servers for 10 services. With the same $10,000 per server per year fully-loaded cost, each service now costs you $3,000. Assuming the same cost of deployment, with 50% spare capacity, your service annual cost is now <strong>$4,500 per annum</strong>.</p>
+<h3>Parallel Architecture</h3>
+<p>The next great leap came from parallel architectures. As shared servers made the per-process costs of a server dramatically cheaper - instead of my one process consuming a $10,000 server, it now consumes 1/10 of 3x $10,000 servers, or $3,000 - it became financially feasible to have multiple instances of my process running <span style="text-decoration: underline;">at the same time</span>.</p>
+<p>Today, nearly every major online service, from Facebook to Google to Twitter to [<em>fill in the blank</em>], runs with multiple, sometimes hundreds or even thousands of, independent processes.</p>
+<p>Since the software became better designed to run in parallel, the need to schedule migration dropped significantly (beyond the availability benefits of the architecture). The migration process became:</p>
+<ol>
+<li>Order the new server whenever you need it.</li>
+<li>Deploy it to your data centre</li>
+<li>Install the operating system</li>
+<li>Connect it to your systems</li>
+<li>Install the process software</li>
+<li><del>Schedule weekend or other downtime when multiple employees would shut down the old one, migrate all of the processes and data to the new one</del> (not any more)</li>
+<li>Turn on the new instance of the process</li>
+<li>Turn off the old one</li>
+</ol>
+<p>Sure, many businesses would prefer the last 2 steps be done during a "maintenance window", but for all intents and purposes, it can be done any time.</p>
+<p>The lead time, the cost to deploy, the risks of deployment, have all dropped significantly, enabling you to reduce the lead time before migrations and the decommission time afterwards from 3 months on either side to 1 month, or possibly even 1/2 month, on either side. 2 months out of the year is 16.7% uplift vs 50%.</p>
+<p>Your number of servers hasn't really changed, nor has the cost of running each one, so your base service cost is still $3,000 per annum. But since your migration uplift has just switched from 50% to 16.7%, your fully loaded cost per service is <strong>$3,500 per annum</strong>.</p>
+<h3>Cloud Computing</h3>
+<p>Cloud computing, specifically server instances, have reduced the cost side of deploying servers dramatically.</p>
+<ul>
+<li>You no longer need to pay to rack, stack, power, connect new servers - everything physical is taken care of.</li>
+<li>You no longer need to manage space, power or cooling in a data centre.</li>
+<li>You no longer need to order equipment weeks or months in advance; everything is available on demand.</li>
+</ul>
+<p>Cloud servers actually are so good at this, that they helped eliminate one of the last vestiges of pain from shared servers: clashes. Running two unique pieces of software on the same server can - and often did - lead to "interesting" (as in the old Chinese curse, "may you live in interesting times") behaviours.</p>
+<p>Cloud server instances allow you to return to the ease of management of one process = one server, but instead of it being a $10,000 physical server with all of its overhead, it is a virtual server, a tiny software-managed slice of that physical server.</p>
+<ul>
+<li>From a cost perspective, it behaves like a shared server.</li>
+<li>From a management perspective, it behaves like (even better than) a dedicated server.</li>
+</ul>
+<p>It provided the best of both worlds.</p>
+<p>Cloud computing also provides significant cost advantages in <em>speed of deployment</em>. With server instances available on-demand - Amazon can spin one up for you within minutes of clicking a button - you no longer need to purchase equipment weeks or months in advance, or configure them. Sure, you want some spare capacity lying around, but you can launch it an hour before you will need it, no more.</p>
+<p>Further, server virtualization, upon which cloud servers are based, enable you to create an "image" of what the server should look like, and store it as a single file. This means you can have a "Web server image" and an "application server image" and a "database server image" and a "mail server image", etc. You can even use one for upgrades. Take your "Web server 1.5" image, launch it, upgrade the software, run your tests, and save it again as your "Web server 1.6" image. Done.</p>
+<p>Your annual maintenance costs have dropped from $5,000 per year to $4,000, as you no longer need to deal with hardware, connectivity, power, cooling, data centre, etc. Additionally, with the rapidity of deployment, you can "spin up" spare capacity less than a week before you need it, and "spin down", or decommission, the old instances a week after you are done. In truth, you probably can do it in hours or minutes, but let's be conservative.</p>
+<ul>
+<li>Base annual cost is now $9,000 per "server", split over 10 processes (each running as a virtual server instance), with 3 copies for each, giving you $2,700 in base costs per service.</li>
+<li>Migration costs are now one week on either side, or 2 weeks total, for 2/52 = 3.8% migration uplift.</li>
+</ul>
+<p>Your fully loaded cost per service is now $2,700 * 1.038 = <strong>$2,804 per annum</strong>.</p>
+<h3>Docker</h3>
+<p>So how does Docker play into this? If you just had 4 server instances, all running the same software, it would ease your deployment, but not your operational costs. After all, you can just create an "Acme software 1.5" image. When you want a new one, launch it. When you want to add scale, just launch a fifth server instance with the "Acme software 1.5" image.</p>
+<p>Where it <em>really</em> matters in cloud operations is when you have multiple server types and many servers. Let's look at a scenario.</p>
+<p>You are running a decent sized Software-as-a-Service (or SaaS) company.  You have:</p>
+<ul>
+<li>8 Web servers running "Acme Web 1.5" image</li>
+<li>12 application servers running "Acme App 2.6" image</li>
+<li>6 file servers running "Acme File 1.2" image</li>
+<li>2 database servers running "Acme DB 5.4" image</li>
+</ul>
+<p>Of course, you do not want to waste money,  so all of these servers are running fairly close to their peak utilization thresholds. When you hit the threshold for the Web servers, you will launch another; same for the application servers, etc.</p>
+<p>Unfortunately, as good as server instances are, it still can take several minutes for the instance to launch and be ready for usage. Since this is a <em>really important service</em>, you need to have spare capacity ready to run at a moment's notice. You decide that 20% is a safe margin, but you do not know in advance <em>which</em> of your services will need extra. Web? Application? File? Database?</p>
+<p>What you do, then, is <em>launch 20% of each kind</em>. That means:</p>
+<ul>
+<li>2 extra Web servers</li>
+<li>3 extra application servers</li>
+<li>2 extra file servers</li>
+<li>1 extra database server</li>
+</ul>
+<p>8 extra servers in total. And if the load suddenly hits the database? All of that extra money on application servers was wasted!</p>
+<p><strong>Docker separates the operating system image from the application image.</strong> It allows you to deploy the common operating system services as one layer, and the application services - Web or application or file or database - as another. While launching the server may take minutes, layering on the application takes seconds <span style="text-decoration: underline;">or less</span>.</p>
+<p>Let's revisit our prior scenario. Instead of 20% <em>of each kind</em>, you can launch 20% <em>of the largest kind</em>. Instead of 8 spare servers, you launch 3 spare "Acme base 1.2" servers. These are like stem cells; they are alive and running, but are not yet configured to any one of your services.</p>
+<p>As soon as you see that your Web server needs extra capacity, you "layer" on the Web server Docker image. In seconds, you have an extra Web server, and you can launch another spare "Acme base 1.2" at your leisure. Database server is struggling? Take one of your spares and "layer" on the database.</p>
+<p>In military terms, this is called a reserve. Smart commanders do not have a fighting unit up front and a reserve for each and every unit. This would require incredible expense - double the fighting capacity - and hold back crucial firepower that could win the battle. Instead, they have a reserve held back that is sent forward wherever necessary, whether to shore up weakening defenses or exploit a breakthrough opportunity.</p>
+<p>The cost differential is quite large. You just saved 5 out of 8 spare instances, or 62.5% of your "spare capacity" costs. Now scale that up for a service 3 or 10 times the size.</p>
+<h2>Summary</h2>
+<p>The progress of cloud technologies has dramatically reduced the time to service and the cost to operate. With the correct structures, processes and architectures, you can bring service levels up and cost down <span style="text-decoration: underline;">simultaneously</span>.</p>
+<p>Of course, to take advantage of this flexibility, you need to have the cloud operations to use it. Are you ready with your cloud operations? Do you want to save money and have happier customers? <a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us to help</a>.</p>

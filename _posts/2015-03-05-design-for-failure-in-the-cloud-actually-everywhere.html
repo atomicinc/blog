@@ -1,0 +1,83 @@
+---
+layout: post
+title: Design for Failure in the Cloud. Actually, Everywhere.
+date: 2015-03-05 09:31:25.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- technology
+tags:
+- architecture
+- aws
+- cloud
+- deployment
+- failure
+author: Avi Deitcher
+---
+<p>In one of our earlier discussions about cloud, an astute reader <a href="https://news.ycombinator.com/item?id=9141058" target="_blank">pointed out</a> that one "downside" of public cloud, especially one like AWS, is that they make very few guarantees about your instances. While the system <span style="text-decoration: underline;">as a whole</span> has service level agreements (SLAs), your particular instance does not. To quote:</p>
+<blockquote><p>"If your instances go down you're going to have to deal with it"</p></blockquote>
+<p>The underlying assumption, of course, is that you have better control over the level of availability of your particular instances and their underlying hardware, especially scheduled maintenance, when you control the <em>entire</em> environment rather than leaving it to a cloud provider like Amazon or Rackspace.</p>
+<p>Let's look at a practical example.</p>
+<p>You have an important business process running on a virtual server. Lo and behold, the server is showing a problem with memory or perhaps a disk. As a cautious and conscientious provider, you decide to deal promptly with the issue and switch it out. Why court serious problems?</p>
+<p>What happens to your process running in a virtual instance in each case?</p>
+<h3>Private Hardware</h3>
+<ul>
+<li>You find an optimal time when customer usage is lowest and staff availability is highest, probably a Friday night</li>
+<li>You inform customers and set up downtime, or prepare in advance to migrate customers to an alternate node</li>
+<li>You set up pre- and post-tests to ensure everything migrates correctly</li>
+<li>You bring bring the instances down, then the hypervisor, then the server</li>
+<li>You replace the failing component</li>
+<li>You bring it all back up</li>
+<li>Everyone goes home to sleep</li>
+</ul>
+<h3>Cloud Provider</h3>
+<ul>
+<li>Maybe you are informed of the pending loss of your instance(s); perhaps not</li>
+<li>Even if you are informed, you are not given an option to request a different time</li>
+<li>The instance goes down, whether you are ready or not</li>
+</ul>
+<h3>La Différence</h3>
+<p>The key difference, of course, is control over the timing. Normally, cloud providers will provide plenty of warning for a decommission of the underlying hardware or software - I have been getting warnings about the <a href="http://heroku.com" target="_blank">Heroku</a> Platform-as-a-Service retiring client apps on their <a href="https://devcenter.heroku.com/articles/bamboo" target="_blank">old Bamboo stack</a> for months - giving you time to move, but scheduled maintenance, let alone unscheduled, cannot be left to the wishes of each cloud customer; the scheduling would become impossible.</p>
+<p>When working in the cloud, you <span style="text-decoration: underline;">must assume</span> that your instances will fail unpredictably.</p>
+<p>In this respect, the commenter is 100% correct: <em>you cannot plan for instance availability</em>.</p>
+<p>However, there is a deeper truth: <strong>this is very good</strong>.</p>
+<p>Lack of guaranteed service levels for each instance forces us customers to architect our applications differently than before. We have to build them around the <strong>assumption of failure at an individual level, with resilience at the service level</strong>.</p>
+<p>This is more than just "redundant": I have helped companies with a primary and backup data centre and failover procedures. It is even deeper than "resilient", although that is closer.</p>
+<p>What you need is an architecture of "<strong>Design for Failure</strong>". <strong>D4F</strong> assumes that <em>every</em> instance of your application is ephemeral, and can disappear as a wisp without warning, but your system <em>as a whole</em> is available. My preferred name is "<strong>Ephemeral Design</strong>".</p>
+<p>On the one hand, this can be unnerving for managers, architects and engineers used to "traditional" paradigms of architecture (funny how we call architectures that are barely ten years old, "traditional"). On the other hand, it leads to an overall <em>better</em> designed application and <em>higher</em> availability... at <em>lower</em> cost.</p>
+<p>Which begs the question: <strong>should applications be designed this way even in private clouds or private hardware?</strong></p>
+<p>Ignoring for the moment the <a href="https://twitter.com/swardley/status/570567290271485952" target="_blank">argument that private clouds and private hardware fast are becoming expensive solutions to very niche problems</a>, having applications that run well in the "unpredictable" cloud run much better in your own environment as well.</p>
+<h3>Microservices</h3>
+<p>Arguably the biggest infrastructure buzzword of late 2014 (after "Docker"/"containers"), microservices involves decomposing your application from a monolithic design, or modules tied together, to individual components, each of which:</p>
+<ul>
+<li>Runs independently</li>
+<li>Communicates solely via well-defined API, usually over the network</li>
+<li>Maintains its own storage</li>
+<li>Can be deployed, replaced or upgraded at will</li>
+</ul>
+<p>By taking your application apart into individual services, you gain the ability to manage each at will. Each then becomes less complex than the whole, making it far easier to refactor into D4F.</p>
+<h3>Maintenance</h3>
+<p>With the assumption that your underlying service will disappear at any given moment - it is, after all, ephemeral - you no longer <em>need</em> to schedule maintenance. When the memory fails, just replace it. When the server is end-of-life, get rid of it.</p>
+<p>The cost of scheduling maintenance adds up very quickly:</p>
+<ul>
+<li>Labour to schedule with customers</li>
+<li>Reduced customer satisfaction due to scheduled downtime - no matter what they say, customers hate downtime, even scheduled, even if contractually agreed</li>
+<li>Weekend / evening labour time</li>
+<li>Loss of productivity in the following days</li>
+</ul>
+<h3>Failure</h3>
+<p>Perhaps most importantly, when you do suffer a failure, the word "suffer" does not need to occur. Whether it is an instance, a hypervisor, or an entire physical system, <em>it just doesn't matter</em>. There is no panic, no rush, no soothing irritated customers. Just replace it and move on.</p>
+<p>This <strong>does not mean</strong> that you cannot have a catastrophic failure. It <strong>does</strong> mean that:</p>
+<ol>
+<li>Smaller failures no longer matter as much as they used to.</li>
+<li>Catastrophic failures occur less frequently</li>
+</ol>
+<h2>Summary</h2>
+<p>Designing software for use in a cloud service that has <em>systemwide</em>, rather than <em>instance-specific</em>, SLAs requires a fundamentally different design than before. It requires <strong>Ephemeral Design</strong>.</p>
+<p>While challenging, the design enables more resilient and nimble systems at a lower ongoing cost, while enabling new capabilities, like microservices, that increase the resilience and nimbleness even more. These benefits accrue even when running on your own hardware.</p>
+<p>If you are planning on migrating to the cloud, ask if your architecture is built for the cloud. If you are already in the cloud and are struggling with service levels and costs, ask if your architecture is built for the cloud.</p>
+<p>If the answer to either of these questions is not sufficient, or you are unsure, <a title="Contact" href="{{ site.url }}/contact/" target="_blank">ask us for help</a>; don't wait until your competitors are more nimble and lower-cost than you are.</p>
+<p>&nbsp;</p>

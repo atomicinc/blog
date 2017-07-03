@@ -1,0 +1,43 @@
+---
+layout: post
+title: 'Amazon: Speed and Ease vs Vendor Lock-In'
+date: 2016-12-20 16:11:41.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- product
+- security
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>A few weeks ago, Amazon Web Services held its annual AWS re:Invent conference. Unsurprisingly, they announced, yet again, a slew of new services, all meant to ease adoption and management of technology services.</p>
+<p>Yet, something felt a little amiss:</p>
+<p>https://twitter.com/avideitcher/status/804418718994407424</p>
+<p>Not only are SaaS firms getting nervous, but plenty of large firms, as well. As Benoit Hudzia pointed out, many on-premise software giants, including Oracle/PeopleSoft and SAP, <em>should</em> be getting nervous (but perhaps are not):</p>
+<p>https://twitter.com/blopeur/status/806027897999790080</p>
+<p>However, as nervous as these companies must be - feeling a lot like many Independent Software Vendors (ISVs) in the 1990s in the face of Microsoft - many other technology <em>builders</em>, including IT departments, are faced yet again with an old dilemma:</p>
+<p><strong>Do we move faster and cheaper with AWS services, or do we avoid vendor lock-in?</strong></p>
+<p>This is a conversation I have had with technology executives over the last several years; the number of these conversations is increasing. They tend to fall into one of three camps:</p>
+<ol>
+<li>"Speedists" are willing to pay the price of vendor lock-in to get faster time-to-market and less infrastructure to manage.</li>
+<li>"Optionists" adopt some cloud services to gain cost/speed advantage, but want to keep their vendor options open.</li>
+<li>"Balancers" want the speed advantages of Amazon Services, but also want to take a moment to think about what their options will be in a year or three.</li>
+</ol>
+<p>I have had discussions with all three types of people, and have learned from all. I believe that all three can be correct, depending on your circumstances. Or, in other terms, there is no 100% correct-all-the-time answer.</p>
+<p>One point the optionists and balancers have made is that the gap between "have Amazon run it" and "run it yourself" is much smaller than it used to be.</p>
+<p>In the old days (say, five years ago), if you wanted to run a performant, distrubuted in-memory key-value store, you had to pick one, configure it on multiple hosts, worry about creating a cluster, configure scaling, etc. Just using newly-announced ElastiCache was much simpler.</p>
+<p>Nowadays, with pre-packaged and easy-to-configure container images of most open-source products, and container orchestration like Kubernetes or Swarm or Rancher to scale and schedule it for you, the incremental effort of running that key-value store remains real, but a fraction of what it once was.</p>
+<p>It <em>still</em> is easier to just have Amazon run it for you, but it no longer is <em>massively</em> easier.</p>
+<p>So what <strong>do</strong> I tell balancers, executives who ask, "should we launch our own or use AWS services?"</p>
+<ol>
+<li>For basic IaaS, go for the cloud. Except in certain circumstances (high-performance computing, low-latency trading, specialized hardware like voice, sometimes massive scale), the cost and flexibility gap between cloud and do-it-yourself remains extremely large. In addition, the lock-in is low as tools have become pretty adept at switching between cloud providers.</li>
+<li>For services peripheral to your core, use a service. Don't build a massive scale communications engine between lightbulbs and your core application, and don't think you are going to build the next email sender (unless that <em>is</em> your business). Normally, it is faster and cheaper to buy it than to build it, and it is peripheral anyways. That having been said, try to abstract it as much as possible. For example, give the software on those lightbulbs a URL you own and, if possible, use a standard API. If you ever need to switch, you won't need to update software on 100MM lightbulbs, just a DNS entry!</li>
+<li>For core services - message queues between microservices, key-value stores for caching, etc. - well... <em>it depends</em>. This is where you should think long and hard about how important it is to run your app on a laptop, in AWS, in Google Cloud, Azure, Joyent, on your own hardware, and how important it is to be able to switch between them with ease.</li>
+</ol>
+<p>I do not have an immediate answer to the tough core questions, but there are people I respect greatly in each of the Optionist and Speedist camps. That, alone, should give pause to run too quickly in one direction.</p>
+<p>&nbsp;</p>

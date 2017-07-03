@@ -1,0 +1,79 @@
+---
+layout: post
+title: Why Does My Infrastructure Cost So Much?
+date: 2015-06-16 08:43:06.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- technology
+tags:
+- architecture
+- capacity
+- cloud
+- colocation
+- cost
+- vendor
+author: Avi Deitcher
+---
+<p>Yesterday, I had an enjoyable late evening conversation with a colleague of mine, a first-class information security and compliance consultant. We have collaborated on several projects in the past, and it always is a pleasure working with him (<a href="{{ site.url }}/contact/" target="_blank">contact</a> if you need one).</p>
+<p>One of the issues we discussed is why so many companies feel their infrastructure costs - both data centre and cloud - are too high. Of course, "feel" and "too high" are very subjective and relative terms. Admittedly, cloud does provide much more flexible cost management with the ability to scale up and down to meet variable needs, thus reducing wastage, but even there, at times, the costs simply are "too high."</p>
+<p>At heart, data centre, cloud, or any infrastructure costs are due to three key factors. I have seen and mitigated all three of them at companies:</p>
+<ol>
+<li>Vendor</li>
+<li>Capacity</li>
+<li>Architecture</li>
+</ol>
+<p>We will explore each in turn.</p>
+<h3>Vendor</h3>
+<p>Sometimes, you have a vendor who simply is overcharging you. In the worst cases, they also are providing you with terrible service. This is more likely with colocation providers, where pricing <span style="text-decoration: underline;">never</span> is transparent, than with cloud providers, where the costs are visible and open to everyone. However, even cloud providers with transparent pricing will negotiate aggressive pricing when a deal is sufficiently large.</p>
+<p>In several instances I have either renegotiated a colocation agreement or planned and executed a move to an alternate provider that has saved up to and sometimes beyond 50% for better service.</p>
+<p>Why do colocation providers behave this way? <strong>Lock-in</strong>. Once you have 2, 3, 10 or more racks along with multiple cross-connects in their data centre, your cost to move can be extremely high. <span style="text-decoration: underline;">They know it</span>, and safely charge a premium. Unfortunately, some become abusive, knowing the "battered customer" will keep coming back for more.</p>
+<p>How do you avoid becoming entrapped with a vendor?</p>
+<ol>
+<li>Invest in comprehensive due diligence up front. No matter how small your deployment, an infrastructure agreement is a long-term partnership.</li>
+<li>Structure a long-term contract. Even if you only will deploy 1 rack, if there is the slightest chance of tripling or more in size, negotiate the pricing before they have you.</li>
+<li>Evaluate at least annually. Most importantly, make sure your software and infrastructure teams are part of the evaluation. The more they understand that you are not committed to <span style="text-decoration: underline;">this</span> provider ad infinitum, the more they will build you a service that is less painful to move.</li>
+<li>Architect to move. From day one, design everything under the assumption that you will need to move tomorrow. Of course, that is hard to do. Of course, a startup has neither the time nor the resources to build it perfectly day one. But always keep it as a goal. The thorniest move problems are solved at the beginning.</li>
+</ol>
+<p>As discussed earlier, cloud providers are far less likely to entrap you. Not only does their business model <em>require</em> them to have transparent pricing, but the very nature of the technology makes it much easier to move. Dedicated hardware and 25 cross-connects at Equinix are far harder to move than 3x 1Gbps Internet pipes, a VPN and 200 virtual servers at Amazon or Rackspace.</p>
+<p>Let's be very clear: an infrastructure vendor who is overcharging is a financial cost; bear it or boot them. An infrastructure vendor who provides subpar service is <strong>a strategic risk</strong> to your company; leave quickly.</p>
+<h3>Capacity</h3>
+<p>How much capacity - storage, CPU, memory, network - do you really need? How much do you pay for? Companies always need to balance the cost of lost business because there was insufficient capacity with the cost of maintaining spare capacity.</p>
+<p>If 90% of the time you process 100 transactions per second (tps), and 10% of the time you process 1,000 transactions per second, do you build for 100 tps or 1,000 tps? Will you pay for 10 times the server, storage and network just to handle the 10% case? What if it is 1% of the time? 0.1%? What if those transactions are of a higher value?</p>
+<p>If you are in the cloud, this is less of an issue... if you have sufficient warning time. If it takes you 2 minutes to launch extra instances, but you spike from 100 tps to 1,000 tps in 10 seconds, you have the same spare capacity problem that your peers buying dedicated hardware have.</p>
+<p>Every single business struggles to find the balance between wasted capacity and lost transactions.</p>
+<p>Here is an important secret: <strong>there is no one answer for everyone.</strong> Only <span style="text-decoration: underline;">you</span>, in <span style="text-decoration: underline;">your business</span>, can evaluate the costs of one versus the other and make a <em>business</em> decision about the <em>technology</em>.</p>
+<p>However, a good analysis can determine if you have the right capacity <strong>even for your business needs</strong>.</p>
+<p>Continuing our previous example, what if you decide that you are willing to build for 600 tps. You accept an overprovisioning most of the time of 500 tps (600 you build minus the 100 you always have) and the loss of the extra 400 during peak times.</p>
+<p>That is a perfectly fine decision to make. But have you <span style="text-decoration: underline;">actually</span> provisioned correctly for 600 tps? Once you have made the decision how much to build for and how much to walk away from, you still need to figure out <em>how</em> you meet that capacity. It is <span style="text-decoration: underline;">very common</span> for organizations to overbuild even for that capacity.</p>
+<h3>Architecture</h3>
+<p>Your architecture determines your infrastructure requirements. Yes, nowadays hardware is "cheap". The cost of optimizing software, except in latency-sensitive high performance computing (HPC) cases, rapidly hits the point of diminishing returns. Oftentimes one more CPU core and an extra 1GB of memory is much cheaper.</p>
+<p>It is important to distinguish, though, between <em>optimizing</em> and <em>architecting</em>.</p>
+<ul>
+<li><em>Optimizing</em> your software saves a some CPU, memory, network or storage.</li>
+<li><em>Architecting</em> eliminates entire transactions and components.</li>
+</ul>
+<p>Additionally, as you scale, the "minor" returns from the optimizations or larger returns from architecting add up much more quickly. Saving 5% or even 25% on your monthly $2,000 colocation or Amazon bill is nothing compared to your labour costs of optimizing or architecting. If your monthly bill is $50,000 or more, 25% adds up very quickly.</p>
+<p>Your architectural choices determine your infrastructure choices and hence your operational model:</p>
+<ul>
+<li>How do you deploy your application components?</li>
+<li>Do you have a monolithic design? Separate services? Microservices?</li>
+<li>Do customers access your app over the Web? Desktop apps? Are you hosting legacy desktop apps over Citrix for them?</li>
+<li>Do you have a single data store? Dedicated ones for each service? Different types for different use cases? Caches?</li>
+<li>Which languages are your services written in? Do you have the best ones for each use case? Low-latency behaviours are different than i/o bound are different than memory- and cpu-intensive report generation.</li>
+</ul>
+<p>Every one of these questions - and many more - determine your infrastructure needs, your usage efficiency, and ultimately your costs, both infrastructure and labour.</p>
+<h2>Summary</h2>
+<p>Colocation or cloud costs are among the highest expenses in a SaaS company. Getting them right means having the right combination of:</p>
+<ul>
+<li>Vendor selection and agreements</li>
+<li>Capacity planning</li>
+<li>Architecture</li>
+</ul>
+<p>Once done right, your infrastructure costs - data centre or cloud - are more aligned with your business. Doing your architecture correctly reaps huge benefits not only for your infrastructure costs, but reduces your deployment costs, shrinks your maintenance windows, improves service reliability, speeds your time to market, and makes your team much <em>much</em> happier.</p>
+<p>Do you have the right vendors? How well suited are the agreements to your current needs? How well do you manage capacity? Are you losing customers unnecessarily? Or are you paying for extra capacity you really do not need?</p>
+<p>Finally, when was the last time you took a good, hard look at your architecture, including software engineering, infrastructure, customer support, and finance? Are you 100% confident that your design gives you the best availability, resiliency, supportability, nimbleness and bang for the buck?</p>
+<p>We love helping companies get better and faster at lower cost. <a href="{{ site.url }}/contact/" target="_blank">Ask us to help you</a>.</p>

@@ -1,0 +1,57 @@
+---
+layout: post
+title: The Prisoner's Software Dilemma
+date: 2015-07-15 09:07:17.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- product
+- technology
+tags:
+- glitch
+- meltdown
+- nyse
+- technical debt
+- united
+- wsj
+author: Avi Deitcher
+---
+<p><a href="https://en.wikipedia.org/wiki/Prisoner%27s_dilemma" target="_blank">The Prisoner's Dilemma</a> is a famous model in <a href="https://en.wikipedia.org/wiki/Game_theory" target="_blank">game theory</a>. I am far from an expert in game theory - although I did have the pleasure of meeting <a href="https://en.wikipedia.org/wiki/Robert_Aumann" target="_blank">Prof. Israel Aumann</a>, nobel laureate in economics and world game theory expert - but I can grasp, and sometimes explain, some of the basics.</p>
+<p>The Prisoner's Dilemma describes a situation wherein if everyone cooperated, they would have the best outcome. However, because they are prisoners and cannot coordinate with others, they make independently rational decisions... in which everyone loses.</p>
+<p>This concept occurred to me as a I sought an explanation for an article sent to me by a very wise and experienced engineer, one with whom I had the distinct pleasure of working closely many years ago.</p>
+<p>The article, entitled, "Why the Great Glitch of July 8th Should Scare You," argues that, yes, the simultaneous meltdown of United Airlines, the Wall Street Journal, the New York Stock Exchange and the Chinese stock market could very well have been coincidental, and probably was not the work of malicious actors. Systems break all of the time. With enough systems out there, and enough people exposed to so many of these systems, eventually we will have day when many big ones have glitches all at the same time and we will be aware of them.</p>
+<p>Still, says the author, we should be very frightened.</p>
+<p>It isn't the probability of failure <i>in the face of good software</i>, that should frighten you, says the author; it is the much much higher probability of failure <em>in the face of terrible software</em>, that should terrify you. You see, the quality of software out there is, for the most part, not very high. And, for the most part, we are using that not-so-well written software in many situations and for a length of time for which it was not even contemplated.</p>
+<p>As the author states pithily,</p>
+<blockquote><p>"<span class="markup--quote markup--p-quote is-other" data-creator-ids="anon">The big problem we face isn’t coordinated cyber-terrorism, it’s that software sucks."</span></p></blockquote>
+<p>Unfortunately, with decades of experience, I agree. Software sucks.</p>
+<p>To her credit, the author uses the term "Technical Debt." Every software engineer, manager, product owner, or entrepreneur knows it. It comes when you have to balance competing demands, and choose to accept lower-quality, less-resilient or poorer-designed code "for the time being."</p>
+<p>In pragmatic real-world situations, accumulating technical debt makes a lot of sense. After all, if you can deliver a key feature in a poorly-implemented fashion in 4 weeks, or get it right in 8 or 12, is it <span style="text-decoration: underline;">really</span> worth it to spend double or triple the time (and cost) on it, not to mention delaying everything else? "It is a business decision," we say, and it truly is.</p>
+<p>The problem is that we make these decisions on the basis of two somewhat self-delusional assumptions:</p>
+<ol>
+<li>When (or even if) we will have time to pay down the debt.</li>
+<li>If (let alone when) the debt will bite us rather sharply on the behind.</li>
+</ol>
+<p>We humans tend to be rather pessimistic towards the biting, and optimistic about the pay-down.</p>
+<p>If only we could coordinate with our future selves, or free ourselves from our current prison of knowledge, we would make better decisions.</p>
+<p>Does this mean we <span style="text-decoration: underline;">never</span> should incur technical debt? <strong>Absolutely not.</strong> Just as balancing debt with equity is crucial for the growth and sustenance of a firm, so balancing doing it correctly now (equity) vs. doing it cheaply and deferring the fix cost to the future (debt) is crucial for balancing the investments of the firm.</p>
+<p>The questions are <em>when </em>to incur debt, <em>how much</em> to incur, <em>how to limit</em> its fallout, and <em>when</em> and <em>how</em> to clean it up.</p>
+<p>According to <a href="http://www.reuters.com/article/2015/07/08/us-ual-flights-idUSKCN0PI1IX20150708" target="_blank">Reuters</a>, the United Airlines meltdown was due to a single router either failing or misbehaving. It is extremely unlikely that any developer at United designed a mission-critical app that depended on a single network connection; or that a network engineer designed the network so that all communications go through a single switch; or that anyone in enterprise management left a crucial switch unmonitored and without failover; or that business and technology executives didn't insist on availability and full testing. I have performed all of these roles at various points in companies, and I know how much people dedicate to doing it right (although, given United executive management's shenanigans, over the last few years, I wouldn't be surprised if they beat the work ethic out of their best people).</p>
+<p>It is far more likely that every component and section incurred some amount of technical debt, accepting some risk each time. Over the years, these systems grew and were used in environments far beyond those for which the risk was accepted. But, after all, "the existing system works, let's just use it and connect it to this other one that works. It is <span style="text-decoration: underline;">much</span> cheaper than building any part of it anew!"</p>
+<p>Put enough of those together, and meltdowns become unavoidable.</p>
+<h3>What To Do?</h3>
+<p>We can take several simple steps:</p>
+<ol>
+<li>Before incurring technical debt, make clear ROI decisions as to the cost/time savings by incurring the debt and the true probability and cost of tripping over that debt.</li>
+<li>Scale the debt. Just like a a financial officer isn't limited to $100MM all in equity or all in debt, but can balance any reasonable ratio in between, so too technical debt rarely is monolithic and all-or-none. Break down the debt into parts, and evaluate each one separately (see step 1, above).</li>
+<li>Document the debt. Make it crystal clear in every part of the service and documents under what circumstances it will break down. If you know the system was spec'ed to deliver 1MM reservations/day, but you only have 1,000 now and it will be years until you hit 1MM, it is perfectly fine to deliver a system capable of only 100,000 reservations/day. But <span style="text-decoration: underline;">make it very clear</span> what the limits are.</li>
+<li>Clean up your debt. Track all of your debt and periodically review the risks in the face of: technical demands; business demands. When you get to 90,000 reservations/day, you are far less likely to keel over at 100,000 if you documented it well in advance and are reviewing it quarterly or at least semi-annually.</li>
+</ol>
+<p>And in the real world? What do you do where you haven't done all of that and now have a great business, but a system that is starting to burden you?</p>
+<p><a href="{{ site.url }}/contact/" target="_blank">Get help</a>. Get someone without history and politics inside the organization, someone who has a clean slate, lots of experience and knowledge, to document it, and manage the clean-up. After years of accumulated debt and processes to match them, you will be amazed by how much better your life - and costs, and customer satisfaction - will be once you start.</p>
+<p><a href="{{ site.url }}/contact/" target="_blank">Ask us</a>.</p>
+<p>&nbsp;</p>

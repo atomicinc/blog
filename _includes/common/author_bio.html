@@ -1,0 +1,13 @@
+{% if site.author.bio %}
+<div class="author_bio">
+	<h3>About {{ site.author.name }}</h3>
+	{% if site.author.avatar %}
+	<div class="author-avatar">
+		<img alt="" src="{{ site.author.avatar }}" srcset="{{ site.author.avatar }} 2x" class="avatar avatar-60 photo" height="60" width="60">
+	</div>
+	{% endif %}
+	<div class="author-description">
+	{{ site.author.bio }}
+	</div>
+</div>
+{% endif %}

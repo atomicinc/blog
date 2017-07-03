@@ -1,0 +1,54 @@
+---
+layout: post
+title: Monkeys Crashing
+date: 2015-03-06 07:39:54.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- product
+- technology
+tags:
+- architecture
+- cloud
+- design
+- incentives
+author: Avi Deitcher
+---
+<p>In our <a href="{{ site.url }}/2015/03/05/design-for-failure-in-the-cloud-actually-everywhere-2357/" target="_blank">last article, we argued</a> that one should <em>always</em> design for failure. Everywhere.</p>
+<p>The problem is, how do you enforce it?</p>
+<p>At heart, this is a larger problem with <em>desire</em> vs. <em>incentives</em>.</p>
+<ul>
+<li>You <em>desire</em> your people to perform certain actions and act in certain ways, for example, design your applications for failure.</li>
+<li>You <em>incentivize</em> your people towards deliverables, without a focus on the underlying design that enables your higher-level desires.</li>
+</ul>
+<p>This is a broader problem than product design; it is an issue in marketing, sales, finance and <span style="text-decoration: underline;">every aspect of the business</span>.</p>
+<p>Does the following sales problem sound familiar?</p>
+<ul>
+<li>Your sales staff are paid on commission, say, 10% of their revenue, with a $2MM "nut", or sales target.</li>
+<li>You need profitability.</li>
+<li>Your sales team continually hits or exceeds targets, yet you cannot figure out why you are missing your profit goals.</li>
+</ul>
+<p>I have seen this at many companies, time and again, and the problem is the same. Let's assume you are targeting gross margins of 50%, which means that for every $2MM your sales people sell, you should make $1MM in gross profit. Sounds great.</p>
+<p>Your sales staff, however, have a different perspective. Your top salesperson has worked hard on this $100,000 deal. Now, at the very end, the customer is pushing back hard. They want another 20% off, for a final price of $80,000. Sure, your salesperson <em>could</em> push back and prove value, dismantle the competition, etc. But that would take 4 <em>more</em> weeks of really hard effort, time that could be used to close the <span style="text-decoration: underline;">next</span> deal. So your salesperson pushes back on <em>you</em>, convinces <em>you</em> that without the discount, the <span style="text-decoration: underline;">deal is dead</span>, and you give in. After all, it <em>is</em> $80,000 in revenue.</p>
+<p>And where did your profit go? Your costs still are $50,000, so instead of 50% in gross margin, you have 30/80 = 37.5% in gross margin, which most certainly <strong>is not 50%</strong>. Your deal revenue fell 20%, but <strong>your deal profit fell 40%</strong> Further, as these stories repeat themselves, eventually you become used to discounting ever further, providing cheaper prices and a cheaper brand rather than better product.</p>
+<p>The problem in the sales case is that you have incentivized your sales staff to prioritize revenue over profit <em>at all costs</em>. Your incentives do not match the behaviour you want.</p>
+<p>Returning to our product problem, how do you encourage, or incentivize, your brilliant product staff to actually design for failure? You probably measure your staff on some mixture of feature release speed and availability. While availability is an <em>effect</em> of Ephemeral Design (or Design for Failure), as a <em>metric</em> it has a fundamental proxy problem:</p>
+<p style="padding-left: 30px;">It can take quite some time for design to impact availability, during which the design becomes baked into your product and extraordinarily expensive to fix.</p>
+<p>Thus, what you really want is to set up a system that makes it <span style="text-decoration: underline;">impossible</span> to do anything <span style="text-decoration: underline;">but</span> design correctly.</p>
+<p>Netflix solved this problem a few years ago with their (funny-named) <a href="https://github.com/Netflix/SimianArmy" target="_blank">ChaosMonkey</a>, a.k.a Simian Army, since there are many "monkeys" in the "army".</p>
+<p>ChaosMonkey is a system that lives inside Netflix's infrastructure. It goes out and randomly kills, suddenly and without warning, services. It is the equivalent of putting a bunch of real monkeys in your data centre and having them randomly pull power plugs.</p>
+<p>For most businesses, this would be anathema. I can think of almost zero companies with whom I have worked who would even consider this (at least when I first engaged with them). The risks seem absurd. What if this is the <em>one</em> service that does not recover well? What if you lose a crucial "in-flight" transaction?</p>
+<p><strong>That is exactly the point.</strong></p>
+<p>When your product people <em>know</em> that their work can disappear without warning, any time of day or night, they build completely differently. They have a strong incentive to "Design for Failure".</p>
+<p>It raises the bar to an extremely high level, so high that your thinking has to change. You need to evolve.</p>
+<p>Fundamentally, this is <a href="{{ site.url }}/2015/03/04/kill-your-sla-2362/" target="_blank">my earlier argument behind killing your SLAs</a>.</p>
+<p>When you no longer have any SLA wiggle room, when you offer 100% availability at all times and accept clearly defined penalties for missing 100%, you raise the bar high enough that you are forced to redesign how you do <em>everything</em> - not just product, but sales, marketing and finance, as well.</p>
+<p>I love the Beatles's music, but one of the great critiques of "<a href="http://en.wikipedia.org/wiki/Imagine_(John_Lennon_song)" target="_blank">Imagine</a>" is that a world without nations, ethnicities, families... is a world with nothing. We cannot love everyone equally; we <em>require</em> differences. Von Clausewitz said, "he who defends everything, defends nothing." The "Imagine" corollary might be, "he who loves everything, loves nothing."</p>
+<p>"Four 9s" creates a subconscious "Imagine" world. 100% availability as a target recognize that it is nearly impossible to achieve it... and forces us to figure out where we can focus, where the highest return will be, and how to change everything so that the weaker parts get the most loving care, or get tossed and replaced entirely.</p>
+<h2>Summary</h2>
+<p>Incentives and the height of the bar matter greatly in how you, your employees and your business as a whole operate. While demanding incentives and uncertainty create greater levels of risk, they also drive better choices and greater creativity, which leads to better results overall... for those willing to face the challenge.</p>
+<p>Are you designed for failure across all of your products, services and divisions? Which of your incentives are driving best behaviour... and which are driving <em>away</em> your best employees? <a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us to determine them for you.</a></p>

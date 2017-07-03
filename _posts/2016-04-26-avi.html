@@ -1,0 +1,62 @@
+---
+layout: post
+title: Innovation in... Operating Systems?
+date: 2016-04-26 13:04:41.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- technology
+tags:
+- cloud
+- containers
+- docker
+- operating system
+author: Avi Deitcher
+---
+<p>For most of us - pretty much all of us - the way we use our operating system (OS) on our laptop is not that different from how we use it on our mobile or a system administrator uses it on a server:</p>
+<ol>
+<li>The operating system is installed to the local disk.</li>
+<li>Changes / upgrades are performed by installing files to the same disk and then rebooting.</li>
+<li>Software is installed and/or upgraded by installing files to the same disk.</li>
+</ol>
+<p>In principle, this is not that different than what we were doing way back with early versions of Mac or Windows or even DOS.</p>
+<p>As annoying and painful as the process can be on laptops or mobile, those are at least one-to-one. Each of us manages roughly one laptop, and the updates are not <em>too</em> frequent.</p>
+<p>To boot (pun intended), much of the process has been simplified over the years, between the Windows "Install Shield" provider, Mac OS X's drag-and-drop <code>.app</code> packager, and Linux's various package managers like <code>.rpm</code> and <code>.deb</code>.</p>
+<p>However, at heart, these improve the <em>process</em> of installing packages and upgrades, they don't improve the <em>result</em> and <em>resiliency</em> of installed packages. Once you make a change, it is extraordinarily difficult to roll back:</p>
+<p>https://twitter.com/msuster/status/724029873690316800</p>
+<p>For those who manage servers, this issue is orders of magnitude worse for two key reasons:</p>
+<ol>
+<li>The ratios are much higher. Unlike our one-to-one ratio above, administrators manage many more. Servers were 10:1 in the 90s (except at places that highly engineered them like we did at Morgan Stanley), 100s:1 in the early 2000s, and 1,000s:1 or even 10,000s:1 nowadays.</li>
+<li>The risk is much higher. If your laptop has an error, or is misconfigured, you suffer. If a server is misconfigured, it can affect millions of users and a company's revenue. Multiply that by the thousands or tens of thousands of servers you manage (see #1 above), and the risk can be very high indeed.</li>
+</ol>
+<p>As a result, several "configuration management" tools have sprung up over the last decade-plus, notably Puppet and Chef, then Ansible and Salt. These manage the installed configuration of the system and applications.</p>
+<p>The next iteration is containers, led by <a href="http://docker.com">Docker</a>. The combination of abstracting out the application from the underlying operating system by making it portable, while at the same time forcing clean separation of immutable code from mutable data, can have a significant impact on a company's operations... if done correctly.</p>
+<p><a href="http://ubuntu.com">Ubuntu</a>, a popular Linux distribution, or "distro", is following in that path by using "snaps" in its latest release, 16.04 LTS (despite issues with snap security for graphical applications, as <a href="https://mjg59.dreamwidth.org/42320.html">raised</a> by <a href="https://twitter.com/mjg59">Matthew Garrett</a>), although it was available in its cloud- and IoT-focused Snappy Ubuntu Core earlier.</p>
+<p>Separating the application <span style="text-decoration: underline;">and all its dependencies</span> from the OS enables us to deal with the OS alone, without worrying about applications chasing (and breaking) it. However, those apps, even in containers, still need an OS on which to run. That OS, in turn, has its own configuration, updates and everything else that changes and can break.</p>
+<p>In short, the OS itself <em>is</em> an application to manage.</p>
+<p>Fortunately, in the last several years, an additional movement of innovation in how operating systems are <em>designed</em> and <em>managed</em> has taken root.</p>
+<p>Actually, as I use these, I begin to wonder why we cannot have these safer paradigms on my laptop.</p>
+<p>Let's explore a few of these and how they innovate:</p>
+<h3>SmartOS</h3>
+<p><a href="http://smartos.org">SmartOS</a> is a version of OpenSolaris engineered by <a href="http://joyent.com">Joyent</a>. As an aside, the Joyent team is one of the smartest collections of engineers I have ever met. SmartOS's main purpose is to serve as the basis for their bare-metal distributed container platform, Triton. Triton is fully open-source, and can be run on-premise, supported by Joyent, or in the public cloud.</p>
+<p>From an operating system perspective, though, the relevant innovation in SmartOS is the immutability of the OS itself.</p>
+<p>The entire OS is run from a single <span style="text-decoration: underline;">read-only</span> USB key (or CD - it is all of 160MB). While all of the changeable data - containers and configuration - are saved to local disks, the operating system itself is immutable. You don't "change" or "upgrade" the OS; you just replace it. Say you are running version 20160414. To upgrade to 20160422, you just download that release as an img, load it onto a USB key, replace the one in the machine, and run. If you are unhappy with 20160422, put back the USB with 20160414 and go.</p>
+<p>In other words, <strong>you never upgrade</strong>. You always <strong>replace</strong> <em>in toto</em>.</p>
+<p>I was so inspired by the design that I adopted it for the <a href="http://www.secureappliance.net">SecureAppliance</a> initiative.</p>
+<h3>CoreOS</h3>
+<p><a href="http://coreos.com">CoreOS</a> is a Linux OS that is optimized for running Linux Containers. CoreOS the company actually released a container engine - <a href="https://coreos.com/rkt/">Rkt</a> - one of the only serious attempts to provide an alternative to Docker. Additionally, CoreOS the company releases several other excellent open-source tools for managing at cloud-scale, like Fleet and etcd.</p>
+<p>CoreOS provides a different take on the same SmartOS idea: immutable operating system. However, rather than requiring you to download the new version and replace the installed USB, the OS is installed in two individual areas of your disk ("partitions"). CoreOS itself always keeps one active. When a new version is available, it downloads the new version to the inactive partition. When ready, you switch the active and inactive. If there is an issue, you always can just switch back.</p>
+<p>Once again, <strong>you never </strong><span style="color: #000000;"><b>upgrade</b></span>. You always <strong>replace</strong> <em>in toto</em>, but the OS itself handles both versions for you.</p>
+<h3>RancherOS</h3>
+<p><a href="http://rancher.com/rancher-os/">RancherOS</a>, a product of the company behind the excellent container orchestration platform <a href="http://rancher.com">Rancher</a>, also is a Linux OS that is optimized for running containers. In that respect, it is similar to CoreOS. It is even smaller than the previous, coming in at just 32MB.</p>
+<p>However, rather than requiring two disk areas for OS versions and having a maximum of 2 at any given moment, or replacing the installed CD/DVD/USB, RancherOS leverages the Docker application versioning and deployment system for the operating system itself. That means you can upgrade or downgrade to any given version at any given moment, and even have multiple versions available on your server at any moment.</p>
+<p>Once again, <strong>you never upgrade</strong>. You always <strong>replace</strong> <em>in toto</em>, but the OS handles multiple version for you through Docker distribution.</p>
+<h3>And Whence the SysAdmin?</h3>
+<p>To some extent, the purpose of all of this innovation is to reduce risk in production systems by making upgrades and changes far more predictable, taking advantage of the separation between application and operating system that the container image paradigm provides.</p>
+<p>But another purpose is to require fewer system administrators per system. As the definition of "large-scale" has grown from hundreds to thousands and hundreds of thousands of servers, we can only continue to manage these or grow even larger at lower risk through better OS design and management.</p>
+<p>This pushes further the trend away from systems <em>administrators</em> and towards systems <em>engineers</em>. As we discussed in our <a href="{{ site.url }}/2016/04/12/changing-tech-changing-jobs-what-serverless-means-for-sysadmins-2768/">serverless article</a>, this is good for the economy, very good for companies, and great for those admins who can evolve and grow into engineers.</p>
+<p>&nbsp;</p>

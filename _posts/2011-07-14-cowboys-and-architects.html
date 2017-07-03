@@ -1,0 +1,25 @@
+---
+layout: post
+title: Cowboys and Architects
+date: 2011-07-14 01:03:04.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>All technology companies have engineers, team leads and managers. Some have good QA, others have good product managers or even program managers. But not everyone has architects, and those who do are not necessarily strong. The question cash-contrained (and who isn't) company executives ask is, "why do I need to spend a *lot* of money to hire a technologist who is not actually writing code?" The answer is often either not to hire an architect, or to take a weaker person and "promote" them to architect. In many ways, the latter solution is like the old "security by obscurity". You were better off without it, because at least you knew you were insecure. This way, you think you are secure, but really you are not.</p>
+<p>The purpose of an architect is to create, design and enforce a coherent philosophy on the product. To do so, they need to know every part of it - infrastructure, middleware and application; front-end and back-end; database and network. No, this is not my brilliant idea, but was first broadly publicized in Fred Brooks' legendary "Mythical Man-Month."</p>
+<p>Recently, I had the opportunity to see first-hand what happens when you do not have a good architect.</p>
+<p>The company deals in software on a semi-annual release cycle. They were a few short weeks before releasing their product. For reasons unknown, one coder decided that a core network communication component needed a new API. Granted, he was trying to rebalance multiple versions of this API that had been around. On the other hand:</p>
+<ul>
+<li>The multiple versions were only because there were several poor ones with no architectural integrity between them, until a newer version came along in an attempt to unify them all.</li>
+<li>The latest version really had only one benefit: a different architectural view. Not better, not worse, but different. But a single engineer wanted to change them all.</li>
+<li>This was a scant few weeks before release.</li>
+<li>It had not been reviewed by anyone else.</li>
+</ul>
+<p>Needless to say, the change was made, the engineer *thought* he got all the references but of course missed some, and some part of the product was broken, necessitating last minute run arounds by many other staff to find, fix and test the issues.</p>
+<p>Sure, the engineer acted like a cowboy: came up with an idea and ran with it, without considering the effect. To be fair, I like cowboys; startups could not exist without them, and sometimes they are the only ones who can get through a frozen situation or process. But in this case, as in many, the real problem was the lack of architect. There was no one person with all of the authority, the knowledge and the respect/recognition of the rest of the team to decide if this change suited the whole of the product, or, better yet, to have passed that knowledge down to begin with and thus have the engineer himself decide not to do the change before getting started.</p>
+<p>The architect need not be solely dedicated. In smaller firms and organizations, it is often a role s/he shares with other duties. But the key role must exist, and everyone must know it.</p>

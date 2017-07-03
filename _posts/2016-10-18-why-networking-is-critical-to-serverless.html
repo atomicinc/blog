@@ -1,0 +1,41 @@
+---
+layout: post
+title: Why Networking is Critical to Serverless
+date: 2016-10-18 13:31:22.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- technology
+tags:
+- aws
+- devops
+- FaaS
+- google
+- latency
+- networking
+- operations
+- serverless
+author: Avi Deitcher
+---
+<p>As readers know, I have been thinking a lot about serverless lately (along with all other forms of technology deployment and management, since it is what I do professionally).</p>
+<p>Recently, I came at it from another angle: network latency.</p>
+<p>Two weeks ago, I presented at LinuxCon/ConainerCon Berlin on "Networking (Containers) in Ultra-Low-Latency Environments," slides <a href="http://www.slideshare.net/deitcher/linux-con-berlin2016presentationdeitchera">here</a>.</p>
+<p>I won't go into the details - feel free to look at the slides and data, explore the code repo, reproduce the tests yourself, and <a href="{{ site.url }}/contact/">contact me</a> for help if you need to apply it to your circumstances - but I do want to highlight one of the most important takeaways.</p>
+<p>For the majority of customers and the majority of network designs, the choice and its latency impact <em>simply will not matter</em>. Whether your container or VM talks to its neighbour in 25 μsec or 50 μsec is insufficient to have any impact on your application, unless you really are dealing in ultra-low-latency, like financial applications.</p>
+<p>Towards the end, though, I pointed out a trend that could make the differences matter even for regular applications.</p>
+<p>With monolithic applications, you have 1 app server talking to 1 database. For a moderately complex app, maybe it is 1 front-end app server with 5 different back-ends comprised of databases and other applications. The total number of communications is 5, so a 25 μsec difference adds up to 125 μsec, or 1/8 of a millisecond. It <span style="text-decoration: underline;">still</span> doesn't matter all that much for most.</p>
+<p>Containers, however, enable and encourage us to break down those monolithic applications into separate services, or "microservices". Where the boundaries of those services should be is a significant topic; I recommend reading <a href="http://twitter.com/acolyer">Adrian Colyer</a>'s "Morning Paper" on it <a href="https://blog.acolyer.org/2016/09/05/on-the-criteria-to-be-used-in-decomposing-systems-into-modules/">here</a>.</p>
+<p>As applications are decomposed, the previous single monolithic application with a single database, and thus one back-and-forth internal communication, now becomes 10 micro services, each with its own back-end. One communication just became ten, and our simple application's 25 μsec difference just became 250 μsec, or 1/4 of a millisecond. It still doesn't matter all <em>that</em> much, but it is moving towards mattering.</p>
+<p>Similarly, our complex 6-part application became, say, 25 microservices and backends, leading to 625 μsec of additional delay, or almost 2/3 of a millisecond. Again, it doesn't matter <em>all that</em> much, but it is getting ever closer.</p>
+<p>However, with serverless, the unit of deployment no longer is a service, or even a microservice. Rather, it is a <em>function</em>. Even the simplest of applications have a <em>lot</em> of functions. Our simple application that went from 1 app and 1 database to 10 microservices actually has a not-unreasonable 250 functions in it; some of the open-source libraries I have written single-handedly have that many! If each of these is run independently in a FaaS/serverless environment, we now have 250 items communicating with others, a minimum of 250*25 μsec = 6,250 μsec or 6.25 milliseconds delay.</p>
+<p>For our simple application, with "just" those 250 functions, the difference of a few tens of microseconds, determined by your inter-function (inter-container, under the covers) networking choice, makes a <span style="text-decoration: underline;">big</span> difference.</p>
+<p>For our complex application, with 6-parts, each of which may have at least those 250 functions, we now have 250*6*25 μsec = 37,500 μsec or 37.5 milliseconds of additional delay. <strong>That is real time.</strong></p>
+<p>Of course, a serverless provider, like Amazon Lambda or Google Cloud Functions, is expected to invest the engineering effort to optimize the network so that the functions don't simply run "anywhere" and connect "however", creating unacceptable latency. To some degree, this is what we pay them for, and a barrier to entry for additional competitors. Packaging up a container image is easy; optimizing it to run with many others in a busy network on busy servers with minimal impact is <em>hard</em>.</p>
+<p>As I have written often, PaaS and DevOps and by extension serverless will eliminate many system <em>administration</em> jobs, but it will create fewer but far more critical and valuable systems <em>engineering</em> jobs. The best sysadmins will go on to much more lucrative and, frankly, enjoyable work.</p>
+<p>Many others will run serverless environments on their own, using OpenWhisk or other open-source products. Unlike Cloud Foundry or Deis, these will require <em>serious</em> design effort to ensure that applications do not end up with a painful mix of easy-to-manage, performant each part on its own, and impossibly slow <em>in toto</em>.</p>
+<p>Hopefully, Amazon and Google are up to the task, as well as those deploying on their own. I hope they, and you, are, but I always am happy to <a href="{{ site.url }}/contact/">offer my services</a> to assist.</p>
+<p>&nbsp;</p>

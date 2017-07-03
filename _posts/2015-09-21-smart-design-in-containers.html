@@ -1,0 +1,52 @@
+---
+layout: post
+title: Smart Design in Containers
+date: 2015-09-21 11:08:26.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- architecture
+- cloud
+- design
+- IT
+- process
+author: Avi Deitcher
+---
+<p>In a <a href="{{ site.url }}/2015/09/09/conways-corollary-design-determines-scale-2618/" target="_blank">previous article</a>, we invented "Conway's Corollary" - how design determines scale.</p>
+<p>Today, we will look at another case from the hottest technology of the last year: containers.</p>
+<p>When designing software - any piece of software - the most important criterion is not, "what features does it have," or "how well is it documented," although those are very important. It is not even, "how sexy is the user interface," although I like great interfaces.</p>
+<p>The most important question is, "<strong>how will it be used</strong>."</p>
+<p>When software is designed well, with the <em>user</em> in mind, the software becomes a pleasure to use and manage, and makes for easy processes. When it is designed solely from the engineer's or designer's perspective, i.e. someone who has a hard time getting into the user's metaphorical shoes, the experience can be painful.</p>
+<p>The original Microsoft Word was a "great" example. Microsoft leveraged its dominance in the desktop operating system market to gain equal dominance in the word processing market. But the product, especially in its early years, was shoddy, poorly designed and hard to use, certainly compared to some of its competitors.</p>
+<p>Menu items were located in places you didn't expect them; key shortcuts had no relation to one another; help was hard to find. It was the dream of the engineers who designed it and the nightmare of its users.</p>
+<p>Over time, of course, it either improved or we got used to it, most likely a little of both.</p>
+<p>What does all of this have to do with containers? Managing containers across a large-scale environment requires an "orchestrator" to, well, orchestrate the containers. One of the well-designed ones is <a href="http://www.rancher.com" target="_blank">Rancher</a>.</p>
+<p>While Rancher has a good interface, immutability mindset and an excellent UI, along with a dedicated team who is probably one of the best on containers, their redundancy strategy leaves something to be desired. While it is <em>very </em>easy to set up a single orchestrator server, setting up several, for redundancy, is <em>incredibly</em> painful. To their credit, the Rancher team is working on it... and I have been impressed to date with their ability to deliver rapid change.</p>
+<p>But the issue is deeper than how hard it is to set up redundant servers. It is whether you have a single server and a failover, or even two active, or whether you have multiple active at once and can add/remove any one of them at will with no disruption.</p>
+<p>It is more than if the agents can connect to the server or the standby; it is whether agents are intelligent enough to handle multiple of them at once.</p>
+<p>In short, it is about <em>IT design</em> vs <em>Cloud design</em>.</p>
+<p>In IT, you think about big shared storage, primary and failover, static items, long-running services, lots of human management. In Cloud, you think about ephemeral services that can disappear at a moment, instant creation and re-creation, immutability, large-scale automation.</p>
+<p>Cloud software is designed with a different mindset from IT, one that is hard to bridge until you have seen the other side.</p>
+<p>I recently met with a very bright executive who hired a talented cloud systems person <em>specifically </em>to separate cloud services from IT administration... and it worked.</p>
+<p>My favourite example of cloud design vs. IT design long predates cloud... and has cost companies billions.</p>
+<p>Two of the most important protocols on the Internet are Web (http) and Mail (smtp). Yet the two could not be more different.</p>
+<ol>
+<li><span style="text-decoration: underline;">Mail</span>: When my mail server wants to send mail to you@someplace.com, it looks up "who accepts mail for someplace.com." It receives not one response, but multiple, with priorities. If it cannot deliver the email to the first server, it falls back to the second, and so forth. The mail delivery software is <em>intelligent</em>. It can handle multiple service providers (or "servers") intelligently.</li>
+<li><span style="text-decoration: underline;">Web</span>: When my Web browser wants to connect to the ever popular and incredibly deep <a href="http://www.atomicinc.com" target="_blank">www.atomicinc.com</a>, it looks up, "what is the address for www.atomicinc.com." It receives, essentially, one answer. If it cannot connect to that server... it gives up.</li>
+</ol>
+<p>Because of the difference in how smart the <span style="text-decoration: underline;">client</span> design is - my mail server vs. my Web browser - companies have spent untold billions solving the Web server "availability" issue: DNS solutions, and load-balancers and global balancers and everything else. One company alone, <a href="http://www.f5.com/pdf/financial-reports/2014-form-10k.pdf" target="_blank">F5</a>, had $936MM in product revenues in 2014, the majority of which are for products that route Web traffic.</p>
+<p>When was the last time someone bought a load-balancer or availability manager for email servers?</p>
+<p>In the end, these affect <span style="text-decoration: underline;">revenues</span>, even for on-premise software firms.</p>
+<ul>
+<li><span style="text-decoration: underline;">On-premise</span>: Software purchasers happily will pay a premium for software that takes them less cost up-front to install and especially less to manage on an ongoing basis.</li>
+<li><span style="text-decoration: underline;">Cloud</span>: The faster you can deploy, the quicker you can respond, the higher the premium you can charge, beyond the cost savings in demanding less effort of your team.</li>
+</ul>
+<h2>Summary</h2>
+<p>Smart design, one that designs from the beginning for how you manage the product, rather than asking the people who manage it to adapt, has a material impact on flexibility to respond to customer requests, your overall speed, your costs and your revenues.</p>
+<p>Are you an IT company or a Cloud company? <a href="{{ site.url }}/contact/" target="_blank">Ask us</a> how much faster you can be.</p>

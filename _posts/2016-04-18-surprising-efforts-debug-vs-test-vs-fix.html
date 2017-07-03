@@ -1,0 +1,43 @@
+---
+layout: post
+title: 'Surprising Efforts: Debug vs Test vs Fix'
+date: 2016-04-18 11:39:22.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- product
+- technology
+tags:
+- budget
+- bugs
+- fix
+- software
+author: Avi Deitcher
+---
+<p>In the <a href="{{ site.url }}/2016/04/12/changing-tech-changing-jobs-what-serverless-means-for-sysadmins-2768/" target="_blank">last article on serverless</a>, I referenced the old ad in the New York City subways for a trade school. Their tagline was similar to, "technicians will always be needed, because things always will break."</p>
+<p>We technologists are familiar - intimately - with fixing broken things. Sometimes, it is our own software, devices or infrastructure; other times, it is someone else's. Either we have become responsible for it, or we need it to work under certain circumstances where it simply fails.</p>
+<p>This is not necessarily bad. Much of the open-source ecosystem has evolved <em>precisely</em> due to the willingness (or necessity) to fix other people's stuff. Look at any project on <a href="http://github.com" target="_blank">github</a>, the most active open-source repository, and you will see enormous numbers of "Pull Requests", actual fixes for issues or additions of feature to someone else's software.</p>
+<p>One of the interesting quirks of building technology is that there is a perverse relationship between the time it takes to find the source of a problem ("debug"), the time it takes to define a test to catch this issue in the future ("test"), and the time it takes to fix the issue ("fix").</p>
+<p>Most people tend to think that software is like a bridge. When it is broken, a civil engineer takes 1-2 days to figure out the problem, a few more days to design the fix, and then the contractors weeks or months to implement it.</p>
+<p>Software, however, is the other way around. As a general rule of thumb:</p>
+<blockquote><p>Debug &gt;&gt;&gt; Test &gt;&gt;&gt; Fix</p></blockquote>
+<p>It often requires a significant amount of brainpower and effort to reason about the problem, propose multiple hypotheses, and test each one until isolating the root cause. It then takes less effort, but still some real work, to create new tests that will create the scenarios in which the technology breaks down and test for it. Finally, the actual fix itself often is a small bit of change or code.</p>
+<p>Here is one salient example.</p>
+<p>As part of my participation in the open-source community, I have released elements of useful software under quite liberal usage licenses. Sometimes these are the result of work at a client, wherein they agree to the mutual benefits of releasing the products in a free open-source fashion (why they do so is a subject for another day).</p>
+<p>Last week, a gentleman from a California startup who lives in Argentina submitted a "Pull Request" to fix an issue with one of these products.</p>
+<ul>
+<li>The amount of time it took to <em>reason</em> about and find the problem: sufficient.</li>
+<li>The number of lines of code required to <em>test</em> the issue: <strong>26</strong>.</li>
+<li>The number of lines of code required to <em>fix</em> the issue: <strong>1</strong>.</li>
+</ul>
+<p>Actually, it was even <em>less than one</em>, as it required moving just two characters (as in "letters", not "I am quite the character") 6 positions to the left. <span style="text-decoration: underline;">That was it</span>.</p>
+<p>Similarly, last year, I was working with a client who required certain network behaviours. For reasons unknown, they could not get the dynamic network behaviour they wanted, and so statically defined the configuration. This was more rigid and brittle, tied down the operations, required downtime to change, and risked cross-service pollution.</p>
+<p>In helping find he problem, it required <em>precisely</em> a 2-line change in code. The test itself? almost 50 lines. Reasoning about the problem and testing for it? Almost 2 days.</p>
+<p>The interesting insight, however, is the lessons to be learned.</p>
+<p>Software engineers, managers and executives, and especially those without hard experience in technology, tend to estimate the amount of time required to <em>build</em> a product, or <em>add</em> features. Those with more experience allocate a "bug budget", some amount of time allotted to the engineers to repair bugs.</p>
+<p>Even among those, very few budget the time according to the <span style="text-decoration: underline;">real</span> effort to reason+test+fix. At best, it is test+fix, with some assumption about parity between those efforts. Extremely rarely have I seen budgeting for the full recognition of "debug&gt;&gt;test&gt;&gt;fix".</p>
+<p>When allocating time to fix bugs - as the ads said, "things always break" - it is important to recognize that the difficult and time-consuming part is not <em>fixing</em> the problem, but rather developing <em>tests</em> for the problem, and even more so <em>reasoning</em> about the causes and testing those hypotheses.</p>
+<h2>Summary</h2>
+<p>Are your issues and bugs backing up? Is your "fix budget" never sufficient? It might be because it truly isn't large enough, or it might be because you need new methodologies to calculate what that "fix budget" should be. <a href="{{ site.url }}/contact/" target="_blank">Ask us</a> to help.</p>

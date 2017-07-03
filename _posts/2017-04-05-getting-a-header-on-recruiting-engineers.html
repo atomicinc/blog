@@ -1,0 +1,39 @@
+---
+layout: post
+title: Getting A Header On Recruiting Engineers
+date: 2017-04-05 05:24:28.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- economy
+- general
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>As every successful CEO (and VP) will tell you, recruiting great people is their top priority. Sure, they need revenue, and deliverables, and to manage funds, and a million other things. But great people are <span style="text-decoration: underline;">how</span> you get these things done.</p>
+<p>In a competitive market, firms look for original ways to find and hire great people. Engineers, in particular, are in very high demand, and firms look not only for new ways to find them, but also exciting ways to appeal to them.</p>
+<p>A friend of mine, who is a senior technology executive at a major financial firm, told me recently that every time he thinks he has a great New York or London hire, a tech firm we all know hires them away for a nice combination of interesting projects, casual every day, lots of public exposure in the tech community, and 20% higher compensation (none of which is deferred or subject to clawbacks, of course).</p>
+<p>This morning, I came across an impressive new twist on technology recruiting.</p>
+<p>Verizon, the large telecommunications firm, owns a video-streaming platform called "<a href="http://www.uplynk.com">Uplynk</a>". Most great technologists try not to build everything from scratch - "reinventing the wheel" - but rather look at examples that exist and try to leverage them.</p>
+<p>Early this morning, I had a need to look at short-term authorized content-delivery. Amazon S3 has signed URLs, essentially a URL that embeds not only the whereabouts of the content, but also credentials to access it and a time-limit in which to access it.</p>
+<p>I assumed Uplynk did the same, but wanted to check. In typical engineering fashion, I not only downloaded data with the ubiquitous <a href="https://curl.haxx.se">curl</a> tool, but also checked the http headers.</p>
+<pre>curl -i https://some.url.to.something.com/some/useful/data</pre>
+<p>The "-i" option is the one that says, "show me all off the http headers."</p>
+<p>These "http headers" are the "meta-data", information <em>about</em> the content you are getting. If you go to <a href="https://www.google.com">https://www.google.com</a>, The content you get is the search page displayed; the meta-data, or headers, tell you information <em>about</em> the content. It might include the size of the content, the date, a redirection, and lots of other useful data.</p>
+<p>While many headers are standard, there is a class of custom headers you can add to your application, that is assumed to be ignore unless your app knows about it. If you wanted, for example, to pass the date the page was created, rather than the standard date the server delivered it, you would <strong>not</strong> override the standard <em>Date</em> header; instead, you would use a custom header. Custom headers usually start with "X-".</p>
+<p>Here is where it got interesting. The results of my "curl -i"?</p>
+<pre>Access-Control-Allow-Origin: *
+Content-Type: text/html
+Date: <span class="aBn" tabindex="0" data-term="goog_639125119"><span class="aQJ">Wed, 05 Apr 2017 06:09:19 GMT</span></span>
+Server: uplynk webStack/2.4
+X-Human: Hello, fellow human! You should come work with us! <a href="mailto:uljobs@verizondigitalmedia.com" target="_blank">uljobs@verizondigitalmedia.com</a><wbr />. Mention this header.
+X-Services: somecode
+Content-Length: 0
+Connection: keep-alive</pre>
+<p>Look at the 5th header listed, a custom one called "X-Human".</p>
+<p>Whoever embedded this in their pages deserves an award. Uplynk probably serves millions of pages per day, nearly all of them to browsers. Yet, sometimes a human will look at the headers - either from the command-line as I did, or in the browser's developer tools - and see a message just for them. Someone who reads and knows headers is just the kind of curious and technically capable person Uplynk is looking to hire. To boot, it is a lot more enticing than yet another recruiter, or yet another ad on Facebook or Twitter or wherever companies advertise this year.</p>
+<p>Now, if only they had been smart enough to have a special URL for it, since very few people will bother sending to the normal jobs email.</p>

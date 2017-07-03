@@ -1,0 +1,98 @@
+---
+layout: post
+title: Kill Your SLA
+date: 2015-03-04 08:15:29.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- pricing
+- product
+- technology
+tags:
+- cloud
+- finance
+- maintenance
+- marketing
+- product
+- sales
+- SLA
+author: Avi Deitcher
+---
+<p>Do you have SLAs with your customers? Dirty little secret: <strong>they don't matter</strong>.</p>
+<p><span style="text-decoration: underline;">All that matters is customer expectation in real time</span>.</p>
+<p>You are running a service. You know that your enterprise customers are highly sensitive to availability, since they use your service to help <em>them</em> make money. Perhaps they even use you as part of their customer-facing platform.</p>
+<p>Nonetheless, you know you cannot provide 100% availability, even discounting planned maintenance. To boot, once in a while you know you will need to replace hardware or upgrade software. Finally, especially if you provide custom services, you know how expensive it is to build dedicated links or VPNs to each customer, with redundancy being 2-3x as expensive. So you build three terms into your contracts:</p>
+<ul>
+<li>Service Level Agreements, or SLAs: What percentage of the time will your service be fully functional. 99.9% ("three 9s") or 99.99% ("four 9s") etc.</li>
+<li>Maintenance Windows: These are times when, with sufficient customer warning, they accept your service will be unavailable.</li>
+<li>Redundancy Costs: Your customer signs and accepts that they are paying for a certain level of redundancy. They didn't want to pay for the T1 to your backup site, or the extra VPN hardware? As long as they sign that they bear responsibility, it should be no problem.</li>
+</ul>
+<p>Do these matter? <strong>Not at all</strong><strong>.</strong></p>
+<p>All of these were agreed to at <em>signing time</em>. When you signed, everyone focused on what mattered to them.</p>
+<h3>Customer</h3>
+<p>The customer wanted three things:</p>
+<ul>
+<li>Getting your service up and running, so s/he can notch their belt and show value to other executives, their Board or their customers.</li>
+<li>Getting the best price so that they stay within budget and keep the CFO happy.</li>
+<li>Getting the right legal terms so that they keep the General Counsel happy.</li>
+</ul>
+<p>Sure, they want to know that they have service levels, and you will be around. But once they have committed emotionally to the deal, especially in front of their peers or manager, that far-off idea of failure, or the maintenance window in 6 months, just doesn't seem all that important and pressing <span style="text-decoration: underline;">right now</span>.</p>
+<h3>You</h3>
+<p>You want one thing: <strong>get the deal done.</strong> While you won't sell it at a loss (I hope), or a price that ruins your ability to sell at good prices to other customers, you have promised your VP Sales, or CEO, or Board, that this deal is going to succeed.</p>
+<h3>Where Does That Leave Customer Retention?</h3>
+<p>Both of you have a strong incentive to make compromises to get the deal done <em>now</em>, and the cheapest place to compromise is <span style="text-decoration: underline;">the future</span>, especially if it is a probability-based one. After all, maybe we will never need that second T1 line or MPLS connection; perhaps we won't really need that maintenance window; they might not even care then.</p>
+<p>The problem is that the dynamics that make the customer <em>sign</em>, are different than those that make the customer <em>stay</em>. Yet, as hard as it is to sign a new customer, the number one impact on your ability to grow is how well you can retain existing customers. As the old saying goes, the cheapest customer to acquire is the one you already have.</p>
+<p>So why does it matter?</p>
+<p>The deal has been great, everyone is happy. Your customer has their dedicated direct link to your facility along with their dedicated VPN hardware. They didn't want the backup option you offered - buying extra gear, $1,000 a month in link and maintenance, who needs it when the budget is so tight?</p>
+<p>Six months later, a colocation facilities worker falls off his ladder, right through your cross-connects and power cables, taking you completely offline for at least a day. Lest you say it cannot happen in a cloud provider, remember that:</p>
+<ol>
+<li>Underneath every cloud is physical infrastructure;</li>
+<li>Not all cloud providers are the same;</li>
+<li>There is no such thing is 100% <span style="text-decoration: underline;">for anyone</span>.</li>
+</ol>
+<p>"No problem," you say, "we have multiple facilities." Everything fails over (if you are running traditional high availability) or just seamlessly works (with a more modern architecture). <em>Except for that all-important customer with just one dedicated link</em>.</p>
+<p>You are confident, of course. You pull out the contract, and show the <span style="text-decoration: underline;">very angry</span> customer that they <em>agreed</em> to lack of redundancy. This was what they wanted!</p>
+<p>Well, it was what they wanted <span style="text-decoration: underline;">then</span>, but it sure isn't what they want <span style="text-decoration: underline;">now</span>. Right now, they want the service up, and you are arguing legalese. All that contract is good for is preventing them from suing you... and kindling.</p>
+<p>Put yourself in the executive's shoes.</p>
+<ul>
+<li>If this is the person who signed the contract, she or he feels foolish for having agreed to something so unreliable. Waving a contract in their face just reminds them of the mistake they made.</li>
+<li>If this isn't the person who signed the contract, she or he wonders what kind of an idiot signed this contract, and worse, what kind of provider <span style="text-decoration: underline;">allowed</span> it to be signed. It was <em>your</em> job to recognize what was needed for service, not <em>ours</em>!</li>
+</ul>
+<p>Either way, what are the chances this person will renew?</p>
+<h3>The Purpose of the Contract</h3>
+<p>The purpose of the contract is to lay out expectations, but it really is to ensure no one gets sued. The contract is an impediment, albeit a necessary one, to sales and renewal, and a crutch for the unwary.</p>
+<p>It is our job, as service providers, to understand what the customer will <em>really</em> need to be happy, not just at sales time, but throughout the customer lifecycle, and structure the agreement <em>from the beginning</em> to encourage and support that.</p>
+<p>What should we do then?</p>
+<ol>
+<li><span style="text-decoration: underline;">Offerings</span>: Never offer an option that can hurt the customer - and you - later. If a customer needs a dedicated link, offer a single price that covers all connectivity. Do not offer a price for each connection.</li>
+<li><span style="text-decoration: underline;">Maintenance Windows</span>: Kill them. If you need them, something is wrong with your service design. In the end, maintenance windows are a crutch for weak design.</li>
+<li><span style="text-decoration: underline;">SLAs</span>: Make them perfect. Offer 100% availability.</li>
+</ol>
+<p>A smart man I know, a first-class Chief Revenue Officer (<a title="Contact" href="{{ site.url }}/contact/" target="_blank">contact me for an intro</a>), said that a well-run SaaS company should always offer 100% SLA. Why? Isn't it impossible or, at least, prohibitively expensive?</p>
+<ol>
+<li>You will make your customers happier.</li>
+<li>Your additional sales will more than make up for any penalties.</li>
+<li>Paying penalties when you have a minor blip will go a long way towards calming customers after your SLA dropped from 100% to 99.999%.</li>
+<li>The impossible SLA will act as a goal, driving you towards achieve it.</li>
+</ol>
+<h2>Getting There</h2>
+<p>Getting to no maintenance windows, perfect SLAs and the right offerings requires a unified plan with participation of marketing, product, sales, finance and technology...  <span style="text-decoration: underline;">everyone</span>. You need:</p>
+<ul>
+<li>The right offerings, eliminating those that can create problems.</li>
+<li>A finance structure that accepts SLA penalty payments, rather than penalizes them.</li>
+<li>Marketing collateral with the correct offerings and promoting your great SLAs.</li>
+<li>A sales team incentivized to sell <em>recurring</em> and <em>retained</em> customers, rather than one-big-deal-and-we're-done. This is <strong>not</strong> enterprise software.</li>
+<li>Software and infrastructure architectures that are:
+<ul>
+<li>resilient in the face of failures;</li>
+<li>can be updated in parts;</li>
+<li>is quick and easy to change;</li>
+<li>is self-healing;</li>
+<li>is proactively monitored</li>
+</ul>
+</li>
+</ul>
+<p>Every one of these is hard, but doable <a title="Contact" href="{{ site.url }}/contact/" target="_blank">with the right help</a>, and the rewards are ample.</p>

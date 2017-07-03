@@ -1,0 +1,41 @@
+---
+layout: post
+title: Security vs. Convenience - Trade-Offs in Operations and Business ImpactP
+date: 2009-03-18 14:18:29.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>In any business, in any setting, security is about trade-offs. It is about trading the inconvenience of process for the (supposedly) improved security that is necessary. For example, even the President of the United States is undoubtedly annoyed that he cannot go out for a walk without having the Secret Service clear it, but accepts the inconvenience as necessary to protecting his life. On the other end of the spectrum, everyone who has travelled in the United States in the last eight years is painfully aware of the inconvenience of the Transportation Security Administration (TSA) agents performing scans ranging from metal detection to show removal to full-body searches; whether or not this actually improves security is subject to debate. Shortly after 9/11, the former head of security for Israel's airports visited, and commented to the effect that the United States does not have a passenger security system, it has a passenger inconvenience system.</p>
+<p>In a business, there really are two kinds of security to take into account: physical security and information security.</p>
+<h3>Physical Security</h3>
+<p>Physical security is security of premises and persons of the institution. Thus, the White House has the Secret Service, the Capitol has the Capitol Police, and just about every office building in Manhattan has a security desk and turnstiles. This security may extend outwards. Thus, key personnel may have guards (I once worked for a man who never went anywhere without an armed escort). At times, it can be quite entertaining. Years ago, I worked at a firm that brought a senior Netscape executive to speak. He had a security detail almost as large as the President's.</p>
+<h3>Information Security</h3>
+<p>Information security is the security of the information in the hands of the institution. Although the term "Information Security" or "InfoSec" is normally used to apply to the security of digital information, such as that stored in a company's databases, the term technically applies to all information, including that in file cabinets and desks. However, since physical information such as papers and folders is only at risk within the confines of its physical location, information security is normally applied to digital assets. Information security is a unique discipline and is particularly challenging, for several reasons:</p>
+<ol>
+<li>Ease of Reproduction: Digital assets can be reproduced at what is essentially zero cost, and without disturbing originals. Thus, if someone steals account information, the original is never disturbed. The Internet itself has been described as the greatest copy machine ever created.</li>
+<li>Ease of Access: Unlike physical assets, which require physical access to premises in order to access the information, digital assets can be accessed without ever going near the physical premises. Every day, millions of people purchase items from Amazon.com, without ever setting foot in Seattle, let alone Amazon's facilities.</li>
+<li>Expected Convenience: For good reason, most people expect computer systems to make their lives and jobs easier and more convenience. The very notion of systems that inconvenience them runs contrary to their expectations, and thus makes behavioural changes extremely difficult.</li>
+</ol>
+<h3>Trade-Offs</h3>
+<p>Of course, the need for security creates the previously discussed trade-offs. Many businesses, especially those with highly sensitive data or regulated data, such as credit card information (PCI) or health records (HIPAA), require those who desire access to internal records to use a virtual private network (VPN) and some form of one-time password, such as RSA SecurID tokens, to access corporate systems. The inconveniences are multiple:</p>
+<ul>
+<li>It is much easier to just connect to a system than to open a VPN application, connect and log in to that, which often precludes direct access to other, non-corporate systems, while connected.</li>
+<li>These one-time passwords are inconvenient, require a physical item to carry around which, if unavailable or lost, mean inability to access systems.</li>
+</ul>
+<p>Despite the inconveniences, many corporations and, in the case of HIPAA or PCI, regulations, <span style="text-decoration: underline;">require</span> usage of these security systems. The cost is not insignificant. A single VPN concentrator (the term used for the system that allows users to connect to a VPN), one-time password server, and tokens, can cost thousands of dollars for a few users, in addition to thousands of dollars in implementation costs. If the business systems are mission-critical, then reliability means multiple redundant systems, possibly in multiple locations, which can increase capital costs 3-4 fold, and implementation costs by a similar order, depending on systems complexity. Finally, in all cases, there is the hidden cost of the employee/customer/consultant time in accessing the system. Assume a field salesperson who is compensated $100,000 per year, with benefits adding 30%, for an average hourly cost of $65/hour. If they need to access the systems twice per day, at 250 business days per year (according to the US Department of Labour, that is 500 accesses per year. If the inconvenience adds "only" 5 minutes per connection on average, that is 2,500 minutes lost, or 42 hours, for a total cost of $2,708 per year. This salesperson just lost 2% of their productive time, at company expense, of course. Add to that the downtime when the VPN and login systems are inaccessible, or the salesperson cannot find their access token, and the costs go up dramatically.</p>
+<h3>Reverse Trade-Offs</h3>
+<p>The most interesting cases can be found when a "reverse trade-off" occurs. In these cases, the organization actually makes it <em>harder</em> to become more inconvenient, for no good apparent reason. Put in other terms, they make it more inconvenient and more insecure, at the same time. These are usually indicative of poor security within the institution itself.</p>
+<p>I recently received an email from a reporter asking me to help them on behalf of a reader. Apparently, this reader is an online banking user, like the majority of those reading this article. The bank had limited the customer's password to 6 characters. Yes, in this day and age when social networking sites with no private financial information require at least 8 characters, a bank was insisting on no more than 6. The reader, who, justifiably, wanted more security and a longer password or passphrase, was interested in understanding why the bank did this.</p>
+<p>In the case of this bank, it is highly likely that it is one of:</p>
+<ul>
+<li>a very long time ago, someone created a system that only used 6-character passwords</li>
+<li>the customer account is being mapped directly to a login account on, some system, given the password-length likely an older mainframe, which speaks poorly of their application design, as well as their account-security and management procedures</li>
+<li>the least likely but most disturbing, the bank decided that the cost of password resets is simply too high, and force easy, simple passwords, with just 6 characters, and have thus consciously chosen convenience over security</li>
+</ul>
+<p>Either way, we are dealing with ignorance or incompetence. Either way, this is highly likely the tip of the iceberg, and indicative of very poor security measures internal to the bank, and indicative that they are probably spending far more money for far less security, as well as other back-office operations, than they should. Either way, don't trust your information to this bank.</p>
+<ol></ol>

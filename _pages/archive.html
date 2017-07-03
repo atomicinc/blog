@@ -1,0 +1,22 @@
+---
+layout: page
+title: Archive
+description: Blog archive
+permalink: "/archive/"
+---
+
+<section id="archive">
+  {% assign year = -1 %}
+  <ul class="this">
+  {% for post in site.posts %}
+    {% capture nyear %}{{ post.date | date: '%Y' }}{% endcapture %}
+    {% if year != nyear %}
+      </ul>
+      <h3>{{ nyear }}</h3>
+      <ul class="past">
+    {% endif %}
+      <li><time>{{ post.date | date:"%d %b" }}</time>&nbsp;&nbsp;&nbsp;<a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% assign year = nyear %}
+  {% endfor %}
+  </ul>
+</section>

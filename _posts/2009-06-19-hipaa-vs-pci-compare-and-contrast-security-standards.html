@@ -1,0 +1,49 @@
+---
+layout: post
+title: HIPAA vs. PCI - Compare and Contrast Security Standards
+date: 2009-06-19 13:08:09.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>For the last several years, data privacy and security has received a significant amount of press coverage. To be fair, this is for a good reason: most entities - private, non-profit, governmental or otherwise - due an absolutely abysmal job protecting data. In this case, data refers to all types, hardcopy and digital. However, in most cases, it is the digital that is the primary focus. This is for several reasons:</p>
+<ol>
+<li>Digital does not require physical access to steal. A talented digital thief can break into a business's Internet servers and steal credit card information from across the world.</li>
+<li>Digital does not require originals. When a physician's practice is broken into and paper records are stolen, the very fact that the records are missing, and the telltale signs of a break-in, are often strong indicators of a theft. On the other hand, since digital can be instantly duplicated, theft can occur without anyone being aware.</li>
+</ol>
+<p>On the other hand, digital has significant advantages, which are the direct corollaries of the security shortcomings:</p>
+<ol>
+<li>Because digital does not require physical access, records can be accessed for good from anywhere. A radiologist can look at emergency MRIs from anywhere, thus saving a patient's life.</li>
+<li>Because digital does not require originals, records can be used in many ways simultaneously, thus providing all of the benefits of digital records. This property also allows for easy backup and recovery.</li>
+</ol>
+<p>For the above reasons, many if not most sensitive records have become digital in the last decade. At the same time, the weaknesses inherent in the digital domain have made data and identity theft much easier, and have thus led to the high-profile coverage, from the infamous credit card theft at TJX Cos. to the Oklahoma laptop with over 1MM Social Security stolen just this past April.</p>
+<p>In response to the heightened concerns over data theft, several organizations have promulgated binding data security standards. The most prominent are the Health Insurance Portability and Accountability Act (HIPAA) privacy standards and the Payment Card Industry Data Security Standards (PCI-DSS). HIPAA covers all health care providers who have access to and store sensitive medical data; PCI-DSS (PCI for short) covers anyone who processes and stores credit card information. Atomic has been involved and lead implementations of both PCI-DSS and HIPAA.</p>
+<p>The rest of this article compares and contrasts HIPAA and PCI, and attempts to understand some of the risks involved in implementation and motivations of the drafters.</p>
+<p>First, a few key pieces of information:</p>
+<ul>
+<li>PCI has tiers for those covered by the requirements. The tier of a covered entity is determined primarily by the amount of sensitive data covered. This makes sense, as a company with 3 credit card numbers, or PANs, is a much less enticing target than one that has 3MM PANs. HIPAA has no such concept. Rather, the standards are "scalable", meaning they apply, in its own words, "from the very largest of health plans to the very smallest of provider practices."</li>
+<li>PCI has 73 pages of requirements in one document, including all introductions, workflow charts, samples, appendices and other material. The actual standards themselves cover 46 pages. HIPAA covers at least 9 separate documents, covering 125 to 237 pages, depending on how they are counted.</li>
+<li>PCI requires certain actions; HIPAA sets a distinction between "Required" (R) and "Addressable" (A).</li>
+<li>PCI has very specific requirements; HIPAA has general rules.</li>
+</ul>
+<p>Let us give a very specific example. Assume you are the network administrator of a hospital billing system that contains <span style="text-decoration: underline;">both</span> credit card information, and thus is subject to PCI-DSS, and medical information, and thus is subject to HIPAA. Because you are the network administrator, you have access to the entire system. Thus, your access is extremely powerful and sensitive. Let us see what each standard requires:</p>
+<ul>
+<li>PCI: Standard 8.3 requires that if you have remote system-level access, you must use two-factor authentication, e.g. a password plus something else physical, e.g. a one-time token, like those sold by RSA and CryptoCARD, or a smart card or biometrics. Conversely, someone with application-only level access is not mandated to use strong two-factor authentication.</li>
+<li>HIPAA: Section 4.17 requires you to take 3 steps: determine authentication applicability, evaluate your options, and select and implement the option. This rule holds for someone with access to one record or the entire system.</li>
+</ul>
+<p>Unfortunately, due to the brilliance of hackers on the Internet, your system is breached, and personal information is stolen. Let us examine what happens under each of the two standards:</p>
+<ul>
+<li>PCI: A quick audit of your records and systems demonstrates that you complied with the PCI standards. You did, indeed, implement two-factor authentication where the PCI-DSS clearly required it. Thus, you may get a slap on the wrist, largely to protect the PCI group, and it is highly likely that the PCI data standards setting group will use your breach as a case study to determine if its standards need to be updated.</li>
+<li>HIPAA: An audit determines that you did, indeed, determine authentication applicability, evaluated your options, and selected and implemented an option. In your case, you decided the same two-factor that was good enough for PCI-DSS would also be strong enough for HIPAA. Of course, HIPAA never actually said that two-factor was required, or sufficient. It simply asked you to evaluate. If you are a public hospital with a public breach, it is fair to estimate that your executives are soon to face a very upset state or Congressional committee hearing. Additionally, the patients whose data have been stolen are likely to file a lawsuit, claiming that you did not take sufficient action to protect their data. You will, of course, claim your compliance with federally-issued HIPAA privacy and security standards as a defense. However, opposing lawyers will argue that you did not comply, that your subjective assessment in 4.17 was erroneous and even grossly negligent.</li>
+</ul>
+<p>Differences like these abound throughout the HIPAA vs. PCI comparison. PCI-DSS is largely very specific, with rules and regulations defining your minimum, but never your maximum. By contrast, HIPAA, in somewhere between 3x and 6x as many pages and 9x the number of documents, gives processes to follow to determine what you should do, but never sets the standard explicitly.</p>
+<p>In my experience in dealing with HIPAA and PCI, from the perspectives of covered entities, regulators and auditors, I have found very different motivations. As always, incentives matter greatly.</p>
+<ul>
+<li>PCI-DSS is promulgated by a private entity, the Payment Card Industry, which itself is an association of private card issuers, such as Visa, American Express, and others. These companies have one driving incentive: increase adoption and usage of payment cards. Security breaches simultaneously drive down card usage and adoption, and cost the industry significant sums in repairing the breaches and paying damages, either voluntarily or as required by a court settlement or order. PCI drives towards constant minimizing of breaches. At the same time, it does not want to penalize those who follow the standards and are nonetheless breached in an unduly harsh manner, as it will provide a disincentive towards others expending the often significant sums in compliance. At the same time, those who do not follow the standards open the entire industry up to risk, and thus are penalized heavily.</li>
+<li>HIPAA is promulgated by the US federal government, largely driven by political requirements. Although in theory they also prefer to minimize breaches, in practice the politicians and civil servants who stand behind HIPAA have one overriding goal: reelection/reappointment. HIPAA was first enacted in 1996, almost 13 years ago. No Congressperson will be reelected in 2010 on the basis of some legislative action they took a decade and a half prior. Similarly, the head of Centers for Medicare and Medicaid and other administrators at the Department of Health and Human Services will not be receiving any promotions on the basis of an event that long ago. People subject to the public require <span style="text-decoration: underline;">headlines</span> for reappointment or reelection. These headlines will come primarily from "doing something" about a breach event. Thus, the incentives for those behind HIPAA are to ensure that every breach, no matter how minor or severe, can become a major event requiring high-level involvement, as opposed to a routine audit and acquittal.</li>
+</ul>
+<p>When implementing PCI or HIPAA, it is important to keep in mind these incentives and driving behaviours. Of course, lack of execution of either is guaranteed to bring significant trouble to any entity. However, it is important to understand that these are merely risk-reducing strategies, with HIPAA serving as much as a tool with which to bludgeon entities that are compliance as guidelines for data protection.</p>

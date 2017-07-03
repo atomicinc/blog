@@ -1,0 +1,59 @@
+---
+layout: post
+title: Why the Internet of Things Is So Vulnerable
+date: 2016-06-08 09:03:25.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- security
+- technology
+tags:
+- airplane
+- car
+- Internet of Things
+- IoT
+- lightbulb
+- security
+author: Avi Deitcher
+---
+<p>It seems every day there is another article about how "vulnerable" the Internet of Things (IoT) is. Here are two choice excerpts from the last year:</p>
+<ul>
+<li>"<a href="https://www.wired.com/2015/07/hackers-remotely-kill-jeep-highway/">Hackers Remotely Kill a Jeep on the Highway</a>," Wired, 21st July 2015</li>
+<li>"<a href="http://edition.cnn.com/2015/05/17/us/fbi-hacker-flight-computer-systems/">Security Researcher Claims to have Hacked into Flight via Entertainment System</a>," CNN, 19th May 2015</li>
+</ul>
+<p>While these are major life-threatening issues - one cannot compare a malicious actor disabling your iPhone while you are on it with someone talking control of your car going 110 kmh down the highway, let alone a plane flying at 35,000 feet and 600 mph! - the concern is that if even such important systems are easily hacked, what will happen with the many millions of connected devices that comprise IoT?</p>
+<p>Today, courtesy of <a href="http://twitter.com/mjg59">Matthew Garrett</a>'s twitter feed, I came across a much more detailed look at <em>how</em> a simple, non-threatening (at least in theory) device is can be compromised. The article is invaluable not only because it details vulnerabilities, but also because it helps us understand <em>why</em> such devices are so vulnerable, and points us in a direction to fixing it.</p>
+<p>The article, entitled "<a href="https://blog.viktorstanchev.com/2015/12/20/the-many-attacks-on-zengge-wifi-lightbulbs/">The many attacks on the Zengge WiFi lightbulbs</a>," published 20th Dec 2015 by <a href="http://twitter.com/vikstrous">Viktor Stanchev</a>, details his analysis of a commonly sold "smart bulb" that can be controlled via an Android app.</p>
+<p>I highly recommend the article for two very different reasons:</p>
+<ol>
+<li>The <em>technical description</em> of the poor security design and why it failed is important for anyone who builds or manages any type of interconnected technology.</li>
+<li>The <em>responsible process</em> Viktor followed in notifying the manufacturer and giving them the opportunity to fix it - the presumption of innocence - stands in stark contrast to the "mob mentality" that often is applied to corporate (and even personal) failings.</li>
+</ol>
+<p>The latter point deserves emphasis. I am a firm believer that security failings should be made public, both because the buying public deserves to know weaknesses - many will find methods to mitigate the problems on their own - and because knowledge that your failings become public, leading to potential embarrassment and loss of business, is one of the best incentives for companies to fix their problems quickly.</p>
+<p>Nonetheless, there is a crucial difference between publication and crucifixion, as there is between sins of omission or commission on the one hand and honest errors that a company makes and is committed to fixing once aware on the other hand.</p>
+<p>Viktor deserves credit <em>both</em> for his honest efforts to help the manufacturer fix the problems <em>and</em> for his willingness to make us, the buying public, aware.</p>
+<p>Reading the article, it becomes clear that, for all intents and purposes, the manufacturer embedded basic computer technology in their lightbulb - processor, wifi, router, Web server - to give smart control over the light, but without even any basic security procedures, policies or technologies.</p>
+<p>Those of us who have lived in Web or IT for the last few decades look at the behaviour and are astounded. Have they learned <em>nothing</em> from the breaches of the last few decades? Do they lack <em>basic</em> computer security hygiene? How can they <em>possibly</em> expose flashing the firmware or controlling the system without any channel security or identity verification whatsoever?</p>
+<p>Yet the answer is rather obvious: <strong>no, they have not learned </strong><span style="color: #000000;"><b>anything because they have <em>not</em> lived where we have lived</b></span><strong> in technology for the last 20 years.</strong> Or the last 10. Or even the last 2.</p>
+<p>The companies making smart lightbulbs have extensive expertise in manufacturing dumb lightbulbs. Never before have they needed any knowledge about security and vulnerabilities, surfaces of attack, methods, etc. This is new to them. It is so new, in fact, that they cannot even conceive of it.</p>
+<p>Thus, they simply purchase the additional components needed, probably with a contract that says, "give us a basic circuit board of the following dimensions that can provide remote access control with the following inputs and outputs." They receive it, plug it in, and ship it.</p>
+<p>Even much more skilled manufacturers, like GM who made the Jeep above or Airbus or Boeing, have expertise in building <em>cars</em> or <em>airplanes</em>, not <em>connected systems</em>. Like the lightbulb manufacturers, they simply cannot conceive of the vulnerabilities.</p>
+<p>Imagine a person person spending their whole life in an idyllic pastoral village, surrounded by community, supported by family and friends. While they lack the opportunities of urban life, they also know nothing of crime beyond petty rivalries.</p>
+<p>Suddenly transport that person to the middle of Manhattan, London or Beijing. Not only would they not know to watch out for buses at crosswalks or muggers late at night, they cannot even imagine that those issues exist. The person would be, ironically, a "babe in the woods."</p>
+<p>These companies manufacturing IoT devices are, similarly, babes in the woods. They hail from a world where these concept simply do not exist.</p>
+<p>What was the reaction of the airline and airplane manufacturer to the demonstration? They called in the FBI and had the person arrested. That is an excellent way to intimidate researchers; it is a terrible way to find vulnerabilities, of which there undoubtedly are many.</p>
+<p>The airline only knew of the hack because the researcher <em>himself</em> tweeted it. A malicious actor will <span style="text-decoration: underline;">not</span> let them know of their capabilities in advance.</p>
+<p>How do we fix a clearly broken and vulnerable situation?:</p>
+<ol>
+<li><span style="text-decoration: underline;">Change the Mindset</span>: Until companies manufacturing IoT devices recognize that they now are in the IT business, which includes security, there will be broad insecurity. This, in turn, will not happen until someone serious is breached <span style="text-decoration: underline;">and</span> pays the price.</li>
+<li><span style="text-decoration: underline;">Make it Simple</span>: Security must be purchasable in a simple fashion.</li>
+</ol>
+<p>As long as the ratio of systems to engineers was kept reasonably low, the effort to design, manage and monitor secure systems was acceptable. Even today, when you may have 10,000 servers or 100,000 or more containers, they all are deployed on a well-known series of networks in a well-known series of environments. The ratio of <em>configurations</em> or <em>deployment scenarios</em> to administrators and engineers still is low.</p>
+<p>With IoT, the number of devices <em>and the number of scenarios</em> grows by orders of magnitude. The current structure of security engineers designing for constrained environments simply doesn't scale affordably. <strong>The companies simply will not pay for it.</strong> A smart lightbulb on Alibaba may cost $1.00. If adding security engineers means the cost goes up to $1.20, Zengge will ignore security or get out of the smart lightbulb business altogether.</p>
+<p>We of the technology world need to provide an easily packaged security platform for IoT. Make it <em>easy</em> and <i>inexpensive</i> for Zengge to include it as part and parcel of their smart lightbulbs. Let Boeing drop it into place in their 737-MAX and Airbus in their A350, while GM includes it in the Jeep Grand Cherokee.</p>
+<p>Inexorably, labour-intensive services are replaced by automation, making them affordable and leading to the growth of new products and services. If we want secure connected devices, from lightbulbs to cars to airplanes, we need to shift from the custom-designed security shop to the off-the-shelf purchasable product or service.</p>
+<p>What does an IoT "Secure Package" look like? I am not sure. Part of it - for centrally controlled devices like distributed billboards or road sensors - is a managed service that controls the OS, like resin.io. For the rest, devices distributed, well, everywhere, there is an answer out there waiting.</p>

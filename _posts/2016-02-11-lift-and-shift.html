@@ -1,0 +1,36 @@
+---
+layout: post
+title: Lift and Shift
+date: 2016-02-11 10:19:40.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- aws
+- change
+- changemanagement
+- container
+- forrester
+author: Avi Deitcher
+---
+<p>Yesterday, I had the pleasure of attending <a href="http://www.containersummit.io" target="_blank">Container Summit NYC</a>, arranged by the great folks at <a href="http://www.joyent.com" target="_blank">Joyent</a>.</p>
+<p>The first speaker, <a href="http://www.twitter.com/davebartoletti" target="_blank">Dave Bartoletti</a> of Forrester, gave a broad overview of cloud computing - private and public - and container adoption. One of his themes was the methods by which companies adopt new technologies, particularly cloud and containers, and the benefits they gain.</p>
+<p>New technologies enable new ways of operating. While some technologies simply make it easier or cheaper to operate in the same <em>way</em> as before, most enable new <em>methods</em>, new <em>processes</em>, new <em>ideas</em> that previously were difficult or impossible.</p>
+<p>In truth, even those that purport "only" to make the same old processes faster or cheaper will create new ways of operating. The very time or cost savings enable customers, especially creative individuals inside those customer organizations, to develop new operating methodologies.</p>
+<p>Yet, when moving to cloud or containers, many companies simply do "Lift and Shift", in Dave's phrasing. "Lift and Shift" means taking exactly what you did before, but doing it on a new platform. Had a bunch of servers on premise? Have the exact same number in AWS or Joyent cloud, running the exact same software. Had 15 services running inside a VM? Package them up inside a container and replace VMs with containers, 1:1.</p>
+<p>While this works, said Dave, it has little benefit. You gain very few of the accelerating and enabling benefits of the new operating technology. You are replacing the chassis on your car, while keeping the same old engine, brakes and body.</p>
+<p>While I agree with him that the unique enabling benefits of the new technology can be significant, I do not believe you need to adopt all, <em>or even one</em> new method, to gain direct benefit from that brand-new chassis. Here are two key ways that you can gain even with "Lift and Shift":</p>
+<ol>
+<li>It <em>still</em> is a better chassis. Sure, you chose not to install the brand new engine, brakes and body that came along with that new chassis. But a new chassis means a smoother ride, less water or salt penetration and a better overall platform. Not adopting deployment methodologies like Terraform or splitting up VMs does, indeed, mean you are missing some of the great benefits of running in AWS or Joyent. If you don't re-architect your application for expected failures, you are missing something. But it still is far faster to (re)deploy a VM to a public cloud than to deploy a new server to your data centre. You just reduced your operation cost and time-to-market, while giving your staff the ability to experiment at far lower cost. This is <span style="text-decoration: underline;">good</span>.</li>
+<li>It is a great transition model. I have led and managed several containerization projects, from simple to highly complex. Despite the benefits, these changes are hard and affect every part of the company. You are changing operating procedures, deployment tools, monitoring, interfaces, concepts. To boot, you are forcing them to think about mutable vs. immutable items, probably for the first time. There is enough change in there to make even the hardiest veteran feel on shaky ground. "Lift and shift" allows you to change the chassis without too much disruption. When everyone is settled in, you can leverage that solid chassis for the new engine, brakes and body.</li>
+</ol>
+<p>Containers make microservices possible, but <a href="{{ site.url }}/2016/01/13/do-you-need-microservices-to-make-containers-worthwhile-2689/" target="_blank">you don't <em>need</em> microservices to <em>benefit</em> from containers</a>.</p>
+<h2>Summary</h2>
+<p>New technologies enable new and better ways of operating, both directly and by opening the creative founts of your staff. As exciting as these benefits are, don't be afraid to take on acceptable-sized changes, tailored to your organization. Get some wins, then move on.</p>
+<p>Do you know how difficult a technology change will be for your organization and what the true benefits will be? Are you ready to manage the project from strategic goals to planning to transition to follow-up? <a href="{{ site.url }}/contact/" target="_blank">Ask us</a>.</p>
+<p>&nbsp;</p>

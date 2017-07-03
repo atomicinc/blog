@@ -1,0 +1,47 @@
+---
+layout: post
+title: Why Customers Agree to Open-Source
+date: 2016-07-12 08:37:27.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- containers
+- open-source
+- product
+author: Avi Deitcher
+---
+<p>Why do customers agree to open-source work I do?</p>
+<p>In the past, we have discussed the benefits of open-sourcing <span style="text-decoration: underline;">your own</span> software:</p>
+<ul>
+<li>Reputation</li>
+<li>Recruiting</li>
+<li>Contributions</li>
+</ul>
+<p>Recently, I had the pleasure of walking half an hour from a Tokyo train station with <a href="https://twitter.com/mjg59">Matthew Garrett</a>, who does some impressive work on core operating systems (pun intended; Mathew works at <a href="http://www.coreos.com">CoreOS</a>). One of the thing I asked him is why a company open-sources its entire stack? I always am eager to learn more from a person who lives it daily.</p>
+<p>He relayed those same three reasons: yhey gain a strong reputation from within the community, which in turn inspires people to contribute improvements back to their code in the form of Pull Requests, which also helps with recruiting.</p>
+<p>However, sometimes an employee or consultant does work for a company that is not core to their business, provides no competitive advantage, and yet they agree to open-source it... under <span style="text-decoration: underline;">employee's </span><span style="text-decoration: underline;">name</span>. What drives them to do so?</p>
+<p>When I recommend open-sourcing work, I offer three options:</p>
+<ol>
+<li>Release it under their name</li>
+<li>Release it under my name</li>
+<li>Release it under my name with attribution/thanks "to the good offices of Company X"</li>
+</ol>
+<p>Under #1, all of the usual benefits apply.</p>
+<p>But when released under the my name, most of those do not apply. There is some (but not much) reputation benefit when the company is listed as a contributor. They don't recruit out of it, unless I continue my involvement with them and I know they are looking for people in that space. And the improvements in software only sometimes are pulled back into the project itself in the form of new releases.</p>
+<p>For a company like CoreOS or Joyent or Tigera, where it is a core software product that is open-sourced, and thus they have many engineers on the project, the benefits (along with the risks) of open-source are obvious.</p>
+<p>But in a "consultant provided this for us to solve a solution," what do they gain?</p>
+<p>In a word: <strong>cost</strong>.</p>
+<p>Every piece of software that is written by a company and used in their products must be maintained by them. For the core of the business - operating systems and fleet for CoreOS, container management for Rancher - they assign engineers and product managers to it anyways. They are happy to take contributions from the community, and thereby grow, but the core of the work is their internal labour.</p>
+<p>But for anything that is not core, and even for some elements that are, companies would prefer a ready-made component they can plug in that just works. Buy (or download) it, don't build it.</p>
+<p>What happens when you need something to make your product work, but it isn't core? None of these is core to many companies' business: a jQuery or Angular or Aurelia plugin for your UI; a network or storage plugin for Docker; a network virtualization performance test (all of which I have done for clients). Yet you may need one, and if it isn't available, you build it from scratch or take an existing one that isn't quite there and modify it.</p>
+<p>Now you have an ongoing component that will have bugs, need new features, need to be maintained... and all by <em>you</em>.</p>
+<p>Enter open-source.</p>
+<p>When you open-source it, you <em>might</em> still need to maintain it fully yourself; you probably <em>will</em>. But if it was useful to you, it might be useful to one, ten or a thousand other people. They in turn will find a bug and fix it or add some feature. After all, starting with yours is faster than their building from scratch too!</p>
+<p>When you open-source it, you have a chance to avoid all of the maintenance single-handedly. If the open-source product really takes off, you have seeded a good community product while solving your own problem and at a much reduced cost.</p>
+<p>Releasing your work product has value to the community, but also to you as the releaser. But it also has potential benefit, even when you release it through someone else.</p>

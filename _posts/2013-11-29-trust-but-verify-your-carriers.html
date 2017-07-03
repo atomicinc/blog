@@ -1,0 +1,26 @@
+---
+layout: post
+title: Trust But Verify... Your Carriers
+date: 2013-11-29 07:58:26.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>For a long time, all but the most security-obsessive companies trusted their telecommunications carriers.</p>
+<p>If you have two data centres, say, one in New York and another in California, you likely need significant reliable connectivity between the two to transfer data, administrative maintenance, backups and other purposes. While minor traffic can go over the Internet, protected by a Virtual Private Network (VPN), for reliable connections you use a dedicated backhaul link, perhaps an older carrier-provided T1 or MPLS.</p>
+<p>Normally, you would trust that link - which went from the core protected network inside firewalls in one data centre to the core protected network inside firewalls in other data centres - to be secure. The carrier, who lives and breathes these connections - would keep the dedicated link protected from its own employees and outside malicious eyes. The strongly prescriptive (and heavily relied upon) Payment Card Industry Data Security Standards (PCI-DSS) even rules MPLS to be a "private" network, and thus not subject to mandatory encryption (at least as of PCI-DSS 2).</p>
+<p>You paid for a dedicated link or MPLS cloud, and you assumed it has three characteristics compared to the Internet:</p>
+<ul>
+<li>More reliable</li>
+<li>More secure</li>
+<li>More expensive</li>
+</ul>
+<p>The Snowden Affair has changed the terms of the debate.</p>
+<p>As of November 2013, <a href="http://techcrunch.com/2013/11/18/yahoo-will-follow-google-in-encrypting-data-center-traffic-all-traffic-between-company-and-customers-by-q1-14/" target="_blank">Google is beginning to encrypt all traffic between data centres</a>, even relatively public information such as email, which in any case transits Google out to the public Internet unencrypted. <a href="http://techcrunch.com/2013/11/18/yahoo-will-follow-google-in-encrypting-data-center-traffic-all-traffic-between-company-and-customers-by-q1-14/" target="_blank">Yahoo is following in the same path</a>. They are clearly doing this to push back against the NSA's domestic spying program, as revealed by Snowden. To be fair, they were probably well aware of it before, but could not say or do anything until the information became public through other means.</p>
+<p>In light of the NSA's leaks showing them in bed with the carriers, which makes it highly likely that all carrier traffic is breached by them and, therefore, possibly to others - not all or even most of the smartest hackers work for the US Government - it is safe to assume that all carrier traffic is <em>insecure</em> and should be protected.</p>
+<p>From this point forward, carrier traffic should be treated as more reliable and more expensive, but no more secure, than traffic on the Internet.</p>
+<p>&nbsp;</p>

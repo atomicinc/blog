@@ -1,0 +1,105 @@
+---
+layout: post
+title: Types of Cloud Services
+date: 2015-01-29 07:27:04.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- cloud
+- product
+- security
+- technology
+tags:
+- capex
+- cloud
+- IaaS
+- opex
+- PaaS
+- SaaS
+- salesforce
+author: Avi Deitcher
+---
+<p>In the <a title="What is the Cloud?" href="{{ site.url }}/2015/01/28/what-is-the-cloud-2259/" target="_blank">previous article</a>, we discussed what the (terribly overhyped) word "cloud" means. Before we start to delve into the difference between "true cloud" and "we just call it cloud", let's look at the different major categories of "cloud" services available.</p>
+<p>As we discussed previously, cloud services replace:</p>
+<ol>
+<li>Expertise with consumption</li>
+<li>Capex with opex</li>
+<li>Fixed costs with metered prices</li>
+</ol>
+<p>Unsurprisingly, you can use that model with <em>any</em> technology you consume. The key element here is <em>consumption-as-a-service</em>. <strong>Everything</strong> that is cloud gets consumed as a service, just like electricity.</p>
+<p>Here are the major technology use cases and their cloud equivalents.</p>
+<h3>Computing</h3>
+<p><span style="text-decoration: underline;">Situation</span>: You have your own software you want to run on a bunch of servers. You developed this software in-house to run your trading platform, or you purchased it, perhaps a clinical management system like Sunrise for your hospital, customer relationship management (CRM) software like Dynamics from Microsoft or SugarCRM, or Enterprise Resource Planning (ERP) like PeopleSoft or SAP. It might even be a straightforward Oracle or MySQL database you need to run for your own purposes.</p>
+<h4>Option A</h4>
+<p>You could buy servers from Dell or IBM, put them in your data centre, install an operating system, monitor and operate them, and then install and run your own software. You will incur the CapEx of purchasing 3x $10,000 servers from Dell, acquiring the floor space, paying your team to wire up the patch panels, buying network ports on your switch from Cisco, as well as backup disk or tape space, additional cooling capacity, etc. All of this time you need to have your staff available, and they need sufficient expertise to do this work.</p>
+<p>To be clear, this is <em>not</em> a bad model; it works extraordinarily well for many business situations.</p>
+<h4>Option B</h4>
+<p>You go to a cloud provider of <em>infrastructure</em>, purchase virtual server <em>instances</em>, and pay for what you use. As an example, a moderate m3.medium from Amazon Web Services in US East Region (Northern Virginia) <a href="http://aws.amazon.com/ec2/pricing/" target="_blank">costs</a> $0.070 per hour, or $613.20 per year. For the 3 servers, it will cost you $1,839.60 per year or $5,518.80 for 3 years.</p>
+<p>These prices can be even cheaper if you know you will use it for the whole year and pay an upfront fee to discount the price. Additionally, Amazon is continually lowering prices as their costs go down.</p>
+<p>In this model, there is <span style="text-decoration: underline;">no</span> wiring or cabling, no hardware, no network ports, no firewalls, almost no, well, anything. Your cloud provider, like Amazon, takes care of it for you. Your responsibility begins at the operating system level, and Amazon has plenty of prepared images ready for you as well.</p>
+<h4>Summary</h4>
+<p>You are looking for <em>infrastructure</em>, you can buy it on your own, or buy it as <em><strong>infrastructure-as-a-service</strong>,</em> or <strong>IaaS</strong>, from <a href="http://aws.amazon.com" target="_blank">Amazon</a>, <a href="http://www.rackspace.com" target="_blank">Rackspace</a>, <a href="http://www.digitalocean.com" target="_blank">DigitalOcean</a> or <a href="http://www.hpcloud.com" target="_blank">HP</a>.</p>
+<h3>Software</h3>
+<p>If <em>infrastructure</em> is at one end of the spectrum, <em>software</em> is at the other end. The only reason you have infrastructure in the first place is <span style="text-decoration: underline;">to run software</span>. After all, a <em>server</em> does not provide any business value; CRM software running <em>on the server</em> provides business value.</p>
+<p>So you need a great customer relationship management (CRM) package to keep track of all of the complex accounts and relationships in your fast-growing business. Where are you going to get and run that software?</p>
+<h4>Option A</h4>
+<p>As with the infrastructure, you could buy the software, like Microsoft Dynamics CRM or SugarCRM, and install and run it on a server. Whether you use your own server or an IaaS instance is irrelevant to the software part of the discussion. But once you decide where you will run it, you need to:</p>
+<ul>
+<li>Install the software</li>
+<li>Maintain the software</li>
+<li>Manage the database</li>
+<li>Ensure access for your people</li>
+<li>Integrate with email and other systems</li>
+<li>Manage security, both system and account</li>
+<li>Run backups</li>
+<li>Debug issues</li>
+</ul>
+<p>In other words, you have a lot of ongoing activities to perform around the software itself, and need the manpower and expertise to do so.</p>
+<p>In addition, while some software is free, others are quite expensive. Whether opex or capex (depending on your software purchase accounting rules), it can add up.</p>
+<p>As before, <span style="text-decoration: underline;">there is nothing wrong</span> with this model; it makes sense in many cases, as long as you are aware of the commitment upfront.</p>
+<h4>Option B</h4>
+<p>Conversely, you could wash your hands of the whole thing and ask someone else to manage it. Salesforce.com is the most well-known and one of the largest, with a <a href="http://finance.yahoo.com/q?s=CRM&amp;fr=uh3_finance_web&amp;uhb=uhb2" target="_blank">market cap of $36BN</a> as of this writing.</p>
+<p>With salesforce, you have nothing to do but <em>use</em> the software. You pay per user per month, and access it from anywhere in the world using your Web browser.</p>
+<p>This model provides 2 special advantages beyond the infrastructure benefits:</p>
+<ol>
+<li>You do not need to know or manage the software itself.</li>
+<li>You do not need to handle application deployment and scaling.</li>
+</ol>
+<p>Is this simpler? Absolutely. There is a <strong>reason</strong> salesforce has a $36BN market cap! Is it cheaper? That depends on how big your installation is, how much expertise you have in-house, and probably how much of a deal you can negotiate with salesforce.</p>
+<h4>Summary</h4>
+<p>You can buy, install and maintain <em>software</em>, or you can purchase <em>software-as-a-service</em>, or <strong>SaaS</strong>.</p>
+<h3>Custom Applications</h3>
+<p>What about the middle ground? What if you want all of the benefits of SaaS - application management, database management, scaling, perimeter security, backups, etc. - but for <span style="text-decoration: underline;">your own software</span>? You wrote a great application, want to roll it out to your thousands of customers as a service for them (your SaaS for them) - whether internal IT customers or external business customers.</p>
+<h4>Option A</h4>
+<p>You buy some servers and run your software on your own infrastructure, or you rent IaaS instances, just like with our CRM example.</p>
+<h4>Option B</h4>
+<p>Is there an option B? If you look at the previous SaaS model, there actually are two unique benefits: <span style="text-decoration: underline;">application knowledge</span> and <span style="text-decoration: underline;">application management</span>. While there is <strong>no way</strong> you could get the application expertise benefits of SaaS - after all, this is your own software that <em>no one else knows</em> - you would at least like to get the benefits of application deployment and scaling that SaaS provides.</p>
+<p>Along comes the <em>platform-as-a-service</em>, or <em>PaaS</em>. These providers take all of the common management functionality of a SaaS, and allow you to run your own software on them.</p>
+<p>Would you have more control running it yourself, either on your own hardware or on AWS server instances? Absolutely. AWS provides far more granularity of control and power, as well as significantly lower costs, than any PaaS provider. But to do so you would need to invest significantly in managing the application management and deployment process.</p>
+<p>In many cases - and most smaller or early-stage deployments - PaaS providers provide a deployment solution that is several orders of magnitude easier and quicker than using IaaS.</p>
+<p>Some PaaS providers include: <a href="http://heroku.com" target="_blank">heroku</a> (<a href="http://techcrunch.com/2010/12/08/breaking-salesforce-buys-heroku-for-212-million-in-cash/" target="_blank">bought by Salesforce in late 2010</a>), <a href="http://engineyard.com" target="_blank">EngineYard</a>, <a href="https://www.nodejitsu.com" target="_blank">nodejitsu</a>, and Amazon's own AWS version <a href="http://aws.amazon.com/elasticbeanstalk/" target="_blank">Elastic Beanstalk</a> (no, I do not know who comes up with these names).</p>
+<p>Through this past summer, I designed, set up and ran solutions for a customer using AWS IaaS <em>and</em> Heroku PaaS. While the PaaS had shortcomings in its flexibility and control, its simplicity and ease of use was <em>more than sufficient</em> to compensate for those in an early stage product.</p>
+<h3>Other Categories</h3>
+<p>There are other categories of products that have been made available "as a service". If you can think anything that you can run on your own but could also have someone run for you, someone has made it available as a service.</p>
+<p>One notable example is Database-as-a-service (DBaaS), which is exactly what it sounds like, using a database provided as a service, with all the usual management, administration, scaling and backups provided as a service. A notable example is <a href="https://cloudant.com" target="_blank">Cloudant</a> (bought by IBM) and <a href="http://aws.amazon.com/running_databases/" target="_blank">Amazon's own offerings</a>, such as RDS, DynamoDB, SimpleDB and Redshift.</p>
+<h3>Summary</h3>
+<p>There are several different categories of "cloud" or "as-a-service" offerings. All, however, share the same basic characteristics, no matter the level of the technology stack at which they work and offer: infrastructure, software, platform, or anything in between.</p>
+<ul>
+<li>Opex instead of capex</li>
+<li>Metered pricing</li>
+<li>Complete and total customer obliviousness to the underlying design</li>
+</ul>
+<h2>Experience</h2>
+<p>I have helped clients design for and migrate from/to all of the above:</p>
+<ul>
+<li>Private to cloud infrastructure</li>
+<li>Cloud to private infrastructure</li>
+<li>Cloud infrastructure to platform-as-a-service</li>
+<li>Platform-as-a-service to cloud infrastructure</li>
+<li>Local software to software-as-a-service</li>
+<li>Software-as-a-service to local software</li>
+</ul>
+<p>But the most interesting, and most complex, challenge has always been getting a company that already has a software product make it into a cloud service offering, or <strong>become a SaaS provider</strong>. This type of transition into "true cloud" is far more complex than just running it on a bunch of servers! It affects architecture, sales, engineering, organization, product management, marketing, finance and corporate culture  itself.</p>
+<p>In our next article, we will look at the difference between "true cloud" and "labeled cloud" and why it matters so very much to your bottom line.</p>
+<p>In the meantime, if you want to know how to <span style="text-decoration: underline;">become</span> a cloud provider, <strong><a title="Contact" href="{{ site.url }}/contact/" target="_blank">ask us</a></strong>.</p>

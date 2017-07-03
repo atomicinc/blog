@@ -1,0 +1,51 @@
+---
+layout: post
+title: Just Making Technology Work Is Hard Work
+date: 2015-01-05 07:19:10.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- pricing
+- technology
+tags:
+- apple
+- culture
+- iTunes
+- sync
+- vlc
+- wifi
+author: Avi Deitcher
+---
+<p>Apple's philosophy for technology is, "just make it work." I had one of the early pre-iPod mp3 players. It was a great piece, lots of battery life, played every format out there at the time... and within a year I had replaced it with an iPod. Transferring music to this player and managing it was just an enormous headache. With iTunes and iPod, it "just worked".</p>
+<p>Fast forward to the year 2014. WiFi is ubiquitous, bluetooth is everywhere, and <a href="http://ubeam.com" target="_blank">uBeam</a> is working on true wireless charging (that will "<em>just work</em>"). And yet, up until a year or two ago, the only way to sync your iPhone or iPad and computer is via a USB cable.</p>
+<p>Undoubtedly, USB 2.0 and then USB 3.0 make the transfer process <em>much</em> faster, and most people have several appropriate USB cables lying around for charging their devices. Yet, when we can download movies over wireless, and talk via our headset or car over wireless, it seemed absurd that it took a cable to sync up.</p>
+<p>Thus was born iTunes WiFi sync... which just never seems to work. Google "<a href="https://www.google.com/search?client=safari&amp;rls=en&amp;q=itunes+wifi+sync+not+working&amp;ie=UTF-8&amp;oe=UTF-8" target="_blank">iTunes Wifi sync not working</a>", and you will find over 2MM results. It has been 2.5 years since WiFi sync was released with iTunes 10.5. It is plenty of time to find the issues and fix them, and yet they do not.</p>
+<p>I believe that at heart, there are two cultural issues and one business issue getting in the way:</p>
+<h4>Network vs. Device</h4>
+<p>Apple has always been a device company - Apple II, Mac, Lisa, iBook, MacBook, iPod, iPhone, iPad - it has always been about the device. Even when two devices needed to play nicely together, in essence one was an "appendage" of the other. Appendages are not peers, they are not networks, they are just temporary "slaves" that can be connected however need be. Cables will do just fine, thank you very much.</p>
+<p>By contrast, other companies are "network" companies - Sun in its day, Google, even Facebook - that build networks of services, each of which is a first-class peer of the others. Building devices that sometimes have appendages and building networks of devices are two entirely different processes and mindsets.</p>
+<p>By contrast, look at how VLC for iOS loads up media. Sure, you can use iTunes if it syncs and is connected. But you also can download movies and music <em>directly</em> from <span style="text-decoration: underline;">anywhere</span> on the Internet, using http, ftp or a myriad of other protocols. In addition, you can flip a switch and get a local Webserver. It tells you, "go to your computer, open the following address in a browser, and load up media." Is that harder than iTunes when it just works? Sure. <strong>But it lets you do it reliably from anywhere.</strong> Don't have my laptop around and need to sync? No problem, I can do it from anyone's laptop, <span style="text-decoration: underline;">even a console-only server</span>.</p>
+<p>VLC's method is not <em>great</em>, but it is <em>good enough</em>, actually works reliably, and is available in all scenarios. iTunes, by contrast, is great when it works, but is not reliable, and is available only when the "official" computer to which you normally sync is available.</p>
+<h4>Perfection vs. Tolerance</h4>
+<p>Apple tries really hard to make their technology idiot-proof. They are famously intolerant of even the slightest violation of the "principle of least surprise." Thus, when someone wants to sync up their iPad with their movie collection, they should be able to launch iTunes and everything should "just be there." Until it isn't.</p>
+<p>Here is how a simple (but not idiot-proof) version would work:</p>
+<ol>
+<li>User launches iTunes to connect.</li>
+<li>User sees big button marked "Sync Devices" <em>whether or not a device is in range</em>.</li>
+<li>Clicking this button starts a series of checks for the basic infrastructure necessary to sync.</li>
+<li>Devices are then listed.</li>
+</ol>
+<p>That one simple button would make it seem less than 100% seamless or idiot-proof, but it would vastly expand the tolerance for error. I have been doing technology for decades; time and again, tolerance for error should win out over perfection of use.</p>
+<h4>The iTunes Lock</h4>
+<p>Finally, the business issue. iTunes the application is Apple's invaluable gateway to its App Store and media sales. Apple's revenue from "<a href="http://investor.apple.com/secfiling.cfm?filingid=1193125-14-383437&amp;cik=#D783162D10K_HTM_TOC783162_8" target="_blank">iTunes, Software and Services</a>" was $18BN in the last fiscal year, or 10% of its revenue. Even more, as Apple regularly states, its media and Apps are only available on Apple devices, and an important reason for their sales.</p>
+<p>Initially iTunes was an easy way to sync up with an iPod, far easier than the alternatives, as my experience with early mp3 players showed. Today, it is a crucial gateway to Apple software and media sales. Even to suggest that Apple lose that gateway probably is heresy in Cupertino.</p>
+<p>Apple's business model <em>depends</em> upon managing your devices via iTunes. Sure, more of it is moving to on-the-device iTunes and App Store, which is a good thing, but computers still are a major gateway and required for much of updating, backups and ease of use. This business requirement inhibits their ability to think beyond it for new methods of management.</p>
+<h3>What Should They Do?</h3>
+<p>Apple needs to lose its dependence on desktop iTunes. Entirely. It can keep the app around as an additional management method, even the preferred one, but it needs to open up device management. Yes, "open" implies Android and everything but Apple, but the same way that the App Store opened up new ways to use the device interface, open management will open up new and unpredictable ways to control and manage Apple devices.</p>
+<p>It also should build much greater fault tolerance and recoverability into its software, even at the price of slight complexity. One more button and some logs will not materially hinder the user experience when it works, but will vastly improve it when there are issues.</p>
+<p>But to make these changes, Apple needs to hire people willing to shake up the status quo, and who believe in the future of the company, not in its magical past.</p>
+<p>Years ago, my kids went to a school that spoke about its "magical formula", and how perfect it was. Of course, this school had many issues, all of which were swept under the rug by administrators in their belief in the magic. Then one day a new educational director came in, and banned the "magical formula" phrase. They were only as magical as they strived to be, not as they believed they already were. Very quickly, the school became a much better, more responsive, and more educational environment.</p>
+<p>It all starts with how you think about yourself.</p>
+<p><strong>PostScript:</strong> Marco Arment <a href="http://www.marco.org/2015/01/04/apple-lost-functional-high-ground" target="_blank">wrote yesterday</a> that Apple's software quality "has taken such a nosedive." Marco believes that balance of power shifted too much towards marketing and public milestones, leading quality to suffer. This may also be a factor.</p>

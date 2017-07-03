@@ -1,0 +1,69 @@
+---
+layout: post
+title: Change Control in the Cloud
+date: 2015-02-17 08:43:14.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- security
+- technology
+tags:
+- change control
+- cloud
+- risk
+author: Avi Deitcher
+---
+<blockquote>"We made a small change and it brought down our customers for 4 hours."  - colleague</p>
+<p>"<a href="http://www.datacenterknowledge.com/archives/2012/09/11/go-daddy-network-issues-not-hackers-or-ddos-caused-outage/" target="_blank">Network issues caused outage</a>" - GoDaddy</p>
+<p>"A configuration error... caused <a href="http://aws.amazon.com/message/65648/" target="_blank">days of downtime</a>." - Amazon</p>
+<p>"Facebook was down... <a href="https://www.facebook.com/notes/facebook-engineering/more-details-on-todays-outage/431441338919" target="_blank">for 2.5 hours</a>." - Facebook</p></blockquote>
+<p>Every one of us has seen human errors cause significant, revenue-affecting, downtime. Our <em>stability</em> instinct always is to tighten up change control to try and prevent a recurrence. In a cloud environment, though, our <em>agility</em> instinct is to be as nimble and loose as possible. How do we reconcile these two opposing pressures?</p>
+<ul>
+<li><span style="text-decoration: underline;">Speed</span>: On the one hand, one of the prime reasons you are in the cloud, indeed, are operating a true cloud service, is to get "cloud-speed", along with the agility, nimbleness, and of course valuations. To get these benefits, you need fast, small releases, preferably going as far as <a href="http://en.wikipedia.org/wiki/Continuous_delivery" target="_blank">continuous delivery</a>.</li>
+<li><span style="text-decoration: underline;">Stability</span>: On the other hand, because customers are depending on you not to <em>deliver</em> software and products but to <em>operate</em> them, there is a hyper-sensitivity to what a colleague of mine once termed, with irony, "service degradation." This will create great pressure upon you to have drawn-out, heavily-reviewed, and infrequent release cycles.</li>
+</ul>
+<p>The key to managing change control in a cloud environment, indeed, in any environment, is understanding <span style="text-decoration: underline;">risk</span>.</p>
+<h3>The Purpose of Change Control</h3>
+<p>Why do we do change control? It isn't because we like long review meetings, or wading through stacks of paper. It turns out, we don't (or shouldn't) do change control at all! What we really are trying to do is <em>manage our risk</em>.</p>
+<p>Let's do a simple thought experiment. If we could magically manage all deployments so that they would have 100% effectiveness with 0% negative impact, would we hold any change control meetings? Of course not! Yet, in many (if not most) companies, change control has become a proxy for risk control, a self-perpetuating "speed bump" in the unstated belief that it reduces our risk.</p>
+<p>But does it? If so, why do companies with the tightest change control lead to the worst metrics? If it does not, how can we create great change-driven risk management?</p>
+<p>While it is beyond the scope of a short article to lay out an entire strategy for risk management, we will explore some basic principles.</p>
+<h3>Change Control vs. Risk Management</h3>
+<p>Change control focuses on stability of the current system <span style="text-decoration: underline;">in isolation</span>; it assumes that all change is risky, and our job is to mitigate that risk as much as possible, usually through extra reviews, discussion and slowing it down.</p>
+<p>Risk management, by contrast, looks at the <span style="text-decoration: underline;">complete</span> set of risks to the <span style="text-decoration: underline;">entire system</span>. It assumes <em>every </em>activity is risk, <strong>including inaction</strong>.</p>
+<p>This approach, when applied to deployment or delivery, leads to asking two very important questions:</p>
+<ul>
+<li>Almost all changes eventually will have to be deployed. Delaying increases the cost of each change. Is the reduced risk of not deploying <em>now</em> worth the increased risk of deploying <em>later</em>?</li>
+<li>Not deploying changes creates short- and long-term risks to my business, whether because of aging of the environment or because of slower delivery of capabilities. Is the reduced risk of not deploying <em>now</em> worth the cost to the business?</li>
+</ul>
+<h3>The Pain of Rigid Change Control</h3>
+<p>Change control procedures with long lead times and long reviews have a tendency to make a manager feel good, that she or he has risk under control. Unfortunately, the law of unintended consequences is hard at work. It creates the following negative effects:</p>
+<ul>
+<li><span style="text-decoration: underline;">Larger releases</span>: As each change requires longer review, releases tend to be less frequent and larger, many small changes aggregated together. The risk of error and cost of mitigation do not rise linearly with the number of changes, but something larger than exponentially. Five ten-minute releases together do not take 50 minutes; they take many hours. The increase in risk leads to:</li>
+<li><span style="text-decoration: underline;">Tighter controls</span>: Along with the tighter controls come longer lead times, leading to even larger releases, with greater risk, and even tighter controls, and back again. A colleague of mine calls this the "spiral of death". The difficult environment leads to:</li>
+<li><span style="text-decoration: underline;">Frustrated employees</span>: Great employees sign up to do great work. If they are bogged down in detailed reviews, they will get frustrated. It also leads to:</li>
+<li><span style="text-decoration: underline;">Unhappy customers</span>: As customers see longer and longer lead times to features they have requested, along with more "service degradation", they become frustrated with your service, and begin to leave, leading to:</li>
+<li><span style="text-decoration: underline;">Very unhappy executives</span>: After all, you worked untold hours to get all of these customers on board, and suddenly (or so it feels), with growth, things spiral out of control.</li>
+</ul>
+<p>I have seen many companies get caught up in this spiral. They have great engineers, a great product, great customers.... and no matter how much manpower or effort they put into it, stability is questionable, release cycles are long, employee satisfaction is low, and customers are unhappy.</p>
+<p>So how <em>do</em> you do great change control in a risk-managed, as opposed to rigidly-managed, environment?</p>
+<h3>Trust and Policies</h3>
+<p>The right policies, explicitly communicated to your <span style="text-decoration: underline;">trusted</span> teams, are the keys.</p>
+<p>Instead of telling your staff the rules for how they can <span style="text-decoration: underline;">get permission</span> to deploy - no fewer than 3 business days after a change control meeting, all requests submitted at least 5 business days before the meeting with the results of all tests and all code, etc. - communicate the risks you are managing and how they are balanced. Tell them:</p>
+<ul>
+<li>We are all about risk management. We <em>expect</em> you to take well-balanced risks.</li>
+<li>If you take a <em>balanced</em> risk, we will reward you, even if it turns out poorly.</li>
+<li>Always have a back-forward plan; not a back<span style="text-decoration: underline;">out</span> plan, but a back-<span style="text-decoration: underline;">forward</span> plan. Know what new deployment you can make that can fix any errors, but (almost) never go backwards.</li>
+<li>Get peer review; be a peer.</li>
+<li>Know if your changes might impact someone else.</li>
+</ul>
+<p>It is the latter that is the purpose of change control. If your change control's job is to make sure your people don't screw up, you already are in trouble. Do you really think the people reviewing are any smarter than those who own the change? Are the people who own the change - and who will be held to task if it breaks because of something sloppy - really going to deploy without peer review? If so, <strong>you are hiring the wrong people</strong>. Especially in a <em>services</em> world, <strong>you have to trust your people!</strong></p>
+<p>The real purpose of change control is to ensure that the changes that are made <span style="text-decoration: underline;">responsibly</span>, by the <span style="text-decoration: underline;">people you trust</span>, that have <span style="text-decoration: underline;">already been peer-reviewed</span>, and have had <span style="text-decoration: underline;">your risk-management principles accounted for</span>, will not collide with someone else's significant changes or requirements. You don't want to change the database schema at the same time as the database server is undergoing an upgrade; you don't want to change login procedures without first having compliance review.</p>
+<h2>Summary</h2>
+<p>It <span style="text-decoration: underline;">is</span> possible to implement positive change control procedures and have a dynamic, even a continuous delivery, environment. The purpose of change control is to coordinate among independent trusted groups so that they do not get in each other's way; it is <strong>not</strong> to check the work of untrusted groups or "slow them down."</p>
+<p>How can these procedures be implemented in your dynamic environment? We have implemented them for clients; <a title="Contact" href="{{ site.url }}/contact/">ask us</a> how we can do so for you.</p>
+<p>&nbsp;</p>

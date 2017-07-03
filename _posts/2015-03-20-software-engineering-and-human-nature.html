@@ -1,0 +1,65 @@
+---
+layout: post
+title: Software Engineering and Human Nature
+date: 2015-03-20 07:38:46.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- change
+- engineering
+- functional
+- human nature
+- imperative
+author: Avi Deitcher
+---
+<p>This morning, Adrian Colyer posted his <a href="http://blog.acolyer.org/2015/03/20/out-of-the-tar-pit/" target="_blank">morning paper</a> on a "functional programming."</p>
+<p>Most readers  of this blog are not deep into different programming paradigms, so I will give a very short layman's overview here. For those who are comfortable, jump ahead a few paragraphs. (For the real experts, please do not nitpick on the details; the point is only to give an overview, not to debate the fine points.)</p>
+<p>When software engineers write software, they use programming languages, like Ruby or Java or JavaScript or Go or C or C++ or Haskell or Erlang or (you get the picture), and "paradigms", or styles and methods of programming.</p>
+<p>At a very high level (we are in the upper stratosphere), two alternate styles of programming exist.</p>
+<ol>
+<li><span style="text-decoration: underline;">Imperative</span>: Imperative programming involves changing the state of various containers or variables, in order to get an outcome. Most languages follow this paradigm, including Ruby/Java/JavaScript/Perl/Basic/C++/etc.</li>
+<li><span style="text-decoration: underline;">Functional</span>: Functional programming does not let you change variables. Once you say "x" is equal to 25, you can never change "x" to anything else. You can assign a different variable, like "y", to 40, but "x" is done.</li>
+</ol>
+<p>I will try to illustrate with an extremely simple example. I won't use any code, just logic. Let us say I have the word "atomic" (very innovative). I want to write code to figure out how many letters are in that word, ignoring for the moment that just about every language under the sun already has some built in method for returning a word's length.</p>
+<ol>
+<li><span style="text-decoration: underline;">Imperative</span>: Create a variable, like in math, call it "x", set it to 0. Cycle through each letter of the word, each time incrementing "x" by 1. When there are no more letter left, "x" holds to the length of the word: 6.</li>
+<li><span style="text-decoration: underline;">Functional</span>: Create a function, call it "wordlength". Call "wordlength" and pass it your word ("atomic"). Your function will ask two questions: is it at the end of the word? return 0. Is it not? lop off the first letter of the word, and add 1 to the result of calling "wordlength" again with the shortened word. In the end, "wordlength" will get called 6 times, each time adding the previous result, which will add up to 6.</li>
+</ol>
+<p>(For those who know some math or programming but want to learn functional, the best introduction is the classic, "<a href="http://www.amazon.com/Little-Schemer-Daniel-P-Friedman/dp/0262560992/" target="_blank">The Little Schemer</a>".)</p>
+<p>Imperative programming is far easier to understand, learn and write. Functional programming while harder to grasp, is far easier to write <em>safely</em> and test, and is more likely to be robust in planned <em>and unplanned</em> situations.</p>
+<p>As the Adrian's paper notes, the ability to mutate state, to change those variables in Imperative, is the source of significant amounts of "unnecessary complexity". The 2003 Northeast US Blackout was caused, to some extent, by two different parts of code waiting for the same information to change, a situation that simply cannot exist in functional.</p>
+<p>So with all of the benefits of functional, <strong>why is the overwhelming majority of programmers and projects imperative?</strong> Universities teach C and C++ and Java; startups write in JavaScript and Ruby; enterprises use C# and Java.</p>
+<p>The answer, as always, lies in human nature.</p>
+<p>In some key ways, functional runs against the grain of human nature.</p>
+<ol>
+<li><strong>State reflects the real world:</strong> Is functional cleaner, and purer, and safer? Yes. But the real world is <span style="text-decoration: underline;">not</span> stateless and immutable. People have state: they are walking or running or sitting or eating or sleeping; cars have state: they are parked or driving at 112 kmh or old or new or dirty; businesses have state: they are growing or flat or shrinking or moving or selling or retrenching. The <em>entire purpose</em> of writing software is to solve real world problems. The easiest way to do that is to visualize the real-world problems and reflect their flows in software. Just as the real world has state, software representations of the real world have state. There is actually very little in the real world that is "functional", purely inputs and outputs, with no state at all.</li>
+<li><strong>We educate against functional:</strong> In order to program functionally, we need to "recurse", or call a function from within itself. For example, in our word length count example, we had to call "wordlength" with our 6-letter word, which in turn lopped off one letter and called "wordlength" again, which in turn will lop off one more letter and call "wordlength" again, over and over again. University courses, books and online tutorials all teach <span style="text-decoration: underline;">against</span> recursion. Most courses and books even teach how to eliminate recursion from your programs because it is supposed to be terribly inefficient compared to the alternative of mutating state. Of course, in software languages <em>built for recursion</em>, the software processor (or compiler) takes care of the efficiencies for you. Nonetheless, the mindset of "recursion is bad" - which, in some circumstances, it is - has seeped into the mindset of the majority of software engineers and educators.</li>
+<li><strong>Recursion is hard:</strong> Look at the two examples above. Which is easier to understand and write out or even think about: looping through all of the letters one by one and keeping a running tally, or calling some function that lops off a letter and calls itself while adding one to the result? <span style="text-decoration: underline;">Recursion makes your head spin</span>. Once implemented, functional is far easier to manage, understand, change and test. But getting that first step done requires far more intellectual horsepower and effort.</li>
+</ol>
+<p>The net result of all of the above is that there are:</p>
+<ul>
+<li>Far more people who can write imperative than functional. On StackOverflow, a site for asking and answering development questions, 819,000 people follow Java, 810,000 follow JavaScript... and 36,000 people follow Haskell, Erlang and Scheme <em>combined</em>. That is one and a half orders of magnitude more.</li>
+<li>There are far more jobs in imperative than in functional.</li>
+<li>There are far more tools, libraries and frameworks to simplify your life in imperative than in functional. Testing tools, monitoring tools, integrated development environments (IDEs), application servers, the list goes on.</li>
+</ul>
+<p>As great as the benefit of functional are - and they are really valuable - the supply of labour, the availability of tools, and the availability of jobs all feed back into each other to keep the non-functional style dominant.</p>
+<p>Imperative grew because it was easier to grasp and manage, in the early days of expensive memory and CPU, seemed more efficient, and <em>because it reflected the real world</em>. This in turn created newer generations of languages that followed the same model, taking it even deeper with concepts like object-oriented programming that represented the real world even better.</p>
+<p>In the end, it is technical idealism bumping up against real-world human pragmatism.</p>
+<p>Will it change? That depends on the use cases. There are distinct advantages to the functional style, especially in a distributed and multi-processor world. Where those advantages carry sufficient weight, functional languages win. Heroku, the platform-as-a-service provider purchase by Salesforce in 2012 for over $200MM, wrote one of their key components, and one of the few they did not open-source, the "routing mesh", in Erlang.</p>
+<p>For functional to gain serious traction, displacing other languages like Java or Ruby or JavaScript, there will have to be situations wherein the pain of mutability is <em>clearly</em> in excess, and clear <em>upfront</em> its benefits, to override the complexity of a functional mindset and how it does not easily represent the real world we live in.</p>
+<h2>Summary</h2>
+<p>Technical solutions, even those that have distinct advantages over existing solutions and styles, are just as subject to market forces as the next smartphone or health food store. They must offer sufficient benefit over solutions currently in place to warrant customers shifting away from all of their existing benefits and comforts. This pattern holds true even for engineers, who normally are quite ready to learn and adopt new technologies.</p>
+<p>When existing benefits include not only comfort, but a closer representation of the world they know and live in, the advantages must be even greater.</p>
+<p>When you are deciding what solutions to offer, whether programming languages and styles for your software engineering team or services and products to your market, ask yourself:</p>
+<ol>
+<li>Are the advantages real?</li>
+<li>Are they sufficiently better to change current behaviour?</li>
+<li>Are they sufficiently complex to resist that behaviour change?</li>
+</ol>
+<p>The best mousetrap doesn't always win, and "best" is always in the mind of the user. <a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us to help you evaluate the potential of your internal and external mousetrap</a>.</p>

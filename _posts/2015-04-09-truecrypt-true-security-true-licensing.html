@@ -1,0 +1,66 @@
+---
+layout: post
+title: 'TrueCrypt: True Security, True Licensing'
+date: 2015-04-09 08:18:21.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- product
+- security
+- technology
+tags:
+- cloud
+- cryptography
+- licensing
+- security
+- truecrypt
+author: Avi Deitcher
+---
+<p>TrueCrypt was a great open-source encryption program. It created files that, when opened by the program, looked to your computer like an additional drive. Any files placed in that drive would be encrypted and protected from prying eyes.</p>
+<p>Why would you do it?</p>
+<ol>
+<li>To keep files protected on your computer.</li>
+<li>To send files securely from one person to another.</li>
+<li>To protect files that you might store in the cloud, for example, on Dropbox.</li>
+</ol>
+<p>I believe that the growth of the cloud, and the need to store and share files on someone else's (untrusted) servers, were a major impetus behind the growth of TrueCrypt.</p>
+<p>TrueCrypt was great because of its simplicity, availability on all major platforms - Windows, Mac and Linux - and open-source nature. Anyone could read the code and contribute to it.</p>
+<p>For most software, open-source is an advantage, a plus, but not critical. <em>For encryption programs, open-source is crucial</em>. The only way to know that a piece of software really is secure is to have many smart people take it apart. Very few companies have the resources to do so in-house, and even the largest only have dedicated a small number of people to analyzing encryption software.</p>
+<p>Open-source software, on the other hand, is exposed to the <em>entire user community</em> of the Internet. Hundreds or thousands of smart people can look at different parts of the code and, jointly, find far more weaknesses - and fix them - than any one firm.</p>
+<p>It is this very social nature that has led to the incredibly fast rate of improvement in open-source software. Fifteen years ago, almost all software was owned by companies, today more and more is open-source:</p>
+<ul>
+<li>Operating systems: Windows to Linux</li>
+<li>Web servers: Netscape to Apache and Nginx</li>
+<li>Browsers: Netscape and Internet Explorer to Chromium and Firefox</li>
+<li>Application servers: ColdFusion and IIS to JBoss and Jetty</li>
+</ul>
+<p>Because errors and weaknesses in security software do not mean a failed page or bad data but leaked secure data, the level of review is crucial.</p>
+<p>Just under a year ago, the TrueCrypt team surprised everyone with an announcement that they were stopping development of TrueCrypt <span style="text-decoration: underline;">immediately</span>. In addition:</p>
+<blockquote><p>WARNING: Using TrueCrypt is not secure as it may contain unfixed security issues</p></blockquote>
+<p>On the heels of the Snowden leaks, speculation was rampant that the NSA had gotten to the developers, leading them to choose to cancel the product rather than compromise the security of their users.</p>
+<p>Either way, the question became, was TrueCrypt - as of its last release - actually secure?</p>
+<p>Last week, a group known as "<a href="https://opencryptoaudit.org" target="_blank">Open Crypto Audit Project</a>" completed their <a href="https://opencryptoaudit.org/reports/TrueCrypt_Phase_II_NCC_OCAP_final.pdf" target="_blank">audit of TrueCrypt</a>. In short, minus a few vulnerabilities, TrueCrypt was reasonably secure. There were no backdoors or other glaring or deliberate weaknesses.</p>
+<p>Many who used TrueCrypt - and continue to do so - can breathe a sigh of relief. Additionally, those projects that grew out of TrueCrypt, forks such as VeraCrypt and CipherShed, which already fixed the stated vulnerabilities, can feel comfortable in continuing their work.</p>
+<p>As with TrueCrypt, CipherShed and VeraCrypt are <span style="text-decoration: underline;">open-source</span>, which exposes them to the same community-wide auditing as the original TrueCrypt.</p>
+<p>The remaining question, then, is licensing. Do the developers of VeraCrypt and CipherShed have the right to use the TrueCrypt code as a basis for their products? This is a very sensitive area, one in which many companies stumble.</p>
+<p>In short:</p>
+<ul>
+<li>Just because software is available for free download does <span style="text-decoration: underline;">not</span> necessarily mean you can use it in your product.</li>
+<li>Just because software's source code is available for download does <span style="text-decoration: underline;">not</span> necessarily mean you can modify and use it in your product.</li>
+<li>You need to know the different licenses to understand what you can and cannot do with software products.</li>
+</ul>
+<p>Unlike most open-source software, which uses one of a few well-known licenses , whose rules are clearly understood, TrueCrypt used a custom license called the "TrueCrypt license" (<a href="https://github.com/FreeApophis/TrueCrypt/blob/master/License.txt" target="_blank">copy here</a>).</p>
+<p>Unlike how many interpreted it, TrueCrypt actually <em>does</em> allow forks, copies, modifications and other work with the source code. It just explicitly requires the modifier <strong>not</strong> to call their version TrueCrypt, imply that it is TrueCrypt, reference the TrueCrypt product or Website as some part of it. In short, "do what you want, but don't pretend you are us or that we are responsible for you."</p>
+<p>Last year, I performed an audit of an acquisition target for a company. While I focused on the quality of the product they were contemplating purchasing and its ability to integrate with the acquirer's platform, I also did a complete review of software components integrated into the acquisition target. <strong>I wanted the acquirer to understand the complete risk profile of the target.</strong></p>
+<h2>Summary</h2>
+<p>TrueCrypt was a great product. We may never understand why the developers chose to shut down the product, rather than keep it alive or, at the very least, hand it off to new volunteers from the community.</p>
+<p>TrueCrypt's open-source nature allowed for it both to be audited and to be picked up and given a new lease on life. If it had been traditional, closed-source, commercial software, neither of these would have been possible.</p>
+<p>The TrueCrypt story also highlights the complexity of encryption, and how hard it is to get it right. If you have to do cryptography anywhere, even as simple as password hashing, <strong>never implement it yourself!</strong> Use tried, true and tested open-source libraries available for your platform.</p>
+<p>Finally, <strong>you must understand the licenses of your software</strong>, or your risk being in copyright violation. For a startup, this is especially important, as the legal liabilities could put your entire business at risk.</p>
+<p>Do you know where you perform encryption in your product? Everyone does it, few know where. Do you know if you are using reliable and tested libraries or homegrown weak encryption?</p>
+<p>Are you aware of all of the products integrated into your product? Do you know all of their licenses? Are you at risk of losing it all over copyright violations? What will your next investor, partner or acquirer discover when it matters the most?</p>
+<p><a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us to review your software and find your risks... before they do!</a></p>

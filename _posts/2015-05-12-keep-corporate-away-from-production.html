@@ -1,0 +1,61 @@
+---
+layout: post
+title: Keep Corporate Away From Production
+date: 2015-05-12 09:59:00.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- security
+- technology
+tags:
+- cloud
+- convenience
+- google
+- security
+author: Avi Deitcher
+---
+<p>For a very long time, corporations treated their corporate networks as safe protected environments. The data and applications inside that network are:</p>
+<ol>
+<li>confidential and must be kept safe from unauthorized access (protect from loss), and</li>
+<li>crucial to business processes and must be kept accessible to employees (protect from denial of service).</li>
+</ol>
+<p>Over time, however, two trends have challenged these assumptions.</p>
+<p>First, more and more business-critical data has migrated to the Internet. It began with remote access to employee applications, often protected over VPNs. Over time, more and more business applications have become <em>customer-facing</em>. This means they must be accessed over the Internet, and without the usual employee burden of a VPN.</p>
+<p>For example, when I worked in financials, most of the crucial systems were internal IT. We worried about traders and investment bankers accessing their systems. Nowadays, my neighbour manages customer-facing Web-based, real-time trading applications.</p>
+<p>A net result is that the data and services accessed over the Internet are <span style="text-decoration: underline;">at least as critical and sensitive as</span>, and in many cases <span style="text-decoration: underline;">even more so than</span>, internal data and applications.</p>
+<p>Second, the assumption of a secure internal space protected by firewalls simply does not exist any more. Since my early days as an engineer of designing and building firewalls, before CheckPoint existed, we knew that defense in-depth - adopted from military strategy - was the only way to go. To paraphrase, Werner Vogels, CTO of Amazon, assume "everything is breached, all of the time."</p>
+<p>Because no one has infinite human or capital resources, companies had to choose <em>where</em> to deploy those scarce resources. Compare corporate and production:</p>
+<ul>
+<li><span style="text-decoration: underline;">Internal</span>: Full of employees and guests running around in open spaces, mix of security buildings, pesky laptops and mobile devices with direct network access, serves employees only.</li>
+<li><span style="text-decoration: underline;">Production</span>: Extremely limited access, VPN network only, serves customers and generates revenues directly.</li>
+</ul>
+<p>Where would you invest?</p>
+<p>Here is one example. Every company that processes payments has some form of intrusion detection system (IDS) on their production environment; some have automated intrustion prevention systems (IPS). A very small percentage have even a basic free IDS on their corporate environment. This isn't <em>bad</em> or <em>wrong</em>; it simply is a <strong>rational choice</strong> where to deploy those scarce resources.</p>
+<p>Since corporate networks are less secure, the logical follow-on is that they should be <strong>treated as less secure</strong>.</p>
+<p>How does that impact how you operate?</p>
+<ol>
+<li>Never connect your corporate networks to your production network.</li>
+<li>Put your business-critical corporate applications on the Internet.</li>
+</ol>
+<h3>Keep them Separate</h3>
+<p>Never connect your corporate networks to your production network. Many companies have a "standard practice" to connect their corporate network to their production network (in a data centre or the cloud) using a VPN. They do this for one of two reasons:</p>
+<ol>
+<li><span style="text-decoration: underline;">Convenience</span>: If many employees need to connect to production from the office, then it is convenient to allow unfettered access from their work desktop.</li>
+<li><span style="text-decoration: underline;">Security</span>: Rather than having employees connect directly over the Internet, an extra step through the corporate network should provide additional security.</li>
+</ol>
+<p>In truth, neither of these applies. It may indeed be convenient to connect from the corporate network, but the overhead of a client VPN when within the office is minimal. In any case, it <em>should</em> be inconvenient to connect to production. Discourage connecting to production except when absolutely necessary.</p>
+<p>At the same time, adding a corporate layer <em>reduces</em> security. Your security in a path will always be the <em>weakest</em> link in that path, not the strongest. Since your corporate environment almost always will be less secure, connecting through your corporate network <span style="text-decoration: underline;">reduces</span> security. This is the exact opposite of the intended effect!</p>
+<p>Several years ago, a client of mine went through the process of completely separating corporate and production environments. While some of the administrators did, indeed, complain about the inconvenience of launching a VPN client for each production access, the complaints lasted barely days as they quickly got used to it.</p>
+<p>A few years later, the company began processing payments, and went through an extensive Payment Card Industry (PCI) certification audit. The auditors immediately identified dozens of weaknesses in the corporate environment, a list whose remediation would have taken at least a year and untold capital.</p>
+<p>However, because there was <span style="text-decoration: underline;">zero</span> connectivity between corporate and production environments, the team was able to demonstrate to the auditors that corporate was unconnected to any payment system, and thus completely out of scope for the audit. When the auditors agreed, we had better security <span style="text-decoration: underline;">and</span> a faster and cheaper path to compliance.</p>
+<h3>Invert It</h3>
+<p>If production is more secure than corporate, then the logical conclusion is to put truly important <em>internal</em> applications on the Internet.</p>
+<p>Sounds backwards? Many companies already do it without realizing. Companies use <a href="http://expensify.com" target="_blank">expensify</a> for expense management, <a href="http://salesforce.com" target="_blank">salesforce</a> for CRM, <a href="http://zenefits.com" target="_blank">zenefits</a> for HR. Many companies tell me, "we never outsource anything," yet pull out their pay stub and see "ADP" on it; similarly many firms, including large ones, already have business critical applications on the Internet... they just don't realize it.</p>
+<p>According to <a href="http://blogs.wsj.com/cio/2015/05/11/google-moves-its-corporate-applications-to-the-internet/" target="_blank">this article</a> in the WSJ, Google, often a leader in this space, is taking exactly this approach to their own in-house IT applications. They realize how much usage patterns, employee work locations, and relative security of the environments have changed, and take the next step. It is only logical.</p>
+<h2>Summary</h2>
+<p>If your corporate environment connects to your production customer-facing environment, <strong>kill it!</strong> If your internal business applications really are business critical, take a long hard look at whether they really are best served <em>and</em> secured internally, or facing the Internet.</p>
+<p><a href="{{ site.url }}/contact/" target="_blank">Ask us</a> to help you evaluate which apps should live internally, which in the cloud, and how the two should connect securely. The answers might just make your employees' lives better while saving money.</p>

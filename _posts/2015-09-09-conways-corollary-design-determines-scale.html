@@ -1,0 +1,58 @@
+---
+layout: post
+title: Conway's Corollary - Design Determines Scale
+date: 2015-09-09 06:30:14.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- architecture
+- cloud
+- cost
+- design
+- scale
+- speed
+author: Avi Deitcher
+---
+<p>When I went to business school, I worked closely with an incredibly smart woman with whom I shared a very similar method of thinking and mindset. When we would find the same responses to the same questions in the same manner, inevitably I would quote, "great minds think alike."</p>
+<p>She taught me that there is a corollary: "...but fools rarely differ."</p>
+<p>The great challenge in life often isn't to agree with someone, no matter how smart; it is to determine if you are both great minds thinking alike, or both fools who are not differing.</p>
+<p>I have <a href="{{ site.url }}/2015/08/24/go-conway-2594/" target="_blank">written before</a> about Conway's Law, which states, in short:</p>
+<blockquote><p>Organizations which design systems … are constrained to produce designs which are copies of the communication structures of these organizations.</p></blockquote>
+<p>Recently, I came across the corollary to Conway's Law. If the organization determines the design (or architecture), then the corollary is:</p>
+<blockquote><p>Organizations are constrained to the cost and speed of scaling a system based on the design of that system.</p></blockquote>
+<p>I recently had breakfast with a friend, longstanding technology executive, whom I greatly respect. He was explaining to me why his cloud systems require a lot of labour to scale.</p>
+<p>Unfortunately, the term "cloud", heavily overused, seems to be applied to everything nowadays. However, true cloud, especially applications, as I have written before, like true SaaS, has a very specific meaning.</p>
+<p>It is <strong>not</strong> where I run your dedicated application for you on servers, so you do not have to deal with hosting, networking, managing it and upgrades. That can be very valuable to customers, but it is not true cloud. True cloud is where I run a <strong>identical copies of my application</strong> with multiple customers running through it; any customer can connect to and use any copy of my application. If I have individual instances of the application(s), let alone individual servers, per customer, <strong>that is not true cloud</strong>.</p>
+<p>Does that mean you never should run per-customer instances? <strong>Of course not.</strong> There are many situations where you may need per-customer instances or even servers. Your business model may depend upon it. But you will <strong>not</strong> get cloud-scale speed or costs in a per-customer model.</p>
+<p>My friend's issue was that he did not have true cloud due to architectural decisions made at the software level. If you have 50 customers, and each has their own instance of the application, that is:</p>
+<ul>
+<li>50 application instances</li>
+<li>50 databases</li>
+<li>50 sets of configuration</li>
+</ul>
+<p>If you have multiple application servers - Web, app, multiple databases, etc. - per customer, then the total number keeps as well.</p>
+<p>No matter how much automation you do, the lack of immutability and identity of each instance compared to the other means human effort to support and manage each one, as well as unique errors for each one. It also means upgrades are not performed once across all customers over 3 hours, it mean they are performed 50 times, once per customer.</p>
+<p>Well, at least each customer is faster, right? Won't each take less time, say 2 hours?</p>
+<p>In theory, yes, although that is not much of a consolation. 2 hours times 50 customers is still 100 hours, far worse than 3, or even 5 or 10 hours.</p>
+<p>But the real pain is that because each customer has their own instance, it becomes too easy over time to make each one unique, and to create processes and assumptions that depend on that uniqueness. After all, why spend 40 hours engineering a cross-platform solution if you can solve "just this customer's problem" in 3 hours and be done?</p>
+<p>That uniqueness - lack of identity - means that the time to upgrade a customer actually will be <em>more</em> than if it had been shared. It means the 3-hour upgrade for everyone doesn't become 2 hours per customer times 50... it becomes at least 50% and more likely 100% more, or 4.5-6 hours per customer.</p>
+<p>An upgrade that cost 33 times the alternative just became 100 times the alternative. <strong>This is all because of design.</strong></p>
+<p>While you <span style="text-decoration: underline;">may</span> be constrained to designs that reflect your organization, you <span style="text-decoration: underline;">definitely</span> are constrained to scaling costs and and speed that reflect that design.</p>
+<p>How do you solve it?</p>
+<ol>
+<li>Design as "true cloud" as you can. Not only does it give you the scaling costs and speed you want directly, it also <span style="text-decoration: underline;">forces</span> you to design tools and processes in a way that support those operating methods.</li>
+<li>If you cannot design "true cloud", design everything else <em>as if</em> you were in true cloud. Must have an application instance per customer? Make it run as automatically as if it were for all your customers. Require per customer IP address? Make IP address deployment as automated as if IP didn't matter. Never <em>ever</em> do per-customer customization or manual setup. Simple test: if the customer's instance died today, would it restart automatically elsewhere in seconds?</li>
+<li>Constantly reevaluate every part of your design. Find the parts that do not scale and change the designs - and processes caused by them - to support cloud scaling. It looks expensive now, but the returns pay back in spades. Be <strong>fearless</strong> about changing things.</li>
+<li>Change small things all the time, big things regularly but less frequently. Do <span style="text-decoration: underline;">not</span> hold out for perfection. Every little thing you change frees up time and effort to focus on more things. <strong>These are force multipliers</strong>.</li>
+</ol>
+<h2>Summary</h2>
+<p>Your organization constrains your design, but your design constrains your scale, costs and speed even more.</p>
+<p>Invest in fixing your designs, even the small things, and constantly reevaluate. Not sure where to begin? Where to get the biggest return for your investment? <a href="{{ site.url }}/contact/" target="_blank">Ask us</a>, we love helping you scale.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

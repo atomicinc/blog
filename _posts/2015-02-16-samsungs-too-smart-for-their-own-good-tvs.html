@@ -1,0 +1,73 @@
+---
+layout: post
+title: Samsung's "Too Smart for Their Own Good" TVs
+date: 2015-02-16 08:11:19.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- security
+- technology
+tags:
+- apple
+- culture
+- google
+- mistake
+- nuance
+- privacy
+- samsung
+- security
+- siri
+- tv
+author: Avi Deitcher
+---
+<p>The Internet has been abuzz for the last week about a hitherto little-known clause in Samsung's "Smart TV" privacy policy. The news was most prominently covered in the Daily Beast, <a href="http://www.thedailybeast.com/articles/2015/02/05/your-samsung-smarttv-is-spying-on-you-basically.html" target="_blank">here</a>.</p>
+<p>The Daily Beast includes a link to the entire privacy policy, but the important element is:</p>
+<blockquote><p>Please be aware that if your spoken words include personal or other sensitive information, that information will be among the data captured and transmitted to a third party.</p></blockquote>
+<p>How, exactly, did this happen, and how does it work?</p>
+<p>Actually, there are two questions here:</p>
+<ol>
+<li>How, exactly, do Samsung's TVs listen to you and send the data to "a third party"?</li>
+<li>How did Samsung mess up so badly that it ended up recording us surreptitiously in our living rooms and bedrooms, and what can our company learn from it?</li>
+</ol>
+<h3>Big Brother</h3>
+<p>The actual technical violation is straightforward. Samsung assumes that part of its Smart, Internet-connected TV is eliminating the many-buttoned remote. People would far prefer to say, "hey, TV, switch to channel 10," or, "hey, TV, raise the volume 2 steps."</p>
+<p>Samsung's vision of this world was highlighted in this <a href="https://www.youtube.com/watch?v=oLLbt0jyqDA" target="_blank">funny commercial</a> which, I believe, originally aired in Argentina.</p>
+<p>The problem is that, as simple as Siri and Cortana and Google make it seem, recognizing speech and turning it into text is <em>hard</em>. It is called "Automated Speech Recognition," and is the subject of a very large amount of research. In addition to the technical difficulties, one company - <a href="http://www.nuance.com/" target="_blank">Nuance</a> - dominates the market.</p>
+<p>If you are a serious company and you want ASR, you will do business with Nuance.</p>
+<p>Samsung has nowhere near the technical chops to replicate what Nuance does, let alone embed it in their TVs, and is unlikely to want the legal patent battle sure to ensue. Thus, they did what most others - including, apparently, Siri - do: record the speech and ship it off to Nuance over the Internet to process and return text.</p>
+<p>The problem is that everything you say in range of your TV - whether in your living room or bedroom - will be sent to Nuance, who will keep it for as long as they deem it useful.</p>
+<p>Will they put in place privacy protections? Does Samsung anonymize it? Given their privacy policy and warnings, apparently not.</p>
+<p>Are there simple solutions for this? Sure there are.</p>
+<ol>
+<li><span style="text-decoration: underline;">Triggers</span>: Apple uses "Hey Siri," to indicate something should be listened to; Google uses "OK Google." These patterns can easily be stored locally and only <em>after</em> being recognized is the audio shipped offsite.</li>
+<li><span style="text-decoration: underline;">Borders</span>: Apple and Google have clear sounds to indicate, "I am done listening".</li>
+<li><span style="text-decoration: underline;">Anonymizer</span>: Anonymize the information <em>before</em> it is sent offsite, so Nuance has no way of knowing who said it or how.</li>
+<li><span style="text-decoration: underline;">Filter</span>: Filter out sensitive information using patterns.</li>
+<li><span style="text-decoration: underline;">Indirection</span>: Don't send it straight to Nuance; instead, send it to your infrastructure <em>first</em>, and only then send it to Nuance. This allows you to take ownership over, responsibility for, and control of the information before it goes out.</li>
+</ol>
+<p>As one can imagine, this will have a negative impact on Samsung's Smart TV business... the one with the higher margins. People will prefer "dumb TVs", or even those from competitors like LG (although who knows what their privacy policy is).</p>
+<p>If this is how the problem works, and there are straightforward solutions to the privacy issue - solutions companies like Apple and Google have been using for years -  then <em>how</em> did Samsung mess up so badly? How did they <span style="text-decoration: underline;">not</span> see this coming?</p>
+<h3>The Culture</h3>
+<p>In the end, it always comes down to people. Sure, Samsung <span style="text-decoration: underline;">could</span> have taken plenty of technical and process steps to avoid the problem, but it was <span style="text-decoration: underline;">people</span> who made these decisions.</p>
+<p>Companies, especially technology companies, get caught up deeply in "the new technology", the "hot new thing", the "future". For the last 8 years or so, multiple companies have released boxes or sticks that connect to your TV and provide it with whole new sets of content and usability: Roku, Boxee, Google, Apple, Amazon, and many more.</p>
+<p>TV makers look at these and worry, "are we just becoming TV panel makers?" Thus, they rush to copy, imitate and get ahead of it. As usual, they are blinded, and in doing so, damage their core business.</p>
+<p>I have written <a href="{{ site.url }}/2013/08/08/flying-cables-1107/" target="_blank">before</a> about companies that think their core business is "just too boring", cable and wireless companies that are about "more than just dumb pipes." <strong>What is wrong with being a great pipes company?</strong></p>
+<p>Cable companies and wireless provides are among the most hated companies in North America, precisely <i>because</i> they focus on everything <em>but</em> being great providers of their core business: <strong>connectivity</strong>.</p>
+<p>Apple, Google, Roku, Boxee are unlikely to grab serious TV market share from TV manufacturers. It is <em>hard</em> to mass-manufacture 50" TVs at a reasonable price, and have the entire supply chain, as well as the marketing, while working at Samsung's or LG's margins. Apple works in an entirely different gross margin business, with a different supply chain and support model. Google's only hardware expertise is in its Motorola unit, which has zero expertise and experience manufacturing TVs.</p>
+<p>Samsung was so focused on "cool features" and "stealing thunder from Apple/Google/Roku/Amazon/etc." that they went into a market they didn't understand, with operational, market and security requirements they didn't understand, and so damaged their core product. It will be a long time until people trust them again.</p>
+<h2>Summary</h2>
+<p>Every business you go into has critical customer market requirements that affect how you operate. If you do not fully understand and grasp the implications of those businesses and their extensions, or even one that seems an extension of yours, you are highly likely to damage your core.</p>
+<p>Before deciding to offer new products, services or features, ask yourself:</p>
+<ul>
+<li>Does it complement our current offering?</li>
+<li>Does it fit with our skill set, not just engineering, but manufacturing, supply chain, IT, marketing, sales, finance, legal, compliance, product management?</li>
+<li>Do we understand the operational impact of the new offering, and are we capable of supporting it?</li>
+<li>Do we know what mistakes we can make and their impact?</li>
+</ul>
+<p>Every business is guaranteed to make mistakes. The key question is, do you understand the impacts of those mistakes, and can you make them in a way that will not permanently damage your new offering, let alone your existing products and services?</p>
+<p>Operating requirements for each business vary. Make sure you <a title="Contact" href="{{ site.url }}/contact/" target="_blank">ask for the help</a> you need in understanding them.</p>
+<p>Don't be the next Samsung.</p>

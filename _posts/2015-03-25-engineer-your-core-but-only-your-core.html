@@ -1,0 +1,85 @@
+---
+layout: post
+title: Engineer Your Core, But Only Your Core
+date: 2015-03-25 06:57:32.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- technology
+tags:
+- bugs
+- build
+- buy
+- complexity
+- engineering
+- testing
+author: Avi Deitcher
+---
+<p>When do you buy? When do you build?</p>
+<p>This question of "buy vs. build" is at the heart of many a debate in companies, not only inside engineering teams, but between engineering, product management and executives.</p>
+<h3>Fact #1: Engineering is Hard</h3>
+<p>Engineering is <span style="text-decoration: underline;">very</span> hard. Despite the enormous advances over the years, and the number of system tools and development frameworks and languages, every one of which is touted as a "silver bullet" to solve all of your really hard problems (warning: they won't), engineering really is complex.</p>
+<p>This very complexity helps us understand the psychology behind engineers.</p>
+<h3>Fact #2: Engineers Take Pride in Solving Hard Problems</h3>
+<p>Want to see a happy engineer? Give him or her a <em>really tough</em> problem to solve, wait until they are done, and see the glow on their face.</p>
+<p>Indeed, the drive to solve really complex problems is one of the primary reasons people choose a career in engineering.</p>
+<p>Look at <a href="https://www.facebook.com/careers/teams/engineering" target="_blank">the introduction to software engineering careers at Facebook</a>:</p>
+<blockquote><p>Working at Facebook means doing what you love. We hire trailblazers, hackers and pioneers. We want people who can solve challenging problems, make a real impact and build something big.</p></blockquote>
+<p>Want to hire great engineers? Tell them how much you will challenge them!</p>
+<p>But this tendency has a downside.</p>
+<h3>Fact #3: Engineers Look for Hard Problems to Solve</h3>
+<p>Because engineers love doing hard work, and take pride in cracking tough nuts, they often <em>look</em> for hard problems to solve. This can lead to solving problems that would be <span style="text-decoration: underline;">really cool</span> to solve, but whose solutions the business <em>as a whole</em> would be better off acquiring.</p>
+<p>A few years back, I was working with a company building a new service. The relatively young team lead wanted to build a key data processing component from scratch. Sure, there was an open-source product that could, more or less, do the same thing, but his would be "much better".</p>
+<p>To the SVP's credit, despite knowing that it was a "fool's errand", he gave the team lead a lot of rope. The team lead failed on the project, but learned a career-long valuable lesson. The SVP knew that the team lead was trying to solve a non-core problem, but let him learn the lesson anyways. Not every company has that luxury of time.</p>
+<h3>Fact #4: The Hardest Part of Engineering <em>Isn't</em> the Engineering</h3>
+<p>The hardest part of engineering isn't solving your business processes, or representing them in software.</p>
+<p>The hardest part, actually, <span style="text-decoration: underline;">isn't</span> the primary engineering at all.</p>
+<p>The <em>hardest</em> part is building the systems so they can handle unforeseen problems. Whether those problems are bugs in your own code, or environmental issues like servers or data centres deciding that today is the day to go on an extended vacation, managing problems - and definitely not exacerbating them - is the hardest part of any system design.</p>
+<p>There is a method to prepare, of course, and that is testing. But the more complex the system, the more potential combinations and permutations and edge cases, and the more difficult it becomes to actually test for the problems.</p>
+<p>I was reminded of this again by the ever-deep Adrian Colyer's Morning Paper, which <a href="http://blog.acolyer.org/2015/03/25/samc-semantic-aware-model-checking-for-fast-discovery-of-deep-bugs-in-cloud-systems/" target="_blank">discusses methods of finding problems in the design of distributed systems</a>. Systems, by and large, are designed in one of three major ways:</p>
+<ul>
+<li><span style="text-decoration: underline;">Single</span>: If you just have one item, for example a database, you can be very confident about its consistent state. Either it is working, or it has died and your service is dead too. Of course, you really don't want that!</li>
+<li><span style="text-decoration: underline;">Failover</span>: If you have one primary database and a backup, when the primary dies, you can make the backup the primary, and you know things are fine. However, this really does not scale well.</li>
+<li><span style="text-decoration: underline;">Distributed</span>: You have 3, 4, 5 perhaps 100 databases running. Each of these connects and coordinates with the others, so that the loss of any one, or even several, has zero impact on your application. It just keeps running without any human intervention.</li>
+</ul>
+<p>While the distributed solution <em>seems</em> to make a lot of sense, it turns out that it is very complex to keep all of the instances coordinated. What happens if you don't lose 3 out of 10, but the 3 lose connectivity to the other 7? Each side thinks the others are dead, and tries to become authoritative. Are you looking forward to the nightmare of synchronizing and resolving the data conflicts when it all comes back? Probably not.</p>
+<p>The more complex the solution, the better it solves some problems, but the greater the complexity of the system as a whole, the exponentially greater number of ways it can misbehave and cause unrecoverable failure.</p>
+<h3>Fact #5: You <em>Can</em> Solve the Problem</h3>
+<p>So how do we get around the complexity?</p>
+<p><strong>Build what you must, buy the rest.</strong></p>
+<p>In every business, there are elements whose in-house expertise is crucial for the business (consultants like to call them "core competencies", another heavily abused term), and those that are not.</p>
+<ul>
+<li><span style="text-decoration: underline;">You must</span> make payroll; <span style="text-decoration: underline;">you do not care</span> how to do ACH transfers.</li>
+<li><span style="text-decoration: underline;">You must</span> have an office; <span style="text-decoration: underline;">you do not care</span> how to replace the lightbulbs.</li>
+<li><span style="text-decoration: underline;">You must</span> enable customers to pay securely at checkout; <span style="text-decoration: underline;">you do not care</span> how to do fraud checks and card verification.</li>
+<li><span style="text-decoration: underline;">You must</span> offer online registration; <span style="text-decoration: underline;">you do not care</span> how to check email blacklists.</li>
+</ul>
+<p>Maybe you <em>can</em> build a better database or application server or firewall. However, the potential errors grow exponentially (or higher) with the complexity of the system.</p>
+<p>If the <em>design</em> of a system is <span style="text-decoration: underline;">not core</span> to your business and provides no competitive advantage, do not build it. Buy it.</p>
+<p>How do you evaluate what you should buy and what you should build? There are three rules which are simple to describe and complex to implement:</p>
+<ol>
+<li>Is it available to acquire?</li>
+<li>Is it crucial to you?</li>
+<li>Does it provide competitive advantage?</li>
+</ol>
+<p>Obviously, if you cannot acquire it, whether through a commercial vendor or as open-source, then you almost have no choice but to build it. Of course, sometimes it <em>looks</em> like you need it, but an alternate design obviates the need for it.</p>
+<p>If it is not crucial, buy it. It isn't worth wasting energy on a Web UI request routing mesh if 99% of your business runs as an iOS app.</p>
+<p>Finally, does it provide competitive advantage? If it does not, do not waste your energy on it. Even crucial systems can be acquired.</p>
+<p>Let's look at a few examples:</p>
+<ul>
+<li><span style="text-decoration: underline;">Payroll</span>: Every company in the world <span style="text-decoration: underline;">must</span> run payroll. If you do not pay your employees, they leave. Yet almost no one runs their own payroll service. Can you acquire it? Sure. Try paycycle or surepayroll or paychex or ADP.  Is it crucial? Definitely. Does it provide competitive advantage? No.</li>
+<li><span style="text-decoration: underline;">Heroku</span>: Before Heroku was acquired, it ran a routing mesh (written in Erlang) to route requests from its front-end Web servers (nginx) to its back-end application instances. While they acquired most and open-sourced almost everything else, they built their own mesh and kept it closed-source. Could it be acquired? To some degree. Was it crucial? Yes. Without it, they could not do all of the intelligent routing and scaling that is a key selling point. Did it provide competitive advantage? Definitely.</li>
+<li><span style="text-decoration: underline;">Cassandra</span>: <a href="http://en.wikipedia.org/wiki/Apache_Cassandra" target="_blank">Cassandra</a> is a specialized type of database, known as NoSQL. It was originally developed by Facebook to power one of their search features, yet they later open-sourced it. Could they acquire it? No. At the time it was developed, no serious alternative was available. Was it crucial? Yes. They needed it (or something like it) to power a key feature supporting growth. Did it provide competitive advantage? No. There were other ways to do it, but none anywhere near as good or performant for Facebook's needs. Yet Facebook's competitive advantage comes from its social <em>network</em>, not its databases. So Facebook turned it around and open-sourced it. They made it available to acquire. They benefit from broader adoption and updates, and get "street cred" for contributing to the technology community.</li>
+</ul>
+<h2>Summary</h2>
+<p>Choosing to build technology systems and components for your business has two costs:</p>
+<ol>
+<li><span style="text-decoration: underline;">Build cost</span>: It usually is more expensive to build it from scratch than take it off-the-shelf.</li>
+<li><span style="text-decoration: underline;">Complexity cost</span>: The more complex the system, exponentially more complex will be the testing and edge cases.</li>
+</ol>
+<p>The complexity cost normally far exceeds the build cost. <strong>Only build that which is crucial to your business.</strong> Sometimes, you even build it and donate it, in a win-win scenario.</p>
+<p>Do you find that your services suffer from high costs, slow deployment and lower-than-desired stability? Are you building more than you need to? Are there parts of your systems that would be <em>better</em> as open-sourced? <a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us to evaluate your systems</a>. You may free up your staff, deliver faster, build your reputation and improve service availability, a win-win all around.</p>

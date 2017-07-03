@@ -1,0 +1,79 @@
+---
+layout: post
+title: Go Conway
+date: 2015-08-24 08:04:01.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- technology
+tags:
+- architecture
+- conway
+- go
+- organization
+- technology
+author: Avi Deitcher
+---
+<p>There is a famous saying, known as <a href="https://en.wikipedia.org/wiki/Conway%27s_law" target="_blank">Conway's Law</a>, which states that:</p>
+<blockquote><p>organizations which design systems ... are constrained to produce designs which are copies of the communication structures of these organizations</p></blockquote>
+<p>It means that when your organization builds a system, its structure will reflect the organization that created it. If you have 3 teams - database administrators, system administrators and Web developers - then your system architecture will have 3 distinct components: databases, servers and Web UI.</p>
+<p>When I have helped companies change their technology design to become much more nimble, reliable and responsive, the most challenging part often is <em>not</em> the technology itself. Rather it is the organizational changes required to support the new design. It is for this very reason that I market my services as operations consulting; technology, as fascinating as it is, is just the tool.</p>
+<p>This week, I came across another example of Conway at work: the language <a href="http://golang.org" target="_blank">Go</a>.</p>
+<p>Go is <em>very</em> popular. Besides the full support of its creator, Google (who has plenty of resources to back it), it has a few key features that make it appealing. Among them:</p>
+<ul>
+<li><span style="text-decoration: underline;">Binary code</span>: unlike interpretive languages like Ruby or JavaScript or Python, and unlike byte-compiled languages like Java and Scala, Go's output (its "deployment artifact") is a native application for the platform. When I deploy a Go application on my Mac, it is a Mac app; on Linux, a Linux app; etc.</li>
+<li><span style="text-decoration: underline;">Cross compilation</span>: I work on a Mac, but want to build it for Windows or Linux? No problem, just build it right here on my Mac.</li>
+<li><span style="text-decoration: underline;">No dependencies</span>: Often, the single deployment artifact itself is easy to deploy; it is all of the requirements and pre-requisites - app servers, libraries, etc. - that are difficult to manage. Go compiles it all into a single file that <span style="text-decoration: underline;">just runs</span>.</li>
+<li><span style="text-decoration: underline;">Threading</span>: Multi-threading - having multiple parallel streams of execution for your application - is very important to performant applications, yet is quite difficult to do correctly. Go uses "goroutines" and "channels" to make it simple to manage.</li>
+</ul>
+<p>The idea of "no dependencies", of course, is a fiction. <span style="text-decoration: underline;">Everything</span> has dependencies; it just is a question of when and how you resolve them.</p>
+<p>In many development environments, you need to resolve them twice: at <em>build</em> time and at <em>deploy </em>time. With Go, you resolve them only once, at build time.</p>
+<p>The question, then, is <strong>how do you resolve them?</strong> How do you make sure that my application A, which depends upon X, Y and Z, can find everything it needs?</p>
+<p>Every development environment has its own way of both declaring a dependency and getting it.</p>
+<ul>
+<li>Java uses "import" statements to declare dependencies, while those dependencies are distributed as "jar" files that you import manually or use tools like maven</li>
+<li>Nodejs uses "require" statements and npm to retrieve the dependencies</li>
+<li>Ruby uses the bundler to declare and import dependencies.</li>
+</ul>
+<p>Go uses "import" statements, wherein you declare what you depend upon and import it:</p>
+<pre style="padding-left: 30px;">import "net/http" - declare a dependency upon and import the official "http" package
+import "github.com/someone/something" - declare a dependency upon and import the package at "github.com/someone/something"</pre>
+<p>How is go different, then? In how it lets you declare dependencies relative to your project. In just about every development environment, you can declare a dependency on one of three types of packages:</p>
+<ol>
+<li><span style="text-decoration: underline;">Standard</span>: Every language has an standard library that is available with the language.</li>
+<li><span style="text-decoration: underline;">External</span>: By using the absolute, globally unique identifier of a package, you declare your dependency on that package wherever it is.</li>
+<li><span style="text-decoration: underline;">Internal</span>: By using a relative path, you declare that your bit of code depends on another bit of code that is an internal part of the structure you are working on.</li>
+</ol>
+<p>Each of these serves a purpose. The official packages are a crucial part of the language, basic utilities and services; external packages provide flexibility to use the broader community's or your internal organization partners' contributions.</p>
+<p>And "internal" packages allow you <span style="text-decoration: underline;">to organize your code</span>. As anyone who has built anything larger than a sample "hello, world!" application knows, the ability to support and maintain an application is directly proportional to the organizational structure of the code.</p>
+<p>Here is an example from searchjs, a small project with which I was involved:</p>
+<p><a href="{{ site.url }}/wp-content/uploads/2015/08/searchjs.png"><img class="alignnone size-full wp-image-2598" src="{{ site.baseurl }}/assets/site-images/searchjs.png" alt="searchjs" width="355" height="457" /></a></p>
+<p>This structure allows you to distribute not just the final deployment <em>artifact</em>, i.e. the single final file, but also the source code, which is crucial to collaboration.</p>
+<p>In Go, however, the directories mean nothing other than "another package." It is <span style="text-decoration: underline;">impossible</span> (or, at the very least, frowned upon strongly, with indication that it will be removed in the future) to say, "include the package that is in this directory." All you can say is, "include this external absolute package."</p>
+<p>Why should it matter? Who cares if the sub-directory needs to be referred to by its relative path "./util" or its absolute path "github.com/someone/something/util"?</p>
+<p><strong>It breaks encapsulation!</strong></p>
+<p>If someone copies the entire directory tree, the entire "capsule", of your project, they <em>cannot</em> assume it that it works just fine on its own. <strong>Every file that <em>import</em>s something else will contain the absolute path.</strong></p>
+<p>Here is an example. I have one main file in a package named <em>github.com/me/myproject</em>, that includes a bunch of other packages in my project. If I am well encapsulated, it would look something like this.</p>
+<pre>import "package1"
+import "package2"
+import "package3"</pre>
+<p>But since Go's thrust is absolute only, it looks more like:</p>
+<pre>import "github.com/me/myproject/package1"
+import "github.com/me/myproject/package2
+import "github.com/me/myproject/package3</pre>
+<p>When someone copies the entire project - or uses the single most popular method of doing so, a "github fork", the modifications will not work. The project now depends on a different project.</p>
+<p>And if the above imports appear in 5 places in each of 20 different files in 3 different directories in the project? Nightmare.</p>
+<p>Go's structure has unit of distribution and encapsulation directly at odds with every other language in common use, and every code distribution and collaboration mechanism.</p>
+<p>However, I come not to criticize Go's architects' choices, nor Google itself, but to understand why and how this came to be.</p>
+<p>Go's genesis is inside a single monolithic company. There may be multiple people collaborating on a project, but they all work against a single source structure for a single boss, somewhere up the chain.</p>
+<p>The idea of multiple completely independent people and organizations sometimes working independently, sometimes collaborating, of their own free will and time, each with their own style, just does not fit within their mindset.</p>
+<p>Inside Google, it is safe to presume that every little directory, no matter how small, is an absolute package, because it really is.</p>
+<p>Reading the forum discussions about supporting relative packages is very enlightening. The people behind Go simply cannot fathom why anyone would want sub-packages, or to encapsulate all of the directories into a single self-sustained project.</p>
+<p>While Go is an excellent language and platform in many ways, and it is being adopted widely, its package management is the subject of a lot of complaints and grumbling.</p>
+<p>Ironically, its growth ultimately will constrain its success, as larger scale teams struggle to work with and around the package management system. I suspect someone will fork it fairly soon, if only to get around these constraints.</p>
+<h2>Summary</h2>
+<p>Go's design reflects its roots inside Google, while projecting the organization and constraining it outside.</p>
+<p>While your technology architectures will reflect your organization, per Conway, your technology architectures also will <span style="text-decoration: underline;">constrain</span> your ability to organize and the usefulness of your technology, until you and your technology grow together.</p>
+<p>Does your technology design enable or restrict your growth? How could you change your technology to enable better processes and ultimately a more nimble and faster-delivering organization? <a href="{{ site.url }}/contact/" target="_blank">Ask us</a>.</p>

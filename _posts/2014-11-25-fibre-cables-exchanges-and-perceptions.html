@@ -1,0 +1,25 @@
+---
+layout: post
+title: Fibre cables, exchanges and perceptions
+date: 2014-11-25 07:20:01.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>Financial trading houses are always looking for a market advantage, no matter how small. It shouldn't surprise us; when you are dealing in markets that move billions of dollars in short time frames, a few milliseconds of advantage can make all of the difference.</p>
+<p>Because trading firms are <em>incredibly</em> sensitive to any advantage - or more correctly to feeling left behind (it is all about the <span style="text-decoration: underline;">feeling</span>, isn't it?), many trading centres and exchanges have very strict rules about what they will provide. Two of them came to light in a recent discussion I had with a friend who has been in financial services for a very long time.</p>
+<p>The Chicago Mercantile Exchange, the CME, or as it is known, simply, "the Merc", provides a lot of information on markets to trading and investment houses. In order to avoid any advantage to one firm over another (other than the Merc itself, of course, but that is a different story entirely), there are many rules they follow. Here are 2 of them.</p>
+<ol>
+<li>All equipment will be provided by the end customer. Thus if Goldman Sachs or Morgan Stanley or any other small or large firm wants a data feed from CME, they install their own equipment in the Merc's data centre. If your server is slow, or suddenly reboots, or has a bad fibre card, it is your responsibility. You can invest as much or as little as you want in that gear, but it is your choice.</li>
+<li>Every fibre cable connecting the Merc's feeds to your equipment will all be <strong>exactly</strong> the same distance. I think it is 100m, but the exact number is irrelevant. CME's staff will loop cables, turn them around (but not bend!) so that every cable is <strong>exactly</strong> the same length.</li>
+</ol>
+<p>To some extent, this is a bit of overkill, especially the second rule. The speed of light is 3x10^8 m/s, or 300,000,000 m/s. If one person's cable is 80m long and the other's is 100m long, it may be a 20% difference in cable length, but the difference in time of arrival will be 20/300,000,000 seconds or <strong>6.7% of a microsecond</strong>, or <strong>67 nanoseconds!</strong> This is <a href="http://en.wikipedia.org/wiki/Shake_(unit)" target="_blank">6.7 shakes</a>, and simply will not make any difference.</p>
+<p>The real reason for this, then, is not equal time to equal customers, who could not even detect a difference between 50m and 100m, but <strong>perception protection</strong> for the Merc itself.</p>
+<p>Since every customer <em>knows</em> they are getting the exact same distance as everyone else, no one will have any reason to complain. When some firm gets into serious trouble, the first thing they are going to look for is to apportion the blame elsewhere; the Merc makes a nice juicy target. By clearly stating that <em>everyone gets the exact same cable and length</em>, the Merc eliminates the need to fight off a lawsuit or regulatory investigation.</p>
+<p>Of course, the CME <strong>would win</strong> every lawsuit about feeding data differently by showing the simple math above. But the entire process would be a distraction and expensive. A little rigidity at fairly low cost makes it all go away.</p>
+<p>To quote Benjamin Franklin, an ounce of prevention is worth a pound of cure.</p>

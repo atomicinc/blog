@@ -1,0 +1,21 @@
+<div class="home" id="home">
+  <h2 class="pageTitle">Latest Articles</h2>
+  <ul class="posts noList">
+    {% for post in posts_collate %}
+      <h2><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+      <p class="description">{{ post.content | strip_html | strip_newlines | truncate: 250 }} &nbsp; <a href="{{ post.url }}">continue reading</a></p>
+      <span class="date">{{ post.date | date: '%d %B %Y' }}</span>
+    {% endfor %}
+  </ul>
+  <!-- Pagination links -->
+  <div class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous button__outline">Newer Posts</a>
+    {% endif %}
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="next button__outline">Older Posts</a>
+    {% endif %}
+  </div>
+</div>
+
+{% assign posts_collate = nil %}

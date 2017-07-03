@@ -1,0 +1,55 @@
+---
+layout: post
+title: Amazon Pricing Should Be Customer-Centric
+date: 2016-09-20 17:38:29.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- pricing
+- product
+- technology
+tags:
+- amazon
+- aws
+- cloud
+- customers
+- pricing
+author: Avi Deitcher
+---
+<p>Today, I had a very interesting discussion with <a href="http://www.telematica.com">Rich Miller</a>, a consulting colleague who has been around the block more than a few times.</p>
+<p>One of the interesting points he raised is that Amazon's AWS pricing doesn't quite work for enterprises.</p>
+<p>Let's explore how it is a problem and why it is so.</p>
+<p>At first blush, Amazon's pricing is intuitive: use an hour of an m4.xlarge, pay $0.239; use 2 hours, pay $0.478; use a whole month's worth, pay $0.239*720 = $172.08.</p>
+<p>Of course, if I know I am going to use that m4.xlarge (or a lot of them) for a whole year, I should be able to get a discount for committing. Indeed, Amazon offers that type of commitment pricing, with varying discounts that depend on if you commit for one year or three years.</p>
+<p>This type of pricing <em>seems</em> to make sense. Amazon knows it will get paid to provide 8,760 hours of that m4.xlarge for the year. In exchange for that knowledge and its ability to plan, it can afford to give the committer (you) a decent discount.</p>
+<p>What's the problem with it?</p>
+<p>If you are a small startup or business, not much. You figure out that you need 2x m4.large, 5x t2.small, several others, and just commit.</p>
+<p>But enterprises don't work that way. Enterprises are orders of magnitude larger than those small companies. They use hundreds, if not thousands, of each instance type.</p>
+<p>To provide for these "elephant" use cases, Amazon has a sales team that is authorized to negotiate appropriately-priced deals, much larger discounts on the listed prices, or "rack rates".</p>
+<p>However, the pricing remains built around the instance types you order.</p>
+<p>The reason is that Amazon sets its prices to <strong>suit the vendor</strong>, rather than <strong>to fit the customer</strong>.</p>
+<p>An enterprise is <span style="text-decoration: underline;">not</span> a small business with an application that just happens to be 3 orders of magnitude larger. An enterprise is a diverse conglomerations of multiple divisions and their many applications, some of which are quite large, others very small, and everything in between.</p>
+<p>Enterprises are not a large business; they are a dynamic ecosystem of businesses.</p>
+<p>As a dynamic ecosystem, their needs change over time, sometimes from day-to-day, but certainly within the timeframes of AWS commitments. It is nearly impossible for an enterprise to know upfront that it will need 100,000 hours of m4.xlarge and 2,500,000 hours of t2.small.</p>
+<p>What they <span style="text-decoration: underline;">do</span> know is that they will spend roughly the equivalent of 100,000 * m4.xlarge + 2,500,000 * t2.small over the next year. However, from the enterprise's perspective, <em>as a customer</em>, they want to buy those as units of committed <em>general</em> usage, not committed <em>specific</em> usage.</p>
+<p>What would buyer pricing look like? Surprisingly, it is much simpler: For $100,000 in annual committed <span style="text-decoration: underline;">total</span> spend, get a 10% discount; for $1,000,000, get a 25% discount; etc.</p>
+<p>The actual thresholds and discount ratios need not be those listed above, but the principles hold. This has several distinct advantages:</p>
+<ul>
+<li>Like all transparent pricing, it eliminates a lot of the effort, or <em>friction</em>, of signing up large customers</li>
+<li>It makes it possible for Amazon to eliminate a lot of the sales labour effort</li>
+<li>Most importantly, <strong>it makes the pricing model fit the customers</strong></li>
+</ul>
+<p>So why doesn't Amazon do it? I suspect several reasons:</p>
+<ol>
+<li>It involves bearing the usage risk</li>
+<li>It requires a lot of effort to migrate that risk</li>
+<li>It requires thinking as a customer, rather than as a vendor</li>
+</ol>
+<p>Mindsets can be changed over time. Risk of instance supply-demand mismatch is an issue, but the reality is that customers are absorbing this risk every single day. It is costing them time and money to figure out how much of each to buy. Make it easy for them, and they will buy more.</p>
+<p>Of course, every service for a customer - of which removal of risk and effort is one - is a business opportunity. Amazon can - and should - build it into the pricing. Enterprises happily will pay a slightly lower discount in exchange for the flexibility such a model provides.</p>
+<h2>Summary</h2>
+<p>Your pricing should match your customers' needs, not your supply structure. If providing that kind of pricing model means you absorb risk and effort from our customers, it is a revenue opportunity; build it into your pricing.</p>
+<p>Does your pricing reflect your customers' needs? <a href="{{ site.url }}/contact/">Ask us to help</a>.</p>

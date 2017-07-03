@@ -1,0 +1,52 @@
+---
+layout: post
+title: Can rkt+kubernetes provide a real alternative to Docker?
+date: 2016-10-14 09:25:29.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- product
+- technology
+tags:
+- competition
+- coreos
+- docker
+- kubernetes
+- rkt
+author: Avi Deitcher
+---
+<p>Last week in LinuxCon/ContainerCon Berlin, I attended a presentation by <a href="https://twitter.com/lucabruno">Luca Bruno</a> of CoreOS, where he described how kubernetes, the most popular container orchestration and scheduling service, and rkt integrate. As part of the presentation, Luca delved into the rkt architecture.</p>
+<p>For those unaware - there are many, which is a major part of the problem - rkt (pronounced "rocket", as in <a href="https://www.youtube.com/watch?v=lywENW0ESUE">this</a>) is CoreOS's container management implementation. Nowadays, almost everyone who thinks containers, thinks "Docker". Even Joyent's Triton, while it uses SmartOS (a variant of Illumos, derived in turn from Solaris), has adopted Docker's image format and API. You run containers on Triton by calling "docker run", just pointing it at Triton URLs, rather than docker daemons.</p>
+<p>I was impressed with how far CoreOS had come. I was convinced late last year that they had quietly abandoned the rkt effort in the face of the Docker steamroller. Clearly, they quietly plowed ahead, making significant advances.</p>
+<p>As I was listening to Luca's enjoyable presentation, the following thoughts came to mind:</p>
+<ol>
+<li>Docker Inc., in its search for revenue via customer capture, has expanded into the terrain of its ecosystems partners, including InfraKit (watch out Chef/Ansible/etc.) and Swarm (kubernetes). Those partners <em>must</em> view it as a threat. One person called it, "Docker's IE moment," referring to Microsoft's attack on its software provider ecosystem when it integrated IE into Windows.</li>
+<li>Docker's API, as good as it is, is very rarely used. With the exception of a developer running an instance manually, usually locally but sometimes on a cloud server, almost <em>no one</em> uses the docker remote API for real management. Almost all of the orchestration and scheduling systems use local agents: kubernetes runs kubelet on each node, Rancher's Cattle runs rancher agent, etc.</li>
+<li>Docker is <em>really</em> easy to use locally, whether starting up a single container or using compose to build an app of multiple parts. Compose doesn't work well for distributed production apps, but that is what kubernetes (and Swarm and Cattle) are there for.</li>
+</ol>
+<p>As these went through my mind, I began to wonder if the backers of rkt+kubernetes intend to use rkt+kubernetes as a head-on alternative to Docker.</p>
+<p>So... what would it take for rkt+kubernetes (or, as Luca called it, "rktnetes" pronounced "rocketnetes") to present a viable alternative to Docker?</p>
+<h3>Ease Of Use</h3>
+<p>As described above, Docker is incredibly easy for developers to use on all three platforms - Linux, Mac and Windows - especially with the latest Docker for Mac/Windows releases. rkt, on the other hand, requires launching a VM using Vagrant, which means more work and installation, which slows the process down, which.... (you get the picture). For rkt to be a serious alternative, it <em>must</em> be as easy to use as Docker <em>for developers</em>.</p>
+<p>Sure, in theory, it is possible to use Docker in development and rkt in production, but that is unlikely unless rkt provides some 10x advantage in production. Most companies prefer to keep things simple, and "one tool for running containers everywhere" is, well, simple. Even a company willing to make the change recognizes that the run-time parameters are different (even if rkt supports Docker image format) and the "works for me" problem can return, or at least be perceived to do so (which is as important as the reality).</p>
+<p>Docker made headway because it won over developers, then operations and IT types.</p>
+<p>At the same time, kubernetes is <span style="text-decoration: underline;">not</span> as easy to use and has a significant learning curve. To some degree, its power and flexibility once <em>in use</em> make it harder to <em>get to</em> usage. That may (or may not) be fine for an orchestrated complex production deployment; it will <span style="text-decoration: underline;">not</span> fly on a developer's laptop or DigitalOcean droplet.</p>
+<p>To their credit, the kubernetes team has released <a href="http://GitHub.com/kubernetes/minikube">minikube</a>, intended to make deployments easier. We will see how well it does. In the meantime, developers by the thousands learn how to do "docker run" and "docker-compose run" every day.</p>
+<h3>So:</h3>
+<ol>
+<li>Starting and running <em>containers</em> must be made much easier.</li>
+<li>Starting and running container <em>compositions</em> must be made much easier.</li>
+</ol>
+<h3>Killer Capabilities</h3>
+<p>However, even if rkt+kubernetes manage to equal docker in ease-of-use and feature set, they still will just be playing catch-up, which is not a good game to play (ask AMD). In order to win over developers and systems engineers, rkt+kubernetes must be as easy to use as Docker <strong>and</strong> it must offer some unique capability that is not offered by Docker. Preferably, it <em>cannot</em> be offered by Docker without great difficulty due to some inherent market, corporate or technology architecture structure.</p>
+<p>It needs to be something that is  inherently doable, even natural, due to rkt's design, yet difficult due to Docker's design. The goal would be to make Docker play challenging catch-up.</p>
+<p>What would such a feature or capability set be? I have some early ideas, but that is the job of CoreOS's (or Google's or CNCF's) product managers to figure out. That is what they pay them for.</p>
+<h2>Why Do I Want It?</h2>
+<p>I love Docker and CoreOS. I use their products on a regular basis. They have made my life, and those of many clients and colleagues, immensely easier. I have met people at both companies and respect their professional skills.</p>
+<p>Even more than any one product or company, however, I do love competition. It benefits customers primarily, but even the competitors themselves are driven to better services and products, and hence profits.</p>
+<p>I want rkt+kubernetes (or some other combination) to provide a serious, viable alternative to Docker to benefit me, my clients (current and future), my colleagues, all technology firms and IT departments, and especially to benefit Docker, CoreOS and Kubernetes themselves.</p>
+<p>&nbsp;</p>

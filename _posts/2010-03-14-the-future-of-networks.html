@@ -1,0 +1,34 @@
+---
+layout: post
+title: The future of networks
+date: 2010-03-14 10:00:51.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>If you asked anyone current in the technology world to say the first word that comes to mind when told networks, it is a fair bet that 99% (if not more), will say, "<a href="http://www.cisco.com" target="_blank">Cisco</a>." For years now, Cisco has dominated the business of network equipment. Despite challenges from Juniper, 3Com, Bay, Nortel and many others - including many no longer with us - as well as from Asia such as Huawei, Cisco remains dominant. According to its <a href="https://materials.proxyvote.com/Approved/17275R/20090914/AR_46080/images/Cisco-AR2009.pdf" target="_blank">latest annual report, in 2009</a>, Cisco sold $29BN in product alone, of which over 94% came from Routers, Switches and Advanced Technologies.</p>
+<p>It is possible, but not definite, that despite 25 years of history, Cisco may be at or past a peak of influence, depending on how it responds. Essentially, it is possible that the complete business that Cisco dominates may be at a turning point, where it will split into multiple component parts, where Cisco may dominate some, all or possibly none of those component parts.</p>
+<p>To understand where we are, it is necessary to look at the history of Cisco and commercial networking in general. In the early days, the products at the heart of Cisco where home-grown. Engineers who needed a router to connect between networks, or a firewall to protect networks, would take a workstation or server from a major Unix equipment manufacturer, likely as not Sun, put in extra network interface cards (NICs), and then write software to route, switch or control the traffic as it came into one NIC and wanted to go to the other. I have distinct (and warm) memories of building some of the earliest firewalls this way at First Boston, while the <a href="http://www.checkpoint.com" target="_blank">CheckPoint</a> founders were still in the Israeli army.</p>
+<p>Over time, as corporate (and eventually Internet) networks grew, first linearly and then exponentially, this solution simply could not keep up for several reasons:</p>
+<ol>
+<li>Manufacturers did not make enough slots for the NICs that were needed;</li>
+<li>Traffic grew beyond the capacity of standard computer hardware to manage;</li>
+<li>Standardization became crucial, so that a router or firewall built by an engineer in one company was usable by the next hire;</li>
+<li>Security grew in importance, vis-a-vis both external and internal threats;</li>
+<li>Criticality of the systems required full support and service-level-agreements (SLAs) on both support and spare parts.</li>
+</ol>
+<p>In short, Do-It-Yourself (DIY) became untenable. Into the breach stepped Cisco, with fully-supported and -documented network device operating systems, hardware made for the special networking loads, training courses for the engineers, and even certification, to ensure your next hire knew what s/he was doing.</p>
+<p>In the years since, the open-source revolution has slowly been growing. Whereas, in the early Cisco days of 15-25 years ago, all systems support was commercial, nowadays many businesses are comfortable relying on commercial or community support for open-source products. Open-source can still provide standardization, solving at least part of the issue, as well as support, whether community or commercial (a la RedHat). Further, many open-source products perform better than their closed-source counterparts, and are far more secure. Few to no commercial companies have the resources to find and plug holes, especially security holes, to match a dedicated community of tens of thousands of open-source product fans. Thus, Apache dominates Web services - Intranet and Internet - Linux continues to make in-roads in the enterprise, with whole companies betting the (server) farm on it, and more startups than one can count have built their entire business on Ruby on Rails (or its latest incarnation), PHP or Java.</p>
+<p>The one area where open-source is essentially non-existent, at least at first glance, is enterprise networking. True, mini distributions of operating systems with firewalls in them have arisen (like m0n0wall, pfSense, smoothwall or many others), but the places where it counts, Cisco still rules the roost. It is important to note, as an aside, that as of ASA release 8.0, Cisco has based its router and switch operating systems on Linux, and is likely to continue to do so.</p>
+<p>With the growth of open-source in the enterprise in general, and its ability to solve problems 3,4,5 above, it is slowly becoming clear that the advantages to hardware-specific networking solution vendors exist solely in their hardware. With Cisco's gross margins on product running 64.0% (that is gross margin, <span style="text-decoration: underline;">not</span> variable cost), customers are paying a premium to solve all 5 challenges, when Cisco's proprietary and expensive solution is required for only 2 of the 5 issues.</p>
+<p>Over the next several years, open-source routing, switching and firewall software solutions, whether new ones yet to be discovered or growth of existing solutions plus some management add-ons, will reach the point where they can run on <em>any</em> hardware, and will directly solve problems 3,4,5. At that point, the open-source solutions will become the de facto standard, running on whichever fairly commodity hardware is available from Cisco (if it rises to the challenge of somehow commoditizing its hardware while continuing to make a reasonable profit) or any other players. Essentially, the market for networking equipment will break down to its component parts:</p>
+<ul>
+<li>Hardware, which will run whichever....</li>
+<li>Software, likely open-source, the customer chooses, supported by....</li>
+<li>Support Agreements, provided by a support company of the customer's choice.</li>
+</ul>
+<p>Nowadays, Cisco makes obscene (according to the customer) or beautiful (according to the investor) margins, selling all three together to solve all 5 problems. The open-source revolution will hit networking some time in the next few years, break the three components apart, and either provide even more revenue and profit for Cisco, or bring a legendary dominant player to its knees.</p>

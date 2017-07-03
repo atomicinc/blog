@@ -1,0 +1,48 @@
+---
+layout: post
+title: DevOps in the 1990s
+date: 2016-10-10 09:28:22.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- technology
+tags:
+- devops
+- IT
+- nimble
+author: Avi Deitcher
+---
+<p>Last week, I had the pleasure of attending LinuxCon/ContainerCon Europe 2016 in Berlin. Besides visiting a fascinating historical capital - there is great irony, and victory, in seeing "Ben-Gurion-Strasse" - or "Ben Gurion Street" - named after the founding Prime Minister of Israel in the erstwhile capital of the Third Reich. And while I had many a hesitation about visiting, the amount of awareness, monuments and memorials to the activities of the regime in the 1930s and 1940s was impressive.</p>
+<p>Being a technologist with a love of operations and improving them, I had many conversations with very smart people people about operations and especially DevOps.</p>
+<p>While engaged in one of these conversations, I suddenly had a realization: <strong><em>we were doing DevOps in 1995!</em> </strong></p>
+<p>Morgan Stanley IT of the 1990s, for which I have many fond memories, and to which I am grateful (especially Rochelle who convinced me I would be <span style="text-decoration: underline;">insane</span> to accept the other offers on the table... she was right), was a very cutting-edge, experimental place. We took risks, failed at some of them, and succeeded at others.</p>
+<p>Our leaders rewarded risk-taking. Fail reasonably, get rewarded; succeed, get rewarded more. Do something really stupid, of course, let alone the same stupid thing twice, and you paid for it.</p>
+<p>How did we do DevOps?</p>
+<p>There are lots of definitions of DevOps. One of the premiere practitioners, Jez Humble, is quoted as saying it is:</p>
+<blockquote><p>a cross-disciplinary community of practice dedicated to the study of building, evolving and operating rapidly-changing resilient systems at <span class="il">scale.</span></p></blockquote>
+<p>Nowadays, that often involves several key elements, including:</p>
+<ul>
+<li>Developers taking ownership of the <em>entire</em> application lifecycle, right down to pushing the button to deploy to production;</li>
+<li>Automation to enable developers to deploy to production safely;</li>
+<li>Automated testing systems - continuous integration pipeline - to guarantee full testing before something goes out to production.</li>
+</ul>
+<p>The key element here, though, is the <span style="text-decoration: underline;">culture</span>. It is one where <em>everyone</em>, not just the operations teams, is responsible for live systems. Developers, the people who actually build the software systems, are the ones to make them live, and they are the ones to be alerted, whether at 2pm or 2am, when something goes wrong.</p>
+<p>While we did not have all of the elements, we had two very important ones.</p>
+<ol>
+<li>Every developer was responsible for his or her application from building it right through to pushing to production and making it live.</li>
+<li>Automation to enable that process.</li>
+</ol>
+<p><strong>Twenty years ago, we built a system that told developers, "you own it, you push it, you fix it."</strong></p>
+<p>I wish I could tell you it was my brainchild, or that I was the chief architect. Unfortunately, I was neither. I just played my part. The real architect was Phil Moore.</p>
+<p>Here was how it worked.</p>
+<p>We had a single, global filesystem namespace. Anywhere you went in the world, if you were connected to the Morgan Stanley network, "/root/<em>whatever</em>" pointed to the exact same thing. And if you went to "/root/dist/<em>something</em>", well, that <em>something</em> was a local replica, right here in your city (or even building) of a read-only application.</p>
+<p>What was a developer's workflow?</p>
+<p>Developers built apps in "/root/dev/<em>something</em>", where <em>something</em> was unique to their app. They built it in a version directory, e.g. "/root/dev/<em>something</em>/1.2.3/".</p>
+<p>When a developer was convinced it was ready, they'd run a command called "vms" (no relation to DEC VMS), that pushed that version 1.2.3 of <em>something</em> out... everywhere. Every single location in the world now had a local, replicated identical copy of <em>something</em>.</p>
+<p>Here was the best part. When ready, the <strong>developer</strong> could run a different "vms" command to make version 1.2.3 live. From that moment (well, it took a few moments to propagate worldwide), anyone launching <em>something</em> would get that version. Not operations, not some release manager, but the developer who owned it.</p>
+<p>Did it break stuff? All the time. I lost track of the number of things I broke myself (often saved by others). But we also delivered stuff at a pace unheard of at the time... and it showed.</p>
+<p>We did DevOps at Morgan Stanley 15-20 years before it became popular. And I only realized that what we were doing was DevOps, way ahead of its time... last week!</p>
+<p>&nbsp;</p>

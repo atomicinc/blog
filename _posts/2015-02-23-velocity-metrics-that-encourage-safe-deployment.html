@@ -1,0 +1,92 @@
+---
+layout: post
+title: 'Velocity: Metrics that Encourage Safe Deployment'
+date: 2015-02-23 07:30:54.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- technology
+tags:
+- change
+- change control
+- cloud
+- culture
+- incentives
+- tools
+- velocity
+author: Avi Deitcher
+---
+<p>What do you do when you <em>want</em> to move towards more rapid deployment, perhaps as close as possible to <a href="http://en.wikipedia.org/wiki/Continuous_delivery" target="_blank">continuous delivery</a>, but the culture and incentives push against it?</p>
+<p>This is the exact issue I have had at several clients over the years. When brought in to improve their operational performance, I found that, with all of them, a major issue was instability due to deployments.</p>
+<p>The flow looked something like this:</p>
+<ol>
+<li>Releases were scheduled around monthly.</li>
+<li>A pre-release schedule, including change control reviews, final testing, full QA cycle, customer notification, scheduled downtime, etc. was built around that date.</li>
+<li>As the business grew, the releases became more complex, leading to increased risk.</li>
+<li>The instability of the releases increased over time, leading to tighter change control with less frequent releases.</li>
+<li>Fewer releases made the releases ever more complex, which led to <em>greater</em> instability.</li>
+<li>Wash, rinse, repeat.</li>
+</ol>
+<p>A friend of mine, one of the best InfoSec and Compliance people I know, called this the "release spiral of death."</p>
+<p>Suffering from "service disruptions", some companies would put "stability" or "availability" or "uptime" as an explicit measure of the team's performance. Of course, this created great conservatism on the part of both the software and the infrastructure teams, with great reluctance to deploy. Eventually, the pent-up demand for changes would create sufficient pressure to actually deploy, leading to more instability.</p>
+<p>The fundamental problems here are several:</p>
+<ol>
+<li>Combining changes does not <span style="text-decoration: underline;">mitigate</span> risk, it <span style="text-decoration: underline;">exacerbates</span> it. If you have three changes, each with a 1% chance of failure, then those three changes together do not have a 1% chance of failure, or even a 3% chance of failure. I would estimate that they have a &gt;9% chance of failure. Each change alone may maintain its 1% risk, but the combination itself creates an <strong>exponential factor</strong>.</li>
+<li>People <em>want</em> to build and deploy their changes. No engineer, ever, signed on for a job and said, "I really want to build stuff that never will get used." High among the many factors that affect job satisfaction for technology staff are the ability to do interesting work and the satisfaction in seeing it used. If you don't deploy, engineers get frustrated, and break the rules to deploy anyways ("go cowboy") or leave your company.</li>
+<li>The cost of managing each "big" deployment goes up dramatically, leading to ever-higher deployment costs and times, increased maintenance windows for your customers, and ever-more-dissatisfied employees.</li>
+</ol>
+<p>Several years ago, one of my clients wanted to change the culture and <em>increase</em> deployment while <em>decreasing</em> instability. To succeed, we needed two things.</p>
+<h3>Tools</h3>
+<p>Increased speed of deployment must be supported by increased ease of deployment, which means tools. If a monthly deployment takes 10 people 12 hours to do, the company simply cannot afford that same effort weekly or daily. The effort must be counted in minutes over individuals, not hours over many people.</p>
+<p>That means all of the following are banned:</p>
+<ul>
+<li>Manual testing</li>
+<li>Manual file copying into testing or staging or UAT or production</li>
+<li>POU ("pissed-off-user") alerting system</li>
+</ul>
+<p>Every effort <span style="text-decoration: underline;">must</span> be automated, every system <span style="text-decoration: underline;">must</span> be instrumented.</p>
+<p>While nearly every company has understood this - although some have balked at investing the time and sometimes the capital to create the tools and instrumentation - it does takes a change in mindset to get there. Sometimes it is the reluctance to let go of the teams of cheap testers in China or India; sometimes it is the lack of trust in an automated test; sometimes it is just inertia, as in "I have been doing it this way my whole career."</p>
+<p>The more difficult issue, though, was always the culture and incentives.</p>
+<h3>Incentives</h3>
+<p>How do you change your technology team's <span style="text-decoration: underline;">incentives</span> to encourage fast, frequent and stable deployments?</p>
+<p>The convenient part is intrinsic incentives. Technologists <em>want</em> to deploy quickly and often, to see their "great stuff" used. They also prefer an absolute minimum of disruption, since fixing bugs while under client pressure is a miserable experience for almost everyone. Nonetheless, since you "get what you pay for" and "you get what you measure," <strong>it is crucially important to measure rapid, successful deployments.</strong></p>
+<p>After all, the best organizations align incentives with what people want to do anyways. Want to see a really well-run organization? Find one that has what the business wants done, what the employees want done, and what the organization measures and pays them for, all be the exact same thing.</p>
+<h3>Enter Velocity</h3>
+<p>To measure frequent, safe deployment, I invented "Velocity". Fortunately, it is an accurate description of what we measure. Unfortunately, it conflicts with a popular <a href="http://en.wikipedia.org/wiki/Velocity_(software_development)" target="_blank">agile software development measure</a>.</p>
+<p>Here is how it works.</p>
+<ul>
+<li>Every period (month, quarter or year), <strong>the team starts off at 0</strong>.</li>
+<li>For each deployment to production that does what it said it was going to do (fix a bug or release a new feature) without breaking anything that worked before: <strong>+1</strong>.</li>
+<li>For each deployment to production that either does not do what it said it was going to do, or breaks something that worked before: <strong>-1</strong>.</li>
+</ul>
+<p>While simple, it does a great job incentivizing teams to put out rapid, successful deployments. Teams are induced to:</p>
+<ul>
+<li>Do lots of small deployments to increase their positives.</li>
+<li>Minimize failed deployments to eliminate negatives.</li>
+<li>Avoid inertia, since doing nothing might not give you negatives, but will not give you positives either.</li>
+</ul>
+<p>The first time I introduced Velocity, the head of software development, a very smart man, thought he could game the system. The conversation went something like this.</p>
+<blockquote><p>VP: "Let me get this straight. I get +1 for every deployment?"</p>
+<p>Me: "Yes."</p>
+<p>VP: "What about if I do a really hard, complex deployment, with lots of moving parts?"</p>
+<p>Me: "+1"</p>
+<p>VP: "And if it is an emergency, middle of the night, big effort?"</p>
+<p>Me: "+1"</p>
+<p>VP: "Aha! I have got you! Instead of doing big monthly deployments, I will trick you by breaking it up. I will do tons of tiny deployments. We will deploy small things every day or two. We will work half as hard, and get +10 to +20 every month!"</p>
+<p>Me: "Precisely!"</p>
+<p>VP: (light bulb goes off)</p></blockquote>
+<p>The beauty of Velocity is that it encourages smart people to "game" the system by changing their behaviours to do less work with more outcome and lower risk.</p>
+<h2>Summary</h2>
+<p>Velocity is a performance metric that encourages technology teams to do what the business wants and what they want:</p>
+<ul>
+<li>Deploy in smaller and smaller batches</li>
+<li>Deploy more frequently</li>
+<li>Reduce risk</li>
+<li>Work less for each deployment</li>
+<li>Avoid inertia by standing still</li>
+</ul>
+<p>Of course, Velocity, like any change, will not work if you lack the tools to support it, the culture to encourage it and the understanding of how to change your organization to get there. <a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us to help you be a far more nimble and stable business</a>.</p>

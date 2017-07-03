@@ -1,0 +1,32 @@
+---
+layout: post
+title: They Hacked in Via the Air Conditioning? Really?
+date: 2014-02-17 07:47:25.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- security
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>Brian Krebs, the cybersecurity blogger who first broke the Target attack, <a href="http://krebsonsecurity.com/2014/02/target-hackers-broke-in-via-hvac-company/" target="_blank">has reported</a> that the hackers who infected Target's Point-of-Sales (POS) systems, did so via their Heating/Ventilation/Air-Conditioning (HVAC) servicing company.</p>
+<p>Unlike a simple home, large-scale office facilities have complex HVAC systems. On the one hand, they want the optimal temperature, humidity and airflow in their facilities. On the other hand, they are acutely aware of the cost; it costs a lot more to air condition a big-box store than your local townhouse! As such, HVAC systems have become complex computerized systems, with sensors in multiple places (imagine a thermostat in every corner of your home), and experts who manage those systems.</p>
+<p>Fazio Mechanical Services regularly comes into Target facilities to connect to and manage those HVAC computers. In order to do so, of course, the contractor needs to connect to the Target network on which the computerized systems exist.</p>
+<p>Once the hackers breached Fazio's computers, <a href="http://krebsonsecurity.com/2014/02/email-attack-on-vendor-set-up-breach-at-target/" target="_blank">apparently via emails</a>, and the infected computers connected to Target's network, they were able to hop from there to the payment processors.</p>
+<p>It seems logical... until you stop and ask: did Target not isolate the payments network - the POS terminals, back-end processing, secure payment and credit storage, or all of the above - from the HVAC network? Sure, we want HVAC to be secure, since a breached HVAC could cause temperature and humidity havoc in a store. But was there really no network isolation - no firewalls - between the HVAC network and the payment systems?</p>
+<p>I can easily see the conversation now.</p>
+<ul>
+<li>IT: "You know, our payment systems and our air conditioning are all on the same networks in the stores."</li>
+<li>Finance: "So? Aren't all our systems secure?"</li>
+<li>IT: "Well, yes, but if someone gets into one, they will have access to all!"</li>
+<li>Finance: "So, keep them all secure!. Let no one into any!"</li>
+<li>IT: "Except that we have legitimate remote access to HVAC, and more secure is more expensive."</li>
+<li>Finance: "Fine. So how much will it cost to secure them all?"</li>
+<li>IT: "Rough estimate? Probably about $20MM."</li>
+<li>Finance: "$20MM?? Do you know what that will do to our bottom line? Don't you think you're being overly paranoid here?"</li>
+</ul>
+<p>Either way, that is the conversation they <span style="text-decoration: underline;">should have had</span>, and latest reports are that something like that did take place. If they didn't, then the CIO and/or CISO are derelict. This is basic cybersecurity 101.</p>
+<p>I suspect that $20MM, or whatever the actual estimate was, looks really cheap to the CEO and CFO right now...</p>

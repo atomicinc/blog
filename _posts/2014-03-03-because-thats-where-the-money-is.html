@@ -1,0 +1,34 @@
+---
+layout: post
+title: Because That's Where The Money Is
+date: 2014-03-03 07:36:37.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>The infamous bank robber <a href="http://en.wikipedia.org/wiki/Willie_Sutton" target="_blank">Willie Sutton</a> is rumoured to have said, when asked why he robs banks, "because that's where the money is." This is, apparently, an urban legend, <a href="http://www.snopes.com/quotes/sutton.asp" target="_blank">according to snopes</a>. Either way, the legend endures for 3 reasons:</p>
+<ol>
+<li>It is a great quote; after all, that <span style="text-decoration: underline;">is</span> where the money is (or used to be).</li>
+<li>It is a great retort; they weren't asking him why he robs banks, as opposed to post offices, but why he robs at all (as opposed to, say, becomes a banker or a lawyer).</li>
+<li>It is a famous person; people love their quotes to come from someone famous or infamous. It is more enjoyable to attribute to Churchill than to some unknown Liberal backbencher.</li>
+</ol>
+<p>With so many breaches of payment systems lately - anyone  interested should be following <a href="http://twitter.com/briankrebs" target="_blank">Brian Krebs</a>, who broke the Target story - one begins to wonder why there have been so many.</p>
+<p>The first, and most obvious, answer is, "that's where the money is." After all, far more money nowadays passes electronically than in physical hands. Visa alone <a href="http://www.forbes.com/sites/afontevecchia/2013/05/01/visa-thrives-on-rising-transaction-volumes-beating-estimates-and-raising-guidance/" target="_blank">handled $1TN in transactions in 2Q 2013</a>; MasterCard did a similar amount. US GDP in 2013 was ~$16TN. Credit cards handled a large chunk that, most of the rest were checks and bank transfers (think your paycheck). Very little is in cash.</p>
+<p>So if you want the money... go where it is, in the computers.</p>
+<p>Second, the physical risk is lower. A thief risks equal <em>theft</em> jail time going after the cash in the vault or the credit cards via his home computer, but he does not risk life and limb in a chase or break-in, let alone being shot by a guard, and he does not risk shooting a guard and getting imprisoned for murder.</p>
+<p>Third, the barriers are low. And here's the rub.</p>
+<p>When it comes to cash, not every bank goes out there and tries to design its own security doors, bulletproof windows, safes and vaults. They rely on a few good experts to do it. Some companies have the expertise (as do some banks), and some designs have been tested and tried over and over again. A bank, for the most part, let alone a corner store dealing in cash, does not have the resources to test chemical compounds for bulletproof glass or fire resistance of safes.</p>
+<p>Nonetheless, in the world of technology, many companies seem convinced that they actually have the expertise to design and manage the payment systems, or a large part of them, on their own. This includes the point-of-sale terminals, the security segregation of the networks (see, "Target, breach of"), the database storage of payment card and other sensitive information, among others. As smart as many of these engineers are - and many of them <strong>are</strong> smart; I have met many of them first-hand and have seen how smart they are - it takes a significant amount of experience and significant resources to stay ahead of the criminals.</p>
+<p>The irony is that the differences between corporate technology environments are small. There is nothing specially unique about the Target payment environment as compared to, say, the WalMart environment or even an Apple Store. Yes, each has some idiosyncrasies in <span style="text-decoration: underline;">their applications</span>, and may have additional services, or perhaps use Microsoft over Linux or a POS terminal from one vendor or another, and one may prefer dealing with Cisco over Juniper. But the basic principles are the same.</p>
+<p>So why does each company reinvent the wheel? I believe several issues lie at the heart of the matter:</p>
+<ol>
+<li>Cleverness: Engineers are clever people, but sometimes they are too clever by half. We often believe we can invent a better wheel.</li>
+<li>Greed: Companies sometimes are willing to admit that they actually don't know how to do it correctly, and get taken in by the large consulting firms. The revenues in these deals is very large, and an admittedly ignorant customer is easy to take advantage of. Large consulting firms have no interest in standardization by experts; it hurts their hourly fees.</li>
+<li>Secrecy: Government cyber-crime and cyber-terrorism squads have been complaining about this one for years. When Willie Sutton held up a bank, it was nearly impossible to keep it secret. With each public holdup, the banks could learn from each other. As theft "over the wire" is hard to trace and the PR impact severe, companies will often keep it quiet as long as they can. Fortunately, that culture is, finally, changing, at least somewhat.</li>
+</ol>
+<p>We have improved significantly, with the existence of bare minimum standards (a.k.a. PCI-DSS and some other certifications). There is no doubt that Target violated PCI by putting HVAC and contractor access on the same network and in the same risk profile as their POS systems.</p>
+<p>But these are only standards. They can help drive the best behaviour, but where are the turnkey, or at least almost-ready-to-run systems?</p>

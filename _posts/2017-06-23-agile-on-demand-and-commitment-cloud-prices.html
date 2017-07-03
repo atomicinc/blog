@@ -1,0 +1,44 @@
+---
+layout: post
+title: Agile, On-Demand and Commitment Cloud Prices
+date: 2017-06-23 07:39:42.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- product
+- technology
+tags: []
+---
+<p>Yesterday, I worked with a colleague to determine costing for their newly deployed kubernetes cluster on AWS (<a href="https://www.wsj.com/article_email/wal-mart-to-vendors-get-off-amazons-cloud-1498037402-lMyQjAxMTA3MzIxMjIyOTI0Wj/?utm_content=buffer0d731&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer">Walmart must not be a customer</a>...). The math was mostly straightforward:</p>
+<ol>
+<li>Get cost of instance by size, multiply by number of instances and 720 hours per month;</li>
+<li>Add EBS block storage;</li>
+<li>Add ELBs;</li>
+<li>Add data traffic out;</li>
+<li>Add S3 storage.</li>
+</ol>
+<p>Repeat for each environment, and you have your answer.</p>
+<p>By far, the biggest cost line item is the first: instances. They also have the biggest variety, from t2.micro at just $0.0059/hour all the way up to p2.16xlarge for $14.40/hour.</p>
+<p>One way to reduce costs is AWS commitments: sign up for a year, get around 30% off the cost; commit to 3 years, save more; pay part or all up front, save even more.</p>
+<p>At first blush, those commitments look like a great deal, especially if you <span style="text-decoration: underline;">know</span> you will be operating for a year or more. Who <em>wouldn't</em> want to save 30-40% of computing costs?</p>
+<p>Why not commit, then?</p>
+<p><strong>Agility.</strong></p>
+<p>In software development, we have moved from waterfall-developed monolithic apps deployed on a monthly or quarterly cycle to agile-developed microservices (or nano-service functions) deployed on a continuous basis. We changed how we work because it helps us adapt quickly to a dynamic environment at a lower risk and lower cost.</p>
+<p>The fundamental problem with waterfall isn't that it is big and heavy (although that is true as well). It is that it is <em>rigid</em> in a <em>fluid</em> world. We simply have no way of knowing, up front, what the world will look like in 6-12 months or more, and how our service will need to adapt. For that matter, we cannot even predict reliably what the application <em>we build</em> will look like.Waterfall makes a lot of <em>assumptions</em> and then <em>commits</em> to those assumptions.</p>
+<p><strong>Software development simply is too complex; it requires iterative adjustment. </strong></p>
+<p>When we start a new deployment, we often make the same "waterfall" mistake: we <em>assume</em> we fully understand the needs of our complex system before it begins real usage, and we then <em>commit</em> to that assumption.</p>
+<p>In order to remain agile and adaptive, we need to avoid those commitments, at least at the beginning, when we <em>assume</em> but do not <em>know</em> what our needs will be.</p>
+<p>One big advantage of containerized microservices is that we need not have the largest instances available, just big enough to handle multiple services. Since the application is separated into these microservices, we need account only for the most demanding <span style="text-decoration: underline;">individual</span> microservice, not the grand sum. When the <span style="text-decoration: underline;">total</span> resource requirements exceed <span style="text-decoration: underline;">total</span> available resources, just add another instance (or let automatic scaling do it for you).</p>
+<p>In the end, what was my advice to my colleague?</p>
+<ol>
+<li>Start with on-demand only.</li>
+<li>Keep close track of average and maximum resource requirements over a period of several weeks, both by host and by microservice.</li>
+<li>Once you <em>know</em>, from real experience, what the requirements are, <strong>then</strong> make the commitment for a normal size instance.</li>
+<li>Do <strong>not</strong> leave lots of room to scale the services <span style="text-decoration: underline;">up</span>. Instead, prepare to scale them <span style="text-decoration: underline;">out</span> by adding more instances. Scaling 3 instances of size m4.xlarge to 3 instances of m4.2xlarge doubles your bill; adding a 4th m4.xlarge adds 33% to your bill.</li>
+<li>If your application <span style="text-decoration: underline;">cannot</span> scale horizontally, take a hard look at the design.</li>
+</ol>
+<p>How can you apply this to your use case? The principles apply everywhere; the devil is in the details. <a href="{{ site.url }}/contact/">Ask us to help</a>.</p>

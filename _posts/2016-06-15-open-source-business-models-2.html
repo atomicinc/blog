@@ -1,0 +1,70 @@
+---
+layout: post
+title: Open Source Business Models
+date: 2016-06-15 07:13:25.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- outsource
+- product
+- security
+- technology
+tags:
+- cloud
+- confidence
+- open-source
+- quality
+- serverless
+- software
+- vendor
+author: Avi Deitcher
+---
+<p>Sometimes I am amazed by open source software... even as I contribute to it.</p>
+<p>The largest repository of public open-source projects, <a href="https://github.com" target="_blank">GitHub</a>, has over <a href="https://github.com/about">35MM</a> repositories in it. Granted, some large percentage of those are private, and therefore closed-source, but even if only half of those are public, and by all accounts it is much more heavily weighted towards open, the numbers are in the tens of millions.</p>
+<p>Add in other source hosting locations like BitBucket and sourceforge, as well as privately hosted sites like GNU Labs' git.savannah.gnu.org, and the number of open-source projects is astounding.</p>
+<p>Just the other night, I heard from a trusted colleague - and a really smart core technologist - that many large companies, especially financial services providers, will not trust any of their core infrastructure <em>unless</em> it is open-source.</p>
+<p>This is a far cry from my days in financial services IT in the 90s when I had to fight legal to let us use open-source, even though, "we would have no one to sue!"</p>
+<p>Even more impressive, though, is the number of <em>companies</em> not only open-sourcing software, but actually open-sourcing their <em>core</em> software. I refer not to Twitter releasing Heron stream processing or Facebook releasing React. These companies are built upon technology, but their core asset is their network of users relying on that technology.</p>
+<p>No, here I refer to companies like <a href="http://redhat.com">RedHat</a> (the granddaddy of open-source businesses), <a href="http://joyent.com">Joyent</a> (SmartOS), <a href="http://docker.com">Docker</a>, <a href="http://rancher.com">Rancher</a>, <a href="http://coreos.com">CoreOS</a>, new entrant <a href="http://tigera.io">Tigera</a> (Calico, Flannel, Canal) and even IBM's foray into serverless computing, <a href="http://github.com/openwhisk/openwhisk">Open Whisk</a>. These companies make and sell software or ancillary services to that software. The very software that they are open-sourcing <em>is</em> their business.</p>
+<p>Conspicuously absent, of course, is the largest cloud provider Amazon. They do release much open-source, but it appears they have a deep-seated concern that open-source core AWS would make it too easy for others to replicate and steal "their" business. So far, though, it does not appear to have hindered them.</p>
+<p>With Twitter, you are welcome to try and build a similar platform on your own. The hardest <span style="text-decoration: underline;">technical</span> challenges are solved, since Twitter themselves released the software for all to see. But you wouldn't get very far because you do not have the network of 310MM users.</p>
+<p>With CoreOS, if you do not want to pay them, <em>don't</em>. Just download the products and use them. Change them and rebuild them, if you see fit.</p>
+<p>And yet, these companies <span style="text-decoration: underline;">continue</span> to release their products as open-source.</p>
+<p>Why?</p>
+<h3>Vendor Confidence</h3>
+<p>As mentioned above, many companies want confidence in the platform. The days of blindly trusting the technologists at your vendor are long since past. Actually, the reverse is true. If you, as a vendor, are unwilling to let others look at your code, how bad is it actually?</p>
+<p>One of my favourite activities as a purchaser is visiting the vendor's site and doing my own due diligence.</p>
+<ul>
+<li>How good is the code?</li>
+<li>How smart are the people?</li>
+<li>Sure, the product works well today, but is the design good enough and are the people smart enough to keep growing it as my requirements scale?</li>
+</ul>
+<p>Releasing your source code gives purchasers much greater confidence in your product. Not only can they review it themselves, but the very fact that you have released it indicates a strong level of confidence. Much to the surprise of non-technologists, the biggest driver for engineers isn't <em>extrinsic</em>, i.e money. It is <em>intrinsic</em>, the credit and approbation of other technologists whom they respect.</p>
+<h3>Product Confidence</h3>
+<p>Beyond confidence in the vendor, there is confidence in the product.</p>
+<p>Vendors big and small disappear on a daily basis. Some go bankrupt; others get sold; many simply end-of-life products or entire product lines. For some customers, this can be a traumatic situation. That business-critical (for them) software no longer has <em>anyone</em> behind it!</p>
+<p>If it is closed-source, you have a <em>problem</em>.</p>
+<p>But if it is open-source, you have <em>possibilities</em>:</p>
+<ul>
+<li>You can maintain it yourself, since you have access to the code.</li>
+<li>You can pay an external firm or consultants to maintain it, since they have access to the code</li>
+<li>Someone else can fork it and continue to maintain it, since they have access to the code</li>
+</ul>
+<p>Open-source gives you confidence in the longevity and maintainability of the product long after the vendor no longer supports it.</p>
+<p>This, in turn, helps drive sales. Want someone to sign onto your service? Show them how easy it is to get out.</p>
+<h3>Quality</h3>
+<p>Releasing your software as open-source forces better design behaviour. First, no engineer wants their shoddy code in public. Opening the kimono for all to see keeps us honest. Second, releasing the source forces configuration and secrets out of the code.</p>
+<p>Last week I spoke with a technologist who described how at one of his companies he open-sourced everything, even though no one outside the company ever used it. The very act of releasing it in the wild encouraged good behaviour by everyone.</p>
+<h3>Recruiting</h3>
+<p>One CEO described to me how one of the best benefits of open-source is recruiting. It is hard to find good people, and really hard to find those who <em>get</em> what you do.</p>
+<p>When your code is open-sourced, someone who sees what it does and what it could do, instead of requesting a feature often will propose a patch that <span style="text-decoration: underline;">provides</span> that feature.</p>
+<p>Look at your patch or pull requests, and you can find some of the best people out there. Not only do they know your product, they know its guts, have shown real interest in it, and don't even need to be tested.</p>
+<h2>Summary</h2>
+<p>The open-source business model is challenging to those who grew up selling closed-source software. But it encourages better practices inside the company and makes the sales process easier.</p>
+<p>Will every open-source project make money? Of course not.</p>
+<p>But if you have one that does, think long and hard about your open-source strategy. The more you can release, often the better off you may be.</p>
+<p>Don't hesitate to <a href="{{ site.url }}/contact/" target="_blank">ask us to help</a> define and implement your open-source strategy.</p>
+<p>&nbsp;</p>

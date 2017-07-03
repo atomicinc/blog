@@ -1,0 +1,46 @@
+---
+layout: post
+title: Bare Metal Cloud
+date: 2015-07-10 07:04:50.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- amazon
+- aws
+- cloud
+- Packet
+- server
+author: Avi Deitcher
+---
+<p>Infrastructure-as-a-Service, cloud servers, whatever you call them, have been around for years. Amazon is the clear leader in the pack (and, according to <a href="http://twitter.com/swardley" target="_blank">Simon Wardley</a>, is likely to remain so for a long time), with others like Rackspace, Google Compute Engine, and Azure picking up much of the rest (fortunately for them, the market is plenty big enough).</p>
+<p><a href="http://www.digitalocean.com" target="_blank">Digital Ocean</a>, a company I mostly ignored for a while, takes kudos for speed and simplicity, and rapidly have become my go-to option for quick servers. They don't appear to be trying to be a full-stack player. Instead, they give you fast, cheap and easy-to-deploy servers.</p>
+<p>Just last week I ran multiple demonstrations on using containers and Docker to improve development, deployment and management processes. For live demos, I needed multiple servers. Build an image on one, run it on the other. I just spun up multiple droplets in seconds on Digital Ocean, each with a different operating system, and was able to demonstrate real-life use cases... especially useful when you run a 5-year-old underpowered MacBook Air!</p>
+<p>This week, though, I had a new need: <strong>bare metal</strong>. I needed a <em>real</em> physical server. This wasn't a throwback to the pre-cloud days, when I needed a stack of DL380s for a years, which is what Rackspace built its business on. I needed a physical server.. for a few hours.</p>
+<p>The issue also was not contention, my workload sharing (and competing for) CPU, memory, network or disk resources with someone else's. For that, Amazon's "Dedicated Instances" are a perfect fit.</p>
+<p>No, I needed <span style="text-decoration: underline;">real</span> bare metal, without any virtualization in the middle. I had to run several very sensitively timed performance tests (microseconds), and needed reliable results.</p>
+<p>I went to Amazon, but their entire management and deployment infrastructure is <em>based upon</em> virtualization. Even the dedicated instances depend upon the maintenance, networking, deployment, management, everything that builds upon their Xen server virtualization services and Amazon Machine Image (AMI) launching.</p>
+<p>I went to Rackspace. Although they made their name in physical hosting - "managed colocation" - the best I could get from them was a monthly. Make no mistake, it is a huge improvement over the old days, when Rackspace insisted upon multi-year contracts and big "setup fees" along with multi-week lead times, but it still didn't meet my needs.</p>
+<p>Same everywhere else. I asked colleagues in the business, everyone said the same thing: "buy or borrow a server."</p>
+<p>I needed bare-metal product with cloud-style pricing and flexibility. I needed "bare-metal cloud."</p>
+<p>Enter <a href="http://www.packet.net" target="_blank">Packet</a>.</p>
+<p>Based in New York, Packet offers only two types of bare-metal servers - eloquently named "Type 1" and "Type 3" - available on demand. Run them for 5 mins, 5 hours, 5 days or 5 months (I imagine 5 months gets a better deal), and get billed for what you use.</p>
+<p>The interface is as simple as Digital Ocean's. Right before starting to write this post, I picked a Type 1, picked CentOS as an operating system, and clicked "Deploy". I am not yet done writing, but my <span style="text-decoration: underline;">physical</span> server is ready.</p>
+<p>I used both of their server types yesterday, and both are excellent. Yes, there are issues, as there always are in any service, especially a brand-new startup, but they are relatively small. It is even more surprising when one considers how complex a service "bare metal cloud" is. You cannot use classic "cloud" management tools; you cannot use VM images to deploy; you need to build everything from scratch.</p>
+<p>I spoke directly by phone with one of their VPs for half an hour, and by email with another. I was impressed with a bunch of smart people who are dedicated to growing their business by listening to customers.</p>
+<p>They <span style="text-decoration: underline;">actively solicited</span> my feedback. When I sent it to them, along with suggestions for improvement, not only did they respond on topic, but they requested we arrange a phone call so they can discuss further, and invited me to their offices next time I am nearby.</p>
+<p>Will they succeed? I certainly hope so. To do so, they need three critical things:</p>
+<ol>
+<li><span style="text-decoration: underline;">Right product</span>: They need to have a clear vision for a great product for a demanding market. I have not done the analysis on their market, although I suspect it is large. One thing they are getting right, though, is that they are <em>listening</em> to their customers and <em>learning</em> use cases to <em>adapt</em>. As Steve Blank says repeatedly, "get out of the building".</li>
+<li><span style="text-decoration: underline;">Right technology</span>: There is a lot of open-source... and a lot missing. I have seen very little to allow you to manage bare metal as a cloud, because almost no one has done it until now. A large part of their success will be based on their ability to provide a user experience and speed as if it were virtualized in the cloud. Their ability to do so and manage it well will depend on their ability to build the requisite plumbing.</li>
+<li><span style="text-decoration: underline;">Duck Amazon</span>: Amazon (and the others) may or may not choose to go into this space. Any of them can bring the resources to bear. Any one of them spends more just on data centre power in a month than Packet spends on its entire business in a year. The questions are: can they do it? will they do it?</li>
+</ol>
+<p>I find it less likely that the large players will go after this market, at least initially. So much of their infrastructure, management, billing, <em>everything</em> is built around virtualized services that it will be harder to go here, but not impossible. It requires not just entirely new processes and technologies, but new culture. Amazon undoubtedly has a well-defined process for adding servers to an availability zone, an AZ to a region, a region to the world. Even all of the new services they have added to date - Redshift, RDS, Kinesis, etc. - all run on their base virtualized EC2 service.</p>
+<p>It is hard for a large company with clear processes to make an exception in them, and then make that exception a standardized process on its own. It is not impossible, and if Amazon (or Rackspace) wanted to do it, they could. But it will be far harder than it is for a nimble startup, especially when it goes against the very culture and market proposition they have been pushing for years.</p>
+<p>Further, if this market is a grand total of $100MM, that is pocket change for Amazon, and not worth it for them to change the plumbing of a multi-billion-dollar AWS. It is a serious market to Packet, though.</p>
+<p>I know not the future of Packet, but I love what they are doing, and recommend them. I wish them the best of luck.</p>

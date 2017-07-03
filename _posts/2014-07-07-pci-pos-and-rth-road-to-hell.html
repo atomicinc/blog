@@ -1,0 +1,37 @@
+---
+layout: post
+title: PCI, POS and RTH (Road to Hell)
+date: 2014-07-07 07:34:11.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- security
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>Two interesting events came to light in the last week for me. First, I am working on getting a company towards compliance with the Payment Card Industry Data Security Standards (PCI-DSS or just PCI). These are the standards that govern the technology and processes you use to protect data when you handle credit or debit card transactions. An auditor checks your questionnaire or audits your systems and people, "recommends" changes if necessary, and then issues a PCI certification, which must be renewed each year. Despite the fact that the company itself never touches sensitive data such as card numbers or expiration dates or security codes, it still is subject to PCI for 3 reasons:</p>
+<ol>
+<li><span style="text-decoration: underline;">Optics</span>: Its Website is where consumers go to pay, even if they are then sent to a standard payment service. If consumers do not see the "PCI Secure" logo, they may be reluctant to use the service.</li>
+<li><span style="text-decoration: underline;">Sales</span>: If the company does not have the certification, vendors may be reluctant to sell through them.</li>
+<li><span style="text-decoration: underline;">Indirect touch</span>: Despite the fact that they don't touch data, their Website <em>does</em> send consumers to a payment site. If their Web site is subtly hijacked, it could send customers somewhere unsafe.</li>
+</ol>
+<p>Given the circumstances, I happen to agree that all such services should be subject to PCI certification, despite the headache and ongoing expense. The key phrase here is, "<em>given the circumstances</em>." More on that in a moment.</p>
+<p>The second event is more point of sale (POS) breaches. POS are the systems used (surprise!) at the point of sale, where you swipe your credit or debit card or pay by cash. These systems are highly networked to link your sale to the payment processors, the retailer's inventory system, their marketing analytics, etc., as well as support. You may also recall POS as the system that was compromised in last year's massive Target stores breach. They came in through the HVAC (heating, ventilation, air conditioning) systems and networks, but it was the POS they infected to steal all of the card numbers.</p>
+<p>According to this <a href="nakedsecurity.sophos.com/2014/07/03/remote-access-breach-via-pos-system-sparks-yet-more-consumer-data-leak-fears" target="_blank">NakedSecurity article</a>, ISS, a major supplier of POS systems uses remote access to log into point of sale systems and provide maintenance and support. This is not uncommon in many systems, from routers to servers to, well, POS. After all, it would be prohibitively expensive for ISS to send individual technicians onsite to every place there is a card swipe machine, from the dozens in a Target store to the single one in a small curio shop in a small town in the Massachusetts Berkshire mountains! The problem, of course, is that each remote access may be subject to breach, provides another area of potential weakness, what is called a "<a href="http://en.wikipedia.org/wiki/Attack_surface" target="_blank">attack surface</a>." And sure enough, ISS apparently was less than diligent in securing its remote access, providing a door to hackers, who just read card numbers as they were entered or swiped.</p>
+<p>Once again, I am reminded that <strong>the entire edifice of payment cards is broken</strong>. Payment cards are a plastic version of checks / cheques, a paper or plastic or electronic authorization to withdraw or "pull" from someone's account, in the hope that they will only withdraw the approved amount. This structure means:</p>
+<ol>
+<li><em>Anyone</em> with sufficient account information - like a credit or debit card number - can withdraw funds from your bank or credit account; therefore:</li>
+<li><em>Every</em> time you give those card numbers to someone - Target, your cable company, Swiss Airlines - provides an opportunity for theft, another attack surface; therefore:</li>
+<li>We expend enormous amounts of effort and treasure trying to protect <em>every single one</em> of those systems.</li>
+</ol>
+<p>An edifice built on sand will constantly require more and more supports and effort to keep it from collapsing entirely, let alone actually standing upright. An edifice built on concrete drilled into the bedrock will stand for a very long time indeed.</p>
+<p><strong>In the age of electronic communications, it is time to discard the entire edifice of authorizing a vendor to withdraw or "pull" from my account if only they have sufficient secret information.</strong> All transfers of funds to someone else, like a retailer, should be "push" only. I, and only I, go to my account location - credit card provider, bank, savings &amp; loan, whatever - enter <span style="text-decoration: underline;">the seller's</span> account information and the amount I want to send, and it goes instantly. Not in 2 business days like an ACH transfer; not in 1 business day like a wire transfer; but in seconds. This is the only way to bring sanity back to the payments process. Once this is done:</p>
+<ol>
+<li>Go ahead, let everyone know my account. Breach your systems. <em>I don't care!</em> The only thing you will be able to do with my account information is <em>send me money</em> and <strong>not</strong> <em>take money from me</em>.</li>
+<li>If I no longer have to worry about the confidentiality of my account, 98%<em> of PCI goes away!</em> It is hard to overestimate how much PCI is costing industries worldwide year after year. The security auditors, or QSAs, are making a mint providing a service that is <em>currently</em> necessary but could go away. Vendors are expending untold sums adding protection above and beyond what is necessary, e.g. encrypting account information in databases, and, as we can see, it <span style="text-decoration: underline;">still is not enough</span>.</li>
+<li>I no longer need to carry around lots of cards. I can have 0, 1, 2 or 20 accounts without needing the card.</li>
+</ol>
+<p>Unfortunately, lots of businesses will, inevitably, go out of business. So be it. As <a href="http://en.wikipedia.org/wiki/Parable_of_the_broken_window" target="_blank">Frederic Bastiat showed</a> in the 1800s, let people spend their money where they find best. These still can be credit and debit accounts; I can push $100 to Target using a specific account that gives credit, collects end of the month, and gives miles. Or I can push using my regular old checking account. But it is high time that the entire infrastructure built around authorizing a seller to pull money from my account joined the horse and buggy in the quaint dustbin of history.</p>

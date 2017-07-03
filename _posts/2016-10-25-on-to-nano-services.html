@@ -1,0 +1,44 @@
+---
+layout: post
+title: On to Nano-Services
+date: 2016-10-25 12:33:43.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- technology
+tags:
+- agile
+- architecture
+- containers
+- infrastructure
+- microservices
+- nanoservices
+- serverless
+- unikernels
+author: Avi Deitcher
+---
+<p>A few weeks ago, I had the pleasure of meeting Pini Reznik, CTO of container consulting firm <a href="http://container-solutions.com">Container Solutions</a>, in Berlin. It may appear strange that an independent consultant who spends a <em>lot</em> of time helping companies with development and infrastructure strategies, much of which over the last several years has involved containers, would tout <span style="text-decoration: underline;">another</span> consulting firm's services. There is, however, plenty of work to do for all of us, and I am grateful for the thoughts and ideas they shared. Perhaps we will collaborate.</p>
+<p>The conversations we had will provide the kernels (unikernels?) of several articles here.</p>
+<p>Pini shared the following graphic, providing a (limited) summary of application+infrastructure development trends. Image courtesy of, reprinted with permission of, and copyright <a href="http://container-solutions.com">Container Solutions</a> Ltd, 2016.</p>
+<p><img class="alignnone size-large wp-image-2907" src="{{ site.baseurl }}/assets/site-images/16.03.23.Autopilot_Timeline_Graphic_2_all-01-1024x723.png" alt="16-03-23-autopilot_timeline_graphic_2_all-01" width="640" height="452" /></p>
+<p>For the purposes of today's article, we will focus on the trends on the left-hand-side of the graphic.</p>
+<p>The two fascinating parts to me in the graphic are:</p>
+<ul>
+<li>It ties together developments in application architecture, development processes and infrastructure;</li>
+<li> It attempts to show how developments in one area enable developments in another, and so on. Advancements are neither independent nor unidirectional, but mutually reinforcing.</li>
+</ul>
+<p>At one point, I said to Pini, half in jest, "so what is the next marketing term after micro-services? Nano-services??" Turns out he and his team had been thinking <em>exactly</em> that.</p>
+<p>Calling tiny (smaller than micro) services, composed of one or a few functions, a "nano-services" probably is a better term than <em>serverless</em>. In both micro-services running in an explicit container and functions running in a more hidden one, there <span style="text-decoration: underline;">is</span> a server, and it <span style="text-decoration: underline;">is</span> abstracted away. The only differences are: the level and amount of abstraction; and the size of the service. However, serverless is more likely to stick as a catchy name than "vmless" or "instanceless" ever would have been.</p>
+<p>I also appreciate that they put "unikernels" with a question mark. I, too, question unikernels outside of a narrow range, for two simple reasons:</p>
+<ol>
+<li>Containers <em>may</em> be sufficient, with future advancements, to fully isolate services/processes.</li>
+<li>No one <em>really</em> knows what will succeed in the market until it happens. Even with ironclad rock-solid arguments, a little humility goes a long way.</li>
+</ol>
+<p>Nonetheless, I do believe that given the constant back-and-forth between application architectures, processes and infrastructure, "nano-services" or "serverless" (or Simon Wardley's term Framework-as-a-Service/FaaS) will lead to some material advancement in infrastructure, just as containers enabled micro-services and then serverless; rarely is it a one-way process of evolution.</p>
+<p>Of course, I have issues with serverless, primarily around packaging, <a href="{{ site.url }}/2016/09/08/the-problem-with-serverless-is-packaging-2867/">as highlighted here</a>, as well as the mostly closed-source/proprietary nature of Lambda and others. OpenWhisk and Open Lambda may help.</p>
+<p>Will nano-services <em>be</em> serverless? Will they be something else entirely? Will they have a better name? How will the <a href="{{ site.url }}/2016/09/08/the-problem-with-serverless-is-packaging-2867/">packaging issues</a> be resolved? What about <a href="{{ site.url }}/2016/10/18/why-networking-is-critical-to-serverless-2894/">networking</a>? How about the open source question?</p>
+<p>For most companies, micro-services and containers are sufficiently leading-edge. For newer companies attempting to lay a longer-term path with the advantage of starting in a greenfield, for CTOs and architects at established companies who need to begin clearing the path in the woods, these are important questions.</p>

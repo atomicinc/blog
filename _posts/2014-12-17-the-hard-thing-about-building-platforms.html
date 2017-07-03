@@ -1,0 +1,48 @@
+---
+layout: post
+title: The Hard Thing About Building Platforms
+date: 2014-12-17 07:26:32.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>Most products and online services today revolve around four basic actions a user does with valuable data:</p>
+<ul>
+<li>create</li>
+<li>read</li>
+<li>update</li>
+<li>delete</li>
+</ul>
+<p>For example, if you are managing a customer in Salesforce.com, you are likely to create a new customer record, read it before the next time you call, update it with details of the call, or delete it if it is no longer relevant.</p>
+<p>In true techie fashion, these have become known by their acronym as CRUD activities. Not quite as appropriate as the acronym for Seasonal Affective Disorder, but still pretty funny.</p>
+<p>Because of this structure, the overwhelming majority of product development (i.e. software engineering) and product management references use CRUD as their examples. Roy Fielding's <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/fielding_dissertation.pdf" target="_blank">REST proposal</a>, which has become very widely adopted (with varying degrees of fidelity), is built around a similar CRUD model.</p>
+<p>The problem is, CRUD <strong>is not the hard part</strong>. The hard part about any system or platform is <strong>policies</strong>.</p>
+<p>Let's use an example. You are building a group management system, say like Google Groups. The activities seem pretty straightforward. Your basic business objects and their activities are:</p>
+<ul>
+<li>Group: Create it, update its name, delete it, or read information about it</li>
+<li>User: Create a user, update it, delete it, or read information about it</li>
+<li>Membership: create it (a.k.a. join a group), update it (change membership level), delete it (leave the group), or read information about it</li>
+</ul>
+<p>Seems pretty simple, right? <em>Not so fast</em>. The CRUD part <em>is</em> simple. The <em>policy</em> part is <span style="text-decoration: underline;">hard</span>.</p>
+<ul>
+<li>Who can update the group? Who can read it? Anyone at all? Maybe anyone logged in? Maybe anyone who is a member of the group, or is it just group admins?</li>
+<li>User: Who can create a user? Do users self-create, or does some administrator create them? Who can read information about a user? What if it is different people? Can user X let one class of people see their name, a different one their email, and yet another their phone number? Who can delete a user? Is it the user him/herself or an admin?</li>
+<li>Membership: can anyone join a group, or does "join" really mean "request join"? Who approves a join request? What if a group wants all requests to be approved automatically? Who can see group membership? Just the admins, or any member of the group, or perhaps anyone at all?</li>
+</ul>
+<p>It gets even harder. What if group A wants everyone to freely join by automatically approving all join requests, while group B wants every request approved by an admin, but group C wants all requests that are not approved by an admin within 24 hours to be automatically rejected? What if user 1 is willing to share information publicly, while user 2 shares nothing except with those with whom she has explicitly approved, while user 3 is willing to share name and email with everyone logged into the system?</p>
+<p>Perhaps the worst part of all is creating interfaces that enable people to <em>manage</em> these policies. I have no doubt a good engineer can write a policy line that looks like:</p>
+<blockquote><p><em>if profile.require_login &amp;&amp; user.is_logged_in &amp;&amp; profile.share_email &amp;&amp; !profile.keep_secret &amp;&amp; joint_membership(user,profile) &gt; 0</em></p></blockquote>
+<p>But very few users can <em>read</em> that, let alone <em>write</em> it. It is incredibly hard to do the following simultaneously:</p>
+<ul>
+<li>define sufficiently flexibly policies to meet most of your users' needs (80/20 rule)...</li>
+<li>that are still simple enough for all of them to understand...</li>
+<li>and visualizable enough that they can modify them to meet their needs without making mistakes.</li>
+</ul>
+<p>The last requirement is the hardest of all. If you make them flexible enough and they understand it, but do not grasp the interface and its implications well enough - these are not logicians, mathematicians or engineers - they will set policies that expose their private in ways that upset them. If you think it doesn't matter, ask Facebook via <a href="http://allfacebook.com/carnegie-mellon-facebook-privacy-study_b112298" target="_blank">Carnegie-Mellon</a>, <a href="http://www.huffingtonpost.com/2012/05/03/facebook-privacy-consumer-reports_n_1473920.html" target="_blank">Consumer Reports (HuffPo link)</a>, the <a href="http://www.washingtonpost.com/blogs/the-switch/wp/2014/04/30/confused-by-facebook-privacy-settings-so-is-the-supreme-court/" target="_blank">US Supreme Court</a>, or even <a href="http://techcrunch.com/2014/04/08/facebook-privacy-settings/" target="_blank">Facebook itself</a>.</p>
+<p>It turns out that the CRUD part of the system is  less than 10% of the work, both in product development and product management. Once you have defined your basic items and the create/read/update/delete actions around them, only then does the work <strong>really</strong> begin.</p>
+<p>&nbsp;</p>

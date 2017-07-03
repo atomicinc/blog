@@ -1,0 +1,96 @@
+---
+layout: post
+title: 'Pilots In Habitats: Basic Unit of Application Deployment'
+date: 2016-09-06 11:32:31.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- product
+- technology
+tags:
+- apps
+- containers
+- deployment
+- devops
+- management
+- operations
+author: Avi Deitcher
+---
+<p>What is the basic unit of application deployment?</p>
+<p>Two related trends have changed the answer to this question:</p>
+<ul>
+<li>DevOps</li>
+<li>Containers</li>
+</ul>
+<p>For many years, the tasks between engineer and operator were cleanly, if painfully, split:</p>
+<ol>
+<li>Engineer builds and delivers a package of files to deploy and run</li>
+<li>Operator deploys and runs those files in a production operating environment</li>
+</ol>
+<p>In the early years, the package of files consisted of a directory with a ream of paper and instructions. Over time that improved to zip files, then proper packaging and installation tools like rpm.</p>
+<p>Most recently, with the simplicity Docker (and others such as CoreOS' rkt) brought to container <em>packaging</em>, the preferred unit of deployment has become a container image.</p>
+<p>The goal of each step in this evolution has been to simplify two parts:</p>
+<ol>
+<li><span style="text-decoration: underline;">Deployment</span>: how easy is it to perform the one-time per release process of deploying it?</li>
+<li><span style="text-decoration: underline;">Management</span>: how easy is it to perform the ongoing process of resolving issues?</li>
+</ol>
+<p>Container images attempt to simplify the issues further by including all of the dependencies in a single runtime file. Whereas "file copy" included instructions such as, "copy these files to the following directories on the following operating systems with the following prerequisites", and rpms attempted to automate some of that, container images <em>include</em> all of the server dependencies in the right locations; just run it.</p>
+<p>However, as we come closer to resolving <em>lower</em> level dependencies via container images, we have become more acutely aware that applications are more than just the process running on one single host with lower-level dependencies. They also have <em>parallel</em> and <em>upstream</em> dependencies: other processes; databases; middleware services; etc.</p>
+<p>People often wonder why there were no reported cases of cancer one hundred years ago. "It must be our lifestyle," or "it is pollution and our environment." But the answer is simple: a century ago, life expectancy in the United States was  47, while the <a href="http://seer.cancer.gov/archive/csr/1975_2003/results_single/sect_01_table.11_2pgs.pdf">median age at cancer diagnosis is 67</a>. Quite simply, few people lived long enough to get cancer! Once life expectancy and health improved, other illnesses had their opportunity.</p>
+<p>Similarly, the lower-level issues of per-instance app deployment were so thorny, that higher-level cross-instance deployment coordination simply did not rise to the top of the stack (despite some attention). Now that we are solving those, higher level issues are becoming of concern.</p>
+<p>Perhaps, then, the correct question is: given clean packaging of an app <em>instance</em>, what is the proper unit of <em>complete</em> app deployment?</p>
+<p>I have been dealing with this in general and at some clients in working on clean, complete and self-managed deployments, as well as exploring the newer tools available to help, specifically the <a href="http://www.joyent.com/containerpilot">ContainerPilot</a> work of <a href="http://joyent.com">Joyent</a> and the <a href="http://www.habitat.sh">Habitat</a> work of <a href="http://chef.io">Chef</a>.</p>
+<p>On a rather long flight last week, I listened to a <a href="https://itunes.apple.com/us/podcast/arrested-devops/id773888088?mt=2&amp;i=373606195">podcast interview</a> with <a href="https://twitter.com/0x74696d">Tim Gross</a> of ContainerPilot, and <a href="https://twitter.com/adamhjk">Adam Jacob</a> of Habitat.</p>
+<p>In the interview, both Tim and Adam recognize similarities in each other's issues with packaging, deployment and management, and similar solutions.</p>
+<p>The <span style="text-decoration: underline;">primary</span> argument for these solutions is, to my mind, one that requires some clarification.</p>
+<p>The primary purpose of these tools is the one we described earlier: having solved the problem of reliable distribution, deployment and maintenance of <em>one instance</em> of an application, we now approach how to solve the distribution, deployment and maintenance of <em>an entire </em><i>application</i>.</p>
+<p><strong>This is something that we could not do before,</strong> at least not simply.</p>
+<p>Let's take a simple application, a node app with a Web front-end on a static Web server and a MySQL database on the backend.</p>
+<p>In the very old days (when, of course, neither node nor MySQL existed, but we will ignore that fact), the deployment would be as follows:</p>
+<ol>
+<li>Engineer packages up the static Web pages as a zip or tar file.</li>
+<li>Engineer packages up node application as zip or tar file.</li>
+<li>Engineer delivers two packages with instructions:
+<ol>
+<li>Expand node app package on server A into the following directory with the following prerequisites</li>
+<li>Expand Web files on Web server B into the following directory with the following prerequisites</li>
+<li>Launch node app using the following command</li>
+<li>Serve up the Web files with the following configurations</li>
+<li>Configure the database to have the following</li>
+<li>Configure the node app to access the database at the following settings</li>
+</ol>
+</li>
+</ol>
+<p>Fortunately, we have come a long way since then, through many iterations. Much of the configuration, unpacking, deployment, prerequisites have been simplified dramatically. It now looks like this:</p>
+<ol>
+<li>Engineer packages up static Web files <em>along with Web server</em> in a container image</li>
+<li>Engineer packages up node application in a container image</li>
+<li>Engineer delivers two images with instructions
+<ol>
+<li>Run node app with the following command line options and environment variables, including information to access the database</li>
+<li>Run Web server app with the following command line options and environment variables</li>
+<li>Configure the database to have the following</li>
+</ol>
+</li>
+</ol>
+<p>The number of steps is cut in half, and the complexity, and therefore opportunities for error, by much more.</p>
+<p>Tim and Adam look at the above and say, "this isn't enough!" The basic unit of deployment still shouldn't be individual packages and instructions, <span style="text-decoration: underline;">however simplified</span>. It should be a single deployable unit.</p>
+<p><strong><em>Entire</em> applications should be single deployable units.</strong></p>
+<p>They are looking for a world that looks as follows:</p>
+<ol>
+<li>Engineer packages up everything - static Web files along with Web server, node application, even database, and every other reasonable upstream and downstream dependency - in a series of self-described images.</li>
+<li>Engineers delivers it with instruction: <em>run this one command</em>.</li>
+</ol>
+<p>(Actually, they go one step further and say, "I can run this one command myself, who needs separate operators...")</p>
+<p>Tim and Adam are arguing that the unit of deployment for an application is <strong>the entire application</strong>. It is not each container image, however much of an improvement that is.</p>
+<p>In a recent application for a client, we did precisely that. The entire application with all of its dependencies should be a single unit of deployment.</p>
+<p>To do that, however, the individual units that compose the application - in our example, container images - must be able to know about each other and coordinate, <span style="text-decoration: underline;">without depending on external management</span>.</p>
+<p>The more I think about it, the more I believe that they are correct. It simply was a matter of solving the lower-level packaging issues, raising the bar to the point that we can begin to ask, "is this the best atomic deployment unit?"</p>
+<p>Of course, an entirely different question is, are container images the future of higher-level deployment units, or will serverless, a.k.a. FaaS or Framework-as-a-Service, dominate. That is a question for a different day.</p>
+<h2>Summary</h2>
+<p>Solving the challenges of deploying a single instance frees us up to attack the problems of deploying an entire application with all of its related parts. DevOps <em>means</em> no longer being dependent on some infrastructure run by some operator to run your app, but being able to self-service.</p>
+<p>How good are your deployment methodologies? Do you still "throw it over the fence", or can you manage your apps dynamically? <a href="{{ site.url }}/contact/">Ask us to help</a>.</p>

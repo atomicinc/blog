@@ -1,0 +1,48 @@
+---
+layout: post
+title: Will a CISO Board Delta Airlines?
+date: 2014-12-18 07:21:22.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- policy
+- security
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>The Internet has been abuzz with the discovery by <a href="http://www.thedanigrant.com" target="_blank">Dani Grant</a>, a writer at BuzzFeed, that <a href="https://medium.com/@thedanigrant/need-a-last-minute-flight-45af88ec8df3" target="_blank">she had found an easy way</a> to explore - and print, and <strong>use</strong> - lots of boarding passes from Delta, even those for other people and other airlines.</p>
+<p>When you ask for your mobile boarding pass, Delta sends you a URL to click and view your boarding pass QR code as well as all of the "human-readable" details of your flight: name, flight number, frequent flier number, etc. Grant played around with the URL and, by changing a digit or two, was able to view flight information of lots of other people.</p>
+<p>In other words, the entire security is in the URL, and the security <em>method</em> of that URL is just serial numbers. Not every single number gives a valid boarding pass, but many do.</p>
+<p>First things first, let's clarify that this is <strong>not</strong> a serious <span style="text-decoration: underline;">airline</span> security breach.</p>
+<p>Someone <span style="text-decoration: underline;">cannot</span> use a different boarding pass to get on a flight. The boarding pass is proof that <em>someone with the name on the pass</em> is entitled to board the plane; it is not proof that the <em>holder of the pass</em> is that person. At 2 different points - TSA security and gate boarding - the boarding pass is checked and matched against government-issued ID. You may or may not like that as a security method, but holding someone else's boarding pass will <strong>not</strong> get you onto the plane without government ID that matches your picture to that name. If you can make counterfeit passports, a fake or unmatched boarding pass is probably small potatoes.</p>
+<p>What this is, however, is a <span style="text-decoration: underline;">serious business security</span> breach. It can create great inconvenience to travelers. Someone can maliciously change someone else's flight, blackmail them, find out when they are traveling along with their family and thus their home will be unoccupied, cancel their flight, etc.</p>
+<p>The inconvenience and financial risk to individual travelers, and in aggregate to Delta, can be high.</p>
+<p>The more interesting question is, how could Delta possibly let this happen? Some basic information security rules include:</p>
+<ul>
+<li>Use more than one identifier; the single number, however long, should not have been enough.</li>
+<li>Never use a security identifier that can easily lead to guessing another. If my secret code is "123" and I am employee number 123, it is pretty easy for someone who gets my code to figure out that someone else has "125" and break in.</li>
+</ul>
+<p>What could Delta have done? There are a lot of solutions. Some include:</p>
+<ul>
+<li>Keep the boarding pass behind a login-secured area.</li>
+<li>Make the boarding pass available only from 24-hours before the flight until 24 hours after.</li>
+<li>Use a UUID rather than a simple number. With 2^122 (2 to the power of 122) possible combinations, Delta will <span style="text-decoration: underline;">never</span> use more than such an insignificant fraction that it would not be worth anyone's time to try and check them.</li>
+<li>Use some additional information, such as a hash of the serial number and other information, that guessing is nearly impossible.</li>
+</ul>
+<p>How did Delta make such a <strong>rookie</strong> mistake and expose itself? I suspect there are 2 prime causes, both executive:</p>
+<ol>
+<li><span style="text-decoration: underline;">CISO</span>: Look at Delta's <a href="http://news.delta.com/Leadership" target="_blank">executive leadership</a>. While there is a CIO, there is no CISO, no one <em>at the top level</em> responsible for information security. Actually, there is no one at that level with any type of "security" title. No one at the top level owns auditing of systems and applications, checking compliance, responding to security incidents, working with outsiders, and instilling a security-conscious culture. In the era of Target and Sony, not having a CISO is a guarantee of serious mistakes.</li>
+<li><span style="text-decoration: underline;">Merger</span>: Delta <em>does</em> have a CIO, which is great. Her biography is <a href="http://news.delta.com/index.php?s=20292&amp;item=30074" target="_blank">here</a>. Her greatest achievement appears to be merging Northwest and Delta. Having lived through the United-Continental mess of a merger as a customer, successfully merging the systems which are the lifeblood of these companies is no small feat. But with a focus on the merger, security often will fall by the wayside, and clearly did.</li>
+</ol>
+<p>Apparently, this past summer, <a href="http://www.onlinecso.com/delta-airlines-still-running-xp/" target="_blank">someone noticed</a> that Delta is running Windows XP - long past end of life - in its customer- and agent-facing terminals. I suspect there are dozens of major security weaknesses at Delta with no one owning them.</p>
+<p>What should Delta do? Here is a 3-step plan.</p>
+<ol>
+<li>Hire a CISO. Now.</li>
+<li>Fix the breach. Immediately. Apparently they did, although I have yet to read reports on how they did and whether or not it is a bandaid or a real fix.</li>
+<li>Open to white hat. Grant found the issue and submitted it to Delta... only to get a standard "customer service" letter. When she got no material response she publicized it. Delta should have a path for people finding security weaknesses to submit them to immediate review.</li>
+</ol>
+<p>But the first is still most important, and will affect all of the others. Delta needs a CISO to board the airline's executive.</p>
+<p>&nbsp;</p>

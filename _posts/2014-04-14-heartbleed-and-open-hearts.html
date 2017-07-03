@@ -1,0 +1,26 @@
+---
+layout: post
+title: Heartbleed and Open Hearts
+date: 2014-04-14 05:20:50.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- security
+tags: []
+author: Avi Deitcher
+---
+<p>The Internet is agog with the discovery of the critical bug in OpenSSL's heartbeat, nicknamed "Heartbleed." Bruce Schneier called it "catastrophic... On the scale of 1 to 10, this is an 11."</p>
+<p>What is heartbleed? I will leave it to other sites to explain; just Google it. Suffice it to say that it can accidentally expose in-system memory of SSL-secured servers. In that memory could be garbage, or it might be a user's password, bank transaction info, or even the private key of the site (which would allow any site to spoof it).</p>
+<p>It affects only certain versions of OpenSSL - 1.0.1 through 1.0.1f - so not everyone is affected, or everyone using OpenSSL. But OpenSSL is very broadly used. Put it this way: <a href="http://news.netcraft.com/archives/2014/02/03/february-2014-web-server-survey.html" target="_blank">according to Netcraft</a>, 54.50% of Web sites use Apache and another 12% use nginx. <strong>A combined 2/3 of all active Web sites are on one of the 2 servers that use OpenSSL.</strong> Granted, not all of those sites are secured (or need to be) with SSL, and those that are may not be using an exposed version of OpenSSL. But the statistics are still staggering.</p>
+<p>One of the questions that has come out of this is, does this mean OpenSSL's dominance was a "bad thing"? After all, Microsoft's SSL library isn't affected by the bug, nor is Apple's. If there were more options around, more custom home-grown builds like Microsoft and Apple use, wouldn't there be fewer vulnerabilities?</p>
+<p>In short, <strong>no.</strong></p>
+<p>This is an argument I have heard before, but in an entirely different context. In the mid-1990s, as more and more powerful servers became available, there was a big push to consolidate services onto a single server. After all, a single server as powerful as 10 such servers may cost 20 times as much, but it is still only one server to maintain. Your space requirements in your data centre go down somewhat, but your labour costs go down dramatically. If you have 10 servers per system administrator, then a 10-to-1 reduction in servers means you can get rid of 9 administrators. Of course, it isn't free; you need to invest in engineering, and a sysadmin who knows how to handle this powerful server may cost a little more. But not ten times as much.</p>
+<p>But then you have a reliability problem. After all, if you had 10 servers, and one went down, one service was affected. But if 10 services are running on just one big server, and that one goes down, then all of them are affected. Aren't your risks much higher?</p>
+<p>The answer, of course, is yes... but with a much smaller number of servers to manage, it freed up resources to invest in the <em>engineering</em> to make either the server more reliable, or to make the services that run on them more reliable.</p>
+<p>Eventually, the latter version won out. Most newer Internet-based services that are well-built can handle the loss of a server (or 2 or 3) without blinking. They are engineered to be fault-tolerant at the software level.</p>
+<p>As an aside, the whole question of consolidating the services onto a big server became moot as virtualization, led by VMWare and Xen, took root.</p>
+<p>The lesson there, though, was that if you have to choose between many diverse installations to manage and a few more risky but uniform ones, go for the uniform and invest in managing it and the services that run on it much better.</p>
+<p>The same lesson applies to Heartbleed. Sure, OpenSSL had a catastrophic bug in it. But it was found and reported and is being fixed. How many similar or worse bugs would exist if there were dozens or hundreds of home-grown (a.k.a. "proprietary") SSL libraries around, and <em>would never be found</em> (except by our dear friends at the NSA, of course)? We are much better off, especially in the security world, with open-source and broadly adopted - and constantly reviewed - products and libraries that are always being tested against and by the best.</p>
+<p>I would rather have the heart of the SSL open for inspection, even if it sometimes leads to Heartbleed, knowing it will be caught as soon as is possible.</p>

@@ -1,0 +1,38 @@
+---
+layout: post
+title: Why Engineers Hate Testing
+date: 2013-11-22 09:51:50.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- security
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>In previous posts, most recently <a title="Zero, the Small Victory" href="{{ site.url }}/2013/11/20/zero-the-small-victory/" target="_blank">earlier this week</a>, I discussed the benefits of testing and how admitting you have a problem is the first step, the first success, on the road to victory.</p>
+<p>Anyone who has managed engineers knows that they hate doing three things more than any others:</p>
+<ul>
+<li>Wasting time</li>
+<li>Writing documentation</li>
+<li>Testing</li>
+</ul>
+<p>Despite growing evidence that creating automated tests <em>first</em> and only <em>then</em> writing code to implement your business need (test-driven-development or TDD) is very successful and leads to faster, more stable and more reliable releases - which means more revenue for the company and, from the engineers' perspective, fewer nights of emergency bug fixes - engineers instinctively hate writing tests first (well, after too), and will take any opportunity to "just build it."</p>
+<p>Why? What is it about writing tests that sets engineers off, and how can we use that knowledge to help them?</p>
+<p>Engineers are highly structured people. They love building solutions to well-defined problems, and seeing their handiwork become useful.</p>
+<p>Most problems have multiple solutions, especially in the engineering world. The engineer excels at learning of and understanding the problem, coming up with solutions, picking the best one, and implementing it. This is a mostly linear process, with a series of selections/decisions on the way, and on to building something that will be seen, appreciated, respected.</p>
+<p>Testing, on the other hand, involves <em>thinking</em> through lots of scenarios, placing yourself in an almost infinite number of others' shoes. How many different ways could a customer use our service? If we have six options, what if they only fill in these five? What if they fill in <em>those</em> five? What if they skip the middle one? Give bad data for the sixth? Fill in four, skip the sixth, and give bad data for the fifth?</p>
+<p>The number of permutations looks and, more importantly, <em>feels</em> endless, and worse, pointless. After all, how many times will someone <span style="text-decoration: underline;">actually give bad data in field five and skip the sixth</span>?!?! And yet, testing forces the engineer to think through all of these scenarios.</p>
+<p>This is, to an engineer, a tiring, aggravating, pointless exercise. The fact that doing so will save him or her an even <span style="text-decoration: underline;">more</span> pointless exercise - debugging an obscure scenario in the middle of the night - is beyond the point. Debugging is in the future and might never happen; testing is an annoyance in the here and now.</p>
+<p><b>It is the conjuring of numerable, rare and seemingly useless permutations that delays the code writing the engineer enjoys and signed up for.</b></p>
+<p>So how do we help him or her get past it? There are a few ways:</p>
+<ul>
+<li>Stick: It's 100% code coverage testing first, or go find another job. This works, but has some deleterious side effects.</li>
+<li>Carrot: Give rewards for solid code coverage. This works a little better.</li>
+<li>Incentives: Give rewards for bug-free releases, the more the merrier. This rewards the desired <em>outcome</em>, leaving the engineer free to decide (on his/her own) on the appropriate <em>behaviour</em>. This also works reasonably well, but you need to provide the tools so they can see how their process impacts their outcome.</li>
+<li>Offload: Offload the least suited part to someone for whom it is a better fit.</li>
+</ul>
+<p>My favourites are the last two, but especially the last. Recognize that engineers are emotionally ill-suited to dreaming up these scenarios, and so make it the responsibility of someone else, usually in product management, to help define the scenarios - a specification of use cases, just like for the actual product - and then have the engineer write up the test cases, which, themselves, are another form of code.</p>
+<p>No solution will get them to <em>love</em> writing tests. But providing the right incentives along with the right assistance can remove their natural roadblocks.</p>

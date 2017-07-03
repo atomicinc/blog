@@ -1,0 +1,31 @@
+---
+layout: post
+title: Open-Source Tensions
+date: 2013-10-15 07:07:26.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- policy
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>I am a big advocate of open-source software. I believe that, along with Amazon Web Services, open-source has been the single greatest enabler of startups in the last decade or more.</p>
+<p>Amazon made it possible to launch an online startup for pennies on the dollar of what it cost in the 90s; I still remember startups that raised millions just to buy and run their Web servers. Nowadays, you do it for a few hundred dollars per month.</p>
+<p>Open-source software - programming languages like Ruby and Rails, Nodejs, Python, PHP; databases like MySQL, PostgresQL, Mongo, Couch; operating systems like Linux and its variants; Web servers like Apache and nginx; the list goes on - makes it possible to build services for a pittance. Further the proliferation of this software has made the <em>labour</em> cost of building something cheaper, as so many components are available off the shelf (or off the github), with enough variants to satisfy almost any need.</p>
+<p>At the same time, a tension exists between commercial and open-source. Of course, commercial vendors would prefer open-source did not exist, since they make money off selling software! I refer, however, to the companies who have <em>built their businesses on open-source</em>.</p>
+<p>There are two kinds of such companies:</p>
+<ol>
+<li><span style="text-decoration: underline;">Leveragers</span>: These are companies like Facebook, Twitter, Google and many others whose core product is <em>not</em> open-source, but who <em>use</em> open-source to get there. These companies build new open-source products and extend existing ones, and then <strong>contribute their modifications back to the world at large</strong>, often under liberal MIT/Apache licenses. Facebook's value comes from connecting people, not database engines; Google's value is in its index, not its filesystems; Twitter's is in its users, not its messaging queue.</li>
+<li><span style="text-decoration: underline;">Stackers</span>: These are companies who build a business on open-source products. Some, like RedHat, package up service and support around the products. Others, like Cloudant, offer to run these products for you, packaging up the expertise and management. Their core product <strong>is</strong> the open-source, or a variant of it.</li>
+</ol>
+<p>While the "leveragers" sometimes become overly concerned that their technical advances are part of their competitive advantage, overall they tend to recognize where their value lies and contribute.</p>
+<p>The "stackers" are a more challenging breed. Because they actually build and operate the <em>core</em> products, and are paid to do so, they quickly identify shortcomings in the software and invest their own resources to upgrade the products. However, they are doing so to capture more sales.</p>
+<p>Thus, the challenge. If you are Acquia, running Drupal for customers, and you make a modification that does not exist in open-source Drupal and hence leads to a boost in sales, you begin to wonder if you should be releasing your code back to the open project.</p>
+<p>Often, these tensions between commercial and contributory <em>inside open-source companies</em> creates split personalities. Companies claim to be open-source and contributing, but do not want to contribute <em>too much</em> (the definition of which is amorphous).</p>
+<p>Over time, if the open-source project appeals to enough users, your "unique" advancements will work their way in from other sources. Given the speed of open-source, it will happen sooner rather than later, and likely in a fashion fundamentally different than how you did it. This will create a challenge to maintaining your own product, as you have now come to rely upon a version growing further away from the mainstream.</p>
+<p>At the same time, if you have an add-on which is <span style="text-decoration: underline;">not</span> part of the product, you can easily leverage it for commercial value <em>without</em> diverging from the product. A great example is Heroku, who built everything on the core Ruby, nginx and other products, but built a proprietary mesh to route <em>between</em> and <em>manage</em> the products. As a separate component with specific value, they were not torn between commercializing a unique asset and the open-source core.</p>
+<p>At heart, a company needs to decide what is its core value-add offering to customers. If it is a commercial software, then be open about it internally and externally. If it is a social network, then focus on the network.</p>
+<p>Like most challenges in a company, you need to start and end with your value proposition, then work out the rest.</p>

@@ -1,0 +1,81 @@
+---
+layout: post
+title: Nimbleness of Scale
+date: 2015-04-13 08:09:30.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- amazon
+- cloud
+- nimble
+- pricing
+- rackspace
+- scale
+- scope
+author: Avi Deitcher
+---
+<p>In business, there are two benefits that accumulate to large or diversified companies:</p>
+<ol>
+<li><a href="http://en.wikipedia.org/wiki/Economies_of_scale" target="_blank">Economies of Scale</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Economies_of_scope" target="_blank">Economies of Scope</a></li>
+</ol>
+<p><strong>Economies of Scale</strong> are the benefits of from doing <em>more of the same</em>. If you make 10MM laptops a year, your cost per computer will be cheaper than if you make 100,000 laptops per year. These benefits come from a number of sources:</p>
+<ul>
+<li><span style="text-decoration: underline;">Purchasing Power</span>: Since you are buying components for 100x as many LCD screens, you can negotiate better prices.</li>
+<li><span style="text-decoration: underline;">Learning Curve</span>: As you manufacture more, you can learn how to improve your process.</li>
+<li><span style="text-decoration: underline;">Contribution Margin</span>: Your fixed costs - plant, manager, machines, lawyers, accountants - are spread across 100x as many laptops, reducing the amount required by each laptop to cover fixed costs.</li>
+</ul>
+<p><strong>Economies of Scope</strong> are the benefits you gain from having diversified production. If your machine for manufacturing laptop power supplies can, with no change, also manufacture them for wireless access points, you have an advantage over someone who is only doing one or the other.</p>
+<h3>Intermediaries and Cloud Providers</h3>
+<p>What does all of this have to do with cloud economics? Obviously, large scale cloud providers have - by definition - scale. They buy more servers and other equipment than any one of their customers, since they are buying the <em>aggregate</em> of their customers' needs.</p>
+<p>However, at a certain point, the returns to economies of scale become smaller. While 1,000 servers will get a far better price than 10, the benefit levels of due to diminishing returns. How much better is 100,000 than 1,000? How much better is 10MM than 100,000?</p>
+<p>Put in other terms, are cloud providers not <em>another</em> intermediary that needs to make its margins?</p>
+<p>Yes, if I am a startup who needs a total of 20 instances, Amazon or Rackspace can get far better pricing on everything than I can. But is it possible for Amazon to get better overall pricing than even a single GE division, which probably uses 100,000 or even 1MM server instances?</p>
+<p><strong>Not necessarily</strong>. An intermediary must increase unit costs compared to a direct purchase, since they must make a profit. However, these are mitigated by two factors:</p>
+<ol>
+<li>The intermediary can become the manufacturer.</li>
+<li>The intermediary can compensate with flexibility.</li>
+</ol>
+<h3>Intermediary as Manufacturer</h3>
+<p>At a certain point, an intermediary can become either large enough or knowledgeable enough to <span style="text-decoration: underline;">become their own manufacturer</span>. Amazon may buy 1MM servers per year, and GE only 100,000. At that scale, Dell, IBM and HP are working on razor thin margins that will lead to very similar prices for both Amazon and GE. However, at 1MM servers per year (<strong>scale</strong>) and a business selling access to these servers (<strong>focus</strong>), Amazon can custom design their own servers. They can eliminate their own intermediary - HP or IBM or Dell - by custom-ordering their own servers. Google, one of the largest users of computing equipment, custom designs and orders their own servers. This is partially so their servers more accurately fit their workload, but also for economic reasons.</p>
+<p>Thus, the comparison is not:</p>
+<p><a href="{{ site.url }}/wp-content/uploads/2015/04/intermediary-vs-direct.png"><img class="alignnone size-full wp-image-2460" src="{{ site.baseurl }}/assets/site-images/intermediary-vs-direct.png" alt="intermediary-vs-direct" width="513" height="358" /></a></p>
+<p>But rather:</p>
+<p><a href="{{ site.url }}/wp-content/uploads/2015/04/cloud-provider-vs-direct.png"><img class="alignnone size-full wp-image-2461" src="{{ site.baseurl }}/assets/site-images/cloud-provider-vs-direct.png" alt="cloud-provider-vs-direct" width="518" height="376" /></a></p>
+<p>Suddenly, the economics look quite different.</p>
+<h3>Intermediary as Flexibility Provider</h3>
+<p>When you buy a book, all you are getting is a book. Whether you buy it from Amazon, Barnes &amp; Noble, or your local independent bookstore (are any of those left?), the entire product is the book. You read it by yourself, on your own time, with light provided by the sun or your lamp.</p>
+<p>When you buy a server, it is useless on its own. It needs:</p>
+<ul>
+<li>Power</li>
+<li>Cooling</li>
+<li>Rack and floorspace</li>
+<li>Network equipment</li>
+<li>Network cabling</li>
+<li>Virtualization</li>
+<li>Operating system</li>
+<li>Software</li>
+<li>Management</li>
+<li>Monitoring</li>
+</ul>
+<p>And that it just the short list. A book <em>is</em> the end product; a server is <em>just</em> a component in the business service.</p>
+<p>Cloud providers like Amazon and Rackspace are not <em>just</em> resellers, adding a markup to provide convenience like a local bookstore or easy returns, or your typical value-added reseller (VAR), adding 10-20% additional value with some insurance or customer support.</p>
+<p>They are providing an entire package of service of which the hardware is <span style="text-decoration: underline;">just one component</span>. It is for this very reason that cloud providers like Amazon and Rackspace have invested so much in providing cloud nimbleness and control. The value comes not from the economies of scale of buying servers for cheaper and passing many of those savings on to the customer, although that is true compared to the purchasing power of smaller customers. The value comes from utilizing that very scale to create a flexibility <span style="text-decoration: underline;">around</span> those services that did not exist before. I call it the <strong>nimbleness of scale</strong>.</p>
+<h3>Can Customers Replicate It?</h3>
+<p>The question becomes, can a large enough customer replicate it on their own? They certainly can get some of the economies of scale, although provider-as-manufacturer may render this irrelevant.</p>
+<p>But can they get the <em>nimbleness</em> of scale? The answer is, yes, they probably can, but not definitely. The key challenges to getting nimbleness are:</p>
+<ol>
+<li><span style="text-decoration: underline;">Scale</span>: A customer needs to be big enough to invest in the skills and hardware required. For example, Amazon may only have one end-point AWS API server for every 10,000 or even 50,000 EC2 instances. A company with 25,000 instances on their own private cloud will have a much higher "API server cost per instance" than Amazon with orders of magnitude more. The same holds true for backup, monitoring, accounting, HR and legal.</li>
+<li><span style="text-decoration: underline;">Technology</span>: This is less of a major issue. While Amazon and Rackspace undoubtedly invent new technologies that they do not necessarily open-source, at least for some time, in order to provide a competitive advantage, very few technologies remain unique for a long time.</li>
+<li><span style="text-decoration: underline;">Culture</span>: This is the largest issue. Amazon and Rackspace sell cloud services as their core business. Their <span style="text-decoration: underline;">entire decision tree</span> for investing opex in R&amp;D, capex in hardware, developing a new networking proposal or cutting costs is based on the effect it has <span style="text-decoration: underline;">on the cloud business</span>. Any other business, no matter how large (like GE) will still be subject to the culture of the parent company, and thus focused on selling airplane engines, cars, stocks and bonds, or passports.</li>
+</ol>
+<p>Over time, larger private clouds can gain some of the benefits of public clouds due to open technology and scale. The largest impediment, however, will be culture, which is the ultimate determinant of the future of any company.</p>
+<h2>Summary</h2>
+<p>The decision to outsource or insource, use a cloud utility provider and spend opex vs. building the core functions yourself and spending capex, depends on your ability to replicate the economies of scale and scope of cloud providers, your access to technologies, your skill set, your particular business needs around security, compliance and performance, but more than anything, <em>on your culture.</em></p>
+<p><a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us</a> to evaluate if your business needs and culture are suited to leverage public clouds, build private clouds, or do a mix, and how nimble you truly could become.</p>

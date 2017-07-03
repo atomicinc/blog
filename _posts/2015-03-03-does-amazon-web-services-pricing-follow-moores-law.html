@@ -1,0 +1,76 @@
+---
+layout: post
+title: Does Amazon Web Services Pricing Follow Moore's Law?
+date: 2015-03-03 07:55:45.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- pricing
+- technology
+tags:
+- amazon
+- aws
+- cloud
+- pricing
+author: Avi Deitcher
+---
+<p>Yesterday's <a title="Premium Pricing Just Doesn’t Last" href="{{ site.url }}/2015/03/02/premium-pricing-just-doesnt-last-2347/" target="_blank">article</a> on the short life span of premium (and especially ultra-premium) pricing led to a <a href="https://news.ycombinator.com/item?id=9131546" target="_blank">robust discussion on Hacker News</a>. In the article, I used Amazon Web Services (AWS) as an example of a company that <em>actively tries</em> to cannibalize itself.</p>
+<p>A smart <a href="https://news.ycombinator.com/item?id=9131817" target="_blank">commenter pointed out</a> that AWS pricing, while falling continually, has nonetheless fallen more slowly than <a href="http://en.wikipedia.org/wiki/Moore's_law" target="_blank">Moore's Law</a>, according to which equivalently-priced capability should double roughly every 18 (or 24) months.</p>
+<p>Is it true? Does Amazon's cloud pricing fall more slowly than Moore's Law? Put in other terms, is AWS gross margin slowly increasing over time, as their prices to customers fall more slowly than the costs of the underlying hardware?</p>
+<p>Let's look at the cost of an AWS on-demand virtual instance of Linux in US East. We use the popular instance type m3.medium from when it was launched in 2013, and m1.medium beforehand. Both have 1 VCPU and 3.75 GiB of memory, although the processor type and speed improved in the m3.medium from some form of generic "Intel Xeon" running at 2.0GHz to a specific Ivy Bridge (and sometimes Sandy Bridge) running at 2.5GHz, and the primary and secondary platter hard disks were replaced with SSDs.</p>
+<ul>
+<li>December 2014: m3.medium, $0.070 per hour</li>
+<li>December 2013: m3.medium, $0.113 per hour</li>
+<li>December 2012: m1.medium, $0.13 per hour</li>
+<li>December 2011: m1.medium, $0.16 per hour</li>
+</ul>
+<p>Over a period of 3 years, the cost of an instance dropped 18.75%, then 13.1%, then 38%. the cumulative drop, then, was 56.25% over a 3-year period, while improving processor type and speed.</p>
+<p>Is it Moore's Law? Well, 56% reduction over 36 months while boosting performance by more than 25%, not counting the shift from to SSD is nothing to laugh at, but it is not quite a halving every 18 (or even 24) months.</p>
+<p>However, this analysis misses one of the most important benefits of AWS over your own servers: <span style="text-decoration: underline;">infrastructure and staff</span>.</p>
+<p>The comparison <strong>is not</strong> between an AWS instance and an instance running on your own "iron"; it <strong>is</strong> between an AWS instance on the one hand, and an instance on your own iron, plus the power to run the server, the labour to install and cable it, hardware maintenance, physical monitoring, routers, switches, firewalls, and all of the staff, expertise, and monitoring to go with that, not to mention real estate in a data centre and the power cost. Data centres normally bundle cooling into the power price, since they are essentially proportional; power consumption is what requires the cooling.</p>
+<p>Let's compare the AWS example to running your own infrastructure, i.e Do-It-Yourself (DIY), properly adding in all of the relevant costs.</p>
+<p>Here are our assumptions:</p>
+<ul>
+<li>You have 100 physical servers, 6 virtual instances on each, for a total of 600 virtual instances. Fewer would make the scale of running it prohibitively worse.</li>
+<li>Your 100 physical servers will have four switches, two routers and two firewalls. In reality, you probably will have much more, adding to the expense.</li>
+<li>We will ignore your monitoring and other required services for the moment.</li>
+<li>You are virtualizing with Xen, (which AWS uses), available for free, as opposed to VMWare, which has significant licensing costs.</li>
+<li>The number of instance system admins (or "sysadmins") is the same, since you have the same 600 instances, so we can consider them a wash.</li>
+<li>Your AWS costs use on-demand pricing. You could save double digit percentages by paying for reserved instances.</li>
+</ul>
+<p>Some of these assumptions probably are not completely correct, but make our case <em>weaker</em>. Remove the assumptions and the cost of private infrastructure <span style="text-decoration: underline;">goes up</span> relative to AWS.</p>
+<h3>AWS Cost</h3>
+<p>In the Amazon case, your <span style="text-decoration: underline;">entire cost</span> is 600 instances at $0.07 per hour, or $362,880 per year. Over a 3-year life span, that is $1,088,640.</p>
+<h3>DIY Cost</h3>
+<p>As of this writing, an HP DL380G9 server costs ~$8,800 each, for a total of $880,000 for 100 servers. At first blush, buying the hardware will save you nearly ~$120,000 over AWS over 3 years.</p>
+<p>In practice, though, we need to account for all of the additional costs. Let's be generous and assume that each piece of networking gear only costs ~$5,000, for a total cost of $40,000. The gap between DIY and AWS is now down to $80,000.</p>
+<p>What does it cost to put 108 pieces of gear into a data centre in Northern Virginia, where AWS US East is located? Each piece of gear is 2U high, which means 21 could fit in a 42U cabinet, requiring at least 5 cabinets. The numbers change based on negotiations, but a recent investigation I did would not find it too far off the mark for the cost to be $8,000 per month including space, power and cooling, or $288,000 over 3 years. (If you really want to save money, put them in places with low power or cooling costs, like Amsterdam, which I did recently for a client. <a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask me</a>.) Then, you need to add in all of those additional data centre costs like delivery, storage, cross-connects, etc. Your DIY 3-year cost is now $1.208MM. <strong>Our do-it-yourself cost advantage just disappeared.. and we haven't considered labour yet</strong>.</p>
+<p>We will be very conservative on labour costs, and assume that your admins handling the 600 instances are also able to do some of the underlying infrastructure work. Even so, you will need, at minimum, an <span style="text-decoration: underline;">additional</span> 3 personnel to handle networking, firewalls, and physical servers, as well as some labour costs for physical changes such as racking and stacking and replacing parts. Whether you use "smart hands" from the data centre to do it for $200-250 per hour, or whether your staff do it, 108 pieces of equipment <span style="text-decoration: underline;">must have</span> regular maintenance.</p>
+<p>With the current demand for staff, a fully-loaded cost of $120,000 per employee is probably low. We now have a total 3-year cost comparison of:</p>
+<ul>
+<li><span style="text-decoration: underline;">AWS</span>: $1,088,640</li>
+<li><span style="text-decoration: underline;">DIY</span>: $2,288,000</li>
+</ul>
+<p>Finally, and <em>this is perhaps the most important point</em>, DIY prices are fixed or rising:</p>
+<ul>
+<li>Power prices will increase if the wholesale costs to your colocation provider increase;</li>
+<li>Your space charges certainly will not go down and are likely to increase;</li>
+<li>Your depreciation costs for your hardware are fixed in stone, since you already purchased and capitalized the equipment.</li>
+</ul>
+<p>And Moore's Law?</p>
+<p>Amazon is not eliminating all of those additional costs - space, power, cooling, labour, firewalls, routers, monitoring, etc. Nor are those costs subject to Moore's Law; if anything, they increase with time, due to increases in productivity, demand for talented staff, and of course inflation. Amazon is just being hyper-efficient about managing them using a combination of great technology - because this is AWS's core business - and scale. You look at 100 servers as decent sized and 1,000 as big; they look at 10,000 as tiny.</p>
+<p>Amazon only has two ways to reduce prices:</p>
+<ul>
+<li>Underlying components, which are subject to Moore's Law, and passing on the savings;</li>
+<li>More efficient operations using better economies of scale and new operational processes or tools.</li>
+</ul>
+<p>Since Amazon's <strong>fully-loaded cost to you</strong> dropped by 56% over 3 years, the parts that <span style="text-decoration: underline;"><em>are</em></span><i> </i>subject to Moore's Law likely <em>did</em> drop a similar amount. If it were only the component cost pass-through, Amazon's price drops should have been far less than 56%. As we saw in the DIY case, only 40% of your costs ($920,000 out of $2,288,000) were for hardware. All of the rest was power, cooling, space and labour.</p>
+<p>Over time, these costs will increase to DIY companies, while decreasing to cloud users, leading to ever higher cost advantage.</p>
+<h2>Summary</h2>
+<p>Well-run cloud services with a dedication to ever-better operations and customer price reductions, like Amazon Web Services, not only reduce prices as quickly as Moore's Law for core components; <strong>they reduce prices for everything else too</strong>.</p>
+<p>Does this mean public cloud is for everyone? I do not believe it is. There are circumstances where it may not make sense. There are other cases where it makes a lot of sense, but the economics do not work out because customers are running in the cloud how they ran on private hardware.</p>
+<p>Are your technology operations running privately or in the cloud? Are they running optimally in either place? Are you sure that your competitors have not found the best way and will leave you, your costs, and hence your profits, behind as they take your customers?</p>
+<p>We can help you compare <em>your</em> operations both privately and in the cloud, as well as help you run them best for each scenario. Do not let your competitors leave you in their wake. <a title="Contact" href="{{ site.url }}/contact/">Ask us</a>.</p>

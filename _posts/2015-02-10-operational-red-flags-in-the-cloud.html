@@ -1,0 +1,66 @@
+---
+layout: post
+title: Operational Red Flags in the Cloud
+date: 2015-02-10 08:06:26.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- technology
+tags:
+- cloud
+- consolidation
+- infrastructure
+- services
+- software
+author: Avi Deitcher
+---
+<p>Early in my career, when I did technology for a very large financial firm, we started with dedicated servers for each business process. It was an easy way to track costs, manage risks and allow each business unit to maintain control.</p>
+<p>Unfortunately, it was also an <span style="text-decoration: underline;">exorbitant</span> way to maintain control. As servers became more powerful and disk cheaper, processes utilized less and less of their capacity. Even more than the costs of the infrastructure itself, the costs of the staff to deploy, maintain and support each piece of infrastructure could kill profitability.</p>
+<p>We went through the pre-cursor to virtualized environments: server consolidation. With 10 servers each running at 5% peak capacity, we could easily move all 10 processes onto 1 consolidated server, save 90%+ costs, and <strong>still</strong> have double capacity to spare!</p>
+<p>The downside was risk. Whereas before one server's downtime meant one process out, in a consolidated world one server's downtime meant ten processes out, a very expensive proposition indeed.</p>
+<p>Our solution to this risk was threefold:</p>
+<ol>
+<li>Utilize some of the savings to create extra redundancy. Instead of one server, have 2 or even 3 redundant servers, and still save 70-80% costs.</li>
+<li>Architect the software to operate better in a shared and ephemeral environment. Whereas the software used to assume its server was "always up" (which, of course, was pure fiction, if convenient), the new software should assume that at least one of its instances was always up.</li>
+<li>Raise our service management game to several higher planes of existence.</li>
+</ol>
+<p>If this sounds like an early-1990s version of the cloud... <strong>it was!</strong> Many of the principles underlying and lessons for the cloud were hatched in the intense IT environments of these mission-critical companies.</p>
+<p>While any technology service needs to manage itself well, and mission-critical even more so, the cloud takes it to the next level. It is amazing how well focused you become when each minute of "service degradation" costs you upwards of $1MM!</p>
+<p>Here are some "red flags" around how you manage your cloud operations. If you see these in your company, you need to address them.</p>
+<h3>Christmas Tree</h3>
+<p>Do you have a big pane of glass, or perhaps several, with blinking red and green lights, the "Christmas tree" effect? Most operational centres have them.... and they are a warning sign. If it is red, it should be taken care of immediately; if it need not be taken care of immediately, it shouldn't be red.</p>
+<p>The fundamental problem of the "Christmas tree" effect is that it assumes your team knows what the lights <em>really mean</em> or <em>just don't care</em>. Your team is using an instinctive filter to deal with a bad signal-to-noise ratio.</p>
+<p>This will have 3 very serious downstream effects:</p>
+<ul>
+<li>True "severity 1" or "critical" incidents will be lost in the noise.</li>
+<li>If any of your staff leaves, a lot of knowledge is lost with him or her.</li>
+<li>You really have no idea of the true state of your system.</li>
+</ul>
+<h3>Tribal Knowledge</h3>
+<p>If your head of operations / technology services / infrastructure / support and most of the team disappeared today, would you be dead in the water? Sure, your replacement staff would take time to get up to speed, but would it be days to weeks of slower service, or months of disaster?</p>
+<p>Technology staff - indeed, all staff - should be paid for their <em>abilities</em> and the <em>knowledge that gives them those abilities</em>, and <span style="text-decoration: underline;">not</span> for the specific information on which they have a stranglehold. Yes, context for work does matter, as does experience. But the day-to-day operation and engineering of your plant should be visible to and understood by all, at least inside your firm.</p>
+<h3>Ignored Alerts</h3>
+<p>Do your staff regularly suppress alerts? The Christmas tree effect means they are ignoring alerts because they just don't matter; the "Squelch Effect" means that they are <em>suppressing</em> them. It is the flipside of the same coin, but has different side effects. With Christmas tree effect, you have some trail as to what is still open. With the Squelch, someone went to the trouble of suppressing it, killing the ongoing trail.</p>
+<p>Whenever I see companies with the Squelch Effect, I ask what staff turnover is. Squelch companies usually are second only to pager Squelch companies, where the staff squelch the alerts.... at 2am!</p>
+<h3>Capacity Alerts</h3>
+<p>Do you get utilization alerts? Disk full, CPU over a threshold, memory usage? Here is a hard rule:</p>
+<p><strong>In the cloud, you should never get capacity alerts. Period.</strong></p>
+<p>Why? Because <em>alerts</em> are for issues that require immediate treatment. <em>Capacity</em>, on the other hand, should be <span style="text-decoration: underline;">proactively managed</span>. True cloud - and nimble IT - require a process wherein capacity usage and growth requirements are monitored and forecasted, and deployed capacity managed up or down, long before the alerts hit.</p>
+<p>For example, if your goal is never to exceed 75% disk utilization, and it takes 2 weeks to deploy (assuming you are not working in an infrastructure cloud, wherein it takes 2 minutes to deploy), then the capacity management process should discover the need at least 3 weeks before it gets to 75%, and deployment should be done long before any alert would be triggered.</p>
+<p>How do you build that capacity management process? What tools do you use? Who staffs it? <a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us to help</a>.</p>
+<h2>Summary</h2>
+<p>Many of the "classical operations" behaviours that bother you... should. There are better ways to run your business, ways that:</p>
+<ul>
+<li>Let you and your staff sleep better at night</li>
+<li>Encourage better staff retention</li>
+<li>Allow your expensive teams to focus on the jobs they <em>want</em> to do</li>
+<li>Reduce your risk of exposure to staff tribal knowledge</li>
+<li>Reduce downtime while increasing customer satisfaction</li>
+<li>Reduce costs</li>
+<li>Provide better transparency for you and your customers</li>
+<li>Connect your technologists with your business staff</li>
+</ul>
+<p>If any of these sounds familiar in your business, you are running at serious risk. <a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us how to run your services at cloud-speed</a> .</p>

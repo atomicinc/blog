@@ -1,0 +1,73 @@
+---
+layout: post
+title: Why Aren't Desktops Managed Like Containers?
+date: 2016-09-27 08:49:10.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- product
+- technology
+tags:
+- backup
+- desktop
+- docker
+- linux
+- mac
+- recovery
+- Sierra
+- upgrade
+- windows
+author: Avi Deitcher
+---
+<p>Containers, the management and packaging technology for applications, are useful for many reasons:</p>
+<ul>
+<li>Packaging is simpler and self-contained</li>
+<li>Underlying operating system distribution becomes irrelevant</li>
+<li>Performance, therefore density, and therefore cost, is much better when working without a hypervisor layer</li>
+</ul>
+<p>To my mind, though, one of the most important elements in any technology is how it affects culture and incentives. For example, MVC development frameworks are helpful for many reasons, but the most important is that it encourages (and sometimes forces) a cleaner way of thinking about and building software.</p>
+<p>The particular benefit of container packaging, and particularly Docker images and ACI, is the encouragement to think cleanly about immutable applications and mutable data as distinct entities.</p>
+<p>When I run an application as a container, I need to think about both of those elements:</p>
+<ol>
+<li>My application binary is <em>identical</em> to every other instance of that application running everywhere else in my company and, if a public image, the entire world.</li>
+<li>My data is kept outside the container and made available to/from the container.</li>
+</ol>
+<p>Practically, this means that I can take any computer instance at all (that supports the container format), tell it to run my given images as containers with a given set of data, and I am <em>precisely</em> where I started before.</p>
+<p>Many systems have arisen over the years to simplify this replicability, from cloud-config to chef/puppet to docker-compose/fig.</p>
+<p>This near-instant replicability is the basis of the "cattle not pets" paradigm of systems. If I can reconstruct any system with a high degree of reliability and speed, I don't have to worry about each system; they become disposable.</p>
+<p>This begs the question: <strong>why are desktops still pets?</strong></p>
+<p>This past weekend I upgraded my (very old) MacBook Air from El Capitan (OS X 10.11) to Sierra (macOS 10.12).</p>
+<p>Since it is pretty old, and has accumulated a lot of "cruft" over the years, I decided to do a clean install:</p>
+<ol>
+<li>Back up all of my data. Actually, back it up twice: once to an online backup service for critical data, and the entire system via Time Machine to a local drive.</li>
+<li>Wipe my drive and do a clean Sierra install.</li>
+<li>Restore my data from my backup drive.</li>
+</ol>
+<p>Unfortunately, I hit a few snags on the way with a poorly-unmounted 1TB USB drive, which led to a very long period of macOS running fsck and me praying the drive was recoverable. (Why they don't use ZFS to eliminate these problems is a topic for another day...)</p>
+<p>This is the way we have been doing desktop migrations and/or reinstalls for decades; <em>very</em> little has changed. Sure, we now have Time Machine to ease backups, online backup services like BackBlaze/Carbonite/CrashPlan, and Migration Assistant to ease the restore. Even so, <strong>it shouldn't be that hard</strong>.</p>
+<p>Here is what desktop migrations should look like:</p>
+<ul>
+<li>All applications are immutable images, <em>just like container images</em>.</li>
+<li>All data is separate from the application and available locally and encrypted online.</li>
+<li>The entire set is stored as a single configuration, <em>like a compose file</em>.</li>
+</ul>
+<p>Restoring my entire system requires just one piece of information: the configuration file.</p>
+<p>Upon start, I feed my configuration file to the operating system, which does the following:</p>
+<ol>
+<li>Install the standard images of the correct versions of my applications</li>
+<li>Replicate my data from the cloud</li>
+<li>Finish</li>
+</ol>
+<p>To some degree, this is how iOS works with iCloud backup. Of course, iOS has a much more rigid (and enforced) rules as to what an application can and cannot do. This allows it to constrain how apps are packaged; where data resides; and how many pieces of information are required to replicate them (exactly two: app ID+version; and data location).</p>
+<p>However, achieving this on a desktop doesn't require rigid constraints on a general purpose operating system. As long as three simple rules are met, applications will comply:</p>
+<ol>
+<li>Make is easier to follow the rules than not.</li>
+<li>Make all necessary services that an app could require available.</li>
+<li>Make it obvious to customers see how easy it is when an app "behaves".</li>
+</ol>
+<p>It shouldn't be too hard to get general purpose operating systems like Mac, Linux and Windows there as well. It is high time desktop operating systems caught up to the advancements elsewhere in computing.</p>
+<p>The 1990s are calling; they want their operating system management back.</p>

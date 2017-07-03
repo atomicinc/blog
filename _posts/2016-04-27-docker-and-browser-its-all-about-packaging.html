@@ -1,0 +1,40 @@
+---
+layout: post
+title: Docker and Browser - It's All About Packaging
+date: 2016-04-27 08:57:40.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- technology
+tags:
+- browser
+- containers
+- delivery
+- docker
+- isolation
+- packaging
+author: Avi Deitcher
+---
+<p>What do Docker containers have to do with Web browsers?</p>
+<p>Everything.</p>
+<p>Web browsers provide easy access to the digitized collective knowledge of the human race, political rants, serious applications and even silly kittens.</p>
+<p>However, it is important to understand <em>why</em> browsers became so popular, and such a success.</p>
+<p>Prior to browsers, networked applications existed. Mostly, they were client-server two-tier applications, but they were quite popular in business, and many home personal computer users had such applications.</p>
+<p>What browsers did, however, was something special: <strong>standardize </strong><span style="color: #000000;"><b>packaging.</b></span></p>
+<p>Prior to browsers, if you wrote an application, you needed to package it up and deliver it. That packaging included declaring the platform on which it worked (Windows, Mac OS, OS/2), particular version and subversion, and required dependencies. Even then, you were subject to "<a href="https://en.wikipedia.org/wiki/DLL_Hell">DLL hell</a>", conflicts among dependencies between one application and another.</p>
+<p>Browsers provided a <span style="text-decoration: underline;">packaging</span> and <span style="text-decoration: underline;">delivery</span> mechanism that avoided all of the above. Your application was contained entirely within your Website, and was delivered simply by a person visiting your Web site.</p>
+<p>Delivery actually became even easier, as you could update the installed versions pretty much everywhere just by updating your Web server. Next time someone visited, they received the new version... transparently.</p>
+<p>Conflicts became a thing of the past. The Chase banking application on your Windows 95 desktop could conflict with the Quicken application on the same desktop (mine sure did), but it is nearly impossible for the Chase <em>website</em> to conflict with the mint.com <em>website</em> (or any other, for that matter).</p>
+<p>Essentially, browsers isolated the application's packaging from the underlying operating system, and from each other, while providing a transparent delivery mechanism.</p>
+<p>Yes, browsers never <em>quite</em> followed standards. Anyone who has written Web apps for variants of Safari and Firefox and Internet Explorer (<span style="text-decoration: underline;">especially</span> Internet Explorer) knows it. But the differences are minor compared to the differences between Windows 10 and Mac OS X and Ubuntu. Further, with the isolation provided by the browser, open-source libraries have appeared that (largely) paper over the differences.</p>
+<p>The success of browsers is due to: standards, ease of rendering (HTML is a lot easier than Win32 or Objective-C), packaging with isolation and delivery.</p>
+<p>What does all of this have to do with Docker?</p>
+<p>Containers long predate Docker (see <a href="http://www.slideshare.net/jpetazzo/anatomy-of-a-container-namespaces-cgroups-some-filesystem-magic-linuxcon">jpetazzo's slideshow</a> from LinuxCon for an interesting history); Docker as a system could not exist without them. However, the mechanisms behind containers - cgroups, namespaces, copy-on-write storage, etc. - were too hard to use and didn't provide <em>packaging</em> and <em>delivery</em> to take advantage of them.</p>
+<p>Docker provides the ability to <span style="text-decoration: underline;">package</span> an application and <span style="text-decoration: underline;">deliver</span> it without much concern for what is installed or available on the underlying system. Each image has its own entire set of dependencies. Further, the Docker hub (or your own private one) provides delivery mechanism, although you do not need to take advantage of it.</p>
+<p>Yes, you need some standard base on which to run, either a browser HTML rendering engine with a reasonable JavaScript runtime, or a Linux kernel and container runtime that understands an <code>ENTRYPOINT</code>. But those are far simpler than searching out multiple dependencies and hopefully avoiding conflicts.</p>
+<p>Did installed applications exist before containers? Of course they did, just as networked desktop apps existed prior to browsers. It is the isolation from dependency issues and packaging along with delivery that make it much easier to use and drive adoption.</p>
+<p>The key reasons behind Docker's explosive growth is identical to that of the browsers. It took advantage of existing technologies to reduce the number of pre-existing dependencies to minimal, standardize them, provide a packaging mechanism and delivery methodology, and expose it to application creators.</p>

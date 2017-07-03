@@ -1,0 +1,52 @@
+---
+layout: post
+title: Performance Tests Redux
+date: 2015-10-19 10:41:41.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- cloud
+- containers
+- docker
+- networking
+- performance tests
+- statistics
+- testing
+author: Avi Deitcher
+---
+<p>A few weeks ago, "<a href="{{ site.url }}/2015/10/01/lies-damned-lies-and-performance-tests-2629/" target="_blank">Lies, Damned Lies and Performance Tests</a>," gave us a great example of how even a good performance test can be ruined through a few (seemingly) small mistakes.</p>
+<p>Today, let's revisit performance tests with an example of performance tests that I constructed on behalf of a client, as an example of how to do them correctly.</p>
+<p>Even good performance tests suffer from a paradox.</p>
+<ul>
+<li>On the one hand, you <em>really</em> want to understand how the product will perform in the real world, with all of its environmental conditions.</li>
+<li>On the other hand, you <em>really</em> want to isolate changes in performance due to the item under test, not the changing environmental conditions.</li>
+</ul>
+<p>If I am testing software that I normally run in Amazon Web Services, then I am testing to tell me how it will run in AWS. On the other hand, if I really want to test my <em>software</em>, then I want to isolate behaviours of my software, not AWS variants!</p>
+<p>Finally, we must recognize that you <span style="text-decoration: underline;">never</span> truly can replicate production in all of its unpredictability and complexity, even if you have infinite budget (and who does?), so how far do you go? When do you reach the point of diminishing returns?</p>
+<p>There are two approaches to take to resolving this dilemma. The first relies solely on the law of large numbers. Do not do a performance test once, twice or even twenty times. Automate the test, and rerun it many times, preferably at least 10,000 iterations. While one test may be affected by changes in the underlying environment, 10,000 is likely to average towards the true performance.</p>
+<p>In truth, <span style="text-decoration: underline;">all</span> performance tests should be performed many times over, for precisely this reason. However, because you are dealing with environmental variants that can last over time - for example, someone else is loading the same underlying AWS physical server as you are during the hour of your test - you would need to repeat the 10,000 iterations over several days, varying the time of day, days of the week, even months of the year in which it runs. An e-commerce retailer sharing your physical server in AWS will have a different effect on your tests from Black Friday through New Year's than in the month of March, and you have no way of knowing who is there.</p>
+<p>The second approach is to set up optimal (i.e. non-ideal) test conditions a priori. While these will <span style="text-decoration: underline;">not</span> replicate the real world, they <span style="text-decoration: underline;">will</span> allow you to understand the performance profile of the actual item under test. Once you understand the performance impact of those changes, you then can expand to see how they behave in the "real world".</p>
+<p>Either way, the most important thing you can do <em>before your first test</em> is to clearly and unequivocally state <strong>precisely</strong> what you are testing. Only once you know what that is can you test it, and, perhaps more importantly, define the limits on the value of the test.</p>
+<p>Here is a real world example.</p>
+<p>Over the summer, I looked at the performance of multiple networking architectures. The goal was to determine not only how each one behaved, but also how each behaved vis-a-vis the others. Some of these depend on software and hardware, some have logic implemented mostly in software, while others are nearly pure hardware solutions. That can mean a trade-off between flexibility and faster connections on the same physical host, but at a price of other resources. It also may indicate greater sensitivity to the underlying hardware, whether the CPU model, amount of memory, or network card.</p>
+<p>The first thing I had to answer was, "what am I testing?" In this case, it was "the latency and resource impact differential between the following network strategies." This answer meant that I had to isolate every other element out of it. Put in statistics terms, it meant I needed to isolate the dependent and independent variables very very clearly.</p>
+<p>In addition, I used the following parameters:</p>
+<ul>
+<li><span style="text-decoration: underline;">Isolation</span>: Both ends of the tests ran on bare-metal hardware. Not "dedicated but on Xen/VMWare/AWS", but true bare-metal (thanks to the great team at <a href="http://www.packet.net" target="_blank">Packet</a>).</li>
+<li><span style="text-decoration: underline;">Consistency</span>: All tests had to run on the same physical hosts with the same network connections. Not "exact same configuration" or "the same number of network connections," but the exact same hardware. Run one set of tests, tear it down, run the next. If I lost any component of the tests, I set it all up again on new hardware and started <em>from the beginning</em>.</li>
+<li><span style="text-decoration: underline;">Statistics</span>: I used the law of large numbers, and ran each test through more than 10,000 iterations.</li>
+<li><span style="text-decoration: underline;">Variance</span>: I took each input variable - in this case packet size and network protocol (TCP vs UDP) - varied it, and ran through the entire test suite, with all of its iterations, again.</li>
+<li><span style="text-decoration: underline;">Traceability</span>: I recorded the important numbers for every test and correlated them. It is important to know not just the latency of a vSwitch vs. SR-IOV, but also the CPU impact of each in each scenario, and how they correlate.</li>
+</ul>
+<p>The result of those tests will be a paper, and possibly a presentation, as soon as I can write it up.</p>
+<p>Once complete, could I answer how each would behave in the real world? No, I could not. I could, however, understand how each is affected by and affects its environment, and what the optimal conditions are for each. In our case, that led to a clear solution given our needs.</p>
+<h2>Summary</h2>
+<p>Performance tests are hard enough to get right. Start by defining the question you want to answer, then define the tests that will answer that question, and only that question correctly. Next, use good methodology and a lot of patience to stick to the necessary rules: variance, traceability, consistency, isolation. Finally, recognize the limits of what the tests tell you, and more importantly <span style="text-decoration: underline;">what they do not</span>.</p>
+<p>What have you tested? Did you ask the right question before getting started? Do you know the limits of the values of the answers? <a href="{{ site.url }}/contact/" target="_blank">Ask us to help you</a>.</p>
+<p>&nbsp;</p>

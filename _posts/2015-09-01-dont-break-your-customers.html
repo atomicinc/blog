@@ -1,0 +1,76 @@
+---
+layout: post
+title: Don't Break Your Customers
+date: 2015-09-01 08:45:47.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- product
+- technology
+tags:
+- docker
+- partners
+- process
+- product
+- technology
+author: Avi Deitcher
+---
+<p>Anyone who does Web-scale or information technology over the past two years knows containers. The primary reason is the success of <a href="http://docker.com">docker</a> in making not-so-new containers easy to build, deploy, manage and use.</p>
+<p>Personally, I think Docker containers are great. They provide a far more efficient level of isolation than VM virtualization, without sacrificing manageability.</p>
+<p>Docker itself, however, is a young company, and every now and then young companies, whose products are moving very quickly, make silly mistakes.</p>
+<p>The number one rule in product is, <strong>Don't Break Your Customers</strong>. If you are releasing a product or service that is an upgrade, <i>never</i> break what worked before without very clear warning, and avoid such "breaking changes" until major releases. Release 1.2 should add features and usability and bugfixes to 1.1, but should not break functionality of 1.1. Release 2.0 can be backwards-incompatible with 1.x, but should have lots of advance warning.</p>
+<p>However, the number two rule is, <strong>Don't Assume You Know Everything Your Customers Do</strong>. Indeed, this is the basis for <a href="http://steveblank.com/category/customer-development/" target="_blank">Steve Blank's Customer Development Methodology,</a> and from it <a href="http://theleanstartup.com" target="_blank">Eric Ries' Lean Startup</a>. I always liked Steve Blank's phrasing, "there are no answers inside the building." Everything you think you <em>know</em> is nothing more than an <em>assumption</em>, until tested in the real world.</p>
+<p>What does all of this have to do with Docker?</p>
+<p>Docker containers are made by running "images", snapshots of the state of the filesystem. Images, in turns, are composed of lots of overlapping layers of images.</p>
+<p>A very convenient method for passing information around is "labels", which function like Gmail tags. Labels are just arbitrary key=value pairs. You can have "foo=bar" or "jeff=him" or even "com.google.some.label=why are you not here?"</p>
+<p>Labels can be applied both to images and to containers. For example, if my image C is built on top of B which is built on top of A, then running a container from C actually is running a container from C on top of B on top of A.</p>
+<p>Up until the most recent release, 1.8, I could get the combination of labels for a container and all the image layers by asking the container for its labels. Let's assume that each of the layers had the following labels:</p>
+<ul>
+<li>A: foo=bar</li>
+<li>B: abc=def</li>
+<li>C: me=you</li>
+</ul>
+<p>We run the container based on image C and add a label:</p>
+<ul>
+<li>container: help=someone</li>
+</ul>
+<p>If we ask the container, "tell me your labels," we would get a combined list:</p>
+<ul>
+<li>foo=bar</li>
+<li>abc=def</li>
+<li>me=you</li>
+<li>help=someone</li>
+</ul>
+<p>Unsurprisingly, many container management products made use of this convenience.</p>
+<p>Lo and behold, in 1.8, asking the container, "tell me your labels," would return <span style="text-decoration: underline;">just the labels for the container</span>. If you wanted all of the others, you have to go through the following process:</p>
+<ol>
+<li>Ask the container for its labels; get help=someone</li>
+<li>Ask the container what its image is; get C</li>
+<li>Ask C for its labels; get me=you</li>
+<li>Ask C what image it is based upon; get B</li>
+<li>Ask B for its labels; get abc=def</li>
+<li>Ask B what image it is based upon; get A</li>
+<li>Ask A for its labels; get foo=bar</li>
+<li>Ask A what image it is based upon; get none.</li>
+</ol>
+<p>A small change, undocumented and unwarned, caused <em>every single program that uses labels</em> to go from 1 clean step to 8 steps... and that is just if it is 3 layers. Most images are based on 10 or more layers. Causing programs to require an additional order of magnitude of work is usually considered, in technical parlance, <strong>bad</strong>.</p>
+<p>The original issue is listed <a href="https://github.com/docker/docker/pull/15503" target="_blank">here</a>, for those inclined to read technology discussions. What comes across from the discussion is:</p>
+<ol>
+<li>Customers are <span style="text-decoration: underline;">very</span> upset.</li>
+<li>The people at Docker clearly did not understand the impact.</li>
+<li>They made the change anyways.</li>
+</ol>
+<p>They violated Rule #1 because they violated Rule #2. They thought they understood the ways in which people would use their product, what was rational and what was not, but were stuck "inside the building."</p>
+<p>Of course, being stuck with constant backwards compatibility is not a great strategy either. It leads to slow, bloated software that eventually competitors without baggage rush past.</p>
+<h2>Summary</h2>
+<ol>
+<li>Don't break your customers.</li>
+<li>Don't assume that you know your customers, and how they use your products, better than they do.</li>
+<li><em>Ask!</em> Ask customers and the market, "we are planning on doing this; does that matter?"</li>
+<li>If after all of that, breaking changes really are necessary, save them for major releases, and have lots of advance warning.</li>
+<li>Document the changes and publicize them well in advance.</li>
+</ol>
+<p>&nbsp;</p>
+<p>If you break your customers, partners, integrators or OEMs, or regularly have strained product-based relationships with them, your process needs help. <a href="{{ site.url }}/contact/" target="_blank">Ask us to help you</a>.</p>

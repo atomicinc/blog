@@ -1,0 +1,81 @@
+---
+layout: post
+title: Negative Cloud Margins?
+date: 2016-03-30 10:36:08.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- pricing
+- product
+- technology
+tags:
+- cloud
+- efficiency
+- gross margin
+- incentive
+- incentives
+- process
+- profit
+- support
+author: Avi Deitcher
+---
+<p>A few days ago, I had a conversation with a friend of mine who told me something shocking: <strong>a particular cloud company's gross margins on cloud products are below -40%. </strong>That is <em>not</em> a typo, it is <strong>minus 40% or worse</strong>.</p>
+<p>Essentially, the company is doing one of: burning investor money; running down their own cash reserves; borrowing from banks or the market; or subsidizing from other business lines. Whatever the method they are using to stay afloat, they are burning quite a hole.</p>
+<p>The fundamental question, though, is why they have such terrible margins on the cloud business. Cloud businesses should have good positive gross margins. <a href="https://www.quora.com/What-should-be-the-typical-gross-margin-for-a-SaaS-startup" target="_blank">Jason Lemkin</a> says it should be 80% or higher; <a href="http://www.feld.com/archives/2015/02/rule-40-healthy-saas-company.html" target="_blank">Brad Feld quotes Battery Ventures</a> who says that growth rate + gross margins should equal 40%, so for -40% gross margins, you should have an 80% annual growth rate. I have been assured that this company is not growing at 80%!</p>
+<p>What are they doing wrong?</p>
+<p>Without getting inside the company, it is very hard to know. However, there are several key factors that determine gross margins in a cloud company.</p>
+<p>First, a definition:</p>
+<blockquote><p>gross margin = revenue - cost of goods sold (or cost of services)</p></blockquote>
+<ul>
+<li>Revenue is easy to figure out: "customer X paid us $100,000 this year."</li>
+<li>Cost of Goods Sold (COGS) / Services (COS) is a bit harder, since we have to know what, exactly to include.</li>
+</ul>
+<p>COGS is easy when you are selling hammers: it is the cost of the hammer, plus perhaps cost of delivery, and the cost of the salesman. COS in a SaaS business is harder. If I have a data centre that can handle 100 customers, and only 2 are in it now, is my cost the entire data centre, or can I just allocated 2% of the cost?</p>
+<p>In fairness, with the maturity of the public cloud infrastructure market this should be less of an issue. For most businesses, you can scale up rather than invest capex upfront.</p>
+<p>As an aside, R&amp;D always is current-period expense not allocated to a particular customer's COS, unless you really did develop the particular feature <span style="text-decoration: underline;">just</span> for that customer and no one else. Even then expect the accountants to give you a hard time about it.</p>
+<p>Whatever the allocation, you still should have a strong positive gross margin and/or strong positive growth rate. Indeed, one of the <span style="text-decoration: underline;">key reasons</span> to get into the cloud business <em>is</em> "cloud margins".</p>
+<p>So negative margins means either low revenue per customer or high costs (or both). I do not know how much this company can raise prices. Even if they can, doubling the price (something they likely cannot do) only will lead to 30% gross margins. With current margins of -40%, costs are 1.4x revenue, so doubling revenue means costs of 1.4/2, for margins of (2-1.4)/2 = 30%.</p>
+<p>Thus, the primary focus has to be costs. What drives costs in a cloud business?</p>
+<ol>
+<li>Infrastructure</li>
+<li>Sales</li>
+<li>Process</li>
+</ol>
+<p>Let's look at each in turn.</p>
+<h3>Infrastructure</h3>
+<p>Infrastructure is a major cost of a cloud business. Fortunately, infrastructure can be turned into easily scalable opex with cloud infrastructure offerings from AWS, Google, Microsoft, Joyent. The key question then becomes how much infrastructure you are using vs. how much you need.</p>
+<p>Does your application need an average of 1 server instance per customer, 100, or 1,000? Or does it need 10% of 1? Similarly for storage, do you need 1MB per customer, 1GB, or 1TB. How long do you need to store the data? Are there solutions such as compression or slower archive storage that can reduce that cost?</p>
+<p>Similarly, is your application architecture efficiently using those resources? The correct design and good coding practices can have a significant impact on the resources required. When I was a fairly young engineer at a large financial firm's IT department, I found that a critical reporting process was running beyond night-time processes and into the day, threatening our ability to operate. I took a good look at both the design and the algorithms, and in a few weeks changed both, leading to finishing the process in less than half the time and half the resource cost.</p>
+<p>Most importantly, once you understand what your infrastructure costs truly are and what drives them, you need <span style="text-decoration: underline;">ongoing analytics</span>. This is not a one-time process. Just as you monitor your databases to make sure they are running and servicing requests, and do not rely upon the fact that they were fine yesterday to assume they are fine today, so you need to <strong>create great metrics</strong> for resource utilization per customer and monitor those on at least a weekly basis. Don't wait until your CFO shows bad profit numbers to try and figure it out again.</p>
+<h3>Sales</h3>
+<p>This is the easiest to analyze. Are your costs of sales too high? Is your commission plan appropriate? Is it driven by the right metrics? Are you spending too much closing each customer? If you spend $20,000 in expense - lawyers, travel, etc. - to close most customers, don't go after deals that will provide only $25,000 in revenue!</p>
+<h3>Process</h3>
+<p>Process is the trickiest part to resolve, especially for technology-driven organizations.</p>
+<ul>
+<li>How long does it take you to go from "deal signed" to "customer live"?</li>
+<li>How many people and teams need to be involved?</li>
+<li>What is your support methodology? How expensive is it? How long does it take to resolve problems? How often are there problems?</li>
+</ul>
+<p>Process suffers from 2 challenges:</p>
+<ol>
+<li>It is subtle, and therefore harder to evaluate. Infrastructure is easier to manage, sales is easier to calculate and change.</li>
+<li>It is unglamorous, almost boring. I have never met a CTO or VP Product who gladly will shift resources from building the great new feature sales wants to providing better analysis tools for the operations team or stability and bug fixes, yet, these are much greater force multipliers for increasing margins.</li>
+</ol>
+<p>A driver of process is your organization and incentives. Is your organization structured in a way enabling it to operate as quickly as possible, and thus drive down costs? Or is it structured for long handoffs with unclear processes between groups? At any given moment, do you know exactly how many issues and open tasks are outstanding, how long they have been open, expected completion, and how expensive it has been?</p>
+<p>The same applies to incentives. Do you have incentives that encourage efficient practices and lower costs, or those that discourage them?</p>
+<p>As an example of incentives, let's look at a company with which I worked a few years ago. They started using AWS for their testing and staging environments, but the budget was held by a specific operations group. This led to the counterproductive situation wherein the <em>technical</em> expert on AWS controlled the funds, while the <em>teams</em> had no control at all. With a limited budget in the operations team's hands, but nothing in each engineering team's:</p>
+<ul>
+<li>A backlog was created, since the budget was utilized.</li>
+<li>The operations team decided who got which resources, rather than the executive management as part of a budget process.</li>
+<li>No one who had a resource wanted to give it up, since you never knew when you would get it back.</li>
+<li>Horse-trading between groups became common.</li>
+</ul>
+<p>A better situation would have the operations team provide the key tools and access, while each team used their own budget to pay for resources. Team A used $20,000? That is between them and their VP, not the head of cloud operations! Team B wants $5,000 of resources? They need ask only their VP or CFO, and justify it to them like any other expense.</p>
+<h2>Summary</h2>
+<p>If you run a cloud business, except in the very earliest stages or if you are growing like a rocket, your margins should be high to extremely high. If you are suffering from low or negative margins, your operational cost structure is challenged.</p>
+<p>Look at your infrastructure utilization, your architecture that creates that pattern, your sales costs and structure, and your processes and incentives. An outsider often has the experience, the knowledge and the ability to navigate the legacy and potential strains between the groups to find the issues and implement creative solutions.</p>
+<p>Somewhere - usually several somewheres - you are spending far too much money trying to provide services. Unless you can solve it, eventually the cloud business will go under.</p>
+<p><a href="{{ site.url }}/contact/" target="_blank">Ask us</a> to help you.</p>

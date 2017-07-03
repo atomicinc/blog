@@ -1,0 +1,96 @@
+---
+layout: post
+title: How To Organize Your Cloud Technology Teams - A Manifesto
+date: 2014-02-05 06:56:11.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- policy
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>This article has been in formulation for a long time, and is the result of my own experiences in many places: corporate IT, software startups, services (cloud) startups, consulting, and many other places. It includes the input of many people whom I respect - although many disagree with some of my conclusions - including consultants, executives, founders and venture capitalists.</p>
+<p>How should you organize your technology team? This is a difficult question to answer, yet critical to your ability to succeed. The best idea, market or team in the world will fail if it cannot successfully deliver, or execute, on the vision. Arguably the best team will, by definition, be the one who knows how to implement the right organization, but that is not always true. For example, the best leader of software engineering still might not know how best to organize to work well with the best infrastructure engineering leader, best CTO or best head of operations. Similarly, the best team isn't always composed of the smartest superstars, but the one that works well together. The "Moneyball" effect is as true in business as in baseball (probably even more so).</p>
+<h2>What Is Your Business?</h2>
+<p>In order to properly design the best technology teams, it is important to understand what business you are in. In the technology and technology-driven world, there are actually three kinds of businesses:</p>
+<div>
+<ol>
+<li><span style="text-decoration: underline;">IT</span>: I use the broad category of IT to describe technology teams whose entire purpose is to serve the business of which they are a part. Put simply, customers and vendors are employees of the <em>same organization</em>.</li>
+<li><span style="text-decoration: underline;">Software</span>: A software company is one that sells and delivers actual software to customers. A software business's primary job is done when a package or series of packages - on CD/DVD, zip or dmg download, or brought by consultants - is delivered to customer premises.</li>
+<li><span style="text-decoration: underline;">Services</span>: A software services company, commonly called a cloud company, is one that sells and delivers <em>access</em> to software over the Internet or other data link. The customer never takes possession of the software on their premises.</li>
+</ol>
+</div>
+<p>For the moment, I am going to ignore IT for a simple reason: IT is almost identical to Services, with one important difference, which we will discuss at the end of the article.</p>
+<h2>Software Company</h2>
+<p>We all know of lots of software companies: Microsoft, IBM, Lotus (for those of us old enough to remember it), OmniGroup (the makers of OmniGraffle), Apple (iOS, OS X, iTunes, etc.), Oracle.</p>
+<p>For these companies, their primary product is delivered the moment it reaches a customer. Yes, you need to package it up in a way that makes it installable and usable, so the product <em>as delivered at that time</em> must be capable of doing so correctly. And you need proper customer support and billing. For larger enterprise customers you need professional services and a sales team. But your primary job is to deliver product as expected.</p>
+<p>Given the <span style="text-decoration: underline;">business goal</span> (which is the only one that matters), your most important job is delivering software, so your primary technology executive is your head of software engineering, normally a Vice President of Research &amp; Development, Software Engineering, or just Engineering. This person <span style="text-decoration: underline;">must</span> be highly skilled at leading teams, understanding technologies and managing projects, but also must understand some product management, finance and business.</p>
+<p>This person is an <strong>executive</strong>. It is their role to translate <em>business goals</em> of revenue profitability and market share into executable <em>technical goals</em> within his domain that support those goals.</p>
+<p>In a software company, thus, it is simple: you have one technology leader, the VP responsible for engineering and delivering software.</p>
+<p>Separately, you may also have a Chief Technology Officer, or CTO. This person has more of a joint strategic technology and marketing role. They perform a dual task:</p>
+<ol>
+<li>Research long-term technology strategy, beyond the horizon within which the VP Software Engineering can focus</li>
+<li>Represent the company to customers and the market.</li>
+</ol>
+<p>Both executives research the future - often experimentally, expecting to throw away much of their work - and position the company as a technology leader. However, the CTO has <em>almost no role</em> in delivering product to customers.</p>
+<p>Put more starkly, the company's short- and medium-term deliverables will not be hurt without a CTO; the company cannot deliver new product at all without a VP Software Engineering.</p>
+<h2>Cloud Services Company</h2>
+<p>A cloud, or services, company is one who is paid to operate software on behalf of customers. They rarely deliver software to be installed on computers other than those run by the company. In many instances, they may never develop software on their own, instead choosing to integrate and manage software developed by others.</p>
+<p><strong>A services company's primary value to customers is not the features of their software, but the operation of software on their behalf.</strong></p>
+<p>We all know many services companies: Google, Facebook, Twitter, FreshBooks, Salesforce, NetSuite.</p>
+<p>For these companies, their primary product is <span style="text-decoration: underline;">never delivered</span>. Or, if your prefer, it is <span style="text-decoration: underline;">always delivered</span>. The job of the software engineer inside a cloud company knows milestones, successful delivery dates, when "this job" is done. But for the company as a whole, because the customer is continuously using the product, the "job" is never done. At any given moment, failure to continuously deliver functioning and secure product means immediate damage to the business.</p>
+<p>A software company will slowly erode its revenues, profits and market share if it does not deliver, say, quarterly releases. A cloud company will plummet if it isn't available and secure just about every second of every day.</p>
+<p>Since the <span style="text-decoration: underline;">business goal</span> is to continuously deliver the product online, the most important technology role is the one that manages the delivery and operation of the platform on which the software runs. This is usually the VP of Operations, or Infrastructure, or Cloud Services.</p>
+<p>But, of course, a cloud company still needs a software team:</p>
+<ul>
+<li>To develop new features</li>
+<li>To build new services and offerings</li>
+<li>To repair the existing software</li>
+</ul>
+<p>The skills required to build new software - software engineering - are different than those require to build and operate infrastructure; the mindset is <em>radically</em> different. As such, in addition to the VP Cloud Services, a different executive is required, the kind we have already mentioned: a VP of R&amp;D / Software Engineering / etc.</p>
+<h2>A Tale of Two Executives</h2>
+<p>This leaves us with two distinct executive roles:</p>
+<ul>
+<li>A head of infrastructure services</li>
+<li>A head of software development</li>
+</ul>
+<p>Notice that I <em>did <strong>not</strong> say</em> a head of engineering and a head of operations. In a well-run organization, <span style="text-decoration: underline;">both</span> of them are responsible for aspects of engineering and operations. The distinction is <span style="text-decoration: underline;">not</span> between what the job entails, but rather between which technology components they are responsible for.</p>
+<p>In order to clearly distinguish between the two, my personal preferred nomenclature is:</p>
+<ul>
+<li>VP of Technology Products - builds <em>and</em> operates all <span style="text-decoration: underline;">software products</span></li>
+<li>VP of Technology Services - builds <em>and</em> operates all <span style="text-decoration: underline;">infrastructure services</span></li>
+</ul>
+<h2>And on top of them?</h2>
+<p>The final question, of course, is to whom do these two executives report? Is it the CEO? COO? Board? CTO? CFO?</p>
+<p>It is important to understand that some natural tension will exist between the groups, as their roles and responsibilities are different. Further, when there are issues, each one will want to be sure it wasn't <em>their</em> component that caused the degradation of service (unless the culture itself, like the FAA self-reporting rule, healthily encourages taking responsibility, but that is extraordinarily rare).</p>
+<p>The answer to this is actually one of two ways. What is absolutely crucial, however, is that since <em>each</em> is required to run and grow the business, <em>neither</em> can be subordinated to the other. Their mindsets and operating foci are so different that one will hold the other back. <strong>This is crucial</strong><strong>.</strong></p>
+<ul>
+<li>The head of infrastructure services <strong>must not</strong><strong> report</strong> to the head of software development (whether called a VP software engineering, CTO or anything else); and</li>
+<li>The head of software development <strong>must not report</strong> to the head of infrastructure services (whether called a VP operations, VP infrastructure, CTO or anything else.<strong><br />
+</strong></li>
+</ul>
+<p>Each VP has their own domain of nearly equal import and weight, and each, coming from their background, is unlikely to fully understand the other.</p>
+<p>So to whom do they report? There are two options:</p>
+<ol>
+<li><span style="text-decoration: underline;">CEO</span>: Ideally, the CEO understands that s/he is heading a technology services company, and needs each party to report directly to him/her. If either fails, the company fails. Each has an important responsibility, and merging them is like merging, say, sales and marketing. Sure, each feeds the other, but without both at an executive level, the company is unlikely to succeed for long. <strong>For long-term success, the company should have a CEO who understands technology, the difference between software and infrastructure, and has both report in.</strong></li>
+<li><span style="text-decoration: underline;">SVP/EVP Technology</span>: If the CEO is somewhat less conversant with the technology and the differences between the two components, or prefers a more hierarchical structure, or perhaps has a very unique and extremely rare executive who can handle both, then another option is to have an SVP (or EVP, call him/her "head of technology") who reports directly to the CEO. This SVP/EVP should have only two direct reports - VP Technology Services and VP Technology Products - and they <span style="text-decoration: underline;">must</span> be weighted equally. The head <span style="text-decoration: underline;">must not</span> delve more deeply into one over the other, and will only succeed if s/he trusts each VP fully.</li>
+</ol>
+<p>Clearly, I have a preference for direct reporting to the CEO. This is primarily to ensure that (a) the EVP/SVP does not get too biased by his/her personal history - after all, s/he had to come from one side or the other; (b) the CEO, who has a major stake in how issues get resolved, is involved in creating the balance; and (c) the executive who can balance both sides evenly is an extremely rare creature.</p>
+<p>Nonetheless, I recognize that sometimes the situation warrants the alternate structure. I do <span style="text-decoration: underline;">not</span> view VPs with weaker executive or business skills of each area as a reason to put an SVP/EVP in the middle; if your VPs aren't up to snuff... replace them!</p>
+<p>Separately, of course, a cloud services company may also have a CTO, who fills a role similar to that in a software company, but must be more broadly conversant with <em>both</em> software development <em>and</em> infrastructure.</p>
+<h2> And What About IT?</h2>
+<p>IT is, at heart, a services company, similar to cloud. The only difference is that the core business is <span style="text-decoration: underline;">not</span> selling the technology products and services developed by the company. GM may rely heavily on its IT to run its business, but it  is <span style="text-decoration: underline;">not</span> selling those IT services; it is selling cars. Morgan Stanley may depend entirely on IT to trade (on its behalf or that of clients), but it is selling financial services, not software.</p>
+<p>As such, the CEO should not be expected to have a deeper understanding of the technology or its features. From his perspective, it should "just work." He should understand the financials of investment, the risks involved in different levels of investment, and every other way that IT impacts the business. However, understanding what it can and cannot do and how is much less of his concerns, and his customers simply will not ask.</p>
+<p>Therefore, the CEO needs <span style="text-decoration: underline;">just one person</span> to whom she can turn as a single service provider of technology services. That person is the Chief Information Officer, or CIO. The CIO, in turn, is likely to have a VP of software development (i.e. technology products) and VP of enterprise infrastructure, or EI, (i.e. technology services) reporting to him/her.</p>
+<p>Notice that the CIO structure is identical to that of a cloud services company, except that the SVP/EVP model is not secondary, but preferred, with that SVP/EVP called the "CIO".</p>
+<h2>Summary</h2>
+<p>As always with any business question, the issue comes down to what the business requirements and goals are, and how to incentivize the organization to best deliver upon them.</p>
+<ol>
+<li>A software company delivers software products, and so should be organized around software development.</li>
+<li>A cloud services company delivers operating services, and so should be organized around <span style="text-decoration: underline;">both</span> building and operating software, <span style="text-decoration: underline;">and</span> building and operating the underlying services.</li>
+<li>An IT department is an internal cloud services company, and so should be structured like a cloud services company, but with a unifying head to present to the customer (the business).</li>
+</ol>
+<div></div>

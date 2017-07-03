@@ -1,0 +1,18 @@
+div.author-avatar {
+  float: left;
+  overflow: hidden;
+  padding: 11px;
+  margin-right: -104px;
+}
+
+div.author-description {
+  float: left;
+  overflow: hidden;
+  margin-left: 104px;
+}
+
+div.author_bio:after {
+    content: "";
+    clear: both;
+    display: table;
+}

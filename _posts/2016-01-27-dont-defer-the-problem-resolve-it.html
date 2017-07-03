@@ -1,0 +1,71 @@
+---
+layout: post
+title: Don't Defer the Problem, Resolve It!
+date: 2016-01-27 10:18:44.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- policy
+- security
+- technology
+tags:
+- debug
+- incident
+- problem
+- reboot
+- risk
+- solve
+author: Avi Deitcher
+---
+<p>I have been pondering this article for quite some time, then came across a great similar quote from <a href="https://twitter.com/bcantrill" target="_blank">Bryan Cantrill</a>: "Don't just reboot it, goddamn it! Debug it!" Since Bryan always is a great speaker, watch it <a href="https://www.youtube.com/watch?v=sYQ8j02wbCY#t=7m14s" target="_blank">here</a>.</p>
+<p>Time and time and time again, I come across companies and people with systems that are misbehaving. Time and time and time again, people suggest "why don't we just restart/reboot it?" What these people really are suggesting is, "why don't we solve it for <span style="text-decoration: underline;">now</span>, and not worry about when it happens <span style="text-decoration: underline;">again</span>?"</p>
+<p>The people making these suggestions are split into two categories:</p>
+<ul>
+<li>Lazy fools</li>
+<li>Sincere strugglers</li>
+</ul>
+<p>"Lazy Fools" grew up with desktop PCs, usually in the "IS" department, supporting impatient people who "just want my PC to work again." Unfortunately, while this may be tolerable (if mistaken) in end-user support, it is intolerable in <em>services</em>. Rebooting/restarting <span style="text-decoration: underline;">never</span> solves the problem; it just restores service <span style="text-decoration: underline;">for now</span>. <strong>These are not the same thing. </strong>Sure, the customer support manager may thank you for getting it back up and running in one minute <span style="text-decoration: underline;">today</span>, but you have not solved your issue, and you don't even know why it happened!</p>
+<p>A CEO friend of mine recent told me his philosophy: if it <em>can</em> happen once,  it <em>will</em> happen again. When your philosophy is "reboot it to solve it", I can promise 3 things will occur:</p>
+<ol>
+<li>This will happen again;</li>
+<li>It will have a much worse impact when it does;</li>
+<li>You will suffer far then far worse then you benefit now.</li>
+</ol>
+<p>"Sincere strugglers," by contrast, are people who sincerely want not only to get it back and working <span style="text-decoration: underline;">right now</span>, but really want it not to happen again. They <span style="text-decoration: underline;">care</span> about the service and system, not just the accolades of today, and they want to <span style="text-decoration: underline;">fix it</span>. However, they struggle because they are stuck under a combination of 2 terrible forces:</p>
+<ol>
+<li>The pressure to fix today's issue as soon as possible, without enough tools to capture enough information to figure out what really happened</li>
+<li>Lack of experience with true "solution-oriented" cultures</li>
+</ol>
+<p>In essence, the difference between sincere strugglers and lazy fools is not one of <em>education</em>, but one of <em>attitude</em>. With enough tools and support (which is far more important) in hand, sincere strugglers become real solvers.</p>
+<p>How do Sincere Strugglers get support to become Real Solvers? As always, it depends on a mix of investment and culture.</p>
+<h3>It Ain't Over 'Til It's Over</h3>
+<p>First, the culture, from the top down, must never, <em>ever</em>, consider a problem solved until you understand three things:</p>
+<ol>
+<li>Why it happened;</li>
+<li>Under what circumstances it happened;</li>
+<li>How you can prevent it from happening again or, at least, mitigate the impact.</li>
+</ol>
+<p>To use ITIL terminology, every <em>incident</em> is caused by a <em>problem</em>. Solve the <em>problem</em>, not just the <em>incident</em>.</p>
+<p>"Fair enough," executives say, "but time is of the essence! If I take an hour (or two, or ten) to solve it now, I lost that much business. Restart it, and I get my service up and running again in a fraction of the time. Do you know how much each lost hour costs us?"</p>
+<p>Free advice (from a consultant, no less): <strong>Never dismiss this argument out of hand.</strong></p>
+<p>How much downtime to suffer when there is a choice is a <span style="text-decoration: underline;">business</span> decision, not a <span style="text-decoration: underline;">technical</span> decision. If you can have a service up and running in 5 minutes without any understanding of the issue, or in 60 minutes while gaining full understanding, that is <span style="text-decoration: underline;">not</span> a decision for an engineer, or even a CIO, to make. It is a decision for a CEO to make. Only she or he knows what 55 minutes today is worth to the business versus discovering how to prevent this issue from happening again.</p>
+<p>However, the technologist <em>does</em> have two jobs related to this decision:</p>
+<ol>
+<li>Present the risk factors. It is up to the technologist to show the CEO the expectation (not the risk) that this will happen again, or the inability to predict it.</li>
+<li>Capture data to solve offline. Put in place the toolset to capture information in a lot less than 60 minutes.</li>
+</ol>
+<p>First, you, the technologist, must make sure the CEO is weighing 55 minutes today vs. 3 hours in a month, not 55 minutes today vs. 5 minutes today. If the CEO doesn't have the whole picture, give it to her or him. Better yet, have it ready beforehand. Don't scramble when the CEO needs to hear <em>right now</em>, under pressure, how long to let you run.</p>
+<p>Second, find and implement tools and methodologies to gather information with minimal disruption to your business. Do you have a way of restoring service to a customer while keeping a misbehaving system running and collecting information? Can you capture data while the event happens to restore service immediately while working "offline" to solve the issue? If your design doesn't support it, think long and hard about your architecture.</p>
+<p>The goal, of course, is twofold:</p>
+<ol>
+<li>Minimize disruption time to customers for each category of failure.</li>
+<li>Maximize debug information for each category of failure.</li>
+</ol>
+<h2>Summary</h2>
+<p>However you go about doing it, your goal must always be, <strong>debug, don't reboot</strong>, because your goal really is, <strong>solve the problem, not the incident</strong>.</p>
+<p>What happens when your CEO asks, "so you solved the problem; are you sure it won't recur?" You need to have a valid answer to the question.</p>
+<p>And if your CEO doesn't care, even when presented with all of the risk factors? If he or she really doesn't think about tomorrow, only today? Well, then, your business has bigger issues than service failures. Find a better boss.</p>
+<p>In the meantime, ask yourself if you have the systems and methodologies to provide risk-reward analyses to your executive at critical junctures, and if you are ready to solve the problem instead of the incident. <a href="{{ site.url }}/contact/" target="_blank">Then ask us to help</a>.</p>

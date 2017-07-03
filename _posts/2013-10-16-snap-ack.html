@@ -1,0 +1,24 @@
+---
+layout: post
+title: Snap...ACK!
+date: 2013-10-16 07:05:32.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- product
+- security
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>SnapChat was supposed to be a safe way to share pictures or text for a short (and controlled) time. You take a picture or send a text with your smartphone, set an expiry on it, and <strong>only</strong> the recipient can see it <strong>only</strong> for the time you set. After that, it is gone, lost forever.</p>
+<p>A few months back, some smart engineers <a href="http://www.huffingtonpost.com/2013/05/20/snapchat-photos-delete_n_3307926.html" target="_blank">proved</a> that snapchat doesn't actually delete the pictures, and you can retrieve them. Oops.</p>
+<p>Then, just this week, Darren Jones released <a href="https://itunes.apple.com/us/app/snaphack-pro-for-snapchat/id716560946?mt=8" target="_blank">SnapHack</a>, an app that can hold onto pictures, well, forever. All you need to do is use the SnapHack app to retrieve your messages <em>first</em>, before SnapChat.</p>
+<p>The first leak was the result of a bug, a sloppy mistake. Quite simply, the engineers (engineer?) who built SnapChat got sloppy and forgot to check that the picture was deleted. After all, not listing something as available is not the same as removing it. If someone's apartment is not listed at the entrance of the building, it doesn't mean they have moved out! If you want to be sure, <span style="text-decoration: underline;">check the actual apartment</span>.</p>
+<p>But the second is a fundamental flaw in the system. <strong>Making secure systems is hard!</strong> SnapChat, in trying to control what people can see when you send them data, is an attempt to make a system that is secure. It isn't something easily done by 2 young guys in a garage. I can think of some individuals who can do it, but they have decades of deep security experience, learning firsthand what works and painfully what does not.</p>
+<p>But even harder than making secure systems, is making systems that are secure <strong>when you don't control the platform.</strong> As hard as it is to secure a system, if I can keep you off of the system - locked out of the data centre, away from the server, no access to the operating system - it is somewhat reasonably doable. But to lock you out of an application when you have access to the location, the hardware (your iPhone) and the operating system is close to near impossible.</p>
+<p>It was for this very reason that I chose <em>not</em> to do a startup in the secure communications space several years ago, despite a ripe and very large market. Sometimes the problem is simply unsolvable.</p>
+<p>SnapChat was a good idea; clearly the market demanded it. The implementation on the other hand, even if it is technically feasible, was sloppy. You can afford <a href="http://en.wikipedia.org/wiki/Technical_debt" target="_blank">technical debt</a> and minimal quality in many products, improving as you go along. The security space simply isn't one of them.</p>
+<p>Snap... ACK!</p>

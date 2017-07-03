@@ -1,0 +1,57 @@
+---
+layout: post
+title: Yahoo's On-Demand (In)Security
+date: 2015-03-16 07:37:10.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- policy
+- product
+- security
+- technology
+tags:
+- authentication
+- convenience
+- password
+- two-factor
+- yahoo
+author: Avi Deitcher
+---
+<p>Passwords are insecure and annoying. I get that, I have written about it, and I experience it. So lots of companies and organizations are working on replacing passwords with something that is both more secure and more convenient. For example, Twitter's <a title="Twitter Digits" href="https://get.fabric.io/digits" target="_blank">Digits service</a>. Other approaches, like <a href="http://1password.com" target="_blank">1Password</a>'s password manager, make passwords easier to manage and auto-generate, so they simultaneously can be more secure and more convenient.</p>
+<p>Then there are "other" approaches.</p>
+<p>Yesterday at SXSW, <a href="http://www.cnet.com/news/yahoo-wants-to-let-you-forget-your-yahoo-password/" target="_blank">Yahoo announced</a> that they have eliminated the password with "on-demand" passwords. It works as follows.</p>
+<ol>
+<li>Go through the one-time registration</li>
+<li>Visit yahoo.com</li>
+<li>Ask to login.</li>
+<li>Yahoo will text a single-use (probably time-limited, but the announcement didn't say) 4-digit password to your registered mobile phone.</li>
+<li>Login with the code, no password (or <a href="http://en.wikipedia.org/wiki/No_Jacket_Required" target="_blank">jacket</a>) required.</li>
+</ol>
+<p>Is it more convenient? Most of the time. Is it more secure? <strong>Definitely not.</strong></p>
+<p>It is pretty well-accepted that the golden standard of authentication is two-factor authentication (TFA or 2FA). The basis of TFA is that it has, well, two factors. In most cases, these are:</p>
+<ol>
+<li>Something you know - a password or PIN or some other secret</li>
+<li>Something you have - an RSA keychain device with a small LCD screen ("keyfob") or Google Authenticator app or phone</li>
+</ol>
+<p>You login to your account, and after you enter the secret (something you know), it asks you for the second factor (something you have).</p>
+<p>The reason there are <span style="text-decoration: underline;">two</span> factors is simple. There is a decent risk that you might lose or expose one of them; the risk of you losing or exposing both at the same time is significantly lower. For example, if your password is "password" (really bad idea, don't do it), then bad actors will be able to guess it. But they won't also have your phone with the app on it, and so they cannot get access to your bank account.</p>
+<p>A slightly different but more cumbersome approach is one-time passwords (OTP). They have a long history and normally are quite secure - they have formed the basis of encrypting much of intelligence services' communications, in the form of "<a href="http://en.wikipedia.org/wiki/One-time_pad" target="_blank">one-time pads</a>". One-time pads have one big weakness: securely getting the pads into the hands of the other party and keeping them secret. That sort of exchange of secret information - the classic "<a href="http://en.wikipedia.org/wiki/Key_exchange" target="_blank">key exchange</a>" problem - exists in every form of encryption, and is solved at the statecraft level by physically delivering the one-time pads, once in paper, more recently in a digital format.</p>
+<p>Yahoo appears to have taken the <i>idea</i> of OTP, rather than an actual <em>implementation</em>, combined them with the second-factor in use in some TFA systems, and said, "poof, we solved the password problem!"</p>
+<p>This system has two very serious weaknesses, serious enough that I would recommend no one adopt the system.</p>
+<h3>Convenience</h3>
+<p>The convenience appears to be solved... until you are somewhere that you cannot get a text message. What if you are in an airport in Frankfurt, travelling from Tel Aviv to San Francisco. You don't have a German SIM card, but you do have Internet access in the lounge. Are you now unable to access your email?</p>
+<p>Better yet, you are at 36,000 feet from Frankfurt to SFO - Westbound flights fly at <a href="http://en.wikipedia.org/wiki/Flight_level" target="_blank">even flight levels</a> - and are using their brand-new WiFi service. Do you have Internet? Yes. Can you get to Yahoo login page? Yes. Can you get your password? As they say in New York, "fuhggedaboudit." Aren't you glad you paid for your WiFi?</p>
+<p>While this may seem a minor issue, it is important. <strong>Any critical system should not rely on less-critical systems for access.</strong> Your email needs Internet access for your to get to it. That makes sense. Thus, it is reasonable for the email system in turn to depend upon it. However, you do not need mobile connectivity to get to the email system itself; therefore the email system should not rely exclusively upon it for you to access.</p>
+<h3>Security</h3>
+<p>Yahoo's new "on-demand" password system eliminates <em>entirely</em> the "something you have." This has two severe weaknesses:</p>
+<ol>
+<li>Before, if someone got access to your phone, it was useless; now they have complete access to your email. How many times have you left your phone on your office desk to charge and gone to the bathroom, or welcome someone at the front door? And if you lose your phone, will the finder (or thief) have access to all of your Yahoo email and groups in the hour until you realize you lost it and disable it? <span style="text-decoration: underline;">All it takes is 30 seconds for someone to get access</span>.</li>
+<li>Governments now can intercept your email with ease. Let's say you are a democracy activist in Russia or China or Saudi Arabia. You normally connect to Yahoo over SSL, and send emails from Yahoo's servers in California to other activists in London, to help plan a rally. Better yet, you use an alias, "freecountry2015@yahoo.com." Beforehand, the best the government could do (unless your local NSA- or GCHQ-equivalent has cracked Yahoo) was to try and piece together who you were based on Yahoo access. Now, they have a much simpler route. They will just intercept the text message at the carrier. Better yet, they can just as easily <em>instigate </em>a logon as "freecountry2015@yahoo.com", and watch and see which real person gets the SMS. Wait to hear the 2am knock on the door by the secret police?</li>
+</ol>
+<p>The security in Yahoo's new system is weak in the extreme, and exposes average users and freedom activists in a way the previous one did not.</p>
+<h2>Summary</h2>
+<p>Yahoo's new system <em>appears</em> to solve <span style="text-decoration: underline;">some</span> password inconveniences, but creates significant others. More seriously, it breaks security in such a fundamental way, exposing individuals to wide-open reading and hijacking of accounts, that can, in some cases, be seriously threatening.</p>
+<p><strong>Do not use Yahoo's new (in)security plan.</strong></p>
+<p>&nbsp;</p>

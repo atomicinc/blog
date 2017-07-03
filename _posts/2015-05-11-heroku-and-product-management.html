@@ -1,0 +1,54 @@
+---
+layout: post
+title: Heroku and Product Management
+date: 2015-05-11 07:32:31.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- pricing
+- product
+- technology
+tags:
+- heroku
+- packing
+- pricing
+- product
+- product management
+author: Avi Deitcher
+---
+<p>I have been impressed with <a href="http://heroku.com" target="_blank">Heroku</a> for a long time. Their simple to use platform-as-a-service (PaaS) has made it incredibly easy for software developers to deploy applications lightly and cheaply, and then easily scale them up to production scale.</p>
+<p>As an aside, the very design encourages them to develop their software in a well-architected fashion; see "<a href="http://12factor.net" target="_blank">The 12-Factor App</a>."</p>
+<p>Just as Amazon Web Services infrastructure-as-a-service (IaaS) <a href="http://aws.amazon.com/ec2" target="_blank">EC2</a> abstracts away <em>hardware</em>, so a PaaS abstracts away the <em>operating system</em>, allowing software managers to focus on <em>software</em>.</p>
+<p>For a long time, Heroku had two basic monthly tiers (<a href="https://www.heroku.com/pricing" target="_blank">pricing here</a>):</p>
+<ul>
+<li>Free</li>
+<li>$34.50</li>
+</ul>
+<p>The "Free" tier is one copy (or "dyno", in Heroku parlance) of your application. It runs as long as it was active. If no one sends any Web requests to it for an hour, it goes to sleep, or idles. The next time someone comes along, it will wake up, which can take 30 seconds or more.</p>
+<p>If you want it to <span style="text-decoration: underline;">not</span> go to sleep, or if you want more power than one copy ("dyno") at a time for greater capacity, you purchase a second, or a third, or fourth, all for $34.50/month each (after the first free one). Once you pay, no more idling. Unsurprisingly, many managers found methods to avoid the idling for a single dyno, some supported directly by Heroku itself!</p>
+<p>This created a challenge for Heroku. On the one hand, many app owners are using the free tier quite happily. Like with the application I recently deployed to manage collaborative studying globally for a non-profit, $34.50/month is too much for many small hobby or pro bono apps. The free tier is a great entree to Heroku, but does not provide a lot of revenue capture for Heroku.</p>
+<p>On the other hand, many owners actually would pay a small amount for slightly better service, but not the rates of $34.50 each.</p>
+<p>Essentially, Heroku had built a two-tier model - Test/Dev/Hobby for free and Professional/Enterprise for $34.50 - with nothing in between. Such a large gap leaves a lot of money on the table.</p>
+<p>Last week, I received an email in my inbox that Heroku finally is changing it, <a href="https://blog.heroku.com/archives/2015/5/7/new-dyno-types-public-beta" target="_blank">details are here</a>. The core of the "dyno" changes are as follows:</p>
+<ol>
+<li>Regular at $25/month, down 27.5% from $34.50/month</li>
+<li>Hobby at $7/month</li>
+<li>Free at $0/month</li>
+</ol>
+<p>In some ways, the new free tier is better than the old, as it includes additional processes called "workers". On the other hand, free dynos idle after just 30 minutes, instead of 60 minutes, and <strong>must</strong> idle for at least 6 hours, 1/4 of the day.</p>
+<p>The Hobby, on the other hand, include up to ten different process types (Web, workers, etc.), and are guaranteed never to idle.</p>
+<p>I do <span style="text-decoration: underline;">not</span> know all of the insights and market data around Heroku's market, but I <span style="text-decoration: underline;">have</span> been managing software services, lifecycle and deployment for a very long time, including large mission-critical cloud services and tiny developer projects. I believe Heroku has done an excellent job positioning themselves to recapture the middle of the market:</p>
+<ol>
+<li>Make the <em>Free tier</em> even more appealing for development projects through Web and worker, but even less appealing once deployed, even on a small-scale basis, because of the 6 hours per day idle time. This will encourage greater first-stage adoption of free, will driving second-stage Beta to...</li>
+<li>... the <em>Hobby tier</em> at a small price jump - a whole month of usage for less than two coffees at Starbucks - buys real production for, well, hobby projects.</li>
+<li>Make the <em>Pro tier</em> significantly cheaper than before, thus even easier for app owners to move up a level.</li>
+</ol>
+<p>By lowering its pro prices, widening but limiting its free tier while creating a "starter house" production (hobby) tier, Heroku should drive further adoption at all levels of the market.</p>
+<p>This is an excellent example of product management. Success isn't driven by what the product can do. After all, the technology capabilities essentially are unchanged. It is driven by what you offer (product), how you offer it (placement), what you charge (pricing) and what it comes with (packaging)... it is about how you move those levers so your offering captures segments of the market.</p>
+<h2>Summary</h2>
+<p>Do you <em>know</em> that you are capturing all of your desired market segments? Do you have just the right offerings in the right combinations and tiers to satisfy the maximum number of customers at the optimal profit for you?</p>
+<p>In sum, <strong>do you have product management down cold?</strong></p>
+<p><a href="{{ site.url }}/contact/" target="_blank">Call us</a>, and let us turbocharge your offerings.</p>

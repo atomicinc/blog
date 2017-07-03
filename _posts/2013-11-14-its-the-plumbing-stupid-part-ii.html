@@ -1,0 +1,29 @@
+---
+layout: post
+title: It's the Plumbing, Stupid - Part II
+date: 2013-11-14 07:35:28.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>A few weeks ago, Adobe announced that hackers had broken into their database and stolen 3MM passwords and other customer identifiable data. Then reports surfaced that it was 10MM. Then 38MM. Latest reports say it may be as high as 150MM. That would be one of the largest data thefts ever, by number of customers compromised, certainly in excess of the 45MM in the infamous TJ Maxx / TJX case from six years ago.</p>
+<p>Sophos, the security company, <a href="http://nakedsecurity.sophos.com/2013/11/04/anatomy-of-a-password-disaster-adobes-giant-sized-cryptographic-blunder/" target="_blank">released a detailed analysis</a> - based on publicly accessible data - of the Adobe breach. For those who understand cybersecurity and encryption, it is a good read. For those who do not want to delve in depth, let's summarize:</p>
+<ol>
+<li>Adobe needed to store passwords (like most Web sites).</li>
+<li>Adobe knew it couldn't just store the passwords as is, because if someone broke in - or a disgruntled employee dumped them, or bad code spilled them - they could break into customer accounts.</li>
+<li>Adobe said, "hey, encrypted stuff cannot be read; let's encrypt them."</li>
+<li>Adobe encrypted them.</li>
+<li>Adobe didn't bother asking (let alone hiring) people who actually understand <em>how</em> encryption and password stealing works, so they could see if their encryption does any good.</li>
+<li>Hackers did, indeed, steal the entire (encrypted) password set, and then proceeded to crack the passwords.</li>
+</ol>
+<p>Earlier, I <a title="Plumbers Are Worth Every Penny" href="{{ site.url }}/2013/10/23/plumbers-are-worth-every-penny/" target="_blank">argued</a> that despite the unglorified work that they do - and the fact that it does not directly contribute to short-term sales, which most CEOs are focused on - you need to spend good money on "plumbers", the men and women who make sure that the parts of your infrastructure that need to work, do so.</p>
+<p>In the case of Knight Capital, it was around good testing and architecture.</p>
+<p>In the case of Adobe, it was around security architects and operations personnel.</p>
+<p>I have no doubt that not spending money on highly talented security personnel saved Adobe up to $1MM per year for several years, money that went to the bottom line, and that would not have increased revenue <em>by even one dollar</em> had it been spent.</p>
+<p>I also have no doubt that the cost of this breach will be far in excess of the few million dollars saved. Around the time of the TJX fiasco, estimates were that each breached customer would cost them $100. While that was for credit card data, and it is unclear if any such has been stolen as of yet from Adobe, even the lowest estimate of 3MM customers would be $300MM. At the same time, that $100 does <strong>not</strong> include the biggest cost of all: trust. Adobe will have a very hard time getting people to give them their details - and thus become a customer - going forward.</p>
+<p>As someone commented on the Sophos article, the ones who look smartest now are those who pirated Adobe software and avoided giving Adobe their details.</p>
+<p>Plumbers are expensive. But without them, the whole house will smell.</p>

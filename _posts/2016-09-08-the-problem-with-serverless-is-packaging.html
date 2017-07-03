@@ -1,0 +1,64 @@
+---
+layout: post
+title: The Problem with Serverless Is Packaging
+date: 2016-09-08 10:36:32.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- pricing
+- product
+- technology
+tags:
+- amazon
+- aws
+- containers
+- DigitalOcean
+- FaaS
+- PaaS
+- serverless
+author: Avi Deitcher
+---
+<p>Serverless. Framework-as-a-Service. Function-as-a-Service. Lambda. Compute Functions.</p>
+<p>Whatever you call it, serverless is, to some degree, a natural evolution of application management.</p>
+<ol>
+<li>In the 90s, we had our own server rooms, managed our own servers and power and cooling and security, and deployed our software to them.</li>
+<li>In the 2000s, we used colocation providers like Equinix (many still do) to deploy our servers in our own cages or, at best, managed server providers like Rackspace.</li>
+<li>In the early 2010s, we started using infrastructure-as-a-service (IaaS) like Amazon EC2.</li>
+</ol>
+<p>Over time, we have evolved to worrying less and less about the underlying <em>infrastructure</em> on which our software code runs, focusing more and more on the <em>code</em> itself. We have moved our focus further up the stack.</p>
+<p>That was the very basis of Platform-as-a-Service (PaaS) providers, like Heroku (now part of Salesforce.com). Instead of running our code on a virtual server instance that we manage, we deploy the code unit, or "slug", and they take care of that part as well.</p>
+<p>However, even with a PaaS, we still have to think in server-like <span style="text-decoration: underline;">terms</span>:</p>
+<ol>
+<li>We need to plan how many copies of our code, i.e. slugs, we need to run.</li>
+<li>We are billed by the number of instances running.</li>
+</ol>
+<p>Serverless, typified by Amazon's Lambda, attempts to change that calculus.</p>
+<p>Once we get past worrying about servers entirely, we can focus on duplicate effort <em>inside</em> our applications. Rather than handling setting up the application, start up, connectivity, listening for request and routing them to the correct handler function, why not have an underlying service perform all of that? All we need to do is:</p>
+<ol>
+<li>Create the handler functions</li>
+<li>Declare which input event triggers which handler function</li>
+</ol>
+<p>Just about any server-side app - and most client-side apps - are written following this paradigm anyways. However, we do all of that work in whatever our chosen framework: express, Rails, whatever. Serverless offers to handle all of that duplicate work as well.</p>
+<p>The intended key benefits of serverless are threefold:</p>
+<ol>
+<li><span style="text-decoration: underline;">Effort</span>: Why waste time doing work that everyone else is doing anyways? Write your handlers, declare your routes, let it run.</li>
+<li><span style="text-decoration: underline;">Financial</span>: Why pay for unused server capacity? Get billed per second or even millisecond of code running.</li>
+<li><span style="text-decoration: underline;">Cultural</span>: Stop thinking about your application as a single unit. Instead, think of it as individual functions, each of which has a cost and a benefit.</li>
+</ol>
+<p>However, <strong>there is a problem with serverless</strong>, and it is more fundamental than its name.</p>
+<p>I believe that the key reason for the rapid and widespread adoption of Docker is that it solved major <em>packaging</em> headaches. Even the best packaging systems pre-Docker relied on the volatile and unpredictable state of the underlying host.</p>
+<p>Docker abstracted all of that away, by putting required dependencies within the deployment artifact while simultaneously enabling the app to ignore (mostly) the state of the underlying host.</p>
+<p>Serverless computing, including Lambda, makes packaging <span style="text-decoration: underline;">harder</span> not <span style="text-decoration: underline;">easier</span>. Sure, you don't need to worry too much about what is on the server. Conflicts are avoided (using containers under the covers), while dependencies are declared and guaranteed. In that respect, it is similar to container images.</p>
+<p>But your application isn't made up of one handler function in isolation. <strong>It is made up of the totality of all of the functions.</strong> In containers - "serverfull"? - I can package my entire application up together. This makes moving it, deploying it and testing it easy and predictable.</p>
+<p>In serverless, each function is a standalone unit, and the wiring up of events, like incoming http requests, to handler functions is managed by an API or UI. Lambda makes it very easy to focus on the purpose, value and cost of each function. <span style="text-decoration: underline;">But lambda makes it very difficult to reason about, deploy, test and manage the app <strong>in its entirety</strong></span>.</p>
+<p><strong>Serverless's problem isn't nomenclature; serverless's problem is packaging.</strong></p>
+<p>From packaging flow all of the issues of deployment, management, testing, reasoning.</p>
+<p>Many companies are writing small and large applications on Lambda or Compute Functions or OpenWhisk, many successfully. I have worked with some, transitioned apps to Lambda, and love the benefits, the financial and cultural ones above all.</p>
+<p>But for many others, until the packaging becomes as simple to manage, deploy and reason about as self-contained apps as repositories for PaaS or Docker images, the costs will outweigh the benefits.</p>
+<p>In that respect, I believe there is a space for a bold entrepreneur to "DigitalOcean" Lambda. DigitalOcean (DO) took on AWS by providing the same service but being incredibly simple to use. For large corporate entities, AWS remains the primary provider. But for companies looking for simple-to-use, simple-to-manage, great performance, DO is the superior IaaS offering.</p>
+<p>If someone took the DO approach to IaaS and applied it to serverless - make it easy to use, easy to reason about, easy to manage - they could grab a significant chunk of the serverless market and likely drive it to the next level.</p>
+<p>&nbsp;</p>

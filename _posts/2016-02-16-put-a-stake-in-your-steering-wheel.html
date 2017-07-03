@@ -1,0 +1,48 @@
+---
+layout: post
+title: Put a Stake In Your Steering Wheel
+date: 2016-02-16 08:52:48.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- policy
+- product
+- technology
+tags:
+- chaos
+- failure
+- safety
+- speed
+author: Avi Deitcher
+---
+<p>When at the Container Summit, I heard a great (if somewhat perverse) line from <a href="https://twitter.com/0x604" target="_blank">Jacob Groundwater</a> of New Relic. I liked it so much, I tweeted it out immediately:</p>
+<blockquote><p>If you want people to drive slower, don't give them an airbag; put a spike in their steering wheel!</p></blockquote>
+<p>While a rather morbid image, Jacob hit on a core truth: if you make dangerous activities safer, people will do more dangerous things. Or, as Milton Friedman put it (about the welfare program AFDC), if you pay people for something, you will get more of that something.</p>
+<p>On the other hand, if you want people <em>not</em> to do a dangerous activity, make it <em>more</em> dangerous.</p>
+<p>I am not actually advocating we actually put stakes in steering wheels! When people already will drive 120 kmh, airbags are a valuable way to reduce the already existing risk.</p>
+<p>However, when it comes to systems and software development, Jacob has a key insight:</p>
+<ol>
+<li>Software <em>itself</em> inevitably fails</li>
+<li>Systems to which the software <em>connects</em> inevitably fail</li>
+<li>Systems <em>underlying</em> the software inevitably fail</li>
+<li>Don't make the systems failures hurt the software less; make it hurt more, and more often, to force software to handle it better</li>
+</ol>
+<p>If you think your car safely can handle a crash at 200 kmh without you getting hurt, you are likely to drive 200 kmh. If you believe anything over 100 kmh will maim you, you are unlikely to drive faster than 100 kmh.</p>
+<p>If people <em>expect</em> the systems on which their software depends to fail, they will make their own software handle failure better.</p>
+<p>Netflix built this into their core years ago with their <a href="https://github.com/Netflix/SimianArmy" target="_blank">Chaos Monkey</a>, which forces random failures of parts of their system. Netflix engineers cannot build software hoping it won't fail, or expecting the underlying infrastructure to handle recovery; they <span style="text-decoration: underline;">know</span> their systems will suffer failure, because Chaos Monkey will make it happen.</p>
+<p>At the Container Summit, <a href="https://twitter.com/loveless_jacob" target="_blank">Jake Loveless</a>, CEO of <a href="http://lucera.com" target="_blank">Lucera</a>, which provides "AWS for adults" as he put it, gave a similar example. Lucera provides container and VM hosting for high performance financial services organizations: the flexibility of a public cloud, the security, performance and ultra-low-latency required by financial services, with the connectivity network to just about every major financial institution.</p>
+<p>Jake said that one of his financial services customers has an interesting setup: every day, at end of trading, all of their virtual server instances or containers are blown away, "put a bullet in it", and recreated.</p>
+<p>The very nature of destroying and recreating the instances means that anyone who possibly could have made any changes to a live instance <em>knows</em> that those very changes will be gone by the end of the day. The <span style="text-decoration: underline;">only</span> way to have persistent changes is to go through the proper build and deployment process.</p>
+<p>One could argue (I would) that no one ever should have access to production instances, but that may be a little idealistic. I suspect the customer under discussion had serious problems with live changes that had to be solved once and for all.</p>
+<p>This customer has the "Grim Reaper": Chaos Monkey for processes instead of architecture. It doesn't blow away live instances randomly during trading hours, but it does blow away and recreate them after hours, every day, like clockwork. Instead of forcing <em>developers</em> to build for failure, they are forcing <em>administrators</em> to operate for reproducibility.</p>
+<h2>Summary</h2>
+<p>Ask yourself if either of these keeps you up at night:</p>
+<ul>
+<li>Some of my systems might fail</li>
+<li>Some of my configuration and setup might be lost</li>
+</ul>
+<p>If either of these has you worried - if a Chaos Monkey or Grim Reaper in your infrastructure would give you a cold sweat - your processes and systems are ripe for more reliable and, yes, <em>much</em> faster operations. <a href="{{ site.url }}/contact/" target="_blank">Ask us to help</a>.</p>

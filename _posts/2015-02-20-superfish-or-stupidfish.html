@@ -1,0 +1,79 @@
+---
+layout: post
+title: Superfish or Stupidfish?
+date: 2015-02-20 07:14:46.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- policy
+- product
+- security
+- technology
+tags:
+- advisors
+- CA
+- certificates
+- lenovo
+- ssl
+- superfish
+- trust
+author: Avi Deitcher
+---
+<p>How did Lenovo do something so inane as fundamentally breaking their customers' laptop security by <a href="http://www.forbes.com/sites/thomasbrewster/2015/02/19/superfish-need-to-know/" target="_blank">installing Superfish</a>? What is Superfish, and what is wrong with it?</p>
+<p>I have often asked clients to consider, "what business are you in?" The right answer is not, "to make profits", or "shareholder return", because those are bland, meaningless statements. <em>Every</em> business wants to make profits and return value to their shareholders.</p>
+<p>Peter Drucker said, "the purpose of a business is to create [and keep] a customer." The question I am asking is, "<em>how</em> do you create and keep your customer? What is it the customer buying<em> from you</em>?"</p>
+<p>This question is a crucial way to evaluate whether or not additional products, services or just ancillary revenue streams are: useful for your business; neutral for your business; or a negative for your business.</p>
+<p>The Samsung Smart TV mess, as <a title="Samsung’s “Too Smart for Their Own Good” TVs" href="{{ site.url }}/2015/02/16/samsungs-too-smart-for-their-own-good-tvs-2303/" target="_blank">I wrote earlier this week</a>, is an example of a negative. Even though they viewed it as a positive, it should at least have been neutral - no real benefit. However, often a neutral turns into a negative by virtue of a company's lack of understanding of the market dynamics and operational requirements for a new set of offerings or even features.</p>
+<p>Sometimes, however, a new revenue stream isn't just negative in the "that was a waste of our money" or "our customers don't like that" sense, but in a manner that a few minutes of cold-harded realism and awareness would create a "what could we possibly have been thinking??" moment.</p>
+<p>The <a href="http://www.forbes.com/sites/thomasbrewster/2015/02/19/superfish-need-to-know/" target="_blank">Superfish scandal</a> - and, indeed, it is a scandal - is a prime example of both kinds of negative.</p>
+<p>First, let's look at what Superfish does, then at the serious mistakes Lenovo made.</p>
+<h3>How Superfish Works</h3>
+<p>In order to understand what Superfish does, let's look at a simplified view of how a properly behaving visit to a secure Website works.</p>
+<ol>
+<li>You go to a secure Website, for example your bank.</li>
+<li>You want to ensure that you actually are talking to your bank, and not someone masquerading as them, so as to do terrible stuff (like stealing $1,000 from your bank account).</li>
+<li>The Website presents your browser with a certificate, a very long string of characters, that has been signed - or cryptographically validated - by a trusted authority, called a Certificate Authority (CA).</li>
+<li>Your browser looks at its group of trusted CA certificates, pre-installed on your laptop (or iOS or Android). If it finds one that matches the signature on your bank's certificate, and a cryptographic algorithm validates that this one really did sign it, then voilà, you can trust the certificate, and hence that you really are talking to your bank.</li>
+</ol>
+<p>What happens if it doesn't match? Your browser gives you a big ugly warning that this site might not really be Facebook or your bank! (Whether or not people abide by those warnings is an entirely different question of user psychology...)</p>
+<p>In other words, your <strong>entire system of secure trust depends on the group of CA certificates</strong> sitting on your laptop, pre-installed with Windows or Mac OS X or iOS or Android. If the group of certificates on your laptop is compromised, anyone can masquerade as anything, and the whole system falls apart.</p>
+<p>What does Superfish do?</p>
+<p>Superfish, an ad company, convinced Lenovo to pre-install their adware on every (consumer) laptop they shipped. OK, this is common, if annoying but mostly harmless, behaviour. However, Superfish not only installs the usual bloatware; it actually installs Superfish's certificate as a trusted certificate, as if they were a real CA, in your Windows group of certificates.</p>
+<p>In other words, they convinced Lenovo to get your computer to trust Superfish's certificate as if it were a major CA, like Verisign! And how secure is that certificate? Well, <a href="http://blog.erratasec.com/2015/02/extracting-superfish-certificate.html" target="_blank">it was publicly cracked yesterday</a>. That means anyone who knows how can intercept all of a Lenovo laptop user's communications with any secure site, and the user will not know it.</p>
+<p>Actually, it gets worse. The above, as bad as it is, might be Superfish's attempt to just get a cheap and secure connection to their Web sites, without having to pay a CA to certify them. But it doesn't. Superfish's software <strong>actively intercepts your communications to Google </strong>(and probably plenty of other sites). It traps when your browser goes to many sites, sits between you and those sites, and injects its own data (while copying yours, of course).</p>
+<p><span style="text-decoration: underline;">This is pretty dirty</span>. And why the certificate underhandedness? <strong>So they can explicitly intercept your secure communications as well</strong>. Yes, this was not an attempt to save a little money, <span style="text-decoration: underline;">it explicitly intercepts your secure communications for <em>their</em> benefit</span>.</p>
+<p>Now that we know how Superfish works, let's look at the major mistake Lenovo made.</p>
+<h3>What Are They Buying?</h3>
+<p>Lenovo bought IBM's personal computer business a decade ago, in 2005. For all intents and purposes, despite the market knowing it no longer is IBM, people treat it as a continuation of IBM, with all of the trust that implies.</p>
+<p>People buy a laptop to do their trusted work. We bring laptops into our homes and offices (and coffee shops, if you are a startup). We run our banking from it; we do our tax returns on it; we develop proprietary code on it. <strong>We trust it.</strong> While we understand that the Internet has become a dangerous place, and that malicious actors constantly are trying to infect our computers, we <em>have to trust someone</em>, and so we trust our hardware manufacturer with two things:</p>
+<ol>
+<li>The hardware is clean.</li>
+<li>The operating system and pre-installed software are clean.</li>
+</ol>
+<p>We want to know that when we unpack it, it is safe for use (notwithstanding the Snowden reports of the NSA intercepting servers and routers in shipment...).</p>
+<p>Indeed, <em>customers pay Lenovo to deliver safe computers.</em></p>
+<p>Much as I hate "bloatware", the garbage manufacturers pre-install on laptops in exchange for some healthy revenue streams from other companies, we trust that those are just add-ons that can be removed.</p>
+<p>Lenovo is being paid for trusted computer equipment, yet accepted money to install a product that fundamentally violates that trust.</p>
+<p>This is not <em>just</em> an add-on revenue stream that should be neutral but could go negative. It is a direct violation of the implied "customer contract."</p>
+<p>In other words, it never should have passed the <strong>smell test</strong>.</p>
+<h3>What Drove Lenovo to Do It?</h3>
+<p>Based on Lenovo's public statements, I simply do not know; it is not in the tradition of some companies to "come clean" with their mistakes. We can, however, look at several possibilities:</p>
+<ul>
+<li><span style="text-decoration: underline;">Ignorance</span>: Lenovo has plenty of engineers, both hardware and software; you need them to manufacture and sell computers. However, the decision to install this kind of software likely comes from the business development or partnership or marketing departments at a senior level. Especially in large companies with more traditional "stovepiped" organizations, the decision-makers simply may not understand the implications.</li>
+<li><span style="text-decoration: underline;">Contempt</span>: Large companies sometimes display contempt for their customers. Since Superfish has been out there for ~2 years, despite the price they now will pay, Lenovo did get away with it. Since we know about it now, it is fair to assume that government actors like the NSA and malicious actors like hackers have known about it <em>and exploited</em> it for years.</li>
+<li><span style="text-decoration: underline;">Hierarchy</span>: I believe it likely Lenovo's software engineers were aware of Superfish and its impact from early on. However, in strongly hierarchical companies, "technical" engineers simply do not raise offending issues with "senior" management. The culture is likely to have played a strong role in suppressing experts raising the issue.</li>
+</ul>
+<p>Either way, heads are likely to fly. This was a severe mistake, and undercuts customer trust. Worse, no matter how many times Lenovo swears it did not install it on "business" computers, many businesses simply will not trust them again (as they should not).</p>
+<h2>Summary</h2>
+<p>A few simple rules can significantly reduce your chances of being the next scandalized company.</p>
+<ol>
+<li>Always have your customer-centric mission front and centre. Hang it everywhere.</li>
+<li>With every new product, service or revenue stream, ask if it supports, is neutral to, or goes against your customer mission.</li>
+<li>With every new product, get feedback from experts deep in your organization on the impact of the product on engineering, supply chain, security, marketing, product management, sales, finance... and trust them.</li>
+<li>Create an environment that encourages non-management to speak out, both for innovative ideas and raising alarm bells. This is harder than it seems.</li>
+<li>With every new product, get feedback from advisors with <span style="text-decoration: underline;">no vested interest</span> either in the new revenue stream or the existing one. Bias often is unconscious and always runs very deep.</li>
+<li>If it smells bad, stay far, far away.</li>
+</ol>
+<p>Every one of these is important. <a title="Contact" href="{{ site.url }}/contact/" target="_blank">Get good advisors, ask them to help you</a> build the culture and feedback loops you need to stay in customers' good graces.</p>

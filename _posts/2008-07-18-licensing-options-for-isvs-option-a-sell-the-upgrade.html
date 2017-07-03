@@ -1,0 +1,45 @@
+---
+layout: post
+title: 'Licensing Options for ISVs - Option A: "Sell the Upgrade"'
+date: 2008-07-18 10:30:51.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- pricing
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>As a follow-on to the previous post about licensing strategies for ISVs, I would like to discuss the nitty-gritty implementation details. It turns out that the open market has not been very kind to mISV firms, and have left with very few options, none of which provides the desired flexibilities. This post will discuss "Sell the Upgrade." A follow-on will discuss "Sell the Plan."</p>
+<p>So you want to implement sell-the-upgrade. To do that, you need to have several scenarios, all working in concert. You have released one products with three versions: 1.0, 1.5 and 2.0. You are currently selling 1.5, but will soon start selling 2.0.</p>
+<ol>
+<li>New purchaser: This is, of course, easy. You have a single product, call it SKU15, representing version 1.5. Everyone pays full price, say $100.</li>
+<li>Return purchaser: This is someone who already bought 1.0 and now wants to upgrade to 1.5. The return purchaser should pay nothing for version 1.5, as it is a minor upgrade. You have a few choices: </li>
+</ol>
+<ul>
+<li>Keep the same SKU for upgrade purchases and new purchases of all releases of the major version of the product. SKU10 covers version 1.0 and 1.5, whether new purchase or upgrade. Rely on your licensing system to recognize the allowed upgrade. This usually works if the same license set covers both version 1.0 and 1.5.</li>
+<li>Use the same SKU for upgrade purchases as for new purchases, but different between minor versions, and rely on your commerce system to recognize that this purchaser bought 1.0 already and is thus allowed a 100% discount off the purchase price of that SKU. </li>
+<li>Use a different SKU for upgrade purchases than new purchases, say SKU15U (U for upgrade), and rely on your commerce system to recognize the allowed purchase. In other words, it is a limited availability SKU. </li>
+</ul>
+<p>In both of the commerce-system-dependent solutions, an upgrade means buying the new product, but having the commerce system recognize the purchaser as someone who purchased before, and thus give them the product at 100% off, either via discount of limited availability SKU. It is important that the commerce system recognize that the purchaser is a returning purchaser, and exactly how many copies they have the right to upgrade. For example, someone who bought 5 copies of 1.0 should have the right to purchase 5 copies of 1.5 for free, but not 50 copies. There are varying ways to do this, but very few, if any, commerce or cart systems seem to know how to manage this.</p>
+<p>Now we move to major upgrades. People are buying version 2.0.</p>
+<p> </p>
+<ol>
+<li>New purchaser: This is, again, easy. You have a single product, call it SKU20, representing version 2.0. Everyone pays full price, say $100.</li>
+<li>Return purchaser: This is someone who already bought 1.0 or perhaps 1.5 and now wants to upgrade to 2.0. If you don't give upgrade discounts, it is very easy: they are just like a new purchaser. However, most ISVs, especially mISVs, give upgrade discounts. For argument's sake, let's say our discount is 50%. The return purchaser should pay $50 for this upgrade. Managing this through the licensing system is nearly impossible, since they can only upgrade if they pay something, which means a new purchase, which means a new license key. Additionally, you are likely to have a separate SKU for this new version. Thus, your <strong>only</strong> choice is to manage it through the commerce system. Within the system, you have a few choices: </li>
+</ol>
+<ul>
+<li>Use a different SKU for upgrade purchases than new purchases (SKU20 and SKU20U). Rely on your commerce system to recognize the allowed upgrade. Again, this is a limited availability SKU.</li>
+<li>Use the same SKU for upgrade purchases as new purchases (SKU20). Rely on your commerce system to recognize that this is an upgrade purchase, and thus provide the appropriate 50% discount.</li>
+</ul>
+<p>In both of these cases, you depend on your commerce system for a lot of intelligence about returning purchasers. Once again, I have seen few, if any, commerce systems that can do this properly.</p>
+<p>So, what is the solution to sell-the-upgrade?</p>
+<ol>
+<li>Recognize that most of this is going to happen through the commerce system. Have a good cart of system that ties closely into your customer history database.</li>
+<li>Make licensing as easy as possible, and have it trust your commerce system. Licensing may solve some of it, but major upgrades between SKUs will have to generate new license keys, so focus your energies on commerce systems.</li>
+</ol>
+<p><a title="esellerate" href="http://www.esellerate.com" target="_blank">esellerate</a>, despite many other severe issues (not least of which is absurd pricing), does have the ability to do this decently using coupons. Their customer technical support is also excellent.</p>
+<p>I have recently spent time with the various open-source cart solutions: <a title="MagentoCommerce" href="http://www.magentocommerce.com" target="_blank">magento</a>, <a title="ZenCart" href="http://www.zen-cart.com" target="_blank">zen-cart</a>, <a title="OsCommerce" href="http://www.oscommerce.com" target="_blank">oscommerce</a> and <a title="curbcart" href="http://www.cubecart.com" target="_blank">cubecart</a>, as well as <a title="esellerate" href="http://www.sellerate.net" target="_blank">esellerate</a> and a nice newcomer service, <a title="FastSpring" href="http://www.fastspring.com" target="_blank">FastSpring</a>. I will write a separate blog post on these services and carts soon. Unfortunately, none of these has the ability to do this cleanly. </p>
+<p>Next up: "Sell the Plan."</p>

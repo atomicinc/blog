@@ -1,0 +1,33 @@
+---
+layout: post
+title: NodeBot - The Democratization of Hardware
+date: 2013-08-02 06:45:14.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>Advance warning: while this article is about business and the future, it gets a bit technical in nature. Apologies to those without engineering backgrounds.</p>
+<p>One of the people I have had the pleasure to connect and work with is <a href="https://twitter.com/voodootikigod" target="_blank">Chris Williams</a>. Chris, the founder of the now-global <a href="http://jsconf.com" target="_blank">JavaScript conferences</a>, has recently become heavily involved in robotics, and, in character for him, is now putting on <a href="http://robotsconf.com" target="_blank">RobotsConf</a>.</p>
+<p>Over the last few years, we have seen a trend towards reduced-cost and commoditization of hardware. You can buy a standard programmable mini-computer, an Arduino, on <a href="http://www.amazon.com/Arduino-UNO-board-DIP-ATmega328P/dp/B006H06TVG/ref=sr_1_2?ie=UTF8&amp;qid=1374819671&amp;sr=8-2&amp;keywords=arduino" target="_blank">Amazon</a> for around $30. You can buy a programmable <a href="http://www.amazon.com/Parrot-AR-Drone-Quadricopter-Controlled-Android/dp/B007HZLLOK/ref=sr_1_1?ie=UTF8&amp;qid=1374819736&amp;sr=8-1&amp;keywords=ardrone" target="_blank">quadcopter consumer drone</a> for $300. The cost of customizable hardware has come down dramatically, to the point where individual engineers can afford to buy them and design products that can eventually be produced and sold. Hardware development that used to be available only to well-funded or large companies, or wealthy individuals, is becoming available to the masses.</p>
+<p>But the masses were not ready. Because the ability to engineer, design and build products requires <em>two</em> prerequisites, not one:</p>
+<ol>
+<li><span style="line-height: 13px;"><span style="text-decoration: underline;">Cost</span>: The cost of the raw materials, both those used for development and for actual production and delivery, must be acceptable.</span></li>
+<li><span style="text-decoration: underline;">Skills</span>: The skills required to work with the raw materials must be acquirable.</li>
+</ol>
+<p>Looking at the cloud infrastructure world, services developed as follows:</p>
+<ol>
+<li><span style="line-height: 13px;">Buy your own servers: only a few could afford to spend the $10k on a server (now much less) plus the hosting, rack, power, network; led to:</span></li>
+<li>Lease your servers, which still had the same fully loaded costs, but spread the payments; led to:</li>
+<li>Virtual servers, which allowed one to lease/rent a fraction of a server; led to:</li>
+<li>Infrastructure-as-a-Service (IaaS), Amazon Web Services, which allowed one to rent exactly as much computing power as one needed.</li>
+</ol>
+<p>The problem was that all of the above still required the fairly limited skills of a systems engineer and/or administrator, as well as database administrator, and even network administrator, to set them up. Each step made them somewhat easier, but in the end, you needed the skills to run the systems. Those skills are somewhat more diverse and more complex (subject to dispute) than those of developing a Web application that does something useful for customers. All of the above steps primarily addressed <em>cost</em> issues, but, for the most part, the <em>skills</em> issue remained. Larger shops are likely to need and have those skills anyways, but for the far, far larger market of small companies and individual developers, you needed to learn all of the infrastructure skills or pay good money for someone else to do them.</p>
+<p>Platform-as-a-Service (PaaS) services stepped in to address the skills: Google App Engine (GAE), Heroku, nodejitsu, etc. These firms recognized that most of the administration skills are <em>repeated and identical</em> across all of the installations. And so, they standardized the services and wrapped them up in tools with which  the average developer was comfortable . Lo and behold, for the overwhelming majority of small development and software shops and almost all individual developers, a <strong>bridge over the "gorge of skills" was built </strong>by eliminating the need for those skills at all. This is the democratization of Internet infrastructure: putting it in the hands of the masses.</p>
+<p><a href="{{ site.url }}/wp-content/uploads/2013/07/cloud-development-diagram-2.jpg"><img class="alignnone size-full wp-image-1056" alt="cloud-development-diagram-2" src="{{ site.baseurl }}/assets/site-images/cloud-development-diagram-2.jpg" width="460" height="439" /></a></p>
+<p>In the hardware world, we are standing towards the right edge of the <em>affordability</em> scale, but at the precipice of <em>the gorge of skills</em>. When I can buy a fully programmable micro-computer for $30 that can do, well, anything, and can be the basis of a new smart lamp, or smart power meter, or remote flight controller, or doorbell system, cost is no longer an issue. But the skills to program these items are still limited.</p>
+<p>Now, Chris has highlighted and is in many ways driving a movement towards closing the skills gap on hardware. A number of key projects - johnny-five, firmata, Chris's own node-serialport, breakoutjs - have dramatically simplified using these hardware platforms, and in a language (JavaScript) understood by more software engineers than any other. Some love it, others hate it, some don't care (although that is a rare trait in engineers!), but more engineers know it than any other.</p>
+<p>Node - a highly popular yet fairly young JavaScript platform - combined with low-cost robotic platforms leads to <a href="http://nodebots.io" target="_blank">NodeBot</a>, the democratization of hardware. Together, we should see an explosion in hardware solutions and platforms, similar to the last 5-10 years in Web applications and mobile apps.</p>

@@ -1,0 +1,94 @@
+---
+layout: post
+title: Hiding Fingerprints in Your Browser for Privacy
+date: 2015-02-25 09:00:03.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- security
+- technology
+tags:
+- fingerprints
+- javascript
+- privacy
+- security
+- xss
+author: Avi Deitcher
+---
+<p>The browser is the single most ubiquitous piece of software on the planet. Nearly every computing device has at least one one. Because of its ubiquity, and its use across multiple applications from open (Google "how much does a banana weigh") to private (browser-based email) to secure (office applications or banking), it is also a source of many risks.</p>
+<p>This article will dig a little deeper into issues of browser security and privacy.</p>
+<p>Browser privacy has been an issue for many years. Back in the day (~2000), DoubleClick was pilloried for tracking users across sites with a then-infamous demon called "cookies." Nowadays, many sites use cookies, and the privacy concerns from 2000 seem laughable. In the late 2000s, "supercookies" - cookies used by plugins like Flash and Java that can access your file system and thus bypass browser cookie privacy settings - were the source of much ire.</p>
+<h3>Convenience vs. Privacy</h3>
+<p>At heart, the issue is convenience vs. privacy.</p>
+<ol>
+<li>When we visit Facebook once,  and then again the next day, we would like Facebook to recognize us; "Welcome back, John." It is a great convenience to us.</li>
+<li>When we visit private sites - like our office or our bank - we would like some level of recognition for convenience, even if we demand a higher level of user verification on each visit than we do for Facebook.</li>
+<li>When we visit Facebook after our bank, we <strong>do not </strong>want Facebook to know we visited our banking site, let alone what we did there.</li>
+</ol>
+<p>The challenge is that the way the browser is designed, it is easier for services to track you across sites, than it is to prevent them from doing so.</p>
+<h3>Parameters of the Problem</h3>
+<p>Of course, the designers of the cookie system and browsers were aware of those concerns, and so created "same-origin policies" for communication and cookies. Here is how it works:</p>
+<ol>
+<li>You visit Facebook in Chrome.</li>
+<li>Facebook installs a small cookie, or string of text, in your browser to let it know when it is you who has returned.</li>
+<li>Since the cookie came from facebook.com, Chrome will only send that cookie back to facebook.com. It will not even tell other sites that it exists.</li>
+<li>Facebook's code on the page has access to the entire page, but can (in principle) only send information back to the "same origin", i.e. Facebook.com.</li>
+</ol>
+<p>So far, it seems pretty good. Here is the problem.</p>
+<ol>
+<li>You visit myfunnysite.com.</li>
+<li>MyFunnySite wants to use ads to monetize its site, so it includes a bit of code from superadtracker.com.</li>
+<li>The code from superadtracker.com can see everything on your page,  even can change what is on the page. It even can access cookies <em>for that page</em> (myfunnysite.com). Through various techniques, like <em>img</em> tags, <em>script</em> tags and <em>iframes</em>, it can send all of that information anywhere it wants, including superadtracker.com.</li>
+<li>When you visit superbanksite.com, they <em>also</em> use superadtracker.com, they can send information about your visit there too.</li>
+<li>Soon enough, superadtracker.com has information about many sites you have visited, and can build a rather disturbing profile of your online activities without your permission.</li>
+</ol>
+<p>Of course, this behaviour can have positive effects. Every time you visit a page that has Google Analytics installed, it works exactly this way: load a bit of code from google.com, track your behaviour, send it off to Google's Analytics engine.</p>
+<p>So, can you turn off scripts, the browser-side code that runs? Sure you can, but pretty much every decent Web app out there will fail to work.</p>
+<p>Can you not turn off cookies? Sure you can, although it will only go so far, and the inconvenience will outweigh the privacy benefits. The bigger issue is that for several years now, Web companies have been aware of a way to track you, installing nearly nothing in your browser, not requiring code from some third-party like an ad tracker.</p>
+<p>Instead, they use <span style="text-decoration: underline;">fingerprints</span>.</p>
+<p>It turns out that your browser - through a mixture of information sent as part of every Web request, called "headers", and information available to every bit of code on every page - is quite uniquely identifiable. The combination of the browser you are running, and your screen size, and the plugins, and what plugins are blocked, and a few other bits of information make you very unique. These are all things that require <strong>zero third-party or plugin tracking</strong>.</p>
+<p>To try it out, go to the Electronic Frontier Foundation's <a href="https://panopticlick.eff.org/" target="_blank">Panopticlick</a>. No need to enable Java or Flash or other plugins to see your result. When I ran it, my browser was unique among the &gt;5MM tests they had run. Now, 5MM is a tiny number compared to the number of people on the Internet, but it is still quite disturbing.</p>
+<p>The detailed paper on what the EFF does and its impact is available <a href="https://panopticlick.eff.org/browser-uniqueness.pdf" target="_blank">here</a>.</p>
+<p>So even if we eliminated cookies entirely, how do we combat fingerprinting? In other words, <strong>how can we protect our privacy on the Internet?</strong> If Facebook can make good money selling links between fingerprints and names to 3rd-party services, does <span style="text-decoration: underline;">anyone</span> believe they will not?</p>
+<p>The answer, I believe, comes from a <a href="http://dailytechvideo.com/douglas-crockford-really-javascript/" target="_blank">talk given by Douglas Crockford at a JSConf</a> several years ago.</p>
+<p>Crockford was addressing a different problem with code, or "scripts", that run across sites: Cross-Site-Scripting attacks, or XSS. Just as installing Google Analytics allows Google to track information across sites, but we trust Google not to do it maliciously, interfere with logins or steal sensitive material, so errant or evil code loaded onto a page can allow malicious actors to grab information from our secure page.</p>
+<p>Crockford's suggestion was the "Object Capabilities Model." At heart, XSS is a problem because we have to <em>trust</em> Google to take only non-sensitive information. Yet, access to sensitive information is <span style="text-decoration: underline;">completely unnecessary</span> for Google Analytics to work. They need to see the address, but they have no need to access the structure of the page or capture text I enter.</p>
+<p>Right now, the browser is binary, access to everything (if a script is included on the page) or access to nothing (if it is not). Trust the script completely, or not at all.</p>
+<p>Rather than giving them the keys to the kingdom (browserdom?), the system should say, "include Google Analytics code, and give them access to read the current URL." <em>By definition</em>, the Google Analytics code could do nothing else, and <strong>it would not matter whether or not we trust them</strong>.</p>
+<p>Crockford proposes:</p>
+<ul>
+<li>Move from a binary "access to the whole building or nothing" to a more nuanced, "access to nothing except the specific doors I explicitly open for you."</li>
+<li>Give each bit of code <em>only the capabilities it needs to perform its task</em>, and no more.</li>
+</ul>
+<p>Anyone used to corporate security know that this is how those systems have worked for years. Marketing's badge opens their floor, but not R&amp;D's secret lab; engineering has access to their test data centre but not the production doors.</p>
+<p>I believe the solution to fingerprinting is similar. If you run <a href="https://panopticlick.eff.org/" target="_blank">panopticlick</a>, you will see that the single biggest source of information is plugins, right down to detailed version numbers and patch numbers. The code just looks at a variable available to every piece of code <em>called "navigator.plugins</em>".</p>
+<p>This is another example of "access to the whole building" when all it needs is one door. There <em>is a valid reason</em> for access to the plugins. If you are on WebEx, it needs to know if you have the WebEx plugin installed, and if it supports a particular version. But does it need access to <em>list all</em> of the plugins? Does WebEx care if you have the Google Talk plugin?</p>
+<p>Instead of "give me all of the information", it should work something like this:</p>
+<ol>
+<li>Load page.</li>
+<li>Page says, "I would like to run the WebEx plugin. Browser, do you support the WebEx plugin?"
+<ol>
+<li>If the answer is no, prompt the user to install.</li>
+<li>If the answer is yes, ask, "Browser, do you support version 1.6?"</li>
+</ol>
+</li>
+<li>Repeat until you have what you need.</li>
+</ol>
+<p>This type of limited access dramatically reduces the ability to generate a unique fingerprint.</p>
+<ul>
+<li>The number of potential plugins is in the thousands, far too many to query them all.</li>
+<li>With each one, the number of potential release versions is too many to query them all.</li>
+<li>The number of combinations of plugin+version is nearly infinitely large.</li>
+</ul>
+<p>It is the very high number of combinations of plugins+versions that is a key in generating fingerprints, yet that very same number makes browser-capability model rather than list-them-all so difficult to use for fingerprints.</p>
+<p>Additionally, this method is <span style="text-decoration: underline;">more convenient</span> for Web developers, who no longer have to sift through lists of plugins, instead just asking, "do you support plugin X with capability Y?"</p>
+<h2>Summary</h2>
+<p>Companies have been using browsers to track users for years, both to benefit users - with easier logins - and to benefit companies, often violating user privacy.</p>
+<p>Crockford's object-capabilities model provides a reliable way to reduce cross-site-scripting attacks and increase the security of the browser via a "deny unless explicitly granted access model."</p>
+<p>The fingerprint system provides a non-obtrusive method of tracking users that requires no user participation, is nearly impossible to stop, and will lead to serious temptations to violate privacy for revenue by companies.</p>
+<p>The browser-capabilities-model provides a non-obtrusive method of significantly reducing the uniqueness of browser fingerprints and restoring stronger privacy on the Web.</p>
+<p>Like object-capabilities, browser-capabilities will require changes from browser manufacturers to support it, as well as the millions of pieces of Web code that depend on the current system to support it.</p>
+<p>Every company deploys Web applications, from employee use to customer facing. Are your applications reliable? Are they secure? Are you opening up doors to attack? <a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us to review your current and planned technology</a>.</p>

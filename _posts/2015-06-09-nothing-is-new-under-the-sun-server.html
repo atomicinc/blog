@@ -1,0 +1,54 @@
+---
+layout: post
+title: Nothing is New Under the Sun Server
+date: 2015-06-09 07:08:07.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- blades
+- containers
+- kubernetes
+- mesos
+- operations
+- sun
+- technology
+author: Avi Deitcher
+---
+<p>As Ecclesiastes said, "there is nothing new under the sun." Last week, we explored how much of the innovation in the tech <em>business</em> is just retooling existing processes, while much innovation exists in the <em>technology</em> itself, which enables those businesses.</p>
+<p>It turns out, even in <em>technology itself</em>, sometimes the newest and most innovative item really is nothing new under the Sun (capitalization intended).</p>
+<p>Back in the late 1990s and early 2000s, before the growth of Linux, commodity servers and Google, we used to buy a lot of very expensive computer hardware. I cannot recall precisely our hardware capital budget when I worked financials, but it was very big.</p>
+<p>In 2000-2001, we often bought <a href="http://en.wikipedia.org/wiki/Sun_Enterprise" target="_blank">Sun E-series servers</a>. They took up 8U, or about 1/5 to 1/6 of one of those standard data centre racks. They had up to 8 "boards" you could slide in front or back to customize: add a board with CPUs, one with storage, perhaps lots of memory. However you did it, these created a fairly modular high-powered computer. But it was a single computer.</p>
+<p>[caption id="" align="alignnone" width="607"]<img class="" src="{{ site.baseurl }}/assets/site-images/sun-hardware_e4500.jpg" alt="" width="607" height="450" /> Sun E-4500[/caption]</p>
+<p>&nbsp;</p>
+<p>Fast forward just a few years, and Sun's hardware business had some problems. It turns out that it is a <strong>lot</strong> cheaper to buy 8 computers with the equivalent power of 2 CPUs each than one really big computer with 16 CPUs. Not only is it a lot cheaper, it also is a lot more flexible. After all, for less money, I can get 8 individual computers, each of which can be managed and configured differently. One can do email, another file processing, a third and fourth equities trading, two more run reports and analytics. And if you could get these computers to use commodity Intel chips and motherboards, and the costs go way down.</p>
+<p>Of course, for that to work, we need software that runs equally well (or better) across multiple computers rather than on one really <span style="text-decoration: underline;">big</span> computer. The growth of Google and Internet companies of the second wave, which could not afford the IBM, Sun and SGI prices per unit of compute, drove the software side.</p>
+<p>Nowadays, <em>very</em> few people write software that requires one big computer to run. Well-designed software runs in parallel on multiple computers, either running each task independently, or, if it needs serious power, splitting the load up and joining the results together at the end. Whereas in the 1990s we might deploy Web servers on one or two powerful and interconnected Sun servers, today we deploy 10 or 20 of them on cheap (or cloud) computers, and if a few fails, who cares?</p>
+<p>The basic economics of power consumption, cooling and data centre space, though, have not changed, nor have the need to have all of this software talk to each other. After all, two services on the same computer can talk to each other orders of magnitude more rapidly than two services on two different computers.</p>
+<p>Enter blades (computer, not Samurai). Physically, they look a lot like the old Sun E-class servers, with boards that pop in and out. They even have similar heights (10U for a bladecentre vs. 8U for a Sun E-class). The key difference is that instead of configuring a <em>single</em> server with boards, <em>each board</em> is an independent and relatively cheap server that is reliably connected to all of the others (and, via external networks, to the rest of the world).</p>
+<p>[caption id="" align="alignnone" width="474"]<img class="" src="http://www.optismtraining.com/wp-content/uploads/2012/02/c7000-training-lab-rental.png" alt="" width="474" height="356" /> HP BladeSystem[/caption]</p>
+<p>What does all of that have to do with the world circling around again? After all, 16 individual servers in a chassis is very different than a 16x powerful server!</p>
+<p>The answer comes from application management.</p>
+<p>The growth of virtualization has led to significant benefits for just about every company, but at the cost of managing many more servers and some performance degradation. For most companies, the cost is well worth it - else they would not bother.</p>
+<p>The last 18-24 months has seen the growth of lightweight virtualization in the form of containers. Like in the old days, each computer runs multiple services; like modern server virtualization, each service <em>thinks</em> it is running independently.</p>
+<p>The problem becomes, now that we have all of these lightweight containers everywhere, how do we coordinate deploying services across many of them?</p>
+<p>A few projects have taken up the gauntlet, notably <a href="http://kubernetes.io" target="_blank">Kubernetes</a> and <a href="http://mesos.apache.org" target="_blank">Mesos</a>. These projects make lots of independent servers look like one big server to you. You don't have to manage deploying your app to this server, and then this one, and then this one, and then....</p>
+<p>Instead you tell the service, "make these eight servers look like one big server", and then say, "deploy my app."</p>
+<p>In other words, you deploy applications by making many <i>servers</i> look like <em>a single computer</em>. If you prefer, make a <strong>blade centre</strong> look like a <strong>E-server</strong>.</p>
+<p>Of course, today's options are superior to the old world:</p>
+<ul>
+<li>I can deploy across multiple servers, whether they are individual or blades, and even across multiple independent blade centres.</li>
+<li>I can deploy across multiple locations.</li>
+<li>I can control where the boundaries between these "virtual single computers" are.</li>
+<li>Most importantly, 2 blade centres with the same power of an equivalent of a single or even 2 enterprise-class servers is still much much cheaper.</li>
+</ul>
+<p>Nonetheless, there is a delicious irony that modern, container-driven, open-source projects make our brave new world look a lot like our old one.</p>
+<h2>Summary</h2>
+<p>The patterns of technology go around in cycles. Understanding the benefits of the "latest" technology often depends on understanding the best technology that once was.</p>
+<p>Knowing what worked, what didn't, and why can bring dramatic benefits to your operations today while saving you the time and pain of learning it all anew. Experience is always cheaper to have than to get.</p>
+<p>Are your technology operations the best they can be? Do you know which patterns and technologies really fit your particular usage? <a href="{{ site.url }}/contact/" target="_blank">Ask us to help you</a>, and watch your operations thrive.</p>

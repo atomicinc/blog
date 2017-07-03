@@ -1,0 +1,66 @@
+---
+layout: post
+title: Kill the SIM Card
+date: 2015-03-10 07:28:15.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- policy
+- pricing
+- product
+- security
+- technology
+tags:
+- carrier
+- SIM
+- smartphone
+- switch
+- wifi
+author: Avi Deitcher
+---
+<p>About five months ago, I looked into the "<a href="{{ site.url }}/2014/10/21/the-not-so-simple-sim-card-1803/" target="_blank">Not-So-Simple SIM Card</a>." In short, I called for the abolition of the SIM-to-carrier-to-number tie.</p>
+<p>For those who never change carriers or travel, this doesn't matter much. You get your phone, you go to your carrier store - or a local retailer like RadioShack (RIP) or BestBuy - sign some paperwork, get a card, insert it into your phone... and never worry about it again.</p>
+<p>The problem is that the "never change your carrier" model and its close cousin, "phone is tied to your network" model, are dying.</p>
+<ol>
+<li><span style="text-decoration: underline;">GSM</span>: The growth of GSM-based networks in the US, popular for many years outside North America, led people to begin to understand that the <em>phone</em> is not the line, but the <em>card</em> is, and can be swapped.</li>
+<li><span style="text-decoration: underline;">Laws</span>: The increase in consumer protection enabling people to take their phones with them when they switch has led to people asking, "how do we actually switch?"</li>
+<li><span style="text-decoration: underline;">iPhone</span>: The growth of the smartphone market, phones that can work across multiple carriers, and are not even <span style="text-decoration: underline;">branded</span> to a carrier, has led to more consumers thinking of their phone as <em>theirs</em>, as opposed to <em>rented.</em></li>
+<li><span style="text-decoration: underline;">Full-cost</span>: The reduction in the full retail price of phones, and especially smartphones, like Moto E/G, OnePlus, and Xiaomi, are leading to more customers buying their phones outright, which in turn makes them question the monthly cost, which leads to more switching.</li>
+</ol>
+<p>In sum, customers are now <em>able</em> to switch, <em>knowledgeable </em>about how to switch, and <em>want</em> to switch with regularity.</p>
+<p>Which begs the question, <strong>why do I need a SIM to switch?</strong></p>
+<p>What does the SIM buy me? Or, in other terms, what services do carriers offer?</p>
+<ol>
+<li><span style="text-decoration: underline;">Voice line</span>: termination and origination at a particular number</li>
+<li><span style="text-decoration: underline;">Data line</span>: Access to the Internet via an IP address</li>
+<li><span style="text-decoration: underline;">Messaging endpoint</span>: send/receive SMS messages at a particular number</li>
+</ol>
+<p>Here is the key point: <strong><em>These are all just network services</em></strong>. We can get all of these - voice, data, messaging - on our phones or laptops via other Internet-driven services:</p>
+<ol>
+<li><span style="text-decoration: underline;">Voice</span>: Skype or Google Voice or Vonage</li>
+<li><span style="text-decoration: underline;">Data</span>: Home WiFi or coffee shop or hotel or tethering</li>
+<li><span style="text-decoration: underline;">Messaging</span>: WhatsApp or iMessage or Skype or Kik</li>
+</ol>
+<p>Not one of these is special or unique to a carrier or particular piece of hardware. All of these services are available to us - through multiple services or a single one - via some form of simple login. <strong>No Hardware Required.</strong></p>
+<p>What is special about O2's voice that it requires a hardware chip, but Skype's does not? What is it about AT&amp;T's data that its LTE required a hardware chip, but Hilton's WiFI does not? Is there anything unique about SingTel's messaging that its SMS requires a hardware chip but WhatsApp does not?</p>
+<p>Carriers have argued for quite some time that the SIM card provides added security. While that argument might have been sustainable in the past? It no longer holds water:</p>
+<ol>
+<li>We regularly consume many services that do not require special dedicated hardware. Even highly secure logins with 2-factor authentication (TFA) use soft tokens on your smartphone.</li>
+<li>Gemalto, the world's largest manufacturer of SIM cards, <a href="http://www.gemalto.com/press/Pages/Gemalto-presents-the-findings-of-its-investigations-into-the-alleged-hacking-of-SIM-card-encryption-keys.aspx" target="_blank">was hacked</a>, apparently by the NSA and/or GCHQ cracking into the SIM card manufacturing process itself.</li>
+<li>Keeping track of the various logins <em>might</em> have been a challenging task in the past. As <a href="https://twitter.com/BenedictEvans" target="_blank">Ben Evans</a> (whose <a href="http://ben-evans.com" target="_blank">blog</a> is a must-read for anyone in the technology business) <a href="https://twitter.com/BenedictEvans/status/573448780109881344" target="_blank">pointed out</a>, "<em>I don't need a user name, password and settings to switch handset</em>". True. But you <em>do</em> need to switch hardware to switch carriers or travel overseas or even lend your phone to your colleague whose battery died. Smartphone apps make it unnecessary to keep track of all of them. Record it once and be done.</li>
+</ol>
+<p>As Tze-Ho Tan <a href="https://twitter.com/tze96/status/575264843734736896" target="_blank">pointed out</a>:</p>
+<p><a href="{{ site.url }}/wp-content/uploads/2015/03/tze.jpg"><img class="alignnone size-full wp-image-2384" src="{{ site.baseurl }}/assets/site-images/tze.jpg" alt="tze" width="640" height="320" /></a></p>
+<p>Once we have logged into our WiFi networks once, our laptops keep track of the passphrases for us. Even two-factor can be accomplished with the right app.</p>
+<p>Google has taken some halting steps in the right direction with Android Lollipop 5.1, wherein the OS itself supports multiple SIM cards, allowing you to switch between them without popping cards out and worrying about losing them.</p>
+<p>How could this be implemented? I see two ways:</p>
+<ol>
+<li><span style="text-decoration: underline;">Soft logins</span>: Each carrier account would be provided with provisioning information, like when you register for a Gmail account (but probably with tighter security). You would then enter that information into the "carrier management" app on your Android or iPhone, which would store it securely. Whenever you want to connect to that carrier, just select it from the list in the "carrier management" app.</li>
+<li><span style="text-decoration: underline;">True Multi-SIM</span>: As I pointed out earlier, the SIM card isn't really a SIM card; it is a smart card with a SIM module on it. The smart card is capable of holding multiple SIM modules at once. There is no reason it cannot be structured to allow you to enter multiple carriers at once, provided the OS allows you to switch between them.</li>
+</ol>
+<p>The current SIM/switch/roaming business is a mess, largely because the carriers want it to be so. It is far better than the old days of phones tied to carriers (in the US and Canada, at least), but it has a long way to go.</p>
+<h2> Summary</h2>
+<p>There is no reason I need to visit a T-Mobile store to sign up, or hunt for a SIM card vendor in Heathrow or Schiphol or Tel Aviv, or have a wallet full of them when I travel. Everything on our SIM cards is <em>information</em>, which can be handled quite well by our now-ubiquitous smartphones, and be provided to use online.</p>
+<p>It is time to kill the SIM.</p>

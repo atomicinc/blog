@@ -1,0 +1,69 @@
+---
+layout: post
+title: Continuous Everything
+date: 2016-07-06 09:03:31.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- continuous development
+- continuous integration
+- downtime
+- operations
+- risk
+- speed
+author: Avi Deitcher
+---
+<p>Earlier this week, a really smart architect and I were evaluating various methods for managing software code changes, bug fixes, releases and major features. We both were in agreement with the primary direction, a popular one in nimble companies.</p>
+<ol>
+<li>Have a primary "trunk" or "master" branch;</li>
+<li>Any commits to "master" automatically get built and tested and ready for production (and possibly deployed);</li>
+<li>Any changes occur on "feature branches", temporary parallels streams of development that eventually - hopefully sooner rather than later - merge into "master", and from thence into production.</li>
+</ol>
+<p>However, my colleague raised the more radical possibility: <em>everything</em> onto "master".</p>
+<p>At first, I was somewhat surprised. One mistake, one error, one complication, and all changes to production are blocked!</p>
+<p>This may be acceptable in an old-school, "deploy every six months", or even a slow but somewhat better "deploy every two to four weeks." But Internet-speed companies, especially SaaS, should be deploying every day or even multiple times a day.</p>
+<p>If a customer finds a bug in my cloud service, and we find a way to fix it in 2 hours, it should be fixed in production in... 2 hours! It is <span style="text-decoration: underline;">unacceptable</span> that it wait because some <em>other</em> feature or release is in process.</p>
+<p>That, indeed, is the very rationale behind the "feature branch". To do something longer, go work on it on the side with your team, and then merge it into the primary codebase later.</p>
+<p>And yet, the master of Continuous Development, <a href="https://twitter.com/jezhumble">Jez Humble</a>, advocates <em>precisely</em> this workflow.</p>
+<p>In a Twitter discussion, Jez pointed me to <a href="https://continuousdelivery.com/2011/05/make-large-scale-changes-incrementally-with-branch-by-abstraction/">this blog post</a>, where he describes the process of "branching by abstraction", i.e. how to do major changes without blocking everyone else.</p>
+<p>https://twitter.com/jezhumble/status/750360665127288832</p>
+<p>&nbsp;</p>
+<p>I won't rehash the entire post here; for those in the business of building, delivering, operating or selling software, it is a very worthwhile read. The gist of it is:</p>
+<ol>
+<li>Any major product, no matter how big, can be broken down into smaller and more manageable parts.</li>
+<li>Any major change, no matter how complex, can be "fenced off", isolated or "abstracted", so that the changes can go on in your main code without affecting anyone.</li>
+<li>Any change can be enabled/disabled with "feature flags" so that they can go into live systems without affecting anyone until you are ready.</li>
+</ol>
+<p>Solid unraveling + clean abstraction + responsible enablement = ability to work right on the mainline without affecting anyone else.</p>
+<p>While trying to understand why Jez advocates <em>so strongly</em> for it, I came to a realization. The same driving force behind Continuous Delivery (CD) is also behind Continuous Merge (CM) or, if you prefer, Continuous Commit (CC).</p>
+<p>https://twitter.com/avideitcher/status/750369497211699201</p>
+<p>The very reason <em>why</em> continuous deployment reduces risk, despite many more deployments to live running systems in the middle of the business day, is because it breaks those deployments down into tiny manageable chunks.</p>
+<p><strong>Smaller chunks = exponentially smaller risk.</strong></p>
+<p>As I have written before, combining 3 changes into a single deployment does not create three times the risk, it creates <span style="text-decoration: underline;">at least</span> 3<sup>2</sup> = 9 times the risk!</p>
+<ol>
+<li>It is nearly impossible to know how the various changes will interact with each other.</li>
+<li>It takes longer to recognize that the post-change system is misbehaving.</li>
+<li>It takes <em>much</em> longer to discover which part or parts, alone or in combination, are causing the misbehaviour.</li>
+</ol>
+<p>On the other hand, when a deployment is a single change, you immediately know if that change is misbehaving (or causing other parts to misbehave), and you immediately know what part to address to fix it.</p>
+<p>In <a href="{{ site.url }}/2015/02/23/velocity-metrics-that-encourage-safe-deployment-2329/">an article</a> over a year ago, I quoted another colleague who coined the term "release spiral of death" for companies that are shaken by a release so wait longer, thus increasing risk, leading to more painful deployments, leading to longer waits, spiraling out of control.</p>
+<p>The same risk-reducing / speed-inducing idea - small, rapid changes are far easier to manage and reason about, and therefore far less risky, <em>even cumulatively</em>, than one larger change, even with "all hands on deck" - applies to the pre-deployment software changes themselves.</p>
+<p>Merges between feature branches and master are <em>painful</em>. They take time and effort, often among people who finished working on the relevant areas days, weeks or even months ago.</p>
+<p>By continuously committing or merging into master on at least a daily basis, preferably more often, CC/CM gives you smaller changes to manage and a much easier time addressing smaller issues when they arise.</p>
+<h2>Summary</h2>
+<p>The right development, testing and deployment processes can:</p>
+<ul>
+<li><em>Reduce</em> your risk of service disruption;</li>
+<li><em>Lower</em> the impact of that disruption and time to repair;</li>
+<li><em>Diminish</em> your stress of deploys;</li>
+<li><em>Increase</em> productivity of your engineering, operations and support staff;</li>
+<li><em>Improve</em> customer satisfaction;</li>
+<li><em>Raise</em> your top and bottom lines.</li>
+</ul>
+<p>How quickly do you iterate? How quickly would you like to? <a href="{{ site.url }}/contact/">Ask us</a> to evaluate your current world and bring you to a new one.</p>

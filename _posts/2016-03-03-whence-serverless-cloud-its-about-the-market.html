@@ -1,0 +1,66 @@
+---
+layout: post
+title: Whence Serverless Cloud? It's About the Market.
+date: 2016-03-03 09:52:06.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- product
+- technology
+tags:
+- amazon
+- aws
+- cloud
+- joyent
+- on-demand
+author: Avi Deitcher
+---
+<p>I love tech. Despite an MBA and a decade of consulting and running a start-up or two, deep down, I always will be an engineer.</p>
+<p>One of the most important lessons I learned as a young engineer 20 years ago at Morgan Stanley - courtesy of <a href="https://www.linkedin.com/in/guychiarello" target="_blank">Guy Chiarello</a> - is that the technology is only the <em>means</em>, not the <em>end</em>. Understand the finances, the market, even the politics if you want to do something with technology, even just inside a company, let alone outside.</p>
+<p>What does all of this have to do with serverless cloud?</p>
+<p>Several months ago, <a href="https://twitter.com/joeemison" target="_blank">Joe Emison</a> published an article in New Stack called, "<a href="http://thenewstack.io/amazon-web-services-isnt-winning-problems-poses/" target="_blank">How Amazon Web Services Isn't Winning</a>." I am not sure I agree with the premise - and the headline probably is intended to be provocative - but he had some interesting thoughts that have aligned with my extensive use of cloud services, both on behalf of clients as well as in my own ventures.</p>
+<p>Let's start with the obvious: <strong>AWS is the elephant in the room</strong>. Just as in the 90s everyone wanted to go after Microsoft, in the second decade of the 21st century, AWS is the dominant player, larger than everyone else combined, and many are going after them.</p>
+<p>The major direct competitors - Google Compute and Microsoft Azure - are competing head-on. The smaller players, those without the massive cash to spend on infrastructure and marketing necessary to compete directly, are aiming for areas wherein AWS cannot compete due to business model or structure.</p>
+<p>Competitors are using two primary avenues of attack:</p>
+<ol>
+<li><span style="text-decoration: underline;">Independence</span></li>
+<li><span style="text-decoration: underline;">Abstraction</span></li>
+</ol>
+<h3>Independence</h3>
+<p>Running any part of AWS requires the entire AWS. It isn't possible to run your own EC2 cloud, and I am skeptical Amazon would (for business model reasons) or could (for architectural reasons) offer a "run it yourself" version of EC2, S3 or any other major component.</p>
+<p>This means you are tied to Amazon through and through. Rumours have abounded for some time that despite (or perhaps because of) the major engineering Amazon's most well-known customer has performed to run in AWS, Netflix would love to get out of AWS... if it could. The sheer scale of Netflix gives it much better pricing from Amazon, but also, likely, sufficient scale to go it alone.</p>
+<p>If you do not want to run in AWS, whether today because you do not trust them as a competitor - how likely is Barnes &amp; Noble or any retailer to want to depend on Amazon? - or because you want to hedge your bets, you are stuck. It matters not if you want to start in AWS and then move out, or start day one on your own AWS-services cloud, it simply isn't available.</p>
+<p>I do not address whether or not running it on your own infrastructure makes sense, and what the market will look like. For that, I defer to much wiser cloud visionaries like <a href="http://twitter.com/swardley" target="_blank">Simon Wardley</a>. I simply address what companies who want to be independent have available.</p>
+<p>Enter companies like Joyent. First, are they not in the retail space, and thus not a competitor in one division (amazon.com) for the services of a customer in another (aws.amazon.com). Second, and more importantly, they offer the ability to run their entire cloud service - IaaS, Storage, Process-on-Demand - on their servers or yours, or even on AWS!</p>
+<p>Actually, the entire Joyent stack is open source, meaning you could run it yourself without using them at all. If they go belly-up, everything is there for the taking.</p>
+<p>I cannot predict if this approach is sufficient to up-end AWS, or draw sufficiently large market. The important point, though, is that they are attacking from a direction that Amazon is unlikely to be able to respond: complete independence.</p>
+<h3>Abstraction</h3>
+<p>The entire AWS model is built around an array of complex interconnected services. They assume you need servers for compute, S3 or EBS for storage, IAM for permissions control, etc.</p>
+<p>Amazon did this by, as Emison says, circumventing the IT people and going straight to the developers.</p>
+<blockquote><p>In 2008, Amazon went after the data center and the IT staff who controlled machine and VM deployment, and allowed developers to do all of those jobs, using APIs.</p></blockquote>
+<p>in Wardley's terms, Amazon saw that developers depended on IT people for providing a product - servers and storage - further down the value chain. Amazon made it into a utility, available on-demand, and bypassed the people who made a living from deploying and managing the product.</p>
+<p>However, Amazon really went after the <em>server</em> <em>software</em> developers. These people are great... but needed only to provide outputs, primarily to front-end interfaces. The output might go through multiple stages, but in the end, the purpose is to provide a real person with real functionality.</p>
+<p>Enter the "serverless" offerings, primarily Parse (owned by Facebook) and Firebase (owned by Google), as well as Manta (Joyent) and, now, Lambda (AWS). These offerings go after the next layer up, eliminating one more element of complexity.</p>
+<p>Look at the stack of offerings we used to manage on our own, and where they went. I begin with the bottom:</p>
+<ol>
+<li>Real-estate ➝ Colocation providers</li>
+<li>Power &amp; cooling ➝ Hosting providers</li>
+<li>Servers &amp; storage ➝ IaaS</li>
+<li>Server processes ➝ ??</li>
+</ol>
+<p>Amazon entered to "utilify" (as in, turn into a utility) #3 above. Serverless aims to utilify #4. One can make an argument - I am convinced it has some real merit - that #4 will not be fully abstracted. Indeed, even with AWS, GCE, Azure, plenty of companies still use Rackspace and Equinix. But it definitely will be, and already is, abstracted in many use cases. Amazon's decision to offer Lambda is proof of that.</p>
+<h3>Is It Enough?</h3>
+<p>As with the <span style="text-decoration: underline;">Independence</span> avenue of attack, one can ask whether the <span style="text-decoration: underline;">Abstraction</span> avenue is sufficient to undermine Amazon's dominance. I do not have a crystal ball to the future. I do think that Amazon's "weave lots of complicated parts together" approach to serverless computing demonstrated in Joe's article, reflecting their roots as "data centre via API", combined with their non-container-native approach to containers (Docker on EC2 instances you have to spin up first) and the heaviness of IAM (built for corporate employee permissions), show a <em>potential</em> Achilles heel.</p>
+<h2>Summary</h2>
+<p>The overriding factor for your offering isn't the technology, or even the legacy, but who you believe your customers are and how you offer them. Corporate hardware and colocation providers are hurt by AWS not because Amazon had better technology, but because Amazon found the true customers of those servers one layer up and made the lower level less relevant.</p>
+<p>Would you rather be selling the best technology to the customer? Or the one that makes those customers irrelevant?</p>
+<p>The inevitable questions are:</p>
+<ol>
+<li>Are those processes are needed as well, or can be offered as a service?</li>
+<li>Is Amazon financially, architecturally and customer-wise oriented to dominate here?</li>
+</ol>
+<p>&nbsp;</p>

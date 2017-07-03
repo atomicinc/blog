@@ -1,0 +1,60 @@
+---
+layout: post
+title: Licenses as Premium Pricing
+date: 2015-03-11 07:00:37.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- pricing
+- product
+- technology
+tags:
+- GPL
+- MIT
+- open-source
+- premium
+- pricing
+author: Avi Deitcher
+---
+<p>Two weeks ago, we argued that, in the face of competition (and there is <em>always</em> competition), "<a title="Premium Pricing Just Doesn’t Last" href="{{ site.url }}/2015/03/02/premium-pricing-just-doesnt-last-2347/" target="_blank">Premium Pricing Just Doesn't Last</a>."</p>
+<p>At the same time, there always will be premium priced products - Tesla and BMW, Apple Watch Edition, Oracle - but the question is how long these can maintain significant market share?</p>
+<p>A smart commenter, amelius, <a href="https://news.ycombinator.com/item?id=9132069" target="_blank">raised a fascinating point</a>.</p>
+<p><a href="{{ site.url }}/wp-content/uploads/2015/03/amelius.png"><img class="alignnone size-full wp-image-2388" src="{{ site.baseurl }}/assets/site-images/amelius.png" alt="amelius" width="701" height="109" /></a></p>
+<p>Amelius compares premium pricing for substitutable products to restrictive licensing for software. This seems to make a lot of sense.</p>
+<ul>
+<li>When I buy a product for $500 more than an good-enough substitute, I am <em>restricted</em> in what I can do, since I now have $500 less to spend.</li>
+<li>When I use a software product licensed per seat, I am restricted in what I can do, since I can only give it to the 30 employees whose seats I have licensed, rather than the 50 who work at my company.</li>
+<li>When I use an open-source product licensed under the GPL (explanations in a moment), I am more restricted than if I had used one with an BSD license.</li>
+</ul>
+<p>It is important to note that pricing and licensing <span style="text-decoration: underline;">do</span> diverge, in two key ways:</p>
+<ol>
+<li><strong>Pricing <span style="text-decoration: underline;">depends</span> upon value:</strong> I charge someone based on the perceived value they get from my service, which is <em>why</em> they pay the price. Premium pricing is paid because of perceived premium value. A $10,000 Apple Watch Edition may not be <em>worth</em> $10,000 to me, but the social status it confers most certainly is worth it to the one who pays for it.</li>
+<li><strong>Pricing <span style="text-decoration: underline;">affects</span> value:</strong> When I charge someone more for something, they often perceive the item as being worth more; when I charge them less, they perceive it as being worth less. Back in <a href="http://www.fuqua.duke.edu" target="_blank">business school</a>, we studied a case of a company that had a new material, call it B, for construction that cost <span style="text-decoration: underline;">less</span> than original product A but had longer staying power. Because of the lower manufacturing cost, and to try and grab market share, the startup sold B at a lower price than A... and failed to gain traction. When they finally understood that customers perceived B as being worth less than A <span style="text-decoration: underline;">because of the price,</span> they <em>raised</em> the price above A's, and sold more units than before!</li>
+</ol>
+<h3>Software Licensing</h3>
+<p>Software is licensed in three overarching ways:</p>
+<ol>
+<li><span style="text-decoration: underline;">Commercial</span>: Commercial licenses tightly restrict the purchases ability to do anything with it other than what is specified in the license. Microsoft Word and Oracle, for example, use this method. <strong>This is most restrictive.</strong></li>
+<li><span style="text-decoration: underline;">Open-Source Restricted</span>: In this model, known as "copyleft" and represented most commonly by the <a href="http://www.gnu.org/copyleft/gpl.html" target="_blank">Gnu General Public License</a>, or GPL, software is released as open-source, with restrictions. You can use it in your own products, but if you redistribute it, you <strong>must</strong> include all of your product's source code as well. <strong>This is restrictive.</strong></li>
+<li><span style="text-decoration: underline;">Open-Source Unrestricted</span>: Known as Apache or BSD or MIT (with variants between each), this style of licensing says, "go ahead, do what you want." <strong>This is least restrictive.</strong></li>
+</ol>
+<p>Why do people release under different licensing models?</p>
+<h3>Closed-Source</h3>
+<p>Closed-source companies always release under commercial. Their mindset is, "we invested to build this, you must pay us to use it." Their business is around investing $10MM to build and sell software that will garner many multiples of $10MM in revenues.</p>
+<h3>Open-Source Restricted</h3>
+<p>Open-source providers who are willing to contribute to the greater good of the software community, but do not want others to profit from their volunteer work, will release under GPL, or dual-licensed under GPL and commercial. Their message is, "I am happy to volunteer, but if you want to make money off my work, you will need to pay me." For example, years ago Jack Slocum developed a widgets toolkit called ExtJS for Yahoo's Web libraries. Over time, as ExtJS grew into a business, the licenses were turned into GPL. They were happy to help people, but if you wanted to make money off of it, you had to pay them. Licensing the software <span style="text-decoration: underline;">was</span> their business.</p>
+<h3>Open-Source Unrestricted</h3>
+<p>Open-source providers who are willing to contribute to the greater good of the software community with contribution and growth in technology <span style="text-decoration: underline;">as its own reward</span> release under unrestricted licenses. For example, Google <a href="https://golang.org/LICENSE" target="_blank">released the Go language under a license</a> that said, "do as you please with this." Google needed to develop Go for their own purposes, but recognized that it was not a key competitive advantage to them; they are in the search/email/map/Android business, not the programming language business.</p>
+<h2>Which Licenses Win?</h2>
+<p>Amelius' point was that, over time, just as we migrate to lower-priced products that perform sufficient services, so too will we migrate to less restrictive licenses.</p>
+<p>We do not migrate products when:</p>
+<ol>
+<li><span style="text-decoration: underline;">Switching Costs</span>: When switching costs are too high, we stay with what we have. At a client of mine that had started on Oracle, they gritted their teeth but still paid the licensing and support fees year over year because the cost in time and money to switch was just too high - <a href="http://investor.oracle.com/files/doc_financials/Annual%20Reports/Form10K2014.pdf" target="_blank">hence Oracle's $10BN in software license revenue and $18BN in software update and support revenue in FY2014</a>. Of course, greenfield projects and new businesses simply will avoid the premium-priced incumbent, giving them distinct cost advantages over their competitors (and the <a href="http://en.wikipedia.org/wiki/Red_Queen_hypothesis" target="_blank">Red Queen Effect</a> that <a href="http://twitter.com/swardley" target="_blank">Simon Wardley</a> highlights). <strong>Switching costs are a short-term support for premium pricing.</strong></li>
+<li><span style="text-decoration: underline;">Unique Advantage</span>: When the higher-priced product or restrictive-licensed software has some unique competitive advantage in network, features or support, some customers pay for that ability. It may be special algorithms, patents that keep out competition, or other advantages. Few of these exist in open-source licensing, and even in closed-source, these have a limited, if longer, shelf life. <strong>Unique advantages have a short shelf-life in software and almost never exist in open-source.</strong></li>
+</ol>
+<h2>Summary</h2>
+<p>The combined trends of lower-priced products due to pricing competition, and less-restrictive open-source licenses due to licensing competition, make it as difficult to build a business around licensed software - open or closed-source - as around premium-priced products. Initially, the novelty and innovation factor provide space to sell at a premium, but over time those advantages can whittle away.</p>
+<p>As customers, on the other hand, we gain from the constant competition and innovation, leading to lower prices and less restrictive licenses.</p>
+<p>What products are your technology services built upon? Do you know where you could get more nimbleness for lower cost? What would the switching costs be? And most importantly, where are your competitors moving ahead? <a title="Contact" href="{{ site.url }}/contact/" target="_blank">Ask us</a>.</p>

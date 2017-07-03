@@ -1,0 +1,49 @@
+---
+layout: post
+title: Do You Need Microservices to Make Containers Worthwhile?
+date: 2016-01-13 13:38:50.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- containers
+- culture
+- orchestration
+- rancher
+- strategy
+author: Avi Deitcher
+---
+<p>Earlier this week, I had breakfast with a colleague of mine from <a href="http://www.rancher.com" target="_blank">Rancher</a>. Rancher is a great "orchestrator" for Docker containers. I have recommended and used them in production environments.</p>
+<p>Containers - one of the hottest technologies in the last year - is a much more efficient form of virtualization than traditional "hardware" virtualization (think VMWare or Xen), while providing a superior application distribution model.</p>
+<p>The challenge is that while the native Docker tools are pretty good for managing individual servers with containers, managing more than a few containers, let alone across more than a few servers, becomes impossibly complex.</p>
+<p>Orchestrators "orchestrate" the containers and their running in a complex environment.</p>
+<p>Over breakfast, we had a great discussion about how critical microservices are. While containers <em>enable</em> <a href="http://martinfowler.com/articles/microservices.html" target="_blank">microservices</a> in a way that was extremely difficult before, are microservices <em>necessary</em> to gain the benefits of containers? If you prefer, <strong>must</strong> I have a microservices strategy to make my containers strategy worthwhile or even viable? Or can I gain benefit from containers and good orchestration <span style="text-decoration: underline;">even if I do not separate my services</span>?</p>
+<p>My contention is twofold:</p>
+<ol>
+<li>Containers have significant benefits for any organization, whether "fat" (multiprocess) or "thin" (micro) containers.</li>
+<li>Solid orchestration is necessary as soon as you move beyond a few containers or 1-2 servers. I would argue that even with one server, implement an orchestrator.</li>
+</ol>
+<p>Whether or not <span style="text-decoration: underline;">commercial</span> orchestration and the support contracts that go with it are worthwhile at smaller scale depends on the complexity and skills of the organization and the features of open-source vs. commercial products.</p>
+<p>However, enabling microservices is just one of containerization's benefits. Others include:</p>
+<ul>
+<li>Clean, even pristine, distribution</li>
+<li>Identical development/testing/production environments</li>
+<li>Separation between immutable code and mutable data</li>
+<li>Rapid startup and shutdown</li>
+<li>Much more efficient use of computing resources: disk, cpu, memory</li>
+<li>Better development and operations culture</li>
+</ul>
+<p>However, before diving into containerizing an environment - or any major change - it is important to answer two related questions:</p>
+<ol>
+<li><strong>Why am I doing this?</strong> Is it just "61% of successful general storm hills, so we will storm a hill?" (<a href="https://twitter.com/swardley" target="_blank">thanks @swardley</a>) Or is there a fundamental problem that needs to be solved? If so, how does it rank <span style="text-decoration: underline;">for your company</span> compared to other problems?</li>
+<li><strong>Do I have a strategy for this?</strong> You cannot just flip a switch and be on containers instead of bare-metal or VMs. You need a strategy that takes into account your technology, performance requirements, processes and <span style="text-decoration: underline;">especially</span> culture.</li>
+</ol>
+<p>Culture is an enormous part. How much change can your people absorb at once? Which group that is crucial for change is overloaded? What other projects will be impacted and how?</p>
+<h2>Summary</h2>
+<p>Like any major technology change, you need to know <strong>why</strong> you are doing it and have a strategy for <strong>what</strong> it will look like and <strong>how</strong> you will execute it. "61% of tech shops do it" is a good way to fall flat.</p>
+<p>Do you have both good reasons and good strategy? <a href="{{ site.url }}/contact/" target="_blank">Ask us to help you</a> determine what changes will have the biggest impact and how to make them succeed.</p>

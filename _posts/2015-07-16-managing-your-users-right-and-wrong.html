@@ -1,0 +1,44 @@
+---
+layout: post
+title: Managing Your Users... Right and Wrong
+date: 2015-07-16 14:00:28.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- aws
+- cloud
+- digital ocean
+- github
+- login
+- users
+author: Avi Deitcher
+---
+<p>Is your user management an afterthought?</p>
+<p>For most companies building technology systems, how to manage users - the process of creating, managing, grouping and linking accounts - is bolted on later. After all, you fully expect your users to spend the bulk of their time <em>using</em> your service, not <em>logging in</em> to or <em>managing</em> your service! So you use some reasonably standard user management library, and when you have to worry about groups and organizations, you sort of bolt it on.</p>
+<p>Unless your service's very existence <span style="text-decoration: underline;">depends</span> upon proper user linking - Facebook or Twitter - it really does not seem to matter very much.</p>
+<p>That is the sort of thinking that leads market leaders to do some very silly things.</p>
+<p>Last week, I set up Amazon Web Services for one company, and helped another with their account. It seems simple (and familiar) enough. You set up an account, add a credit card, and then start using it. When you are big enough to have multiple employees, set them up with individual accounts on your corporate account. They even have a sophisticated user and process rights management system called "Identity and Access Management", or IAM. Just treat AWS like your internal systems.</p>
+<p>Of course, giving Jill Smith a dedicated account on your account creates a problem: how do they log in? Unlike your internal systems, AWS's <a href="http://console.aws.amazon.com" target="_blank">console</a> is global! No problem, they will just give you a dedicated console portal for <em>your</em> account. Make sure you remember it!</p>
+<p>Unfortunately, this is the kind of  thinking that smells like classic IT: slow to set up, hard to manage and lots of overhead.</p>
+<p>Contrast this style of managing users with that of Digital Ocean, which seems inspired by GitHub (both of which are backed by Andreessen Horowitz, a18z...).</p>
+<p>I have to admit, when Digital Ocean first came out, I failed to understand what they had to offer over AWS. They might be able to compete on price (although Amazon has been aggressive about dropping prices year over year, and has the sheer economy of scale to make it difficult), but the sheer capabilities of AWS make it a hard sell.</p>
+<p>And yet, Digital Ocean has one unique advantage: Simplicity.</p>
+<ul>
+<li>It is really easy to set up an account.</li>
+<li>It is really easy to set up virtual servers, or "Droplets" in the Digital Ocean</li>
+<li><strong>And, it is <em>really</em> easy to manage users</strong></li>
+</ul>
+<p>Unlike Amazon's model, Digital Ocean follows the social networking model. Rather than <em>create</em> users, you <em>authorize</em> users. Users manage themselves, set up their own accounts, change their own passwords, etc. You simply grant rights to <em>those</em> <em>existing users.</em></p>
+<p>How they log in, how they change their passwords, what else they do... that's their problem... and a very big headache gone for you. You don't need to manage password changing policies, or resets, or two-factor vs. username-password, or (you get the idea).</p>
+<p>In some ways, it may seem like this is just a minor nit, a small improvement in a few processes. But it is <span style="text-decoration: underline;">exactly</span> this kind of focus on simplifying processes and removing headaches that makes a difference and creates advantage. As Santo Pittsman, an incredibly hard-working (and straight-shooting) CFO, said today:</p>
+<blockquote><p>When we can take complexity and simplify - that lowers [a business's] cost of service and increases its competitive position.</p></blockquote>
+<p>Simplifying a real problem is a real basis for competition. And it is exactly why I have moved more of my basic and any real collaborative cloud needs to Digital Ocean.</p>
+<p>Simple = good = win business.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

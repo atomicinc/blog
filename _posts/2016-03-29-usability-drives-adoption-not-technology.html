@@ -1,0 +1,66 @@
+---
+layout: post
+title: Usability Drives Adoption, Not Technology
+date: 2016-03-29 07:35:01.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- product
+- technology
+tags:
+- optimization
+- usability
+- web
+author: Avi Deitcher
+---
+<p>The great strength of technologists is that we innovate constantly, always looking for a better world. The great weakness is that we sometimes fall in love with the solution, the technology itself, without regards to its applicable value in the real world.</p>
+<p>How do we determine if a given solution really has a chance of being adopted? The two biggest determinants of a solution are usefulness and usability.</p>
+<h3>Usefulness</h3>
+<p>"Usefulness" is a catch-all phrase that means, "does this new product/service solve a real problem for me at a reasonable return." It turns out that is a pretty high bar to cross... which explains the very large graveyard of technology solutions that never made it.</p>
+<p>Let's look at that definition.</p>
+<ul>
+<li><span style="text-decoration: underline;">Real Problem</span>: If the problem isn't "real", as determined by the people suffering from it, not by the solution creator, no one will waste energy on it. The current pain must be sufficient to accept the cost of change. I have seen many fascinating technologies, and at times entire businesses, that solve something that isn't really a problem, and probably have been guilt of it myself.</li>
+<li><span style="text-decoration: underline;">Real Solution</span>: If the solution doesn't <em>really</em> solve the problem, in the real world, it won't be adopted. If it works in the lab, or in your highly controlled environment, don't be surprised when customers fail to sign on.</li>
+<li><span style="text-decoration: underline;">Reasonable Return</span>: The math is simple: what is the fully loaded cost of the current method? What is the fully-loaded cost of the new solution? The difference is the return to the purchaser. That return must be high enough to entice change. Solving a $100,000/year problem for $95,000/year gets very different traction than solving it for $20,000/year!</li>
+</ul>
+<p>However, sometimes even a solution that is <em>useful</em>, still won't get adopted because it isn't <em>usable</em>.</p>
+<h3>Usability</h3>
+<p>How <em>usable</em> is your solution? Even if it actually solves a real problem in the real world for a reasonable cost, if it is too complex to difficult to use, especially compared to current practice, it will get very limited adoption.</p>
+<p>Those who create the solutions often forget to place themselves in the shoes of those who will have to use it. What is easy for the creator maybe be impossibly complex for the end-user. The menus in early Microsoft Word were designed and placed by engineers. It made eminent sense to them, but was incredibly frustrating to millions of users. Fortunately for Microsoft, it still was a better product and (probably more importantly) better positioned and marketed than any alternative.</p>
+<h3>Web Page Load Times</h3>
+<p>This week, the excellent (as usual) <a href="http://blog.acolyer.org" target="_blank">Morning Paper</a> by Adrian Colyer is addressing Web page-load times.</p>
+<p>Page-load times are a crucial element in building a Web-based business. If one page loads in 5 seconds and their competitor's in 1.5 seconds, which are you going to visit?</p>
+<p>Amazon discovered that every 100 milliseconds of page-load delay cost them 1% of sales. Similarly, back in 2006 - when broadband speeds were much slower than today and mobile broadband was not widely available, thus leading to lower overall expectations - Google <a href="http://glinden.blogspot.co.il/2006/11/marissa-mayer-at-web-20.html" target="_blank">reported</a> than an extra 500ms of delay in page load reduced Web traffic by 20%!</p>
+<p>Unsurprisingly, many solutions have been proposed, and adopted, to reduce page load times. The two primary approaches are:</p>
+<ul>
+<li><span style="text-decoration: underline;">Bundling</span>: Most Web browsers limit loading to around 6 resources in parallel: scripts, stylesheets, images, etc. There are good reasons for this, but when a really optimized page like Google's home page has 39 elements, that limit has a real impact. To address this issue, many "build-time" tools - like jspm, browserify, webpack - bundle these Web assets into a few packages. These tools are very widely adopted.</li>
+<li><span style="text-decoration: underline;">Parallelism</span>: Google, one of the companies with the biggest dependencies on Web technology, invented and then released its <a href="https://en.wikipedia.org/wiki/SPDY" target="_blank">SPDY</a> protocol which allowed to load multiple small assets in parallel. SPDY has been deprecated in favour of the HTTP/2 protocol, making its way into browsers.</li>
+</ul>
+<p>The paper from yesterday, available in Adrian-summary <a href="http://blog.acolyer.org/2016/03/28/speeding-up-web-page-loads-with-shandian/" target="_blank">here</a> and original <a href="https://www.usenix.org/system/files/conference/nsdi16/nsdi16-paper-wang-xiao-sophia.pdf" target="_blank">here</a>, reviews Shandian (Chinese for "lightning"). Shandian is a different attempt to solve the same problem by trying to understand, in a dynamic fashion, what the inter-dependencies between those assets are and resolving them in a more efficient manner.</p>
+<p>Shandian is the Web application of Theory of Constraints, popularized by Eliyahu Goldratt in "<a href="http://www.amazon.com/Goal-Process-Ongoing-Improvement/dp/0884271951/" target="_blank">The Goal</a>", and later applied directly to IT and services by Gene Kim and Kevin Behr in "<a href="http://www.amazon.com/Phoenix-Project-DevOps-Helping-Business/dp/0988262509/" target="_blank">The Phoenix Project</a>."</p>
+<p>The short form is that you need to find your bottlenecks and apply resources there. Resources applied elsewhere are a waste. If you have sufficient Web servers to handle 100 requests per second, each of which is an average of 1kB, and your Internet connection is 10Mbps, then your constraint is not your network, but your servers. 100*1kB = 100kB =~ 800kbps. Adding more bandwidth will not just be a waste; you do not have the <em>server</em> capacity to handle more.</p>
+<p>While this may seem obvious at first, it can be difficult to see when there are dozens or hundreds of moving parts, and you are moving 1,000 kph to keep your business running.</p>
+<p>Shandian is deployed as a proxy, or middle layer, between your Web servers and the browser. It then does the following steps:</p>
+<ol>
+<li>Receive the request from the browser.</li>
+<li>Replay the request to the Web server.</li>
+<li>Load your entire page and all of the assets into the engine as if it were the browser.</li>
+<li>Analyze the page.</li>
+<li>Build an "efficient-load" tree that determines which assets are needed at load-time (to present the initial view to the user), and which at post-load later (to enable interaction).</li>
+<li>Send a different starting page to the user, one with the "Shandian" controls and an optimized page load order.</li>
+<li>Shandian loads in the browser, reads the page load order instructions, and gets the correct assets in the optimal order from the Shandian server.</li>
+</ol>
+<p>Shandian is a great theory. It seems non-obtrusive, as it requires no changes in developers' behaviours, and attacks the problem from a heretofore un-approached direction. In other words, it is very <em>useful</em>.</p>
+<p>However, I believe Shandian fails the key <em>usability</em> test.</p>
+<ol>
+<li><span style="text-decoration: underline;">Debugging</span>: Because Shandian changes the way the files look in the browser, it can make it difficult for developers to resolve real-time issues. In theory, everything should be caught development time; in practice, anyone who has supported any kind of production environment knows that the real-world <em>always</em> throws curveballs.</li>
+<li><span style="text-decoration: underline;">Cost</span>: Adding infrastructure in the middle is not cheap. Further, it goes against the grain of reducing server infrastructure. My iPhone <a href="https://www.quora.com/How-much-more-computing-power-does-an-iPhone-6-have-than-Apollo-11-What-is-another-modern-object-I-can-relate-the-same-computing-power-to" target="_blank">has more computing power</a> than the Apollo rockets. Most of the benefits of desktop and mobile computing have come from the ability to utilize that power. Replicating every browser page analysis in an additional server is going to get very expensive very quickly.</li>
+<li><span style="text-decoration: underline;">Brittle</span>: it is brittle. Sure, it works with current technologies. But what happens as browsers support new forms of stylesheets, or scripts, or tools? Sooner rather than later, something will break the analysis engine.</li>
+<li><span style="text-decoration: underline;">Inefficient</span>: It is terribly inefficient. Recalculating the optimal design for each page, each and every time someone loads that page, is terribly inefficient. Even if we wanted to go down that path, it would be far better to do it just once, at "compile" time.</li>
+</ol>
+<h2>Summary</h2>
+<p>Looking for new methods to reduce page load times is a very important and worthwhile endeavour. Using critical path theory is a novel approach, and has led to some surprising insights; look at the statistics on wasted stylesheet information and scripts in the paper to see how much waste there is even in the best Web sites.</p>
+<p>Nonetheless, the solution has to be <em>usable</em> and not just <em>useful</em>.</p>
+<p>How useful and useable are your technologies, in-house or customer-facing? <a href="{{ site.url }}/contact/">Ask us</a> to help you evaluate.</p>

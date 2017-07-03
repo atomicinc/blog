@@ -1,0 +1,26 @@
+---
+layout: post
+title: While we are on the carriers' backs...
+date: 2012-05-13 02:23:30.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>I have been trying to understand the mobile carrier business for some time. Perhaps it is because I wanted to disrupt them for at least as long. I do not expect to - mobile carriers, even just data, even an MVNO, is an incredibly capital-intensive business, with very high fixed costs, and therefore not one that a nimble startup guy like me can attack. I can manage those industries, and have advised to such capital-intensive ones, but doing it on my own as a startup requires raising and risking more capital than I am comfortable with on my own. Further, these carriers tend to have very cozy relationships with regulators. As much as they complain, they enjoy that symbiotic relationship to keep competition out and prices up.</p>
+<p>Perhaps it is because I am a regular world-traveler. I am a citizen of three countries - US, Canada, Israel - regularly visit all there, and often others as well. As such, I am more acutely aware of the limits of performance (and lack thereof) of the many carriers.</p>
+<p>Perhaps it is simply the engineer+businessman in me who loves cracking a tough nut. The mobile industry is very much a tough nut, from both technology and business perspectives.</p>
+<p>I have written about carriers' roaming squeeze before; only recently I looked at their text messaging and how Apple is possibly after it. Today, I am interested in mobile Internet.</p>
+<p>Most people who never travel do not know it, but your mobile device is very different than your laptop or other WiFi device. Your WiFi device connects to a WiFi access points, requests and receives an IP address, a short series of four numbers from 1 to 255, that allows it to then connect to the Internet. Mobile data, especially of the most popular GSM kind, has a slightly different structure. When your mobile phone wants to connect over the 3G network to get data, it first sends key information called an Access Point Name, or APN, to the mobile carrier. The carrier then uses that APN, along with the IMEI or unique identifier of your mobile device, to determine what, if any, access to give.</p>
+<p>Each carrier may have multiple APNs, each with a different purpose. For example, one APN may give access to the whole Internet, another to a narrower carrier-only content area, and another to a corporate Intranet. In many ways, this is like the old days of telecommuting. In the early-to-mid-90s, before there was a broadly used and accepted Internet, before CheckPoint and commercial firewalls, and long before VPNs, critical workers who had to telecommute had multiple phone lines. For example, I had three lines in my home: one was for personal use, one was for business use (with a separate number and calling plan), and one was a specialized data line (called ISDN) that connected directly to my office network. Nowadays, of course, no one does this. Everyone has their personal home line (if that), and their Internet connection. Their employer may pay for part or all of the Internet. But on your laptop, you have a VPN connection to securely connect to the office.</p>
+<p>Carrier APNs, from a functionality perspective, are a very dated and rigid legacy. Essentially, everyone needs to connect to the Internet. If they then need to connect to an office, they don't need an APN; they just launch the VPN app on the iPhone or Android. If the carrier does not want to give the user access to the broader Internet, e.g. a child's mobile device with a family filter, the carrier can check each request against its subscriber database and determine whether to allow or block.</p>
+<p>If so, why do APNs still exist? Why not just have each carrier allow direct Internet access, and filter at the connection between carrier and Internet? In a word: money. And in that lies the opportunity for disruption, no different than in roaming.</p>
+<p>Look at the AT&amp;T PayGo prepaid plans:</p>
+<p>http://www.wireless.att.com/cell-phone-service/cell-phone-plans/pyg-cell-phone-plans.jsp?wtSlotClick=1-007FTV-0-1&amp;WT.svl=title</p>
+<p>Notice that if you are on some plans, you get data access; others you need to buy it; others, you need to buy it if you use a smartphone but it is included in a featurephone. And if you have an iPhone, none of these will work, unless you go to http://unlockit.co.nz and change the APN.</p>
+<p>From AT&amp;T's perspective, it is all the same: 50MB of data is 50MB of data, no matter from whence it comes. But AT&amp;T is trying to shepherd higher-end consumers into their higher-cost, higher-profit post-paid plans. Using APNs, an outdated technology, is one way to do so.</p>
+<p>The opportunity - begun to be seized by StraightTalk - is to have a simple carrier that allows access from any device, at a reasonable pre-paid or post-paid price.</p>
+<p>&nbsp;</p>

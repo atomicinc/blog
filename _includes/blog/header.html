@@ -1,0 +1,26 @@
+<header class="the-header">
+    <div class="unit-head" style="background-image: url({{site.header_image}}); background-position: 50% 50%;
+background-size: cover;">
+        <div class="unit-inner unit-head-inner">
+            <nav class="nav-global">
+                <ul>
+                    <li class="logo nav-link">
+                        <button class="btn-menu" data-ga="Menu"></button>
+                        <h1><a href="{{ site.paths.home | relative_url }}">{{ site.title }}</a></h1>
+                        <!--[if !IE]> -->
+                        <button class="btn-search" data-ga="Search"></button>
+                        <!-- <![endif]-->
+                    </li>
+                    {% for link in site.navigation %}{% assign current = nil %}{% if page.url contains link.url %}{% assign current = 'current' %}{% endif %}
+                    <li class="element {% if forloop.first %}first{% endif %} {{ current }} {% if forloop.last %}last{% endif %}">
+                        <a href="{{ link.url | prepend: site.baseurl }}">{{ link.title }}</a>
+                    </li>
+                    {% endfor %}
+                    <!--[if !IE]> -->
+                    <li class="nav-link"><a data-ga="Search" class="btn-search" href="#">{{ site.data.i18n[site.lang].search }}</a></li>
+                    <!-- <![endif]-->
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,39 @@
+---
+layout: post
+title: The JPMC Breach Wasn't About Systems; It Was About People
+date: 2014-12-23 09:27:03.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- policy
+- technology
+tags:
+- jpmc breach informationsecurity
+author: Avi Deitcher
+---
+<p>According to a <a href="http://mobile.nytimes.com/blogs/dealbook/2014/12/22/entry-point-of-jpmorgan-data-breach-is-identified/" target="_blank">New York Times article</a>, the major JPMorgan Chase (JPMC) breach was due to a single entry point: a single server in its vast array of servers, one that either has access to confidential data or acts as a gateway to the internal systems, was not fully patched.</p>
+<p>Does one patch really matter?</p>
+<p>It depends on what that patch is. A "patch" probably is not the right word for this. It isn't that it wasn't patched so much as was not upgraded. For many years, security experts have known about the weakness of using "username + password" to access systems. It is too easy to guess passwords or trick people into giving them up, which, apparently, is what happened here. Thus, we have had "multi-factor authentication," where you need multiple "factors", or proofs of your identity, to access systems. The classic version is "two factor authentication", or just TFA (or 2FA), where you gain access by presenting something you know, usually your password, and something you have, like your fingerprint or mobile phone.</p>
+<p>Here are just two examples of TFA in everyday life:</p>
+<ul>
+<li>You access your bank's Website for the first time, and it sends you a code to enter via SMS, to prove you have your phone.</li>
+<li>You log into Gmail, and it asks you to use the Google Authenticator app on your phone to enter a unique 6-digit code</li>
+</ul>
+<p>Given that even consumer systems such as Gmail and Apple ID require TFA, how is it possible that JPMC allowed external access to confidential systems with the ancient username and password?</p>
+<p>Worse, TFA has been around for a <em>very</em> long time. Security Dynamics, one of the first purveyor of those "keyfobs", or small keychain-size screen which showed a new 6-digit number every 30 seconds, was acquired by RSA in July 1996. I still recall using them to gain remote access to any bank system or even internal secure systems in my early years on Wall Street in 1994 and 1995.</p>
+<p>So how is it that JPMC has improperly secured systems 20 years later?</p>
+<p>In the end, the answer comes down to budgets and <span style="text-decoration: underline;">people</span>, as it always does. While I have no inside information on the JPMC breach, here is probably the most insightful quote from the NYTimes article:</p>
+<blockquote><p><em>"A large part of the problem, security experts say, is that it has become nearly impossible for banks of JPMorgan’s size to secure their networks, particularly as they integrate the networks of companies they acquire with their own."</em></p></blockquote>
+<p>The problem wasn't one of security design, strategy or implementation. It was one of <em>operations</em>. Operations heads - at least the smart ones - are always agitating for more capital budget and reduced headcount. They <span style="text-decoration: underline;">want</span>, they <span style="text-decoration: underline;"><em>need</em></span>, to automate more and more of their systems, so they can do less and less manual effort. There are many good reasons for it. Manual effort has the following downsides:</p>
+<ul>
+<li>It is more expensive, in the long run</li>
+<li>It takes too long</li>
+<li>It is impossible to keep track of the massive number of systems</li>
+<li>It burns people out</li>
+</ul>
+<p>And yet, the problem with automation is that it requires upfront effort. It takes capital investment in management systems. It takes engineering labour to build the automation, which is always more expensive per hour than the operational labour it replaces, even if every hour of expensive engineering upfront can save tens or more of cheaper operational hours per year down the line.</p>
+<p>I would not be surprised if JPMC's operational people have been agitating for years for investments in automation, always to be deferred until "next year", with the understanding that <em>this</em> new feature or <em>that</em> new compliance program was just "more urgent."</p>
+<p>Potential security risks and potential future cost savings just don't hold up against the business clamouring for more urgent features <strong>now</strong>.</p>
+<p>Who does it well? Strong CIOs and CEOs who recognize the crucial importance of deferring <em>some</em> of today's features, no matter how important, to invest in the ability to deliver <em>tomorrow's</em> features more quickly and securely. I have known a few, so very few, but they are worth their weight in gold.</p>

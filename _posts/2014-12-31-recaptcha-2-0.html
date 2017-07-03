@@ -1,0 +1,33 @@
+---
+layout: post
+title: ReCAPTCHA 2.0
+date: 2014-12-31 07:24:23.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- policy
+- security
+- technology
+tags:
+- bot
+- captcha
+- recaptcha
+- security
+- technology
+- tsa
+author: Avi Deitcher
+---
+<p>In the first half of this year, I noted that ReCAPTCHA was a lot like the "<a href="{{ site.url }}/2014/04/17/recaptcha-the-tsa-of-the-web-1617/" target="_blank">TSA of the Web</a>" - an annoyance that is sometimes necessary to keep bad actors out and good (or, in the case of ReCAPTCHA, "real") actors in. I also noted that Google, itself, had publicized that it had broken ReCAPTCHA, rather than wait for someone else to do so. In that respect, ReCAPTCHA was lot more like the TSA - weak, broken, but good "<a href="http://en.wikipedia.org/wiki/Security_theater" target="_blank">security theatre</a>" - than we thought.</p>
+<p>In the last few weeks, Google released an <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank">entirely new version of ReCAPTCHA</a>. For simplicity's sake, we will call it ReCAPTCHA 2.0 or just R2 (and perhaps the next version will be D2). You may already have seen or used it. While the goal remains the same - identify humans while filtering out robots - the method is entirely different. Gone are the strangely distorted letters and numbers that (supposedly, at least initially) only humans can see. Instead you just check the box, and most of the time R2 can tell if you are a human.</p>
+<p>On the one hand, this is a great improvement. It is far easier to just "check the box" than to try and discern those letters that oftentimes aren't clear even to humans. ReCAPTCHA's mission is twofold:</p>
+<ol>
+<li>Let humans in while keeping robots out</li>
+<li>Provide the minimum of disruption.</li>
+</ol>
+<p>The latter is a key element. Unlike with airport security, where there is a monopoly, if the disruption caused by ReCAPTCHA is too great, Web owners simply will not use it. In the choices between too many robots let in versus too many humans annoyed, they will pick too many robots <em>every single time</em>. After all, without enough humans, the Web business fails.</p>
+<p>Of course, Web owners have that luxury. In the airport business, no one will pick too many bad guys over not enough legitimate fliers!</p>
+<p>However, in shifting to R2, Google has also moved into the secrecy space. With the first ReCAPTCHA, there never was any secret. Everyone understood perfectly how the security works; it relied on the simple fact that no robot was accurate enough (at least initially) to read one of those distorted images. The algorithm was open and out there.</p>
+<p>With R2, they are relying on some series of patterns, movements or timing that <strong>they are keeping secret</strong>. After all, if the R2 software can <em>detect</em> those patterns, then anyone can design software to <em>mimic</em> that pattern. In other words, we are now in the oft-discredited realm of "security by obscurity". <strong>R2 depends entirely on keeping its algorithms secret!</strong></p>
+<p>Inevitably, the algorithms will come out, and probably sooner rather than later. Whether it is via a leak from one of their people; a North Korean or Chinese government or Russian individual hacker; or just by someone putting together enough bots to try enough R2 instances to detect the pattern; eventually the cat will be out of the bag.</p>
+<p>R2 is simpler and easier to use, and probably, at least initially, more secure than the existing version. For now, that is all that matters. But the design of the new system practically begs to be broken.</p>

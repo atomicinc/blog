@@ -1,0 +1,27 @@
+---
+layout: post
+title: Test Baby Test
+date: 2014-02-24 13:39:26.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>A short while ago, when reviewing a company's operations, I suggested their testing was deficient. Specifically, they had some decent unit testing, but very weak integration testing. In simplest terms:</p>
+<ul>
+<li>Unit testing checks if small, individual components function as expected</li>
+<li>Integration testing checks if larger systems, or the system as a whole, function as expected</li>
+</ul>
+<p>Testing is the <em></em><i>only</i> way you can have confidence that what worked before works now, and that what you put in new works as expected. Of course, testing takes time and therefore money. It may seem expensive up front, but it more than pays for itself over time.</p>
+<p>A longer while ago, while working with a company that stored consumer information in the cloud, I impressed upon the COO that he had 3 problems: performance, user interface (UI), and security. I also told him to fix security first.</p>
+<p>The reason is simple: if you are slow, or the UI is poor, you can convince consumers to try you again in 6 months or a year.</p>
+<p>But if you lose their data, <strong>you will never get those users (or anyone they speak to, or anyone who sees the news reports) again!</strong></p>
+<p>Put the two together, you begin to wonder about Apple's massive  iOS and OS X SSL security hole. If you want to read the Google Engineer's details (it isn't that gory), go <a href="https://www.imperialviolet.org/2014/02/22/applebug.html" target="_blank">here</a>. If you prefer TheVerge's write-up on the implications of what they call an "Epic Security Flaw", read <a href="http://www.theverge.com/2014/2/24/5442576/inside-apples-epic-security-flaw" target="_blank">here</a>.</p>
+<p>You <span style="text-decoration: underline;">always</span> need good testing, <span style="text-decoration: underline;">especially</span> integration testing. But there is never any excuse for a lack of extensive automated testing of core security services. Let me repeat that:</p>
+<p style="padding-left: 30px;"><em><strong>There is never any excuse for a lack of extensive automated testing of core security services.</strong></em></p>
+<p>You can survive all other bugs, some of which you risk by shipping early for market reasons. Those are valid business considerations (I am a business technology consultant after all). Security risks are inexcusable.</p>
+<p>I don't want to know how the bug got in; others do. I don't want to know why they were so quiet about repairing it. I don't want to know why iOS was repaired last week and OS X is still not repaired; I want the patch.</p>
+<p>I just want to know how management and culture failed so miserably as to ship security code that sits at the heart of every secure connection to be without proper testing over an 18-month period.</p>

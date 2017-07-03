@@ -1,0 +1,82 @@
+---
+layout: post
+title: True Cloud vs Hosting
+date: 2015-01-30 07:53:08.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- cloud
+- conversion
+- customer
+- SaaS
+- vendor
+author: Avi Deitcher
+---
+<p>Having looked at the definition (and misapplication) of cloud, its key characteristics, and the various categories of cloud services, or <em>fill-in-the-blank</em>-as-a-service (<span style="text-decoration: underline;">*aaS</span>), we now turn our attention to the important difference between true cloud services and hosting services that are marketed as cloud.</p>
+<p><strong>This is crucially important to vendors and customers!</strong></p>
+<p>While it may seem, at first glance, as nitpicking, <span style="text-decoration: underline;">these are very important differences</span>. They will impact a vendor's short-term and long-term profitability, viability and responsiveness, and a customer's ability to rely on a vendor.</p>
+<p>Whatever your need - you are selling cloud services, you plan on selling them, you need to convert your existing products into services like many on-premise software companies, or you are evaluating purchasing such services - this understanding will provide critical insight into your own services and markets, and the vendors upon whom you rely.</p>
+<h2>Services vs. Products</h2>
+<p>The concepts behind hosting and cloud have been around as long as business has existed. It is, quite simply, <em>services instead of products</em>.</p>
+<p>Instead of buying a product and using it yourself, someone else, perhaps with more time, capital or expertise, buys it and sells you some usage of it. You both gain, and go your merry way.</p>
+<p>Here are some fairly simple examples.</p>
+<ul>
+<li><span style="text-decoration: underline;">Taxi</span>: Instead of buying a car, keeping, managing, fueling and driving it, a taxi owner buys the car, gets the license, fuels and maintains it. When you need to get from Wall Street to 50th Street, or Bishopsgate to Knightsbridge, you hail a cab, get in, pay the driver $30 or £20, and you are done.</li>
+<li><span style="text-decoration: underline;">Electricity</span>: Instead of buying, managing, maintaining and operating a diesel generator, you pay your local electric utility to provide power over cables to your electric mains.</li>
+<li><span style="text-decoration: underline;">Delivery</span>: When you want to send a package from your office in Montreal to a customer in Vancouver, you could take it on an airplane and fly it across the continent. Or, you could pay UPS $30 CAD, and they will take care of it, door to door.</li>
+</ul>
+<p>However, it turns out that there are some subtle, or perhaps not-so-subtle, differences between the various kinds of services.</p>
+<p>For the purposes of technology, we can break it down into 2 broad categories: hosted and cloud.</p>
+<h2>Hosted</h2>
+<p>"Hosted", or application hosting, or its late 1990s variant, "Application Service Provider" (ASP), all follow the taxi model. Instead of buying your own car, maintaining it, getting a license, and driving yourself, not to mention worrying about parking, someone else drives you with  their maintained vehicle and license.</p>
+<p>However, as a general rule, this taxi serves you, <em>and only you</em>, at one time. The taxi does not have multiple unconnected customers at once (although some services do, notably the Israeli airport <em>sherut</em>).</p>
+<p>In the hosted or ASP model, each instance of the service is dedicated to a customer. Here are two technology examples of hosting or ASP:</p>
+<ul>
+<li><span style="text-decoration: underline;">Rackspace</span>: The traditional Rackspace business involves leasing dedicated servers. You choose a specific model and specification of server, network ports, and capacity. You select and pay for a firewall and backups. You manage the operating system (or pay their support a dedicated monthly fee to do so). Your contract is normally for 1-3 years, covering the expected depreciation life of the server. This server lease is yours alone.</li>
+<li><span style="text-decoration: underline;">PeopleSoft</span>: A few years back, I helped a client of mine migrate from PeopleSoft run on their own servers and databases to a service provided by Oracle (who bought out PeopleSoft in 2004). Oracle dedicated servers and software instances to my client, and ran it on their behalf. No other customers shared the software or hardware with this company.</li>
+</ul>
+<p>The hosted model was the first generation of service provider in technology. It solved some crucial problems for technology customers:</p>
+<ol>
+<li><span style="text-decoration: underline;">Managing the software</span>: Sure, the provider now has to manage the software, but because they manage the same software for multiple customers, they can concentrate their expertise, gaining <span style="text-decoration: underline;">economies of scale</span>. The PeopleSoft example had precisely these characteristics. <em>The incremental cost of labour and expertise for each customer's instance of the service is cheaper for a combined provider than for the customer</em>.</li>
+<li><span style="text-decoration: underline;">Managing the infrastructure</span>: Similarly, the provider can concentrate infrastructure and middleware expertise and amortize that cost over multiple customers. Rackspace should be able to get greater firewall expertise at lower cost than one customer, amortizing that cost over dedicated firewalls for 1,000 customers.</li>
+<li><span style="text-decoration: underline;">Managing the relationships</span>: Because the provider represents 1,000 customers of a product like Cisco or Oracle, they can get a higher level relationship with the vendor on behalf of the customer than each customer can do on its own. If you spend $100,000 per year on Oracle, and your provider has 100 such customers, they can have an entirely different level of relationship on your behalf with $10MM of aggregate business than you can with $100,000.</li>
+</ol>
+<p>Of course, the downside is that the provider is now another layer in between you and your vendors, another someone who needs to make a profit.</p>
+<p>As a result, the cost savings of an ASP tends to be 20% at most, and usually much less than that. Sometimes it even costs <em>more</em>, but is worthwhile to avoid internal headaches:</p>
+<ul>
+<li>It may be particularly difficult to find the specific talent you need in your region.</li>
+<li>You may have restrictions on hiring full-time employees, or a ban on consultants.</li>
+<li>You may have a very hard time getting approval for large capex every few years, while opex may be easier to come by.</li>
+</ul>
+<p>In sum, the hosted model is the taxi model: we will run it for you, saving you the headache and possibly some money on the way.</p>
+<h2>True Cloud</h2>
+<p>True cloud is an entirely different model, the next generation beyond hosted.</p>
+<p>In true cloud, the product underlying the service you buy is <em>shared among many customers at the same time</em>. Here are two examples from the technology world:</p>
+<ul>
+<li><span style="text-decoration: underline;">Infrastructure</span>: In <a href="http://aws.amazon.com/ec2" target="_blank">Amazon's EC2 service</a>, the server is shared among multiple customers at once. You lease a virtual instance, and have no idea which physical server it is running on at any given moment.</li>
+<li><span style="text-decoration: underline;">Software</span>: With <a href="http://salesforce.com" target="_blank">Salesforce.com</a>, you don't have a copy of Salesforce software and database dedicated to you. Each copy of the software is identical, and can and <em>does</em> serve any combination of multiple customer at any moment. The copy of the software you are using, and the database(s) behind it, serves many customers at once, and can change at any moment without you or the other customers knowing.</li>
+</ul>
+<p>While this may seem like a small difference - does it matter if I have my own instance or it is shared among many customers, as long as I pay the same price and access it the same way? - it <strong>actually is an enormous difference</strong>. It will matter to the customer's usage, the vendor's profits, the vendor's responsiveness, the vendor's flexibility, response times, security, and just about everything else.</p>
+<p>Not only is it different, <strong>it is much harder to make true cloud services</strong>.</p>
+<ol>
+<li>Errors and bugs affect many customers at once.</li>
+<li>It is not inherently visible from the location of an issue who it affects or who caused it.</li>
+<li>Security leaks in one are security leaks in all.</li>
+<li>The technologies are significantly more complex.</li>
+<li>The expertise required is at a higher level.</li>
+<li>The culture is different.</li>
+<li>The operating and financial metrics are different.</li>
+<li>You cannot invest in infrastructure when you sign a deal; you need to do so up front. Capacity planning becomes crucial.</li>
+</ol>
+<p>... and many more reasons.</p>
+<p>On the other hand, true cloud services provide materially better margins, speed of operation, flexibility and responsiveness. These, in turn, make your services more enticing to customers. If executed correctly, it even can provide better services at lower cost!</p>
+<h2>Summary</h2>
+<p>Within the technology services industry, there are two broad categories: hosted and cloud. Each has its advantages and disadvantages. While the market advantages of cloud exceed those of hosted, cloud requires significantly higher expertise and an entirely different operating mindset to succeed.</p>
+<p>In our next two articles, we will explore <em>why</em> true cloud matters, and delve into the advantages it providers. Then, we will look at how you do true cloud, both as a new company and as a firm migrating its existing products.</p>
+<p>Do you need a better understanding of how your products can be offered in the cloud? Are they marketed as "cloud services" but have too low operating costs or flexibility? Do you need to evaluate cloud vendors for your critical business applications? <a title="Contact" href="{{ site.url }}/contact/">We are here to help. Contact us</a>.</p>

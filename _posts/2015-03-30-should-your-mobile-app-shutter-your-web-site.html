@@ -1,0 +1,53 @@
+---
+layout: post
+title: Should Your Mobile App Shutter Your Web Site?
+date: 2015-03-30 10:18:07.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- technology
+tags:
+- android
+- cloud
+- flipkart
+- iOS
+- mobile
+- risks
+- scale
+- web
+author: Avi Deitcher
+---
+<p>Last week, <a href="http://flipkart.com" target="_blank">Flipkart</a>, India's largest e-commerce firm, and its fashion subsidiary <a href="http://myntra.com" target="_blank">Myntra</a>, announced that they shuttered their mobile Web sites. According to the <a href="http://www.livemint.com/Industry/J9VeQxowSOlHU8ZMUParUL/Flipkart-moves-towards-becoming-apponly-platform.html" target="_blank">article</a>, which has a good analysis on <a href="http://www.zdnet.com/article/why-indias-flipkart-abandoned-its-mobile-website/" target="_blank">zdnet</a>, their desktop Web site is still active, but they are considering shutting that down as well.</p>
+<p>Indeed, if you go to <a href="http://flipkart.com" target="_blank">flipkart.com</a> or <a href="http://myntra.com" target="_blank">myntra.com</a> from a desktop browser, the site works just fine. Change your User-Agent to iOS or Android, and you get a link to their platform-specific mobile app.</p>
+<p>One of my favourite VC bloggers, <a href="http://www.avc.com" target="_blank">Fred Wilson</a>, popularized the term "<a href="http://avc.com/2010/09/mobile-first-web-second/" target="_blank">mobile first</a>", wherein a company develops for mobile before going for the desktop/Web (if ever). Yet, Flipkart, a well-established company - the Amazon of India - which <em>already has</em> an existing heavy Web presence, tailored for both desktop and mobile, is <span style="text-decoration: underline;">shutting down</span> their mobile Web and possibly desktop Web.</p>
+<p>Why are they doing it, and what are the risks?</p>
+<h3>Why Did They Do It?</h3>
+<p>The apparent rationale is provided by Myntra. According to the head of their e-commerce platform, 90% of their views and 70% of their orders come from mobile apps. While he doesn't delineate what that is in terms of revenue percentages, and clearly there is a somewhat higher order rate per view on Web vs. mobile app, a CEO or Board looking where to invest serious engineering money will read those numbers and say, "double-down on the 90%."</p>
+<p>Another factor is that Flipkart suffered some serious Web downtime during the Xiaomi launch in July 2014, and possibly other issues throughout the year. When 10% of your visits, or 30% of your orders, gives you 80% or more of your grief, it would be rational to move customers away!</p>
+<h3>What Are the Risks?</h3>
+<p>There are 2 categories of risk here, technical and business.</p>
+<p>On the technical front, there are several issues.</p>
+<ol>
+<li><span style="text-decoration: underline;">Kicking the Can</span>: I get it, their Web site went down. But an iOS or Android app is <span style="text-decoration: underline;">not</span> Web-free. It just uses a clear subset of the Web site, the application interface, or API, most likely a REST type, which is accessed... over the Web! Their Web site, rather than using just the API, does all of the work the API would do <em>plus</em> it renders all of the page visuals. A mobile app eliminates <span style="text-decoration: underline;">only</span> the rendering of the visuals, <span style="text-decoration: underline;">not</span> the underlying logic. Without digging deeper, it is impossible for us (or them) to know if the problem is in the rendering, in which case going pure app will help, or in the underlying processing, in which case the problem will recur sooner or later.</li>
+<li><span style="text-decoration: underline;">It is Solvable</span>: Even if the issues are only in the rendering, there are technologies that can solve the issues, such as single page applications (SPA), content distribution networks (CDNs) and others, all of which depend on correct application architecture.</li>
+<li><span style="text-decoration: underline;">Loss of Skills</span>: In choosing to disinvest their Web site, Flipkart risks losing the skills that they have in-house and the learning they have amassed. If they were just a data-provisioning company, one that connects directly to business platforms or developers, then the user flow, user interface, design and user technology skills would not matter that much. But Flipkart is not; they are a consumer-facing company, with real people using their service. Their continued success depends on people happily using that service. Should they need to return to the Web, they will be lacking in key skills.</li>
+</ol>
+<p>But more important than the technical risks is the one big business risk. <strong>They are gated.</strong></p>
+<p>The beauty of the Web always has been free access. You can access anyone in the world who is connected, as long as they have a reasonably standard Web browser: Internet Explorer, Chrome, Safari, Firefox, it doesn't matter. Everyone can get several browsers, at least, for their computing platform, and so they can access your Web site.</p>
+<p>Mobile apps, on the other hand, are gated by the platform owners, specifically Apple and Google; the growth of alternate Android platforms like Cyanogen may help with this, but it is too early to tell with confidence. Apple and Google have been known to be arbitrary and difficult in the past, and opaque as to their reasoning for delays and rejections. While the situation has improved, it is not a stretch to envision a situation wherein Myntra sells clothing that is not illegal in India but is in the United States (where Apple and Google both are based), and their apps are pulled intentionally due to risk management by the companies - what if someone used the Flipkart app to buy ivory while in the United States? - or just a misunderstanding that takes some time to clear up. Could they afford to have their apps disabled, even just for new installs, for a week or two? How about longer?</p>
+<p>If Flipkart were a company whose  very existence depended on a local app, like Foursquare or Angry Birds, then the gate is an unavoidable cost of doing business. Without a Web site, however, their <strong>entire business is subject to app store owners</strong>.</p>
+<p>Above and beyond the technical risks, the business risk is not one I would want to take, especially if I were a company that <span style="text-decoration: underline;">already had an established Web presence</span>.</p>
+<h2>Summary</h2>
+<p>Choosing to go mobile first or even mobile only makes sense in many cases.</p>
+<p>Shuttering an existing Web site in favour of mobile apps, even when the Web site has become a smaller portion of the business, creates serious technical risks and very serious business risks.</p>
+<p>Before you decide to abandon a technology channel because it is causing you problems or is a smaller part of your business, <a title="Contact" href="{{ site.url }}/contact/" target="_blank">ask us to evaluate</a>:</p>
+<ol>
+<li>What is the real source of the problem?</li>
+<li>What technology risks do you accept in your solution?</li>
+<li>What business risks will you accept?</li>
+</ol>
+<p>The answers may surprise you, they may save you, and they certainly will help you grow safely.</p>

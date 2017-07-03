@@ -1,0 +1,49 @@
+---
+layout: post
+title: Open Source Business Models
+date: 2013-06-12 11:19:33.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+tags: []
+author: Avi Deitcher
+---
+<p>Last week, while in California, I had the pleasure of meeting with founders and/or execs from several businesses that are either built on open-source or contribute massively to open-source. While sitting with the last of them, I realized that I had seen several distinct business models for profiting from open-source, and they are worth sharing.</p>
+<h2>Short Introduction (those in the business can skip)</h2>
+<h4>What is open-source?</h4>
+<p>Open-source, normally applied to software but can be extended to other items as well, refers to releasing the original source code, the text that creates the program. When you run a piece of software - Microsoft Word, or an Oracle Database, or iOS on your iPhone, or Android on your Samsung - the code is in a "compiled" format. To recreate or, even better, modify the program to do something more suited to what you want, you not only need programming skills - which can be bought on the open labour market - but you need the "source code", the text that was turned into the program that you are running. In general, compiling is a one-way street. It is easy to turn source code into compiled or "object" code, but extremely difficult to do the reverse.</p>
+<p>Most creators of software release the compiled program, whether for free (Angry Birds Free) or under some paid licence (Microsoft Word), and keep the source code under close wrap. For example, when Web servers were first released, Netscape Server and Microsoft IIS were closed-source and purchased products, while Apache was open-source and free. Unsurprisingly, nowadays, Apache dominates the Web server market, IIS is tiny despite Microsoft's marketing budget, and Netscape is long gone.</p>
+<p>Let's assume that you see a product you like, and, for whatever reason, it has been open-sourced. Can you use it? Can you copy it? Can you redistribute it over the Internet (e.g. in your Web site) or as part of a shipped product, commercial or free? Can you modify it? This brings us to licenses.</p>
+<h4>Open-Source Licenses</h4>
+<p>There are a <span style="text-decoration: underline;"><em></em>lot</span> of different open-source licenses. But, in practice, they really come down to two types: copyleft and permissive. Any open license, however, does not restrict you from using the software internally. If you want to download and use internally, go ahead.</p>
+<ul>
+<li><span style="line-height: 13px;"><span style="text-decoration: underline;">Copyleft</span>: Copyleft, most characterized by the Gnu General Public License (GPL), says, "you can take this software, redistribute it to whomever you want, modify it and redistribute it to whomever you want, on one condition: the product you distribute it as part of must also be free and open under the same terms as this license." The philosophy behind GPL is, "we are giving this away as long as you give your stuff away; if you make money off of it, you need to pay us too."</span></li>
+<li><span style="text-decoration: underline;">Permissive</span>: Permissive licenses, usually one of Apache License, MIT License or BSD License, say, "do as you please: redistribute, copy, modify, whatever you want."</li>
+</ul>
+<h4>Why Open Source?</h4>
+<p>Why bother open-sourcing if you can closed-source and make money off selling licenses for the compiled, "finished" product? There are several good reasons:</p>
+<ul>
+<li><span style="line-height: 13px;">Drive adoption: free beats paid. See Dan Ariely. See Apache vs Netscape &amp; IIS.</span></li>
+<li>Speed: open-source products tend to generate contributions from a large community of developers outside of the original creators/owners. This tends to make a better product, more suited to the market, in accelerated time.</li>
+<li>Trust: If customers can see your code, they know if it is good, instead of full of security holes, rather than just relying on "trust me."</li>
+<li>Reputation: The technology community is intensely reputation-driven. Releasing open source improves the creator's and contributors' reputations.</li>
+</ul>
+<p>So how do you make money on open-source?</p>
+<h2>Business Models</h2>
+<h4>Dual-License</h4>
+<p>Under this model, usually with a restricted GPL license, the source code is open and free, but if you want to use it commercially, you need to purchase a separate, commercial license. This model, if the product is great, tends to capture a very small share of the market, but get paid well for that share. It also generates strong emotions, as within development communities, some react very strongly to the GPL.</p>
+<p>The example that comes to mind is ExtJS from Sencha. Its closest competitor is probably jQuery and jQueryUI, both of which are MIT-licensed (i.e. permissive). <a href="http://trends.builtwith.com/javascript" target="_blank">jQuery appears in 50% or more of the top sites on the Internet</a>, ExtJS barely shows up. On the other hand, ExtJS goes for $400/developer, so it doesn't take that many customers to build a viable business.</p>
+<p>A person I met with last week, who is deeply involved in open-source, called this model "bait and switch". While I disagree with him - I think those who pay for commercial licenses are getting into it with eyes wide open - I understand the sentiment.</p>
+<h4>Freemium</h4>
+<p>Under this model, two (or more) versions of the open-source product are released. The basic product, which is usually quite good, is free, and often under a permissive license, while a version with more advanced features is usually closed-sourced and available for a fee. Normally, some of the features in the advanced edition eventually make their way into the open-source edition after several months or years. Many open-source companies work this way. 10gen, the creators of the open-source MongoDB uses this model.</p>
+<p>This model is clean and easy to understand: hook smaller companies or projects on the benefits of the product, get the community benefits of open source, sell the higher-end product on a perpetual license or subscription license like classic software.</p>
+<h4>Support Services</h4>
+<p>Under this model, the entire product base is free and open-source, normally under a permissive license. A company garners expertise, either by being the creators of the product or by hiring experts, and sells ancillary support services. This is the basic model for RedHat (although they have expanded to other models). Note that the company selling support need not be the original creator or current maintainer of the project; RedHat did not create Linux, but it is one of the largest support providers for it.</p>
+<h4>Reputation Advantage</h4>
+<p>In this model, the company derives no direct benefit from releasing or contributing to open source. It has a product or service, usually a service, that benefits from open-source technology, and often has to solve complex unique problems. When it does so, it releases its results to the Internet as open-source, usually permissively licensed. I did work with Tufin Ltd back in 2010, and, in solving some client-side Web development problems, we agreed to open-source the solutions. The classic example of this - and probably one of the early pioneers, along with Sun Microsystems - is Yahoo. They release enormous amounts of open-source, and continue to contribute to open-source communities. Lately, Google, Facebook and Twitter have all followed the same route.</p>
+<p>To quote <a href="http://www.gilyehuda.com" target="_blank">Gil Yehuda</a>, for these companies, the software is the plumbing and the service they provide is the porcelain. Everyone wants the plumbing to work and not leak, but the porcelain has to look nice and be special.</p>
+<p>Companies like these release open source to get community input into their products and therefore improve them; to get positive reputation in the tech community, and to help recruit: "with us, you get to work on all this cool stuff with people inside <span style="text-decoration: underline;">and</span> outside the company, and look at what it does for your personal reputation!"</p>
+<h2>Which Model?</h2>
+<p>No one model is the best. If your core business is not built around the software products, but the services around it, the Reputation Advantage model makes sense, provided that you do not weaken your business by giving away core competitive advantage. If you have open-source that you want to leverage, then any of the first three makes sense. However, the dual-licensing only works if you have either a unique ownership of the market or a sufficiently large market that you can make enough money off of small market share. Finally, if you do not have open source, but have expertise around other open-source products, the the Support Services model is yours.</p>

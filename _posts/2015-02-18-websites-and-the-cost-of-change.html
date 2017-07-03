@@ -1,0 +1,108 @@
+---
+layout: post
+title: Websites and the Cost of Change
+date: 2015-02-18 08:18:52.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- product
+- security
+- technology
+tags:
+- change
+- cms
+- efficiency
+- ssg
+- wordpress
+author: Avi Deitcher
+---
+<p>You are reading this blog on WordPress. It is not a secret; any technologist with experience managing WordPress can look at the page and see that it is run by WordPress.</p>
+<p>How does WordPress show you this page? Here is what WordPress does, simplified:</p>
+<ol>
+<li>Look at the requested address, showing right now in your browser's address bar.</li>
+<li>Translate that address into a specific article.</li>
+<li>Retrieve the text for that article from the database.</li>
+<li>Merge the text with all of the formatting styles.</li>
+<li>Send it to you to read.</li>
+</ol>
+<p>Most Websites have some form of Content Management System (CMS), like WordPress, that pretty much works in the exact same way.</p>
+<p>The problems with this process are twofold:</p>
+<ol>
+<li>It is very inefficient.</li>
+<li>It is insecure.</li>
+</ol>
+<p>Let's address each of these in turn. Then we will look at an alternative approach, and why it hasn't taken off. Finally, we will draw the necessary lessons.</p>
+<p>Before we do, let's categorize the two kinds of Web applications.</p>
+<ul>
+<li><span style="text-decoration: underline;">Dynamic</span>: Applications wherein the data sent changes with each and every request should be dynamic, using application logic engines and databases. Examples include: Facebook or Twitter, where the feed is dynamic and personalized; banking applications; and the administrative portal of any blogging engine or CMS.</li>
+<li><span style="text-decoration: underline;">Static</span>: Applications wherein the data is consistent across many reads. Essentially, this is 90+% of the Websites on the Internet.</li>
+</ul>
+<h2>Weaknesses</h2>
+<h3>Inefficient</h3>
+<p>In order to provide you with this page to read, WordPress had to do all of the following, each of which takes server and/or network resources:</p>
+<ul>
+<li>Process the address into a specific database entry</li>
+<li>Request the data from the database</li>
+<li>Merge the data with the templates</li>
+</ul>
+<p>While that may not be too bad for a simple site with few readers, for a complex site or one with a large readership, it can add up. <strong>And it is totally unnecessary.</strong> After all, the article you are reading is <span style="text-decoration: underline;">precisely</span> the same article the next person will read, and the person after that, and so on. <span style="text-decoration: underline;">Why repeat the same convert-request-merge expensive process 1,000 times for the exact same input and output</span>?</p>
+<p>This very same inefficiency is why cloud companies use "caching" technology to avoid constantly querying its most heavily-used resource, its databases for the same data over and over.</p>
+<p>The most egregious part of this is that the "caching" for Web pages is what Web servers were <em>originally</em> designed for. The very first Web servers just sent you files. They looked at the address, retrieved a matching file and sent it to you. The most popular Web servers  - Apache and Nginx - can do many things, but they are optimized to send you files.</p>
+<h3>Insecure</h3>
+<p>Every time your service processes logic of any kind at all, there is an opportunity for malicious parties to find a weakness to exploit. The more complex or dynamic the process, the greater the opportunities for errors and hence areas to attack. The more components the process touches, the greater the "surface of attack."</p>
+<p>With a complex CMS translating paths into database queries across the network, there is a lot of logic to create errors and thus areas for attack; with plenty of components involve - Web server, PHP language processor, network, database - there are ever more opportunities for errors that a smart hacker can exploit. And since risk does not increase linearly, but rather exponentially, with complexity, the risks are significantly higher.</p>
+<h2>Solutions...</h2>
+<p>If we are dealing with Websites where the majority of the content is identical for every reader, and there are many of them, shouldn't it be possible to assemble and load the output page in advance, store it on the disk at the Web server, and just send it when the user requests it?</p>
+<p>Indeed, in the last several years, a whole new class of Website content management systems (CMS) has arisen, called Static Site Generators, or SSGs. (Someone with marketing savvy really needs to do a better job on the naming scheme.)</p>
+<p>Unlike a typical CMS, which, like WordPress, retrieves the data from the database and assembles the page you see with each request, an SSG will pre-assemble the entire page - actually, the entire site - as soon as you publish it. When someone requests the page, the process is simply:</p>
+<ol>
+<li>Find the file on the filesystem.</li>
+<li>Send it.</li>
+</ol>
+<p>An SSG is 1-2 orders of magnitude more efficient than a typical database-driven CMS:</p>
+<ul>
+<li>It doesn't need to talk to a database over the network;</li>
+<li>It doesn't need to make a query of the database;</li>
+<li>It doesn't need to assemble the final file you view.</li>
+</ul>
+<p>Actually, it doesn't even <em>need</em> a database; it can just use regular files as input to the Generator and save static files as output. The entire thing generation can be run on a server, your laptop, or potentially even a smartphone!</p>
+<p>From a security perspective, an SSG is  dream as well. With no live processing, no database communication, no application logic processing, all that is left is a static file server. Since Web servers have been doing this for over 20 years, they are very good and generally very secure at doing this.</p>
+<p>Back in November, <a href="http://www.df.id.au/a-case-for-static-websites/" target="_blank">Dean Fogarty wrote a strong case</a> advocating for static Websites.</p>
+<p>Does anyone actually use an SSG?</p>
+<p>Actually, a very large Website hosting company uses it: <a href="http://www.github.com" target="_blank">GitHub</a>.</p>
+<p>One of the largest code repositories in the world, backed by Andreessen Horowitz to the tune of $100MM <em>after</em> it already was growing profitably, launched a way to host public Websites a few years ago, called <a href="https://pages.github.com" target="_blank">GitHub Pages</a>. It is a far easier and cheaper (read: free) way to get a Web site up on highly reliable infrastructure than any alternative.. and it is based entirely on the SSG <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>, which runs on the Ruby language.</p>
+<p>For GitHub, it was a perfect fit. They didn't <em>want</em> thousands or millions of new surfaces of attack, hundreds of new databases to manage, and the attendant resource consumption. To boot, a code repository is a <em>file</em> repository. They wanted to offer a great new service with the least overhead in a way that fit with their existing operating model, which is built around... <em>files</em>.</p>
+<p>A similar product to Jekyll is <a href="https://docpad.org" target="_blank">DocPad</a>, based on JavaScript, with which I was involved a while back.</p>
+<p>All of these work on the same principle:</p>
+<ol>
+<li>Create template and content files, just like you would with a standard CMS, but save them as <em>files</em> rather than in a <em>database</em>.</li>
+<li>Feed the files into the SSG.</li>
+<li>Get out an entire Website.</li>
+<li>Load the Website to your good old Web server.</li>
+<li>Enjoy.</li>
+</ol>
+<h2>... Challenges</h2>
+<p>So if there are so many clear benefits to an SSG over a traditional CMS, why is so much of the Web still run the "old" way?</p>
+<p>First of all, to be clear, many have switched, including some major sites, like the <a href="http://open.undp.org/" target="_blank">UN Development Programme open data portal</a>. Nonetheless, most of those who have switched are technically literate early adopters, comfortable with new technologies and the learning curve involved in using them.</p>
+<p>To appeal to the mass market, as with any new offering, especially in technology, there are several major impediments to switching:</p>
+<ul>
+<li><span style="text-decoration: underline;">Ecosystem</span>: The major CMSes, especially WordPress, have an entire ecosystem of ancillary products (plugins) and services (hosting and backups). While the <em>entire</em> ecosystem is not necessary, key elements of it are. The biggest one - hosting - is partially solved by GitHub Pages, but even that is built around the developers who use GitHub, rather than everyday small Website owners and bloggers, or large corporate owners.</li>
+<li><span style="text-decoration: underline;">Ease</span>: No matter how much bloggers write that they "prefer" editing their HTML in a text editor, the majority of people will prefer a visual editor, like I am using right now in WordPress. It is easier than typing HTML, which was the genesis of early Web-editing programs like Dreamweaver.</li>
+<li><span style="text-decoration: underline;">Switching Costs</span>: This is the simplest to solve. There are switching costs, but they will be overcome when the benefits of the new platform are higher than switching costs, and tools exist to ease the transition, some of which already exist.</li>
+<li><span style="text-decoration: underline;">Access</span>: Most advanced CMSes have remote access. Since they exist on servers backed by databases, you can access them from anywhere. Start an article on your desktop browser, continue it on your Motorola Nexus Android app, finish it on your iPad app. SSGs are built around files, and would require a management system to support that. Since the inputs and outputs are just files, file-management solutions like iCloud, Google Drive and Dropbox can be leveraged, but the simplicity simply is not there.</li>
+<li><span style="text-decoration: underline;">Controls</span>: Larger corporate users rely heavily on controls. One person writes, another edits, a third approves and publishes. These controls are crucial to their processes, whether for PR-management, legal liability or compliance needs.</li>
+</ul>
+<p>Can these all be overcome? Definitely, with the addition of new service providers and tools. Will they be all be overcome? Very likely. Will it drive massive switching? If I had a crystal ball....</p>
+<h2>Summary</h2>
+<p>Static Site Generators are a new-old approach that solves many issues with Websites, including:</p>
+<ul>
+<li>Performance</li>
+<li>Cost</li>
+<li>Reliability</li>
+<li>Security</li>
+</ul>
+<p>Nonetheless, SSGs are not for <em>every</em> use case, at least not yet, due to some as-yet-to-be-available services and features.</p>
+<p>If you are managing a Website - public or Intranet -  and want to see if an alternative structure can save you on costs, with better performance, higher reliability and tighter security, <a title="Contact" href="{{ site.url }}/contact/" target="_blank">ask us to evaluate</a>.</p>

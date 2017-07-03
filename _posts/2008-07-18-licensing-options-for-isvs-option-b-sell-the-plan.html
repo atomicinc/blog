@@ -1,0 +1,45 @@
+---
+layout: post
+title: 'Licensing Options for ISVs - Option B: Sell the Plan'
+date: 2008-07-18 10:53:52.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- pricing
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>In the previous post we discussed implementing Option A: Sell the Upgrade. Now we will address Sell the Plan. </p>
+<p>Sell the Plan has a lot of appeal for ISVs, especially when you start to sell to businesses, non-profits, or any group that budgets. The benefits are:</p>
+<ol>
+<li>Predictable cash flow. The reality is that most individuals and organizations that have recurring charges simply keep on paying them. This creates more predictable cash flow for your ISV business.</li>
+<li>Earlier revenue recognition: Let us assume that you release version 1.0 in Jan 2006 and 2.0 in Apr 2007. If you sell the upgrade, the purchaser of 1.0 will wait all the way until April to pay you. On the other hand, if you sell the plan, by Jan 2007 he is already paying you the plan fees for the coming year.</li>
+<li>Easier recurring sales. Most organizations budget capital expenditures, especially for new purchases, separately from ongoing operating expenses. The $50 they will spend next year to buy the next version of your product must be approved and budgeted, and for the following version, and again. On the other hand, if buying the product the first time comes with an annual $50 charge for "maintenance," it gets built right into the ongoing operating budget and is automatically approved.</li>
+</ol>
+<p>It is important in this scenario to give new purchasers at full retail a "free" year (more or less, depending on your customers, but a years is fairly standard) of upgrade plan. The free helps you sell, but also avoids the sense from them that they are getting no support in terms of patches, upgrades, etc. </p>
+<p>So how do we go about implementing "Sell the Plan?" Again, we have multiple scenarios.</p>
+<ol>
+<li>New purchaser: This purchaser simply buys the product outright at full retail price, in our case $100.</li>
+<li>Return purchaser on plan: This person should be able to upgrade for free, whether it is because they are within their "free" year, or because they are within another year (or ten) of paid plan.</li>
+<li>Return purchaser off plan: This person should be able to upgrade, but not for free. Instead of buying the new product, they buy another year (or more) of plan. This plan is normally sold at some discount off the <span style="text-decoration: underline;">current</span> retail price of the product. In our scenario, we will assume it to be 50%.</li>
+</ol>
+<p>How does implementation of each of these scenarios happen?</p>
+<ol>
+<li>New purchaser: This is a standard sale. The purchaser buys it outright, gets a license key, installs, and goes.</li>
+<li>On-plan purchaser: This is complex. This can be implemented either via the licensing system or the commerce system.
+<ul>
+<li>Licensing system: The licensing system needs to issue licenses that understand when upgrades are allowed and when they are not. It further needs to recognize when a version was released, compare that to the range of dates for which upgrades are allowed, and then allow or disallow the upgrade. I have not seen a single, solitary license system that can do this.</li>
+<li>Commerce system via product SKUs: As in the "Sell the Upgrade" scenario, you can either have limited availability SKUs or the same SKU as new purchases, but with special coupons. In either case, the commerce system needs to  recognize that this is a returning user and precisely what rights they have. I have seen no commerce systems that do this correctly, either. The closest I have seen is that some systems will issue coupons based on previous purchases of a particular SKU by a returning user. However, these systems all treat the upgrade (for free) purchases as if they are new, and thus give them a whole new year for free.</li>
+<li>Commerce system via plan SKUs: This is an approach that no commerce system has recommended, yet offers an intriguing new way. Each product has its own SKU, and each plan for free upgrades (12 month, 24 month, etc.) has its own SKU. When someone purchases a product outright, they receive the free upgrade SKU bundled with it. When they come to upgrade, the commerce system should recognize that they have a recent purchase (within time frame) of the plan SKU, and either give them access to the limited availability free upgrade SKU or the appropriate discount coupon for the regular SKU. Again, I have seen no commerce system do this outright, but some have shown flexibility in the right direction.</li>
+</ul>
+</li>
+<li>Off-plan purchaser: An off-plan purchaser is one who once was on-plan, and is now off. Essentially, they need the ability to subscribe to the plan again. This requires a separate SKU for plan, followed by a recognition of the ability to join the "free download" group. However, it is important that the commerce system only allow someone who once purchased to join the plan, else anyone will just buy the plan SKU at less than full retail and get free upgrades.</li>
+</ol>
+<p>Conclusions:</p>
+<ol>
+<li>Commerce system intelligence is a must. No system has shown the ability to do this, but some have shown promise. See my follow-up post on commerce systems.</li>
+<li>Some of this <em>can</em> be handled in licensing, but some <em>must</em> be handled in commerce systems. As before, make commerce systems your focus.</li>
+</ol>

@@ -1,0 +1,74 @@
+---
+layout: post
+title: Architect Your Product Before It Holds You Back
+date: 2016-09-14 17:08:54.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- product
+- security
+- technology
+tags:
+- architecture
+- dropbox
+- flexibility
+- minimum viable product
+- MVP
+- product management
+author: Avi Deitcher
+---
+<p>Architecture determines capabilities.</p>
+<p>This is <em>not</em> new. Anyone who has planned and architected a new product, or has tried to retrofit capabilities for which a platform has not been architected, knows it first-hand.</p>
+<p>Yet, time and again, I come across products that have not been planned, and therefore architected, around reasonably expected capabilities.</p>
+<p>Sometimes I see these as a user.</p>
+<p>Last week, a client wanted to give me access to their Dropox Team account, so we could share information. They did the apparently smart thing: they sent me an offer to join their Dropbox Team.</p>
+<p>That is where the problem began. If I join their team, my <span style="text-decoration: underline;">entire account</span> is part of their team. Sure, I get all of their account permissions, and they pay if I use too much storage, but my entire account is open to them. I have some personal materiel there, but far more importantly, I have confidential client information there. Many clients have used Dropbox to share plans, materiel, even code with me.</p>
+<p><strong>This client should not have access to that data.</strong> It might even violate my confidentiality agreements to join their Dropbox Team.</p>
+<p>Obviously, I am not the only person with this problem. What does Dropbox recommend?</p>
+<blockquote><p>Set up a personal and a business dropbox account and link them.</p></blockquote>
+<p>Of course, you only can do that for two accounts. They are asking me to limit how many to whom I can connect. Making it worse, each device on which I use Dropbox is connected to just one account.</p>
+<p>The workflow I want is simple: let me remain me, and let a subset of me (a folder) become part of this client's Team space. Dropbox does noted cannot provide this feature.</p>
+<p>Essentially, Dropbox is designed and architected around the idea that a person's account belongs to a team, or company, in its entirety. The idea that multiple people collaborate <em>independently</em> is foreign to how they first built Dropbox users, or at least teams. Put in other terms, Dropbox users and teams are built around 1970s or 1980s work environments.</p>
+<ul>
+<li>You have a job; you work there, and everything you do there belongs to the company.</li>
+<li>You have a home; you live there, and everything you do there belongs to you.</li>
+</ul>
+<p>Based on the feedback and company responses in the forums, it seems clear that they started this way, and now are constrained from doing anything different without significant re-architecture.</p>
+<p>Other times I see this issue from within companies with whom I have worked. It always is unfortunate to see CEOs frustrated that a relatively simple change is difficult to nearly impossible, requires multiple "hacks", and challenges the stability and scalability of the product. Product says, "we need this feature/capability/flexibility to grow the business"; engineering says, "implementing this feature/capability/flexibility will risk the very service we need to run the current business, let alone grow it."</p>
+<p>Part of the root cause is the severe constraints inherent in the early days of a company. These manifest themselves in two ways:</p>
+<ol>
+<li><span style="text-decoration: underline;">Plans</span>: Some companies <em>know</em> that they need to plan for reasonably expected use cases, yet do not have the time to do so. As the saying goes, "Having scale (or usage, or diverse market, or ....) problems is a <em>good</em> thing to have. It means we are making it. Why waste energy beforehand?"</li>
+<li><span style="text-decoration: underline;">Skills</span>: Many companies, on the other hand, simply do not have the product management capabilities and architectural chops to think these issues through. They plow ahead, gain some success, and become frustrated when bolting on additional capabilities becomes expensive and even dangerous to product growth and stability. (When the founding team for a tech startup has no engineer, watch out.)</li>
+</ol>
+<p>Even if you have the skills, and you think it through, it is a real challenge. How do you build for the future, without sacrificing too much precious early time, blood and treasure, to those potential future plans?</p>
+<p>The answer is specific to each and every case. But a simple rule of thumb is to plan sufficient flexibility that you do not constrain yourself in key areas, while implementing only those parts that you need for the immediate future.</p>
+<p>A simple example is complex access control. Your future targeted enterprise customers will <span style="text-decoration: underline;">insist</span> on complex levels of role-based control and auditing; your early customers, the ones who get you enough traction to go after the whales, just want simple access.</p>
+<ul>
+<li>If you build a simple binary yes/no for access or sharing, you may have to rip out the entire thing and replace it with something that can do enterprise-level controls and audits while replicating on top of it the exact same interface and methods you had before, all without causing disruption. Worse, other parts of the system will start to assume this design, making future changes a massive undertaking.</li>
+<li>If you build a full-blown access-control system, with audits, management interfaces, APIs, you may <span style="text-decoration: underline;">never get</span> to early stage customers, let alone enterprises.</li>
+</ul>
+<p>I dealt with this precise issue with a company. My recommendation? Build in enough flexibility for the future, but only implement the parts you <span style="text-decoration: underline;">need</span> now.</p>
+<ol>
+<li>Access:
+<ol>
+<li>Build a role-based access control system now using off-the-shelf (or off-the-github) components.</li>
+<li>Implement precisely one role right now, "owner". Provide no management interface, no cross-account controls, nothing.</li>
+<li>In the future, add new interfaces and new roles, but rip out <em>nothing</em>.</li>
+</ol>
+</li>
+<li>Audits:
+<ol>
+<li>Log every activity somewhere.</li>
+<li>Do absolutely <em>nothing</em> with these logs now. In the future, we can add review capabilities.</li>
+</ol>
+</li>
+</ol>
+<p>Unsurprisingly, it worked. It took, at most, a few weeks longer to get the first version, but we had bought ourselves a sufficiently flexible platform to do what we needed in the future.</p>
+<p>Far more importantly, we had forced every other part of the system to be aware of access and auditing as they were built, making the future transition several orders of magnitude easier.</p>
+<h2>Summary</h2>
+<p>It is <i>critically</i> important to plan, design and architect your systems to be able to <em>support</em> reasonably expected future capabilities, while only <em>implementing</em> the minimum you need at each stage. Minimum <span style="text-decoration: underline;">Viable</span> Product must be <em>viable</em>, not just <em>minimum</em>.</p>
+<p>If you have reached the point where your early designs and their implementations struggle to deliver the capabilities you need now, find where you need to rearchitect, but get those areas you can with minimum disruption... and do it in a way that you plan for the next stages as well.</p>
+<p>Struggling to plan for that future? Challenged by your current platform's ability to deliver your requirements? <a href="{{ site.url }}/contact/">Ask us to help</a>.</p>
+<p>&nbsp;</p>

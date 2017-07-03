@@ -1,0 +1,63 @@
+---
+layout: post
+title: The Pain Caused By Poor Software Design
+date: 2016-05-17 10:23:01.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- policy
+- product
+- technology
+tags:
+- architecture
+- design
+- impact
+- operating systems
+- product
+author: Avi Deitcher
+---
+<p>Over the last few month, I was reminded - twice, painfully each time - about the impacts of good vs. bad software design choices, especially the impact those choices can have downstream. Ironically, it is not only - or even mainly - the creators and primary users of the software who are impacted, but others unforeseen at design time.</p>
+<h3>Installing an Operating System</h3>
+<p>Anyone who has installed an operating system on their laptop or server - or even smartphone - is familiar with a series of questions, choices and answers, as they configure the operating system. In technology parlance, this is known as "menu-driven".</p>
+<p>The goal of the menu is to gather enough information from the user to get to the desired installed end-state.</p>
+<p>In a recent project, I needed to design a process for automatic server installation of a particular operating system for a customer. This OS, too, has a menu-driven interface. However, recognizing that sometimes customers want to do so non-interactively - it hardly is efficient to set up more than one server, let alone thousands, by keying in the answers, and leads to many human errors - there is a way to pre-seed the answers in a file and give it to the installation process. The file even is called a "preseed" file.</p>
+<p>However, the designed of the preseed system failed to understand that the purpose of the "preseed" is to get to a certain <em>state</em>, rather than follow a particular <em>process</em>. Thus, rather than the preseed delineating the state, it gives the answers to the questions.</p>
+<p>This leads to a lot of issues:</p>
+<ul>
+<li>Sensitivity to the order of the lines in the file</li>
+<li>Difficult to debug problems</li>
+<li>Poorly documented options since there are far too many potential permutations</li>
+<li>Inability to test without actually running through the menu, i.e. the slow install</li>
+<li>A <em>lot</em> of wasted time</li>
+</ul>
+<p>The purpose of the menu never was to create a <em>process</em>, it just <span style="text-decoration: underline;">happened</span> to do so to get to a given <em>state</em>. The designers of preseed successfully automated the menu <em>process</em>, rather than successfully providing the desired goal, i.e. the end <em>state</em>.</p>
+<p>A poor design choice led to a lot of pain.</p>
+<p>A similar problem occurred in a different area: software design.</p>
+<p>Software often is composed of libraries. Libraries are chunks of code with (hopefully, but unfortunately not often enough...) clearly defined entry points and exit points. Libraries serve one or both of two purposes:</p>
+<ol>
+<li><span style="text-decoration: underline;">Simplify complex processes</span>: Let's use encryption as the most extreme example. Getting it right is very hard, getting it even slightly wrong can leak secure data, even after enormous effort. Using an encryption library allows the developer to rely on someone else's well-proven and reviewed work.</li>
+<li><span style="text-decoration: underline;">Reduce redundant efforts</span>: If everyone writing a Web application has to process the request headers, it is quite wasteful for each person doing so to write code that extracts the long header string and converts it into a usable format. A simple library should do that.</li>
+</ol>
+<p>In an open-source project with which I am involved, two different libraries to provide standard Web application REST interfaces are supported.</p>
+<p>When making a change, suddenly tests started failing, but only when run in a certain order. As anyone who has been involved with software knows, tests are the bedrock upon which reliability and especially reliable changes stand.</p>
+<p>The problem, apparently, was in <em>how</em> one of the libraries was implemented.</p>
+<p>When each Web request comes in, a <code>request</code> object is created. Each library in turn needed to augment that <code>request</code> with its special capabilities. In doing so, it had two choices:</p>
+<ol>
+<li>Augment each <code>request</code> by adding those capabilities.</li>
+<li>Change the basic request template (or <em>prototype</em>) so that each future <code>request</code> will gain those capabilities by default.</li>
+</ol>
+<p>At first blush, the second option seems the better one. After all, why not change the <code>prototype</code> so that everything just inherits the expanded capabilities? Indeed, this is just what the library creator did.</p>
+<p>However, if the designer had thought a little longer, they would have realized that doing so will impact every other library or program that depends on the standard <code>request</code>.</p>
+<p>This is exactly the problem that occurred here. The creator of the library could not conceive at creation time that someone might use his library along with other libraries, or perhaps more demanding code. Yet, that is exactly what happened.</p>
+<p>The developer fell prey to the "<a href="http://quoteinvestigator.com/2011/09/08/640k-enough/">640k out to be enough for everyone</a>" trap. He saw his usage as representative of everyone's, and thus cut out the ability to expand the usage far beyond what he had originally envisioned.</p>
+<h2>Summary</h2>
+<p>When designing a product, especially software, think long and hard about the impacts of your design choices. Often, at each stage, you will have the choice between two (sometimes more) options. Before picking one, spend just a few minutes asking the following questions:</p>
+<ol>
+<li>What are the restrictions of one vs. the other?</li>
+<li>What are the performance impacts of each?</li>
+<li>How hard is each to implement, and how hard will it be to change in the future (a.k.a. pay down the technical debt)?</li>
+<li>Who and what scenarios could be impacted beyond how I currently envision it?</li>
+</ol>
+<p>If you are unsure, <a href="{{ site.url }}/contact/">ask us</a>. We would be happy to help.</p>

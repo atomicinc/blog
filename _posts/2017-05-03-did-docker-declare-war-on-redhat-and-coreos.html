@@ -1,0 +1,39 @@
+---
+layout: post
+title: Did Docker Declare War on RedHat and CoreOS?
+date: 2017-05-03 17:44:05.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- containers
+- product
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>Yesterday, at DockerCon, Docker Inc announced open-sourcing its LinuxKit toolkit to build Linux operating system images. LinuxKit (the platform that has been rumoured as Moby for over a year) provides a relatively easy-to-use toolkit for building immutable operating system distributions.</p>
+<p>Normally, an operating system is a platform that you change on a regular basis. Sure, the core itself - the kernel and modules and basic tools - are changed only when you upgrade or patch your operating system. But the software and the tools are installed directly onto the server.</p>
+<p>Docker, of course, changed all of that by solving myriad packaging headaches. Your two (or two thousand) servers could be identical. All the "application-specific stuff" is stored in your images and run by the docker engine.</p>
+<p>As a result two interesting things happened:</p>
+<ol>
+<li>Docker built a form of partnership with RedHat, which has dominated the paid support corporate Linux market via its "RedHat Enterprise Linux", or RHEL, which is distinct from the (mostly) compatible free open-source CentOS.</li>
+<li>New Linux distributions arose that provide a lightweight and immutable core optimized to run containers, a natural evolution of "make everything custom a container image," primarily CoreOS, although Rancher's RancherOS, just recently GA as 1.0, also is becoming an interesting player.</li>
+</ol>
+<p>CoreOS has provided a number of open-source tools built around managing infrastructure at scale, although many have withered, as well as its own container runtime rkt. In addition, it provides a number of commercial services, notably its Docker-compatible container image registry quay.io, and Tectonic, its form of managed Kubernetes.</p>
+<p>The core business of RedHat remains Linux support, the core of CoreOS remains, well, CoreOS (recently renamed Container Linux, probably to deemphasize it).</p>
+<p>LinuxKit clearly is not <em>intended</em> to be a Tomahawk launched at CoreOS and RedHat. Having seen the project - and used it - for some time, and seen the managers and contributors discuss their desires in GitHub issues and public Slack channels, I believe it is a clear attempt to simplify the underlying layer - the operating system - to make container management even more of the focus it already is. In that respect, LinuxKit makes a lot of sense.</p>
+<p>But the net <em>effect</em> of LinuxKit may be to aim a few torpedoes at RedHat and CoreOS. It certainly must look that way. As new Docker CEO Steve Singh <a href="https://www.geekwire.com/2017/steve-singh-dockers-new-ceo-takes-helm-enterprise-tech-rocket-ship/">said in an interview</a>, Docker now has 400 enterprise customers, most of whom came onboard in the last year alone.  Big inroads, impacting changes at both infrastructure and engineering departments, and a simplified OS to go with it? Add in that it is far easier to secure than full-on RHEL, and it <em>has</em> to make RedHat executives nervous.</p>
+<p>Granted, LinuxKit is a toolkit, not an operating system distribution. But it is (intentionally) as straightforward to build and use an operating system image as it is to build a container image. If you can build one, you probably can build the other. I would not at all be surprised to see an OS image registry, possibly compatible with multiple clouds and VM orchestration frameworks, coming out of Docker Inc. very shortly.</p>
+<p>From Docker's perspective, it is straightforward. Anything that simplifies usage of containers is good; anything that gives developers deeper ability to run stuff independently is good.</p>
+<p>From the OS market's perspective, this reduces the uniqueness of the OS layer, and may create interesting challenges for OS companies.</p>
+<p>While I doubt Docker <em>intended</em> to assault RedHat and CoreOS - they just are doing what makes sense for their business and market - I don't think they <em>minded</em> the side effects.</p>
+<ol>
+<li>As discussed <a href="{{ site.url }}/2016/10/14/can-rktkubernetes-provide-a-real-alternative-to-docker-2896/">here</a>, CoreOS has been trying to provide a real alternative to Docker for a while. I love competition, but from Docker's perspective, anyone trying to dislodge them should be fair game. As it is, it appears that Docker and Google have made their peace, leaving CoreOS as the odd man out.</li>
+<li>If you look at the list of Docker distributions for RedHat <a href="https://docs.docker.com/engine/installation/linux/rhel/#docker-ee-repository-url">here</a> and <a href="https://docs.docker.com/engine/installation/#platform-support-matrix">here</a>, it is pretty clear that there is a dearth of options for RHEL, essentially Docker paid Enterprise Edition only. It isn't clear to those of us on the outside who initiated the RedHat-Docker fallout after their earlier close collaboration, but neither of them seems to like the other much nowadays.</li>
+</ol>
+<p>As my friend and smart architect <a href="https://www.linkedin.com/in/joshmahowald/">Josh Mahowald</a> said to me during DockerCon:</p>
+<blockquote><p>Explain to me again why CoreOS isn't freaking out?</p></blockquote>
+<p>&nbsp;</p>

@@ -1,0 +1,103 @@
+---
+layout: post
+title: Whence Private Clouds, and Why Amazon and Google Should Spin Off Cloud
+date: 2015-03-09 07:55:23.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- cloud
+- pricing
+- product
+- security
+- technology
+tags:
+- amazon
+- aws
+- bank
+- cloud
+- google
+- privacy
+- spinoff
+- trust
+- walmart
+author: Avi Deitcher
+---
+<p>After our <a title="Does Amazon Web Services Pricing Follow Moore’s Law?" href="{{ site.url }}/2015/03/03/does-amazon-web-services-pricing-follow-moores-law-2350/" target="_blank">article last week</a> discussing the economics of moving into AWS vs. do-it-yourself (DIY), <a href="http://twitter.com/jstogdill/" target="_blank">Jim Stogdill</a> wrote an <a href="http://limnthis.typepad.com/limn_this/2015/03/public-vs-private-cloud-price-isnt-enough.html" target="_blank">excellent follow-up</a> about when enterprises <em>aren't</em> moving into the public cloud; <a href="http://twitter.com/swardley" target="_blank">Simon Wardley</a> - whose strategic situational awareness mapping is in a category by itself and should be required reading for anyone responsible for strategy - continued with <a href="http://blog.gardeviance.org/2015/03/hi-jim.html" target="_blank">his input</a>.</p>
+<p>In Jim's words, private clouds are like SUVs; they rarely make sense economically, but sometimes you buy them anyways because:</p>
+<ol>
+<li>The cost difference doesn't matter. In Jim's bank example, no one laughs at $40MM in annual savings, but if it is just 0.4% if your <em>profits</em>, you will not care <span style="text-decoration: underline;">all that much</span>.</li>
+<li>The prestige/extra safety are worth it. If you are the CIA / MI6 / Mossad, you are not going to let any cloud provider get anywhere near your instances. Then again, you probably are pretty paranoid about even colocating with Equinix or TeleCity.</li>
+<li>You are culturally incapable of buying from the other manufacturers. Just as Ford's CEO would not be caught driving a Toyota, Wal-Mart simply will not put their core IT - and IT <strong>is</strong> core - on <em>Amazon</em>'s infrastructure. Maybe if it were run by Apple, but Amazon?</li>
+</ol>
+<p>Simon argues that, over time, alternate offerings like Google and Microsoft Azure will have appeal to Amazon competitors like Wal-Mart and at least some of their infrastructure will migrate to a public cloud provider.</p>
+<p>While both Jim and Simon are completely accurate in why some enterprises adopt private clouds (or traditional IT), and what price they pay in terms of cost and nimbleness, I believe there are a few other factors at play. These both push in favour of enterprises adopting private cloud, and mitigating against it.</p>
+<h2>Not Built Here</h2>
+<h3>Towards Private</h3>
+<p>In the mid to late 1990s, I worked at a financial services firm in IT. We were probably one of the two most advanced and innovative IT shops, certainly in financials, probably in the world, because we had the right culture and the right investment. Many technology management tools and techniques that we are familiar with nowadays grew out of work that we did then.</p>
+<p>As just one example, our server instance to system administrator ratio was <strong>10x</strong> that of other financials and <strong>20x</strong> that of typical IT shops at the time. Our time to deploy applications globally was measured in automated seconds to minutes - I deployed a massive application upgrade myself, and changed global configuration for the foreign exchange production desk from an airport lounge in Heathrow... between drinks.</p>
+<p>Ten years later, I had lunch with a friend who had left and returned to the company. I asked about all of that "cool stuff" we had built. I asked if it was still a competitive advantage. I believe his exact words were, "they are an albatross around our neck."</p>
+<p>Over time, by building great stuff, the company came to believe that <strong>only they could build great stuff</strong>. As the market advanced faster than even the best company could, this firm got left further and further behind, managing with tools that were less and less useful.</p>
+<p>Big companies come to believe that only they can fully understand their business (somewhat true) and only their in-house tools can service their business (patently false).</p>
+<p>Companies like Wal-Mart and Jim's "Big Bank" have decades of experience building great tools that make them "special". It is hard for them to accept that running in a standardized format - whether using AWS EC2 instances in VPCs or Heroku's "<a href="http://12factor.net" target="_blank">12-Factor Application Design Principles</a>" - could possibly work or be as good as theirs.</p>
+<h3>Towards Public</h3>
+<p>The mitigating factor is the need to hire and retain innovative people. Eventually, companies caught in the "Not Built Here" (NBH) mindset find themselves with slow, stodgy cultures. Seeing threats, they hire smart and innovative <em>business</em> people to compete... who in turn become frustrated by their IT support.</p>
+<p>I lived this <span style="text-decoration: underline;">exact</span> experience at a different company. The firm was a merger of 2.5 companies - two from the US, and half from a subsidiary of a European firm - that had hired great business people but IT had lagged. They finally wised up, hired a friend of mine as CIO, who in turn hired me and a few stars. To this day, it probably was one of my favourite work experiences. It wasn't getting rid of the deadweight, which was painful; it was finding the few diamonds in the rough who wanted to shine and be innovative and never had been given the chance.</p>
+<p>We began a serious turnaround process. Unfortunately, the European parent sold the company soon thereafter to an even <em>larger</em> firm that was even <em>less</em> innovative.</p>
+<p>Eventually, business people frustrated by "Not-Built-Here" sloth press their CIOs to hire more innovative people. They try, they get a few, and then they become frustrated and leave. After all, <span style="text-decoration: underline;">who wants to work at a company that refuses to use the best that is out there</span>??</p>
+<p>However, if the few innovative people or teams are given sufficient leeway, or if the company has enough of a risk-rewarding (or at least not risk-penalizing) culture, some of those people will implement their services in alternate environments. How long it lasts depends on how long they last.</p>
+<h2>Trust</h2>
+<p>As Simon pointed out, Wal-Mart likely is afraid of Amazon's encroachment upon their retail business, and so is unlikely to want to give them millions of dollars in business, or even trust them with so critical an infrastructure. Amazon, at heart, is a retail empire.</p>
+<p>Google, the other largest cloud provider, has a culture based on "reading your mail". No matter how much Google Cloud may be a different business unit than Google Search or Gmail, at heart, <em>Google's culture is about reading your data</em>.</p>
+<ul>
+<li>Does that mean Google will peek into your data stored in Google Cloud SQL or Google Cloud Datastore? Probably not, but I am not willing to say, definitely not.</li>
+<li>Does that mean Google will look at your overall usage of Datastore or Compute Engine and learn things from it? If they do not today, it is extremely likely they will in the future. At Google, Search is king, and the culture of Search is, "<em>tu casa es mi casa</em>".</li>
+</ul>
+<h2>What is the solution?</h2>
+<p><strong>Amazon and Google should spin off their cloud services</strong> (when they become big enough).</p>
+<h3>Amazon</h3>
+<p>Amazon retail may be AWS's single biggest customer, and it may not, but the businesses and their needs are diverging. At a certain point, an independent AWS will be more valuable than an AWS business unit. I do not know if we have reached that point, but eventually they should for two reasons:</p>
+<ol>
+<li>Avoid the <a href="http://www.investopedia.com/terms/c/conglomeratediscount.asp" target="_blank">conglomerate discount</a>.</li>
+<li>Gain the trust of Amazon's retail competitors.</li>
+</ol>
+<h3>Google</h3>
+<p>I suspect that Google Cloud is not as widespread within Google as AWS is within Amazon. Amazon's core business is not IT, but retail. Thus, they built their compute platform to serve a single retail customer, eventually separating it sufficiently to offer it to others. I suspect the overwhelming majority of engineers work in AWS; AWS <strong>is<em> </em></strong>IT to Amazon.</p>
+<p>Google saw AWS, realized, "hey, we do just as much great stuff, we can offer it, too," and began to separate it out. The overwhelming majority of Google engineers likely <strong>do not</strong> work in Google Cloud.</p>
+<p>Nonetheless, if they want to gain trust, they, too, will eventually have to spin off Google Cloud for the exact same reasons:</p>
+<ol>
+<li>Avoid the conglomerate discount.</li>
+<li>Separate from the trust questions that will plague Google.</li>
+</ol>
+<h3>Mindset</h3>
+<p>Will either of them do it? They will resist. Google and Amazon have never seen what a real conglomerate is and suffers. They believe themselves to be tech firms, most of which have all products and services under one roof and brand.</p>
+<p>Just as Amazon's culture is informed by retail, and Google's by peeking, both of their cultures are informed by the tech world's "we can do it all because we are the best."</p>
+<h2>Swipe-The-Card</h2>
+<p>Inevitably, some business units will just "swipe-the-card." Many companies nowadays align their IT units, especially the application development teams, directly with the business units they serve, as either a direct report or a dotted line. The goal is to have the IT team understand and <span style="text-decoration: underline;">truly care</span> about the business unit's needs.</p>
+<p>What will happen in the following scenario? GM of business unit X turns to his IT lead and says, "we have a $100MM recurring revenue business opportunity, but we have to get that new app you have been working on for the last 6 months up and live in the next 10 business days." The IT lead turns to the infrastructure team who says, "sure, we have our new private cloud, but you want 100 instances and 10 databases, and we are not quite scaled for that yet, so fill out these forms, and get the CFO to sign off on the cross-cost-centre charges, and we should have it all within 20 business days of approval."</p>
+<p>You <em>know</em> that a great IT lead is <span style="text-decoration: underline;">not</span> going back to the GM and saying, "sorry, you have to wait 20 days." Instead s/he is going to pull out his or her AmEx, create an account on AWS (if they didn't already have one), buy the EC2 instances and RDS databases, and deploy in 5 days.... followed by 5 days of relaxation, while getting a fat bonus from the GM.</p>
+<p>The CIO, CFO and General Counsel will have a fit, but this is <span style="text-decoration: underline;">exactly why</span> they embedded the IT team with the business unit; to be sensitive to and solve these pressing problems.</p>
+<h2>Opportunities</h2>
+<p>Last, because private cloud will exist for a while due to the "SUV effect", it is important to recognize that not <em>all</em> of AWS's advantages come from scale, and not <em>all</em> of them require AWS-scale to gain them.</p>
+<p>As we saw in the <a title="Does Amazon Web Services Pricing Follow Moore’s Law?" href="{{ site.url }}/2015/03/03/does-amazon-web-services-pricing-follow-moores-law-2350/" target="_blank">last article</a>, only ~40% of a cloud provider's costs come from Moore's  Law-subject components. The rest is linear components that actually <span style="text-decoration: underline;">increase</span> over time. Since AWS pricing is dropping <span style="text-decoration: underline;">faster</span> that (40% * Moore's Law), Amazon clearly is aggressively improving the other elements of its operations via:</p>
+<ol>
+<li>Scale</li>
+<li>Better processes</li>
+<li>Better automation</li>
+</ol>
+<p>On the one hand, as Simon points out, if your competitor goes public cloud, their cost savings can create a "Red Queen Effect": they get more efficient, freeing up more cash to offer more services, creating ever more pressure upon you, which circles back in a virtuous (for them) loop.</p>
+<p>On the other hand, none of those three factors - scale, processes, automation - is unique.</p>
+<ol>
+<li>Any IT shop that is big enough to have 100,000 instances, like Jim's Big Bank, will have sufficient scale to negotiate pricing on hardware, colocation and power. They similarly will be big enough to have their own 24x7 support and systems administration.</li>
+<li>A large IT shop probably has rigid processes, but they can be improved. Similarly...</li>
+<li>There is nothing special about Amazon, beyond scale, that allows them to do "magical stuff" in deployment or management or monitoring. They have their own tools that they keep in-house for competitive advantage - just like Heroku kept their routing mesh as a "secret sauce", even as they open-sourced most other non-competitive-advantage-giving components - but these can and will be replicated.</li>
+</ol>
+<p>Where there is opportunity, then, is for better processes and automation / tools.  Companies that provide these tools and processes to scale massive private clouds while significantly lowering costs per unit have an opportunity to assist the enterprise private clouds.</p>
+<p>For that matter, could an independent Google Cloud or AWS sell these as part of a private cloud package? Possibly, but not in their current structures.</p>
+<h2>Summary</h2>
+<p>Jim and Simon are dead on about the "SUV niche" for enterprise private clouds, and the reasons behind them, as well as the Red Queen Effect. At the same time, some businesses truly will have a need for an SUV, or be unable/unwilling to buy a Camry just because it has a Toyota logo on it.</p>
+<p>Companies with the "Not Built Here" mindset will lag further behind, especially if it is the <span style="text-decoration: underline;">only</span> or <span style="text-decoration: underline;">primary</span> reason for not adopting clouds. Just as almost no employee really is indispensable, almost no business truly is unique in its needs and flows.</p>
+<p>Both Google and Amazon <em>eventually</em> should spin off their cloud computing units when they are large enough, to avoid the conglomerate discount and to enhance trust with potential customers. Whether or not they are constitutionally capable of doing so is unclear.</p>
+<p>Finally, there is nothing "magical" about any one company - even Amazon - that allows them all of the gains in cloud operations. Other massive private clouds should be able to gain the scale, processes and tools... if and only if they are culturally prepared to upend how they work.</p>
+<p>Are you prepared for, or evaluating, the public cloud? Are you designed to work in "cloudspace"? Are you adopting a private cloud for the correct reasons, or is it "Not-Built-Here" getting in the way? <a title="Contact" href="{{ site.url }}/contact/" target="_blank"><strong>We can help you</strong> evaluate your infrastructure, processes, automation <em>and culture</em> to plan and deploy your successful next phase of technology evolution. Ask us</a>.</p>

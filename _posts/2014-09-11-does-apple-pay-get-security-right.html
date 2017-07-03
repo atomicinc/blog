@@ -1,0 +1,55 @@
+---
+layout: post
+title: Does Apple Pay Get Security Right?
+date: 2014-09-11 05:59:37.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- security
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p>So we have <em>yet another</em> attempt to succeed at mobile payments, courtesy of Apple Pay. However, Apple has a very long history of taking inventions and putting them together in just the right way that they finally are usable, and take off. As Tim Cook said on Tuesday, "every other attempt looked at it from the perspective of the business model, rather than the user experience."</p>
+<p>Given the many high-profile security breaches over the last several years, I would like to take a look at the security implications. In short, did Apple get security right? Will using Apple Pay significantly reduce the exposure to credit card theft and breaches?</p>
+<p>Unfortunately, as of this writing, no detailed architecture or design paper for Apple Pay has been released. What we do know is the following:</p>
+<ul>
+<li>It uses Near-Field Communication (NFC) to share the purchase authorization, similar to many cards that have it</li>
+<li>Apple has no information about the purchase, the amount or even the merchant</li>
+<li>Apple does not share the credit card number with the merchant; actually, Apple may not even have the card stored at all, except for initial setup of each card</li>
+<li>Apple Pay uses one-time "tokens" to authorize the payment</li>
+</ul>
+<p>What does this mean? You go into a Duane Reade to buy a pack of tissues. Here is the before and after:</p>
+<h4>Today</h4>
+<ol>
+<li>Clerk rings up the cost</li>
+<li>You take out your credit card and swipe it</li>
+<li>Point-of-Sale (POS) system reads your card number from the magnetic stripe</li>
+<li>POS transmits the amount and card number to the processor</li>
+<li>Processor approves</li>
+</ol>
+<p>The obvious weak points here are #3 and #4. There are 2 major problems:</p>
+<ul>
+<li>Any form if illegitimate software or hardware anyone between your card and the processor can steal your card information. In the Home Depot and target cases, the POS was compromised; in other breaches it was store wifi; in the Adobe case, it was the database that stored the cards.</li>
+<li>Just having your card number is, ipso facto, authorization to take from your account.</li>
+</ul>
+<p>Sure, over the years cards have added additional band-aids, like the infamous 3-4 digit security codes that are not on the stripe, but the core of the problem remains.</p>
+<p>Now, let's look at the apparent Apple approach.</p>
+<h4>Apple</h4>
+<ol>
+<li>Clerk rins up the cost</li>
+<li>You take out your iPhone</li>
+<li>Your iPhone recognizes the NFC, and reads a request for the amount agreed, along with the merchant</li>
+<li>Your iPhone generates a unique one-time "card number" or "token", which is valid only for this merchant and this amount. It may also only be valid for this date, which is how I would do it, although Apple has said nothing about it.</li>
+<li>Your iPhone transmits the token to the merchant POS, which then sends it to the processor for approval.</li>
+</ol>
+<p>The major weak points have largely been eliminated. Even if the POS is awash with malware, all they can get is a token that is good for a single purchase, of a single amount, to a single merchant, possibly only for one day. If they tried to use that code elsewhere, it would fail. This, in turn, would <em>reduce</em> the security burden on the merchant, while <em>decreasing</em> the incentive for hackers to attempt to breach those systems.</p>
+<p>Does this increase their incentive to breach bank and processor systems? Sure, but that incentive is there anyways. Any hacker would get far more in ill-gotten gains by hacking the Visa network or Chase than even Wal-Mart!</p>
+<h3>So Does It Work?</h3>
+<p>The answer is, it depends. If the actual architecture is done correctly - and we will only know that and have confidence if and when Apple releases whitepapers and architecture to the public - then, yes, this really could dramatically reduce both breaches and their impacts.</p>
+<p>The latter is a big question though. Apple, from its very onset, has had a tight culture of secrecy. It doesn't like to describe how the innards of its systems work, for fear of competition. Growing up in the Apple-Microsoft world, followed by the Apple-Google-Samsung love triangle, this is hardly surprising.</p>
+<p>Nevertheless, security by obscurity is insecurity. The <strong>only</strong> way to truly be confident is for them to open Apple Pay up to external analysis, and let the chips fall where they may. I am positive there will be some horrible weaknesses, but <em>every system has them</em>. Publicity will allow them to be found, publicized and fixed, while those who work in obscurity will have similar weaknesses that will never be found... except by thieves.</p>
+<p>Of course, in the end, I still strongly feel that this just exacerbates our "pull" system, where we give merchants something - a signed check, a credit card number, an Apple Pay token - to allow them to pull funds from your account. The best solution, one possible only in a fully connected world, is one where the <span style="text-decoration: underline;">merchant gives you</span> their account number, and you send them the funds.</p>
+<p>Not many systems work this way, but the preeminent one is... cash. The most famous second one is BitCoin. It is almost a pity it had to be a "counter-currency," as it could solve many of the problems with push. But that is an article for another day.</p>

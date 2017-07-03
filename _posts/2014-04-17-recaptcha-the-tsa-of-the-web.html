@@ -1,0 +1,30 @@
+---
+layout: post
+title: ReCAPTCHA, the TSA of the Web
+date: 2014-04-17 06:48:42.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- security
+- technology
+tags: []
+author: Avi Deitcher
+---
+<p><a href="https://www.google.com/recaptcha/" target="_blank">ReCAPTCHA</a> is one of those parts of the Internet that we love and hate at the same time.</p>
+<p>A Captcha is a distorted letter/word/number picture that we need to fill in when we first sign up for a service; ReCAPTCHA is Google's version, developed by several computer scientists and acquired by Google in September 2009. It looks something like this:</p>
+<p><a href="{{ site.url }}/wp-content/uploads/2014/04/recaptcha.png"><img class="alignnone size-full wp-image-1618" src="{{ site.baseurl }}/assets/site-images/recaptcha.png" alt="recaptcha" width="349" height="91" /></a></p>
+<p>We hate it because it gets in the way of our doing what we want to on the Web. To be fair, the service providers who put it up there hate it as well; they expend enormous amounts of effort into making it easy for you to do what you want, so you will reach goals (signing up, spending money, etc.). They just find it necessary to get rid of automated troublemakers.</p>
+<p>We love it because we know, or believe, or hope, that it protects us by allowing only true humans in, and not those evil automated bots.</p>
+<p>In that respect, it is like the TSA. We hate going through it, but we know, or believe, or hope, that it allows only well-meaning travelers through and keeps the evildoers at bay.</p>
+<p>As it turns out, Captcha may have a lot more in common with the TSA than we thought. Google <a href="http://googleonlinesecurity.blogspot.co.il/2014/04/street-view-and-recaptcha-technology.html" target="_blank">announced yesterday</a> that it has an algorithm that can resolve 90% of all Captchas. Captchas may <em>look</em> secure, but they are really nothing more than "security theatre", just like, for the most part, the TSA. As many have argued, after 9/11, when the flying public had no confidence in flying, theatre was very much called for. But it also had to protect us.</p>
+<p>At first blush, it seems strange. Google is the owner of the most popular Captcha out there, ReCAPTCHA. So why would it actively publish that it can undermine its own security product?</p>
+<ol>
+<li>Google isn't the only player in the market. If it can undermine <em>existing</em> Captcha, but simultaneously play up new capabilities in <span style="text-decoration: underline;">its own</span>, it benefits. Unsurprisingly, <a href="http://googleonlinesecurity.blogspot.co.il/2013/10/recaptcha-just-got-easier-but-only-if.html" target="_blank">it did so just a few months ago</a>.</li>
+<li>Google knows that if it can break Captcha, someone else can and probably will as well, and soon. It would rather be the one to announce it and get credit, and thus market value for its own security products, rather than wait for someone else to undermine them and go on the defensive.</li>
+<li>Google, to its credit, has an engineering-centric culture. Engineers, for all their (our?) weaknesses, are very driven to truth. If it is weak, they will let it be known.</li>
+</ol>
+<p>The core of the problem is that we are trying to use technology to determine if a user is a real human. Like most InfoSec issues, it is a cat-and-mouse game. While natural-language processing (NLP) is hardly good enough to fool most humans, eventually it may be. Using technology to determine if someone is human may simply fail.</p>
+<p>In the end, we may need to stop trying to determine if a user is a <em>person</em> and start trying to determine if their <em>actions</em> are well-intentioned, or at least acceptable to the system.</p>
+<p>Now, if only Google could find a way to inspect our luggage...</p>

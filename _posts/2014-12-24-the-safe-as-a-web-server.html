@@ -1,0 +1,36 @@
+---
+layout: post
+title: The Safe as a Web Server
+date: 2014-12-24 07:12:05.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- business
+- security
+- technology
+tags:
+- encryption
+- math
+- safes
+- technology
+- web
+- webserver
+author: Avi Deitcher
+---
+<p>Safes. They are big, heavy, and make us feel, well, "safe" about our valuables stored inside.</p>
+<p>Historically, safes were controlled by a series of complex gears that only the correct series, or "combination", of dials would open. I loved the illustrations for gears and other mechanical devices in David Macaulay's "<a href="http://www.amazon.com/The-New-Way-Things-Work/dp/0395938473" target="_blank">New Way Things Work</a>".</p>
+<p>Digital safes, whether the professional variety of the home variety, were created largely for convenience. They are faster to open, easier to share (and change) codes, and required less physical space for all of the gears.</p>
+<p>While mechanical safes always had shortcomings, primarily the difficulty in changing the combination in case a trusted person no longer can be trusted, it was always believed that "serious" safes would be mechanical. After all, digital is subject to simpler codes, mistakes, and electronic eavesdropping. To be honest, mechanical just "feels more solid."</p>
+<p>In the end, however, mechanical safes depend on the key limitation of humans: the retry factor. A human being can try only so many combinations in a minute. Even more, when one does not work, the safecracker never can be sure if s/he really did dial 25 left, or maybe slipped and did 26 left. Assuming a decent safe with 100 numbers on the dial and 3 steps to the code, and that it takes a person a <strong>very</strong> optimistic 30 seconds to try each code and reset, it would take <span style="text-decoration: underline;">1MM tries or 500k minutes</span> to try all of the codes. It is highly unlikely that a burglar has even one percent of the <strong>347 days required</strong> to try all of the combinations!</p>
+<p>Sadly, but inevitably, this is no longer a limitation.</p>
+<p>A <a href="http://www.theverge.com/2014/10/15/6981055/safe-cracker-price" target="_blank">simple, $150 device</a>, created of some gears, sensors and a stepper motor, can try all of the combinations, much faster and with greater reliability than any human. Assuming they are working with a similar safe to the one above, their estimate of four days to crack a safe is a nearly five orders of magnitude improvement. Simpler safes will take far less time.</p>
+<p>At heart, though, this is just another example of many security systems that depend <em>upon the time to perform it</em>. Inevitably, all such mechanisms become victims of automation and improvements in computing speed. As Apple learned to its dismay during the <a href="http://en.wikipedia.org/wiki/2014_celebrity_photo_leaks" target="_blank">iCloud leaked pictures scandal</a>, the <i>only</i> way to stop that kind of brute force attack is to <strong>limit the number of retries</strong>, whether in total or per unit of time. Put in other terms, a secure system must be capable of recognizing when it is legitimately being opened, even with some normal mistakes, versus when it is being cracked. And "intelligent system" implies digital.</p>
+<p>A truly safe safe (pun intended) is one that knows itself when it is safe, and when it is not. The only kind of safe that can do that is one that also:</p>
+<ul>
+<li>Can have its combination, or "secret key" changed on demand</li>
+<li>Can upgrade its strength, or "encryption technology", on demand</li>
+</ul>
+<p>In other words, a truly safe safe is a digital safe.</p>
+<p>The truly safest safe will not be one that uses a key code or PIN, but one that uses a smart card or computer as a key, actually some form of digital certificate, that authenticates against the safe just as a certificate can authenticate against a Web server.</p>
+<p>Mechanical safes, like mechanical clocks, are a thing of beauty... but inevitably they will become items of beauty, not of safety.</p>
