@@ -1,8 +1,14 @@
 ---
 layout: page
 title : Home
-header : Home
+header : Atomic Inc
 group: navigation
 ---
+{% if site.summary %}
+	<div class="site-summary">
+		{{ site.summary }}
+	</div>
+{% endif %}
+
 {% assign posts_collate = paginator.posts %}
 {% include helpers/posts_collate %}
