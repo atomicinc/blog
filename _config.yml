@@ -1,6 +1,6 @@
 # Site Settings
 encoding: UTF-8
-exclude: ["*.gem", "*.gemspec", "Gemfile", "Gemfile.lock", "node_modules", "Rakefile", "starter-kit", "vendor"]
+exclude: ["*.gem", "*.gemspec", "Gemfile", "Gemfile.lock", "node_modules", "Rakefile", "vendor"]
 lang: en
 permalink: /:year/:month/:day/:title/
 
@@ -31,7 +31,7 @@ url: # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: # the subpath of your site, e.g. /blog
 title: Atomic Energy
 description: Thoughts on a turbulent age
-keywords: 'jekyll,theme,gem-based'
+keywords: 'cloud,saas,technology,operations,product'
 author:
   name: Avi Deitcher
   job_title:
