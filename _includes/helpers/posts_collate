@@ -9,10 +9,14 @@
   <!-- Pagination links -->
   <div class="pagination">
     {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous button__outline">Newer Posts</a>
+      <div class="prev_page">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous button__outline">Newer Articles</a>
+      </div>
     {% endif %}
     {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="next button__outline">Older Posts</a>
+      <div class="next_page">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="next button__outline">Older Articles</a>
+      </div>
     {% endif %}
   </div>
 </div>
