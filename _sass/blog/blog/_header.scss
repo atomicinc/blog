@@ -1,8 +1,29 @@
+.the-header .unit-head-background {
+  content: "";
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+
+@media only screen and (min-width: 1200px) {
+  .the-header .unit-head {
+      margin-right: 12%;
+      margin-left: 12%;
+  }
+}
+
+
 .the-header .unit-head {
     padding: 26px;
     padding-bottom: 12px;
 
     text-align: center;
+    position: relative;
 
     .nav-global {
         .logo {
