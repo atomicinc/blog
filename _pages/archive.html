@@ -5,7 +5,62 @@ header : Archives
 description: Blog archive
 permalink: "/archive/"
 ---
+<section id="archive">
+  {% assign year = -1 %}
+  {% assign month = "" %}
+  {% assign months = "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"  %}
 
+  <ul class="this">
+  {% for post in site.posts %}
+    {% capture nyear %}{{ post.date | date: '%Y' }}{% endcapture %}
+    {% capture nmonth %}{{ post.date | date: '%b' }}{% endcapture %}
+    {% if year != nyear %}
+
+    {% if year != -1 %}
+      {% assign monthsary = months | split: "|" %}
+      {% for m in monthsary %}
+        {% assign monthname = m | truncate: 3, "" %}
+        {% assign postcount = m | size | minus: 3 %}
+        {% if postcount > 0 %}
+        <a class="archive-link" href="">{{ monthname }}</a>
+        {% else %}
+        <span class="archive-link">{{ monthname }}</span>
+        {% endif %}
+      {% endfor %}
+      {% assign months = "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"  %}
+      </li>
+      {% endif %}
+      <li><a class="archive-link" href=""><strong>{{ nyear }}</strong></a>
+
+      {% assign month = -1 %}
+    {% endif %}
+
+    {% if nmonth != month %}
+      {% assign flag = nmonth | append: "+" %}
+      {% assign months = months | replace: nmonth, flag %}
+    {% endif %}
+      <!-- <a href="" class="year-month-archive"><time>{{ nmonth }}</time></a> -->
+    {% assign year = nyear %}
+    {% assign month = nmonth %}
+  {% endfor %}
+  {% if month != -1 %}
+    {% assign monthsary = months | split: "|" %}
+    {% for m in monthsary %}
+      {% assign monthname = m | truncate: 3, "" %}
+      {% assign postcount = m | size | minus: 3 %}
+      {% if postcount > 0 %}
+      <a class="archive-link" href="">{{ monthname }}</a>
+      {% else %}
+      <span class="archive-link">{{ monthname }}</span>
+      {% endif %}
+    {% endfor %}
+
+  {% endif %}
+</li></ul>
+</section>
+
+
+<!--
 <section id="archive">
   {% assign year = -1 %}
   <ul class="this">
@@ -21,3 +76,5 @@ permalink: "/archive/"
   {% endfor %}
   </ul>
 </section>
+
+-->
