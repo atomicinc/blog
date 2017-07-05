@@ -4,10 +4,15 @@ title : Home
 header : Atomic Inc
 group: navigation
 ---
+{% if paginator.page == 1 %}
 {% if site.summary %}
 	<div class="site-summary">
 		{{ site.summary }}
 	</div>
+{% endif %}
+
+<h2 class="pageTitle">Latest Articles</h2>
+
 {% endif %}
 
 {% assign posts_collate = paginator.posts %}
