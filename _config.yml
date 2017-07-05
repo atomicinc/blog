@@ -9,7 +9,7 @@ include: ['_pages']
 whitelist: [jekyll-feed, jekyll-redirect-from, jekyll-seo-tag, jekyll-sitemap]
 
 paginate_path: "blog/page:num/"
-paginate: 2
+paginate: 5
 gems:
   - jekyll-feed
   - jekyll-redirect-from
