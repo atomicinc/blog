@@ -133,8 +133,20 @@ $(document).ready(function () {
       searchResultsTitle: '<h4>{{ site.data.i18n[site.lang].search_results }}</h4>',
       noResults: '<p>{{ site.data.i18n[site.lang].search_not_found }}</p>'
     });
-    $('div.by-date').generateDateArchive();
-    $('.year-month-archive').yearMonthSearch();
+    $('div.by-date').generateDateArchive({
+      jsonFile: '{{ site.baseurl }}/search.json',
+      template: '<li><a href="{{ site.baseurl }}{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></li>',
+      searchResults: '.search-wrapper .results',
+      searchResultsTitle: '<h4>{{ site.data.i18n[site.lang].search_results }}</h4>',
+      noResults: '<p>{{ site.data.i18n[site.lang].search_not_found }}</p>'
+    });
+    $('.year-month-archive').yearMonthSearch({
+      jsonFile: '{{ site.baseurl }}/search.json',
+      template: '<li><a href="{{ site.baseurl }}{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></li>',
+      searchResults: '.search-wrapper .results',
+      searchResultsTitle: '<h4>{{ site.data.i18n[site.lang].search_results }}</h4>',
+      noResults: '<p>{{ site.data.i18n[site.lang].search_not_found }}</p>'
+    });
 });
 
 (function ($, window, undefined) {
