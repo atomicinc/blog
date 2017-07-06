@@ -123,6 +123,7 @@ $(document).ready(function () {
 
 <!-- Show menu overlay + Jekyll Simple Search option -->
 <script src="{{ site.baseurl }}/assets/javascripts/jekyll-search.jquery.js"></script>
+<script src="{{ site.baseurl }}/assets/javascripts/year-month-search.jquery.js"></script>
 <script>
 $(document).ready(function () {
     $('.search-field').simpleJekyllSearch({
@@ -132,6 +133,8 @@ $(document).ready(function () {
       searchResultsTitle: '<h4>{{ site.data.i18n[site.lang].search_results }}</h4>',
       noResults: '<p>{{ site.data.i18n[site.lang].search_not_found }}</p>'
     });
+    $('div.by-date').generateDateArchive();
+    $('.year-month-archive').yearMonthSearch();
 });
 
 (function ($, window, undefined) {
