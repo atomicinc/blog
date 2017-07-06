@@ -89,7 +89,7 @@ navigation:
   - title: Archive
     url: /archive/
 
-header_image: http://blog.atomicinc.com/wp-content/uploads/2015/01/cropped-digital-earth-background2.jpg
+header_image: /assets/site-images/cropped-digital-earth-background2.jpg
 
 paths:
   home: /
